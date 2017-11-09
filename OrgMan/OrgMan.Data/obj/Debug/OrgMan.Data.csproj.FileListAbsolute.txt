@@ -1,0 +1,5 @@
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Data\bin\Debug\OrgMan.Data.dll
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Data\bin\Debug\OrgMan.Data.pdb
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Data\obj\Debug\OrgMan.Data.csprojResolveAssemblyReference.cache
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Data\obj\Debug\OrgMan.Data.dll
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Data\obj\Debug\OrgMan.Data.pdb

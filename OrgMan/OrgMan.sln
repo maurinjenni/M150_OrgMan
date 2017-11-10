@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26430.15
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 Service", "02 Service", "{7EFD92EB-5286-42CD-9372-FC107F231390}"
 EndProject
@@ -85,5 +85,8 @@ Global
 		{1A840F73-0560-4E39-8121-74963E5E9AC6} = {7B3215C9-E599-4225-A5A1-72CF5FBEFC59}
 		{C248D257-0292-4780-9356-E2587D8320E5} = {7B3215C9-E599-4225-A5A1-72CF5FBEFC59}
 		{39A1EF96-ACC6-4784-8005-A36EB35D0C4B} = {7EFD92EB-5286-42CD-9372-FC107F231390}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.2\lib\NET35
 	EndGlobalSection
 EndGlobal

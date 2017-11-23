@@ -47,6 +47,11 @@
     <Compile Include="DynamicValidationService\DynamicValidationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\OrgMan.DataModel\OrgMan.DataModel.csproj">
+      <Project>{2d742792-2d0e-4847-9e79-ed4e4af423f2}</Project>
+      <Name>OrgMan.DataModel</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

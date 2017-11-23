@@ -30,8 +30,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,7 +49,104 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account.cs">
+      <DependentUpon>OrgManModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AccountToMandator.cs">
+      <DependentUpon>OrgManModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Adress.cs">
+      <DependentUpon>OrgManModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CommunicationType.cs">
+      <DependentUpon>OrgManModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Country.cs">
+      <DependentUpon>OrgManModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmailAdress.cs">
+      <DependentUpon>OrgManModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmailAdressToPerson.cs">
+      <DependentUpon>OrgManModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs">
+      <DependentUpon>OrgManModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mandator.cs">
+      <DependentUpon>OrgManModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Meeting.cs">
+      <DependentUpon>OrgManModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MemberInformation.cs">
+      <DependentUpon>OrgManModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MemberInformationToMembership.cs">
+      <DependentUpon>OrgManModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Membership.cs">
+      <DependentUpon>OrgManModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrgManModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OrgManModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrgManModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OrgManModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrgManModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OrgManModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Person.cs">
+      <DependentUpon>OrgManModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Phone.cs">
+      <DependentUpon>OrgManModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PhoneToPerson.cs">
+      <DependentUpon>OrgManModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Salutation.cs">
+      <DependentUpon>OrgManModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>OrgManModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="OrgManModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>OrgManModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="OrgManModel.edmx.diagram">
+      <DependentUpon>OrgManModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="OrgManModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>OrgManModel.Context.cs</LastGenOutput>
+      <DependentUpon>OrgManModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="OrgManModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>OrgManModel.edmx</DependentUpon>
+      <LastGenOutput>OrgManModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

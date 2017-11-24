@@ -3,3 +3,8 @@ C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainObjects\bin\De
 C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainObjects\obj\Debug\OrgMan.DomainObjects.csprojResolveAssemblyReference.cache
 C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainObjects\obj\Debug\OrgMan.DomainObjects.dll
 C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainObjects\obj\Debug\OrgMan.DomainObjects.pdb
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainObjects\bin\Debug\OrgMan.DomainObjects.dll
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainObjects\bin\Debug\OrgMan.DomainObjects.pdb
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainObjects\obj\Debug\OrgMan.DomainObjects.csprojResolveAssemblyReference.cache
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainObjects\obj\Debug\OrgMan.DomainObjects.dll
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainObjects\obj\Debug\OrgMan.DomainObjects.pdb

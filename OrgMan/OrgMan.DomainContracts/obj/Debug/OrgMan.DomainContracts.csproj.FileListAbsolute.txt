@@ -3,3 +3,8 @@ C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainContracts\bin\
 C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainContracts\obj\Debug\OrgMan.DomainContracts.csprojResolveAssemblyReference.cache
 C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainContracts\obj\Debug\OrgMan.DomainContracts.dll
 C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainContracts\obj\Debug\OrgMan.DomainContracts.pdb
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainContracts\bin\Debug\OrgMan.DomainContracts.dll
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainContracts\bin\Debug\OrgMan.DomainContracts.pdb
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainContracts\obj\Debug\OrgMan.DomainContracts.csprojResolveAssemblyReference.cache
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainContracts\obj\Debug\OrgMan.DomainContracts.dll
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainContracts\obj\Debug\OrgMan.DomainContracts.pdb

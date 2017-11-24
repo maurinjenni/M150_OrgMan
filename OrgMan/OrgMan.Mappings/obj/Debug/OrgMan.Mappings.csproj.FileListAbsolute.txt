@@ -2,3 +2,7 @@ C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Mappings\bin\Debug\O
 C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Mappings\bin\Debug\OrgMan.Mappings.pdb
 C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Mappings\obj\Debug\OrgMan.Mappings.dll
 C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Mappings\obj\Debug\OrgMan.Mappings.pdb
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Mappings\bin\Debug\OrgMan.Mappings.dll
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Mappings\bin\Debug\OrgMan.Mappings.pdb
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Mappings\obj\Debug\OrgMan.Mappings.dll
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Mappings\obj\Debug\OrgMan.Mappings.pdb

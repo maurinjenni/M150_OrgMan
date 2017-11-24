@@ -3,3 +3,15 @@ C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Dependencies\bin\Deb
 C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Dependencies\obj\Debug\OrgMan.Dependencies.csprojResolveAssemblyReference.cache
 C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Dependencies\obj\Debug\OrgMan.Dependencies.dll
 C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Dependencies\obj\Debug\OrgMan.Dependencies.pdb
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Dependencies\bin\Debug\OrgMan.Dependencies.dll
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Dependencies\bin\Debug\OrgMan.Dependencies.pdb
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Dependencies\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Dependencies\bin\Debug\Microsoft.Practices.Unity.Configuration.dll
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Dependencies\bin\Debug\Microsoft.Practices.Unity.dll
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Dependencies\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Dependencies\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Dependencies\bin\Debug\Microsoft.Practices.Unity.xml
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Dependencies\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Dependencies\obj\Debug\OrgMan.Dependencies.csprojResolveAssemblyReference.cache
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Dependencies\obj\Debug\OrgMan.Dependencies.dll
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Dependencies\obj\Debug\OrgMan.Dependencies.pdb

@@ -3,3 +3,17 @@ C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Common\bin\Debug\Org
 C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Common\obj\Debug\OrgMan.Common.csprojResolveAssemblyReference.cache
 C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Common\obj\Debug\OrgMan.Common.dll
 C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Common\obj\Debug\OrgMan.Common.pdb
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Common\bin\Debug\OrgMan.Common.dll
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Common\bin\Debug\OrgMan.Common.pdb
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Common\bin\Debug\FluentValidation.dll
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Common\bin\Debug\Newtonsoft.Json.dll
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Common\bin\Debug\OrgMan.DataModel.dll
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Common\bin\Debug\EntityFramework.dll
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Common\bin\Debug\OrgMan.DataModel.pdb
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Common\bin\Debug\FluentValidation.xml
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Common\bin\Debug\Newtonsoft.Json.xml
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Common\bin\Debug\EntityFramework.xml
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Common\bin\Debug\de\EntityFramework.resources.dll
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Common\obj\Debug\OrgMan.Common.csprojResolveAssemblyReference.cache
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Common\obj\Debug\OrgMan.Common.dll
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Common\obj\Debug\OrgMan.Common.pdb

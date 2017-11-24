@@ -8,14 +8,22 @@ namespace OrgMan.Common.DynamicValidationService.DynamicValidationModel.Enum
 {
     public enum CriteriaTypeEnum
     {
-        // Email Adresse
-        // File Extension
-        // Max Length
-        // Min Length
-        // Phone NUmber
-        // Numeric Max
-        // Numeric Min
-        // Numeric Range
-        // Url 
+        NotNull,
+        NotEmpty,
+        NotNullOrEmpty,
+        Equal,
+        NotEqual,
+        MinLength,
+        MaxLength,
+        Length,
+        LessThan,
+        LessThanOrEquals,
+        GreatherThan,
+        GreatherThanOrEquals,
+        ExclusiveBetween,
+        InclusiveBetween,
+        EmailAdress,
+        PhoneNumber,
+        Uri
     }
 }

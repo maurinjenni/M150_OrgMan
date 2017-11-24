@@ -1,0 +1,612 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OrgManModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="OrgManEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Account" EntityType="OrgManModel.Account" />
+    <EntitySet Name="AccountToMandator" EntityType="OrgManModel.AccountToMandator" />
+    <EntitySet Name="Adress" EntityType="OrgManModel.Adress" />
+    <EntitySet Name="CommunicationType" EntityType="OrgManModel.CommunicationType" />
+    <EntitySet Name="Country" EntityType="OrgManModel.Country" />
+    <EntitySet Name="EmailAdress" EntityType="OrgManModel.EmailAdress" />
+    <EntitySet Name="EmailAdressToPerson" EntityType="OrgManModel.EmailAdressToPerson" />
+    <EntitySet Name="Login" EntityType="OrgManModel.Login" />
+    <EntitySet Name="Mandator" EntityType="OrgManModel.Mandator" />
+    <EntitySet Name="Meeting" EntityType="OrgManModel.Meeting" />
+    <EntitySet Name="MemberInformation" EntityType="OrgManModel.MemberInformation" />
+    <EntitySet Name="MemberInformationToMembership" EntityType="OrgManModel.MemberInformationToMembership" />
+    <EntitySet Name="Membership" EntityType="OrgManModel.Membership" />
+    <EntitySet Name="Person" EntityType="OrgManModel.Person" />
+    <EntitySet Name="Phone" EntityType="OrgManModel.Phone" />
+    <EntitySet Name="PhoneToPerson" EntityType="OrgManModel.PhoneToPerson" />
+    <EntitySet Name="Salutation" EntityType="OrgManModel.Salutation" />
+    <EntitySet Name="sysdiagrams" EntityType="OrgManModel.sysdiagrams" />
+    <AssociationSet Name="FK__Account__Salutat__49C3F6B7" Association="OrgManModel.FK__Account__Salutat__49C3F6B7">
+      <End Role="Salutation" EntitySet="Salutation" />
+      <End Role="Account" EntitySet="Account" />
+    </AssociationSet>
+    <AssociationSet Name="FK__AccountTo__Accou__534D60F1" Association="OrgManModel.FK__AccountTo__Accou__534D60F1">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="AccountToMandator" EntitySet="AccountToMandator" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Login__AccountUI__48CFD27E" Association="OrgManModel.FK__Login__AccountUI__48CFD27E">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="Login" EntitySet="Login" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Person__AccountU__45F365D3" Association="OrgManModel.FK__Person__AccountU__45F365D3">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="Person" EntitySet="Person" />
+    </AssociationSet>
+    <AssociationSet Name="FK__AccountTo__Manda__52593CB8" Association="OrgManModel.FK__AccountTo__Manda__52593CB8">
+      <End Role="Mandator" EntitySet="Mandator" />
+      <End Role="AccountToMandator" EntitySet="AccountToMandator" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Adress__CountryU__47DBAE45" Association="OrgManModel.FK__Adress__CountryU__47DBAE45">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="Adress" EntitySet="Adress" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Person__AdressUI__46E78A0C" Association="OrgManModel.FK__Person__AdressUI__46E78A0C">
+      <End Role="Adress" EntitySet="Adress" />
+      <End Role="Person" EntitySet="Person" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EmailAdre__Commu__4CA06362" Association="OrgManModel.FK__EmailAdre__Commu__4CA06362">
+      <End Role="CommunicationType" EntitySet="CommunicationType" />
+      <End Role="EmailAdressToPerson" EntitySet="EmailAdressToPerson" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PhoneToPe__Commu__4D94879B" Association="OrgManModel.FK__PhoneToPe__Commu__4D94879B">
+      <End Role="CommunicationType" EntitySet="CommunicationType" />
+      <End Role="PhoneToPerson" EntitySet="PhoneToPerson" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EmailAdre__Email__4AB81AF0" Association="OrgManModel.FK__EmailAdre__Email__4AB81AF0">
+      <End Role="EmailAdress" EntitySet="EmailAdress" />
+      <End Role="EmailAdressToPerson" EntitySet="EmailAdressToPerson" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EmailAdre__Perso__4BAC3F29" Association="OrgManModel.FK__EmailAdre__Perso__4BAC3F29">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="EmailAdressToPerson" EntitySet="EmailAdressToPerson" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Meeting__Mandato__4222D4EF" Association="OrgManModel.FK__Meeting__Mandato__4222D4EF">
+      <End Role="Mandator" EntitySet="Mandator" />
+      <End Role="Meeting" EntitySet="Meeting" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Person__Mandator__4316F928" Association="OrgManModel.FK__Person__Mandator__4316F928">
+      <End Role="Mandator" EntitySet="Mandator" />
+      <End Role="Person" EntitySet="Person" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MemberInf__Membe__5070F446" Association="OrgManModel.FK__MemberInf__Membe__5070F446">
+      <End Role="MemberInformation" EntitySet="MemberInformation" />
+      <End Role="MemberInformationToMembership" EntitySet="MemberInformationToMembership" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Person__MemberIn__44FF419A" Association="OrgManModel.FK__Person__MemberIn__44FF419A">
+      <End Role="MemberInformation" EntitySet="MemberInformation" />
+      <End Role="Person" EntitySet="Person" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MemberInf__Membe__5165187F" Association="OrgManModel.FK__MemberInf__Membe__5165187F">
+      <End Role="Membership" EntitySet="Membership" />
+      <End Role="MemberInformationToMembership" EntitySet="MemberInformationToMembership" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Person__Salutati__440B1D61" Association="OrgManModel.FK__Person__Salutati__440B1D61">
+      <End Role="Salutation" EntitySet="Salutation" />
+      <End Role="Person" EntitySet="Person" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PhoneToPe__Perso__4F7CD00D" Association="OrgManModel.FK__PhoneToPe__Perso__4F7CD00D">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="PhoneToPerson" EntitySet="PhoneToPerson" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PhoneToPe__Phone__4E88ABD4" Association="OrgManModel.FK__PhoneToPe__Phone__4E88ABD4">
+      <End Role="Phone" EntitySet="Phone" />
+      <End Role="PhoneToPerson" EntitySet="PhoneToPerson" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="Guid" Nullable="false" />
+    <Property Name="SysInsertTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="SysInsertAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="SysUpdateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="SysUpdateAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="SalutationUID" Type="Guid" />
+    <Property Name="Firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EmailAdress" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MobileNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Verified" Type="Boolean" Nullable="false" />
+    <Property Name="PictureReference" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Salutation" Relationship="OrgManModel.FK__Account__Salutat__49C3F6B7" FromRole="Account" ToRole="Salutation" />
+    <NavigationProperty Name="AccountToMandator" Relationship="OrgManModel.FK__AccountTo__Accou__534D60F1" FromRole="Account" ToRole="AccountToMandator" />
+    <NavigationProperty Name="Login" Relationship="OrgManModel.FK__Login__AccountUI__48CFD27E" FromRole="Account" ToRole="Login" />
+    <NavigationProperty Name="Person" Relationship="OrgManModel.FK__Person__AccountU__45F365D3" FromRole="Account" ToRole="Person" />
+  </EntityType>
+  <EntityType Name="AccountToMandator">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="Guid" Nullable="false" />
+    <Property Name="SysInsertTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="SysInsertAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="SysUpdateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="SysUpdateAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="MandatorUID" Type="Guid" Nullable="false" />
+    <Property Name="AccountUID" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="Account" Relationship="OrgManModel.FK__AccountTo__Accou__534D60F1" FromRole="AccountToMandator" ToRole="Account" />
+    <NavigationProperty Name="Mandator" Relationship="OrgManModel.FK__AccountTo__Manda__52593CB8" FromRole="AccountToMandator" ToRole="Mandator" />
+  </EntityType>
+  <EntityType Name="Adress">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="Guid" Nullable="false" />
+    <Property Name="SysInsertTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="SysInsertAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="SysUpdateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="SysUpdateAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="Street" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="HouseNumber" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Additional" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PostCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="CountryUID" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="Country" Relationship="OrgManModel.FK__Adress__CountryU__47DBAE45" FromRole="Adress" ToRole="Country" />
+    <NavigationProperty Name="Person" Relationship="OrgManModel.FK__Person__AdressUI__46E78A0C" FromRole="Adress" ToRole="Person" />
+  </EntityType>
+  <EntityType Name="CommunicationType">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="Guid" Nullable="false" />
+    <Property Name="SysInsertTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="SysInsertAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="SysUpdateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="SysUpdateAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Title" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="OrderKey" Type="Int32" />
+    <NavigationProperty Name="EmailAdressToPerson" Relationship="OrgManModel.FK__EmailAdre__Commu__4CA06362" FromRole="CommunicationType" ToRole="EmailAdressToPerson" />
+    <NavigationProperty Name="PhoneToPerson" Relationship="OrgManModel.FK__PhoneToPe__Commu__4D94879B" FromRole="CommunicationType" ToRole="PhoneToPerson" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="Guid" Nullable="false" />
+    <Property Name="SysInsertTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="SysInsertAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="SysUpdateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="SysUpdateAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Title" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="OrderKey" Type="Int32" />
+    <NavigationProperty Name="Adress" Relationship="OrgManModel.FK__Adress__CountryU__47DBAE45" FromRole="Country" ToRole="Adress" />
+  </EntityType>
+  <EntityType Name="EmailAdress">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="Guid" Nullable="false" />
+    <Property Name="SysInsertTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="SysInsertAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="SysUpdateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="SysUpdateAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="EmailAdress1" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="EmailAdressToPerson" Relationship="OrgManModel.FK__EmailAdre__Email__4AB81AF0" FromRole="EmailAdress" ToRole="EmailAdressToPerson" />
+  </EntityType>
+  <EntityType Name="EmailAdressToPerson">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="Guid" Nullable="false" />
+    <Property Name="SysInsertTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="SysInsertAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="SysUpdateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="SysUpdateAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="EmailAdressUID" Type="Guid" Nullable="false" />
+    <Property Name="PersonUID" Type="Guid" Nullable="false" />
+    <Property Name="CommunicationTypeUID" Type="Guid" Nullable="false" />
+    <Property Name="MailEmailAdress" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="CommunicationType" Relationship="OrgManModel.FK__EmailAdre__Commu__4CA06362" FromRole="EmailAdressToPerson" ToRole="CommunicationType" />
+    <NavigationProperty Name="EmailAdress" Relationship="OrgManModel.FK__EmailAdre__Email__4AB81AF0" FromRole="EmailAdressToPerson" ToRole="EmailAdress" />
+    <NavigationProperty Name="Person" Relationship="OrgManModel.FK__EmailAdre__Perso__4BAC3F29" FromRole="EmailAdressToPerson" ToRole="Person" />
+  </EntityType>
+  <EntityType Name="Login">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="Guid" Nullable="false" />
+    <Property Name="SysInsertTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="SysInsertAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="SysUpdateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="SysUpdateAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="AccountUID" Type="Guid" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="Locked" Type="Boolean" Nullable="false" />
+    <Property Name="LockedDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="LockedComment" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="AccessFailedCount" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Account" Relationship="OrgManModel.FK__Login__AccountUI__48CFD27E" FromRole="Login" ToRole="Account" />
+  </EntityType>
+  <EntityType Name="Mandator">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="Guid" Nullable="false" />
+    <Property Name="SysInsertTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="SysInsertAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="SysUpdateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="SysUpdateAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Title" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="AccountToMandator" Relationship="OrgManModel.FK__AccountTo__Manda__52593CB8" FromRole="Mandator" ToRole="AccountToMandator" />
+    <NavigationProperty Name="Meeting" Relationship="OrgManModel.FK__Meeting__Mandato__4222D4EF" FromRole="Mandator" ToRole="Meeting" />
+    <NavigationProperty Name="Person" Relationship="OrgManModel.FK__Person__Mandator__4316F928" FromRole="Mandator" ToRole="Person" />
+  </EntityType>
+  <EntityType Name="Meeting">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="Guid" Nullable="false" />
+    <Property Name="SysInsertTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="SysInsertAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="SysUpdateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="SysUpdateAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="MandatorUID" Type="Guid" Nullable="false" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StartDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="EndDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="Location" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Mandator" Relationship="OrgManModel.FK__Meeting__Mandato__4222D4EF" FromRole="Meeting" ToRole="Mandator" />
+  </EntityType>
+  <EntityType Name="MemberInformation">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="Guid" Nullable="false" />
+    <Property Name="SysInsertTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="SysInsertAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="SysUpdateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="SysUpdateAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="EntryDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ExitDate" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="MemberInformationToMembership" Relationship="OrgManModel.FK__MemberInf__Membe__5070F446" FromRole="MemberInformation" ToRole="MemberInformationToMembership" />
+    <NavigationProperty Name="Person" Relationship="OrgManModel.FK__Person__MemberIn__44FF419A" FromRole="MemberInformation" ToRole="Person" />
+  </EntityType>
+  <EntityType Name="MemberInformationToMembership">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="Guid" Nullable="false" />
+    <Property Name="SysInsertTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="SysInsertAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="SysUpdateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="SysUpdateAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="MemberInformationUID" Type="Guid" Nullable="false" />
+    <Property Name="MembershipUID" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="MemberInformation" Relationship="OrgManModel.FK__MemberInf__Membe__5070F446" FromRole="MemberInformationToMembership" ToRole="MemberInformation" />
+    <NavigationProperty Name="Membership" Relationship="OrgManModel.FK__MemberInf__Membe__5165187F" FromRole="MemberInformationToMembership" ToRole="Membership" />
+  </EntityType>
+  <EntityType Name="Membership">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="Guid" Nullable="false" />
+    <Property Name="SysInsertTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="SysInsertAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="SysUpdateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="SysUpdateAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="MandatorUID" Type="Guid" Nullable="false" />
+    <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Title" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="OrderKey" Type="Int32" />
+    <NavigationProperty Name="MemberInformationToMembership" Relationship="OrgManModel.FK__MemberInf__Membe__5165187F" FromRole="Membership" ToRole="MemberInformationToMembership" />
+  </EntityType>
+  <EntityType Name="Person">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="Guid" Nullable="false" />
+    <Property Name="SysInsertTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="SysInsertAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="SysUpdateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="SysUpdateAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="MandatorUID" Type="Guid" Nullable="false" />
+    <Property Name="SalutationUID" Type="Guid" Nullable="false" />
+    <Property Name="AccountUID" Type="Guid" Nullable="false" />
+    <Property Name="MemberInformationUID" Type="Guid" Nullable="false" />
+    <Property Name="AdressUID" Type="Guid" Nullable="false" />
+    <Property Name="Firstname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Lastname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Company" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Birthdate" Type="DateTime" Precision="0" />
+    <Property Name="Comment" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Account" Relationship="OrgManModel.FK__Person__AccountU__45F365D3" FromRole="Person" ToRole="Account" />
+    <NavigationProperty Name="Adress" Relationship="OrgManModel.FK__Person__AdressUI__46E78A0C" FromRole="Person" ToRole="Adress" />
+    <NavigationProperty Name="EmailAdressToPerson" Relationship="OrgManModel.FK__EmailAdre__Perso__4BAC3F29" FromRole="Person" ToRole="EmailAdressToPerson" />
+    <NavigationProperty Name="Mandator" Relationship="OrgManModel.FK__Person__Mandator__4316F928" FromRole="Person" ToRole="Mandator" />
+    <NavigationProperty Name="MemberInformation" Relationship="OrgManModel.FK__Person__MemberIn__44FF419A" FromRole="Person" ToRole="MemberInformation" />
+    <NavigationProperty Name="Salutation" Relationship="OrgManModel.FK__Person__Salutati__440B1D61" FromRole="Person" ToRole="Salutation" />
+    <NavigationProperty Name="PhoneToPerson" Relationship="OrgManModel.FK__PhoneToPe__Perso__4F7CD00D" FromRole="Person" ToRole="PhoneToPerson" />
+  </EntityType>
+  <EntityType Name="Phone">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="Guid" Nullable="false" />
+    <Property Name="SysInsertTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="SysInsertAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="SysUpdateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="SysUpdateAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="PhoneNumberPrefix" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Number" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="PhoneToPerson" Relationship="OrgManModel.FK__PhoneToPe__Phone__4E88ABD4" FromRole="Phone" ToRole="PhoneToPerson" />
+  </EntityType>
+  <EntityType Name="PhoneToPerson">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="Guid" Nullable="false" />
+    <Property Name="SysInsertTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="SysInsertAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="SysUpdateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="SysUpdateAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="PhoneUID" Type="Guid" Nullable="false" />
+    <Property Name="PersonUID" Type="Guid" Nullable="false" />
+    <Property Name="CommunicationTypeUID" Type="Guid" Nullable="false" />
+    <Property Name="MainPhoneNumber" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="CommunicationType" Relationship="OrgManModel.FK__PhoneToPe__Commu__4D94879B" FromRole="PhoneToPerson" ToRole="CommunicationType" />
+    <NavigationProperty Name="Person" Relationship="OrgManModel.FK__PhoneToPe__Perso__4F7CD00D" FromRole="PhoneToPerson" ToRole="Person" />
+    <NavigationProperty Name="Phone" Relationship="OrgManModel.FK__PhoneToPe__Phone__4E88ABD4" FromRole="PhoneToPerson" ToRole="Phone" />
+  </EntityType>
+  <EntityType Name="Salutation">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="Guid" Nullable="false" />
+    <Property Name="SysInsertTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="SysInsertAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="SysUpdateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="SysUpdateAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Title" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="OrderKey" Type="Int32" />
+    <NavigationProperty Name="Account" Relationship="OrgManModel.FK__Account__Salutat__49C3F6B7" FromRole="Salutation" ToRole="Account" />
+    <NavigationProperty Name="Person" Relationship="OrgManModel.FK__Person__Salutati__440B1D61" FromRole="Salutation" ToRole="Person" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK__Account__Salutat__49C3F6B7">
+    <End Type="OrgManModel.Salutation" Role="Salutation" Multiplicity="0..1" />
+    <End Type="OrgManModel.Account" Role="Account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Salutation">
+        <PropertyRef Name="UID" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="SalutationUID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__AccountTo__Accou__534D60F1">
+    <End Type="OrgManModel.Account" Role="Account" Multiplicity="1" />
+    <End Type="OrgManModel.AccountToMandator" Role="AccountToMandator" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="UID" />
+      </Principal>
+      <Dependent Role="AccountToMandator">
+        <PropertyRef Name="AccountUID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Login__AccountUI__48CFD27E">
+    <End Type="OrgManModel.Account" Role="Account" Multiplicity="1" />
+    <End Type="OrgManModel.Login" Role="Login" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="UID" />
+      </Principal>
+      <Dependent Role="Login">
+        <PropertyRef Name="AccountUID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Person__AccountU__45F365D3">
+    <End Type="OrgManModel.Account" Role="Account" Multiplicity="1" />
+    <End Type="OrgManModel.Person" Role="Person" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="UID" />
+      </Principal>
+      <Dependent Role="Person">
+        <PropertyRef Name="AccountUID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__AccountTo__Manda__52593CB8">
+    <End Type="OrgManModel.Mandator" Role="Mandator" Multiplicity="1" />
+    <End Type="OrgManModel.AccountToMandator" Role="AccountToMandator" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mandator">
+        <PropertyRef Name="UID" />
+      </Principal>
+      <Dependent Role="AccountToMandator">
+        <PropertyRef Name="MandatorUID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Adress__CountryU__47DBAE45">
+    <End Type="OrgManModel.Country" Role="Country" Multiplicity="1" />
+    <End Type="OrgManModel.Adress" Role="Adress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="UID" />
+      </Principal>
+      <Dependent Role="Adress">
+        <PropertyRef Name="CountryUID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Person__AdressUI__46E78A0C">
+    <End Type="OrgManModel.Adress" Role="Adress" Multiplicity="1" />
+    <End Type="OrgManModel.Person" Role="Person" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Adress">
+        <PropertyRef Name="UID" />
+      </Principal>
+      <Dependent Role="Person">
+        <PropertyRef Name="AdressUID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EmailAdre__Commu__4CA06362">
+    <End Type="OrgManModel.CommunicationType" Role="CommunicationType" Multiplicity="1" />
+    <End Type="OrgManModel.EmailAdressToPerson" Role="EmailAdressToPerson" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CommunicationType">
+        <PropertyRef Name="UID" />
+      </Principal>
+      <Dependent Role="EmailAdressToPerson">
+        <PropertyRef Name="CommunicationTypeUID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PhoneToPe__Commu__4D94879B">
+    <End Type="OrgManModel.CommunicationType" Role="CommunicationType" Multiplicity="1" />
+    <End Type="OrgManModel.PhoneToPerson" Role="PhoneToPerson" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CommunicationType">
+        <PropertyRef Name="UID" />
+      </Principal>
+      <Dependent Role="PhoneToPerson">
+        <PropertyRef Name="CommunicationTypeUID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EmailAdre__Email__4AB81AF0">
+    <End Type="OrgManModel.EmailAdress" Role="EmailAdress" Multiplicity="1" />
+    <End Type="OrgManModel.EmailAdressToPerson" Role="EmailAdressToPerson" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EmailAdress">
+        <PropertyRef Name="UID" />
+      </Principal>
+      <Dependent Role="EmailAdressToPerson">
+        <PropertyRef Name="EmailAdressUID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EmailAdre__Perso__4BAC3F29">
+    <End Type="OrgManModel.Person" Role="Person" Multiplicity="1" />
+    <End Type="OrgManModel.EmailAdressToPerson" Role="EmailAdressToPerson" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="UID" />
+      </Principal>
+      <Dependent Role="EmailAdressToPerson">
+        <PropertyRef Name="PersonUID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Meeting__Mandato__4222D4EF">
+    <End Type="OrgManModel.Mandator" Role="Mandator" Multiplicity="1" />
+    <End Type="OrgManModel.Meeting" Role="Meeting" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mandator">
+        <PropertyRef Name="UID" />
+      </Principal>
+      <Dependent Role="Meeting">
+        <PropertyRef Name="MandatorUID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Person__Mandator__4316F928">
+    <End Type="OrgManModel.Mandator" Role="Mandator" Multiplicity="1" />
+    <End Type="OrgManModel.Person" Role="Person" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mandator">
+        <PropertyRef Name="UID" />
+      </Principal>
+      <Dependent Role="Person">
+        <PropertyRef Name="MandatorUID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MemberInf__Membe__5070F446">
+    <End Type="OrgManModel.MemberInformation" Role="MemberInformation" Multiplicity="1" />
+    <End Type="OrgManModel.MemberInformationToMembership" Role="MemberInformationToMembership" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MemberInformation">
+        <PropertyRef Name="UID" />
+      </Principal>
+      <Dependent Role="MemberInformationToMembership">
+        <PropertyRef Name="MemberInformationUID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Person__MemberIn__44FF419A">
+    <End Type="OrgManModel.MemberInformation" Role="MemberInformation" Multiplicity="1" />
+    <End Type="OrgManModel.Person" Role="Person" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MemberInformation">
+        <PropertyRef Name="UID" />
+      </Principal>
+      <Dependent Role="Person">
+        <PropertyRef Name="MemberInformationUID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MemberInf__Membe__5165187F">
+    <End Type="OrgManModel.Membership" Role="Membership" Multiplicity="1" />
+    <End Type="OrgManModel.MemberInformationToMembership" Role="MemberInformationToMembership" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Membership">
+        <PropertyRef Name="UID" />
+      </Principal>
+      <Dependent Role="MemberInformationToMembership">
+        <PropertyRef Name="MembershipUID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Person__Salutati__440B1D61">
+    <End Type="OrgManModel.Salutation" Role="Salutation" Multiplicity="1" />
+    <End Type="OrgManModel.Person" Role="Person" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Salutation">
+        <PropertyRef Name="UID" />
+      </Principal>
+      <Dependent Role="Person">
+        <PropertyRef Name="SalutationUID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PhoneToPe__Perso__4F7CD00D">
+    <End Type="OrgManModel.Person" Role="Person" Multiplicity="1" />
+    <End Type="OrgManModel.PhoneToPerson" Role="PhoneToPerson" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="UID" />
+      </Principal>
+      <Dependent Role="PhoneToPerson">
+        <PropertyRef Name="PersonUID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PhoneToPe__Phone__4E88ABD4">
+    <End Type="OrgManModel.Phone" Role="Phone" Multiplicity="1" />
+    <End Type="OrgManModel.PhoneToPerson" Role="PhoneToPerson" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Phone">
+        <PropertyRef Name="UID" />
+      </Principal>
+      <Dependent Role="PhoneToPerson">
+        <PropertyRef Name="PhoneUID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

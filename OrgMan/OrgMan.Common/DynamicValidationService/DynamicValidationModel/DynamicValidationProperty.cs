@@ -6,8 +6,6 @@ namespace OrgMan.Common.DynamicValidationService.DynamicValidationModel
     {
         public string PropertyName { get; set; }
 
-        public bool Editable { get; set; }
-
         public bool AllowNullOrEmpty { get; set; }
 
         public List<DynamicValidationCriteria> ValidationCriterias { get; set; }

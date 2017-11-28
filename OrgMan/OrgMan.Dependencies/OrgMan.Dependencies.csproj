@@ -60,5 +60,15 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OrgMan.Common\OrgMan.Common.csproj">
+      <Project>{24804630-41C1-4A6F-BCD7-C2D6B987E605}</Project>
+      <Name>OrgMan.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OrgMan.DataModel\OrgMan.DataModel.csproj">
+      <Project>{2D742792-2D0E-4847-9E79-ED4E4AF423F2}</Project>
+      <Name>OrgMan.DataModel</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,13 +1,25 @@
-﻿using System;
-using Microsoft.Practices.Unity;
-
+﻿using Microsoft.Practices.Unity;
+using OrgMan.Common.DynamicValidationService;
+using OrgMan.Common.DynamicValidationService.Validators;
+using OrgMan.Common.LinqExpressionService;
+using OrgMan.DataModel;
 namespace OrgMan.Dependencies.Registration
 {
     public class OrgManDependencyRegistration : IDependencyRegistration
     {
+
+        public OrgManDependencyRegistration()
+        {
+        }
+
         public void Load(IUnityContainer unityContainer)
         {
-            throw new NotImplementedException();
+            /*LinqExpressionService*/
+            unityContainer.RegisterType<ILinqExpressionService<Person>, LinqExpressionService<Person>>();
+
+            /*Validators*/
+            unityContainer.RegisterType<PersonValidator>(
+                new InjectionConstructor(unityContainer.Resolve<ILinqExpressionService<Person>>()));
         }
     }
 }

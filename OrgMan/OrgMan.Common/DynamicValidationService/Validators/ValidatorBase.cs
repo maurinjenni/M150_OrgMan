@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
@@ -9,12 +10,20 @@ using FluentValidation;
 using Newtonsoft.Json;
 using OrgMan.Common.DynamicValidationService.DynamicValidationModel;
 using OrgMan.Common.DynamicValidationService.DynamicValidationModel.Enum;
+using OrgMan.Common.LinqExpressionService;
 
 namespace OrgMan.Common.DynamicValidationService.Validators
 {
     public class ValidatorBase<T> : AbstractValidator<T>
     {
-        public ValidatorBase(string jsonPath)
+        private ILinqExpressionService<T> _linqExpressionService;
+
+        public ValidatorBase(ILinqExpressionService<T> linqExpressionService)
+        {
+            _linqExpressionService = linqExpressionService;
+        }
+
+        public void CreateValidations(string jsonPath)
         {
             DynamicValidationType validationType = ReadValidationTypeFromJson(jsonPath);
 
@@ -31,51 +40,11 @@ namespace OrgMan.Common.DynamicValidationService.Validators
 
                     if (propertyIsList)
                     {
-                        throw new NotImplementedException();
-
-                        var propertyListExpression = GetExpressionForPropertyList(property);
-
-                        if (!property.AllowNullOrEmpty)
-                        {
-                            RuleFor(propertyListExpression).NotNull().NotEmpty();
-                        }
+                        CreateValidationsForList(property);
                     }
                     else
                     {
-                        var propertyExpression = GetExpressionForProperty(property);
-
-                        var propertyIsString = propertyExpression.Type == typeof(string);
-
-                        if (!property.AllowNullOrEmpty)
-                        {
-                            RuleFor(propertyExpression).NotNull().NotEmpty();
-                        }
-
-                        foreach (var validationCriteria in property.ValidationCriterias)
-                        {
-                            switch (validationCriteria.CriteriaType)
-                            {
-
-                                case CriteriaTypeEnum.NotNull:
-                                    RuleFor(propertyExpression).NotNull();
-                                    break;
-                                case CriteriaTypeEnum.NotEmpty:
-                                    RuleFor(propertyExpression).NotEmpty();
-                                    break;
-                                case CriteriaTypeEnum.NotNullOrEmpty:
-                                    RuleFor(propertyExpression).NotNull().NotEmpty();
-                                    break;
-                                case CriteriaTypeEnum.Equal:
-                                    RuleFor(propertyExpression).Equal(validationCriteria.Value);
-                                    break;
-                                case CriteriaTypeEnum.NotEqual:
-                                    RuleFor(propertyExpression).NotEqual(validationCriteria.Value);
-                                    break;
-                                default:
-                                    throw new Exception("Invalid CriteriaType");
-
-                            }
-                        }
+                        CreateValidationsForField(property);
                     }
                 }
             }
@@ -95,18 +64,147 @@ namespace OrgMan.Common.DynamicValidationService.Validators
             }
         }
 
-        private Expression<Func<T, object>> GetExpressionForProperty(DynamicValidationProperty dynamicValidationProperty)
+        private void CreateValidationsForList(DynamicValidationProperty property)
         {
             throw new NotImplementedException();
-
-            return null;
         }
 
-        private Expression<Func<T, IEnumerable<object>>> GetExpressionForPropertyList(
-            DynamicValidationProperty dynamicValidationProperty)
+        private void CreateValidationsForField(DynamicValidationProperty property)
         {
-            throw new NotImplementedException();
-            return null;
+            var propertyExpression = _linqExpressionService.GetParameterExpression(typeof(T), property.PropertyName);
+
+            if (!property.AllowNullOrEmpty)
+            {
+                RuleFor(propertyExpression).NotNull().NotEmpty();
+            }
+
+            foreach (var validationCriteria in property.ValidationCriterias)
+            {
+                switch (validationCriteria.CriteriaType)
+                {
+
+                    case CriteriaTypeEnum.NotNull:
+                        RuleFor(propertyExpression).NotNull();
+                        break;
+                    case CriteriaTypeEnum.NotEmpty:
+                        RuleFor(propertyExpression).NotEmpty();
+                        break;
+                    case CriteriaTypeEnum.NotNullOrEmpty:
+                        RuleFor(propertyExpression).NotNull().NotEmpty();
+                        break;
+                    case CriteriaTypeEnum.Equal:
+                        RuleFor(propertyExpression).Equal(validationCriteria.Value);
+                        break;
+                    case CriteriaTypeEnum.NotEqual:
+                        RuleFor(propertyExpression).NotEqual(validationCriteria.Value);
+                        break;
+                    default:
+                        throw new Exception("Invalid CriteriaType");
+
+                }
+            }
+
+            if (propertyExpression.Type == typeof(string))
+            {
+                Expression<Func<T, string>> stringExpression = ExpressionTostringExpression(propertyExpression);
+
+                CreateValidationsForString(stringExpression, property.ValidationCriterias);
+            }
+
+            if (propertyExpression.Type == typeof(int))
+            {
+                Expression<Func<T, int>> intExpression = ExpressionToIntExpression(propertyExpression);
+
+                CreateValidationsForInt(intExpression, property.ValidationCriterias);
+
+            }
+        }
+
+        private void CreateValidationsForString(Expression<Func<T, string>> stringExpression,
+            List<DynamicValidationCriteria> validationCriterias)
+        {
+            foreach (var validationCriteria in validationCriterias)
+            {
+                switch (validationCriteria.CriteriaType)
+                {
+                    case CriteriaTypeEnum.MinLength:
+                        RuleFor(stringExpression).MinimumLength((int) validationCriteria.Value);
+                        break;
+                    case CriteriaTypeEnum.MaxLength:
+                        RuleFor(stringExpression).MaximumLength((int) validationCriteria.Value);
+                        break;
+                    case CriteriaTypeEnum.Length:
+                        RuleFor(stringExpression).Length((int)validationCriteria.Value);
+                        break;
+                    case CriteriaTypeEnum.EmailAdress:
+                        RuleFor(stringExpression).EmailAddress();
+                        break;
+                    case CriteriaTypeEnum.PhoneNumber:
+                        RuleFor(stringExpression).Matches("");
+                        break;
+                    case CriteriaTypeEnum.Uri:
+                        RuleFor(stringExpression).Matches("");
+                        break;
+                    case CriteriaTypeEnum.Regex:
+                        RuleFor(stringExpression).Matches((string) validationCriteria.Value);
+                        break;
+                    default:
+                        throw new Exception("Invalid CriteriaType");
+                }
+            }
+        }
+
+        private void CreateValidationsForInt(Expression<Func<T, int>> stringExpression,
+            List<DynamicValidationCriteria> validationCriterias)
+        {
+            foreach (var validationCriteria in validationCriterias)
+            {
+                switch (validationCriteria.CriteriaType)
+                {
+                    case CriteriaTypeEnum.LessThan:
+                        RuleFor(stringExpression).LessThan((int)validationCriteria.Value);
+                        break;
+                    case CriteriaTypeEnum.LessThanOrEquals:
+                        RuleFor(stringExpression).LessThanOrEqualTo((int)validationCriteria.Value);
+                        break;
+                    case CriteriaTypeEnum.GreaterThan:
+                        RuleFor(stringExpression).GreaterThan((int)validationCriteria.Value);
+                        break;
+                    case CriteriaTypeEnum.GreaterThanOrEqual:
+                        RuleFor(stringExpression).GreaterThanOrEqualTo((int)validationCriteria.Value);
+                        break;
+                    case CriteriaTypeEnum.ExclusiveBetween:
+                        RuleFor(stringExpression).ExclusiveBetween(Convert.ToInt32(((string)validationCriteria.Value).Split('-')[0]), Convert.ToInt32(((string)validationCriteria.Value).Split('-')[2]));
+                        break;
+                    case CriteriaTypeEnum.InclusiveBetween:
+                        RuleFor(stringExpression).InclusiveBetween(Convert.ToInt32(((string)validationCriteria.Value).Split('-')[0]), Convert.ToInt32(((string)validationCriteria.Value).Split('-')[2]));
+                        break;
+                    default:
+                        throw new Exception("Invalid CriteriaType");
+                }
+            }
+        }
+
+        private Expression<Func<T, string>> ExpressionTostringExpression(Expression<Func<T, object>> func)
+        {
+            ParameterExpression parameter = Expression.Parameter(func.GetType());
+
+            MemberExpression member = Expression.Property(parameter, "");
+
+            LambdaExpression lambda = Expression.Lambda(func.GetType(), member);
+
+            return (Expression<Func<T, string>>)lambda;
+        }
+
+        private Expression<Func<T, int>> ExpressionToIntExpression(Expression<Func<T, object>> func)
+        {
+            ParameterExpression parameter = Expression.Parameter(func.GetType());
+
+            MemberExpression member = Expression.Property(parameter, "");
+
+            LambdaExpression lambda = Expression.Lambda(func.GetType(), member);
+
+            return (Expression<Func<T, int>>)lambda;
         }
     }
 }

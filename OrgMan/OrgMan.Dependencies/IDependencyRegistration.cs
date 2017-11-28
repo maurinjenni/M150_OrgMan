@@ -1,4 +1,5 @@
-﻿using Microsoft.Practices.Unity;
+﻿using System.Collections.Generic;
+using Microsoft.Practices.Unity;
 
 namespace OrgMan.Dependencies
 {

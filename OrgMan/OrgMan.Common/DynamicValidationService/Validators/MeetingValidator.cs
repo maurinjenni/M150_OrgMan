@@ -8,9 +8,9 @@ using OrgMan.DataModel;
 
 namespace OrgMan.Common.DynamicValidationService.Validators
 {
-    public class PersonValidator : ValidatorBase<Person>
+    public class MeetingValidator : ValidatorBase<Meeting>
     {
-        public PersonValidator(ILinqExpressionService<Person> linqExpressionService) : base(linqExpressionService)
+        public MeetingValidator(ILinqExpressionService<Meeting> linqExpressionService) : base(linqExpressionService)
         {
             CreateValidations("");
             AddFluentValidations();
@@ -18,7 +18,7 @@ namespace OrgMan.Common.DynamicValidationService.Validators
 
         private void AddFluentValidations()
         {
-            
+
         }
     }
 }

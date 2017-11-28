@@ -17,3 +17,10 @@ C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Common\bin\Debug\de\EntityFra
 C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Common\obj\Debug\OrgMan.Common.csprojResolveAssemblyReference.cache
 C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Common\obj\Debug\OrgMan.Common.dll
 C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Common\obj\Debug\OrgMan.Common.pdb
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Common\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Common\bin\Debug\Microsoft.Practices.Unity.Configuration.dll
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Common\bin\Debug\Microsoft.Practices.Unity.dll
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Common\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Common\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Common\bin\Debug\Microsoft.Practices.Unity.xml
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Common\bin\Debug\Microsoft.Practices.Unity.Configuration.xml

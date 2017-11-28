@@ -15,3 +15,14 @@ C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Dependencies\bin\Debug\Micros
 C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Dependencies\obj\Debug\OrgMan.Dependencies.csprojResolveAssemblyReference.cache
 C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Dependencies\obj\Debug\OrgMan.Dependencies.dll
 C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Dependencies\obj\Debug\OrgMan.Dependencies.pdb
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Dependencies\bin\Debug\OrgMan.Common.dll
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Dependencies\bin\Debug\OrgMan.DataModel.dll
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Dependencies\bin\Debug\FluentValidation.dll
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Dependencies\bin\Debug\Newtonsoft.Json.dll
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Dependencies\bin\Debug\EntityFramework.dll
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Dependencies\bin\Debug\OrgMan.Common.pdb
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Dependencies\bin\Debug\OrgMan.DataModel.pdb
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Dependencies\bin\Debug\FluentValidation.xml
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Dependencies\bin\Debug\Newtonsoft.Json.xml
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Dependencies\bin\Debug\EntityFramework.xml
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Dependencies\bin\Debug\de\EntityFramework.resources.dll

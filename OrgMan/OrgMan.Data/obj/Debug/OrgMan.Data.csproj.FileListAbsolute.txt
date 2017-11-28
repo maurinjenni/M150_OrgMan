@@ -8,3 +8,14 @@ C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Data\bin\Debug\OrgMan.Data.pd
 C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Data\obj\Debug\OrgMan.Data.csprojResolveAssemblyReference.cache
 C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Data\obj\Debug\OrgMan.Data.dll
 C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Data\obj\Debug\OrgMan.Data.pdb
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Data\bin\Debug\OrgMan.Data.dll.config
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Data\bin\Debug\EntityFramework.dll
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Data\bin\Debug\OrgMan.DataContracts.dll
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Data\bin\Debug\OrgMan.DataModel.dll
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Data\bin\Debug\OrgMan.DataContracts.pdb
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Data\bin\Debug\OrgMan.DataModel.pdb
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Data\bin\Debug\EntityFramework.xml
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Data\bin\Debug\de\EntityFramework.resources.dll
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Data\bin\Debug\de\EntityFramework.SqlServer.resources.dll

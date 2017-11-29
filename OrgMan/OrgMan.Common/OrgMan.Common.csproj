@@ -68,6 +68,7 @@
     <Compile Include="DynamicValidationService\Validators\MeetingValidator.cs" />
     <Compile Include="DynamicValidationService\Validators\PersonValidator.cs" />
     <Compile Include="DynamicValidationService\Validators\ValidatorBase.cs" />
+    <Compile Include="LinqExpressionService\ILinqExpressionService.cs" />
     <Compile Include="LinqExpressionService\LinqExpressionService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

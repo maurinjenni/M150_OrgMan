@@ -21,9 +21,4 @@ namespace OrgMan.Common.LinqExpressionService
             return (Expression<Func<T, object>>)lambda;
         }
     }
-
-    public interface ILinqExpressionService<T>
-    {
-        Expression<Func<T, object>> GetParameterExpression(Type type, string property);
-    }
 }

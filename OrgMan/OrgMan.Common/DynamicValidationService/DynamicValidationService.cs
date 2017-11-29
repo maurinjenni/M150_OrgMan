@@ -27,14 +27,16 @@ namespace OrgMan.Common.DynamicValidationService
             {
                 {typeof(Person), new Action<Person>(p =>
                     {
+                        Person person = (Person)(object)obj;
                         PersonValidator personValidator = new PersonValidator(_unityContainer.Resolve<ILinqExpressionService<Person>>());
-                        //personValidator.Validate(person);
+                        personValidator.Validate(person);
                     })
                 },
                 {typeof(Meeting), new Action<Meeting>(m =>
                     {
+                        Meeting meeting = (Meeting)(object)obj;
                         MeetingValidator meetingValidator = new MeetingValidator (_unityContainer.Resolve<ILinqExpressionService<Meeting>>());
-                        //meetingValidator.Validate();
+                        meetingValidator.Validate(meeting);
                     })
                 }
             };

@@ -104,14 +104,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>OrgManModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Partials\Country.cs" />
-    <Compile Include="Partials\EmailAdressToPerson.cs" />
-    <Compile Include="Partials\Login.cs" />
-    <Compile Include="Partials\Mandator.cs" />
-    <Compile Include="Partials\MemberInformation.cs" />
-    <Compile Include="Partials\MemberInformationToMembershipcs.cs" />
-    <Compile Include="Partials\PhoneToPerson.cs" />
-    <Compile Include="Partials\Salutation.cs" />
+    <Compile Include="Partials\MandatorUID.cs" />
     <Compile Include="Person.cs">
       <DependentUpon>OrgManModel.tt</DependentUpon>
     </Compile>
@@ -123,9 +116,6 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Salutation.cs">
-      <DependentUpon>OrgManModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagrams.cs">
       <DependentUpon>OrgManModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>

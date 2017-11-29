@@ -19,3 +19,15 @@ C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Data\bin\Debug\EntityFramewor
 C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Data\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Data\bin\Debug\de\EntityFramework.resources.dll
 C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Data\bin\Debug\de\EntityFramework.SqlServer.resources.dll
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Data\bin\Debug\OrgMan.Data.dll.config
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Data\bin\Debug\EntityFramework.dll
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Data\bin\Debug\OrgMan.DataContracts.dll
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Data\bin\Debug\OrgMan.DataModel.dll
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Data\bin\Debug\OrgMan.DataContracts.pdb
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Data\bin\Debug\OrgMan.DataModel.pdb
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Data\bin\Debug\OrgMan.DataModel.dll.config
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Data\bin\Debug\EntityFramework.xml
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Data\bin\Debug\de\EntityFramework.resources.dll
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Data\bin\Debug\de\EntityFramework.SqlServer.resources.dll

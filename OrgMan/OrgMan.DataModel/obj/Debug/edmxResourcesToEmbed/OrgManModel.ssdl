@@ -237,16 +237,6 @@
     <Property Name="Title" Type="varchar" MaxLength="30" />
     <Property Name="OrderKey" Type="int" />
   </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
-  </EntityType>
   <Association Name="FK__Account__Salutat__49C3F6B7">
     <End Role="Salutation" Type="Self.Salutation" Multiplicity="0..1" />
     <End Role="Account" Type="Self.Account" Multiplicity="*" />
@@ -493,7 +483,6 @@
     <EntitySet Name="Phone" EntityType="Self.Phone" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PhoneToPerson" EntityType="Self.PhoneToPerson" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Salutation" EntityType="Self.Salutation" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK__Account__Salutat__49C3F6B7" Association="Self.FK__Account__Salutat__49C3F6B7">
       <End Role="Salutation" EntitySet="Salutation" />
       <End Role="Account" EntitySet="Account" />

@@ -18,7 +18,6 @@
     <EntitySet Name="Phone" EntityType="OrgManModel.Phone" />
     <EntitySet Name="PhoneToPerson" EntityType="OrgManModel.PhoneToPerson" />
     <EntitySet Name="Salutation" EntityType="OrgManModel.Salutation" />
-    <EntitySet Name="sysdiagrams" EntityType="OrgManModel.sysdiagrams" />
     <AssociationSet Name="FK__Account__Salutat__49C3F6B7" Association="OrgManModel.FK__Account__Salutat__49C3F6B7">
       <End Role="Salutation" EntitySet="Salutation" />
       <End Role="Account" EntitySet="Account" />
@@ -370,16 +369,6 @@
     <Property Name="OrderKey" Type="Int32" />
     <NavigationProperty Name="Account" Relationship="OrgManModel.FK__Account__Salutat__49C3F6B7" FromRole="Salutation" ToRole="Account" />
     <NavigationProperty Name="Person" Relationship="OrgManModel.FK__Person__Salutati__440B1D61" FromRole="Salutation" ToRole="Person" />
-  </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <Association Name="FK__Account__Salutat__49C3F6B7">
     <End Type="OrgManModel.Salutation" Role="Salutation" Multiplicity="0..1" />

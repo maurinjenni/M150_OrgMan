@@ -163,3 +163,4 @@ C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\de\System.Web.WebPage
 C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\obj\Debug\OrgMan.API.csprojResolveAssemblyReference.cache
 C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\obj\Debug\OrgMan.API.dll
 C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\obj\Debug\OrgMan.API.pdb
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\obj\Debug\OrgMan.API.csprojResolveAssemblyReference.cache

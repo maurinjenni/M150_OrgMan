@@ -3,3 +3,8 @@ C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DataContracts\bin\Debug\OrgMa
 C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DataContracts\obj\Debug\OrgMan.DataContracts.csprojResolveAssemblyReference.cache
 C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DataContracts\obj\Debug\OrgMan.DataContracts.dll
 C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DataContracts\obj\Debug\OrgMan.DataContracts.pdb
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DataContracts\bin\Debug\OrgMan.DataContracts.dll
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DataContracts\bin\Debug\OrgMan.DataContracts.pdb
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DataContracts\obj\Debug\OrgMan.DataContracts.csprojResolveAssemblyReference.cache
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DataContracts\obj\Debug\OrgMan.DataContracts.dll
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DataContracts\obj\Debug\OrgMan.DataContracts.pdb

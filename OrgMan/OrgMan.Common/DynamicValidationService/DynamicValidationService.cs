@@ -12,7 +12,7 @@ using OrgMan.DataModel;
 
 namespace OrgMan.Common.DynamicValidationService
 {
-    public class DynamicValidationService<T>
+    public class DynamicValidationService<T> : IDynamicValidationService<T>
     {
         private IUnityContainer _unityContainer;
 

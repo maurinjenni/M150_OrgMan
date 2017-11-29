@@ -60,11 +60,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DynamicSearchService\DynamicSearchModel\Enums\SearchCriteriaDataTypeDomainModelEnum.cs" />
+    <Compile Include="DynamicSearchService\DynamicSearchModel\Enums\SearchCriteriaOperationTypeDomainModelEnum.cs" />
+    <Compile Include="DynamicSearchService\DynamicSearchModel\SearchCriteriaDomainModel.cs" />
+    <Compile Include="DynamicSearchService\DynamicSearchService.cs" />
+    <Compile Include="DynamicSearchService\Helper\ExpressionCreator.cs" />
+    <Compile Include="DynamicSearchService\Helper\ExpressionForSearchCriteriasBuilder.cs" />
+    <Compile Include="DynamicSearchService\IDynamicSearchExpressionService.cs" />
+    <Compile Include="DynamicSearchService\Helper\SearchCriteriaConverter.cs" />
     <Compile Include="DynamicValidationService\DynamicValidationModel\DynamicValidationCriteria.cs" />
     <Compile Include="DynamicValidationService\DynamicValidationModel\DynamicValidationType.cs" />
     <Compile Include="DynamicValidationService\DynamicValidationModel\DynamicValidationProperty.cs" />
     <Compile Include="DynamicValidationService\DynamicValidationModel\Enum\CriteriaTypeEnum.cs" />
     <Compile Include="DynamicValidationService\DynamicValidationService.cs" />
+    <Compile Include="DynamicValidationService\IDynamicValidationService.cs" />
     <Compile Include="DynamicValidationService\Validators\MeetingValidator.cs" />
     <Compile Include="DynamicValidationService\Validators\PersonValidator.cs" />
     <Compile Include="DynamicValidationService\Validators\ValidatorBase.cs" />

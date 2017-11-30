@@ -11,11 +11,12 @@ using OrgMan.Data.UnitOfWork;
 
 namespace OrgMan.API.Controllers
 {
-    public class PersonController : ApiController
+    public class PersonController : ApiControllerBase
     {
+        //[HttpGet]
+        //[Route("person/{id}]")]
         [HttpGet]
-        [Route("person")]
-        public HttpResponseMessage Index()
+        public HttpResponseMessage Get(int id)
         {
             OrgManUnitOfWork uow = new OrgManUnitOfWork(new OrgManEntities());
 

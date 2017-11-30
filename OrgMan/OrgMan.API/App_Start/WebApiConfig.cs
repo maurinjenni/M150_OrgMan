@@ -6,14 +6,13 @@ namespace OrgMan.API
     {
         public static void Register(HttpConfiguration config)
         {
-            // Web-API-Konfiguration und -Dienste
-
-            // Web-API-Routen
+           // Web API routes
             config.MapHttpAttributeRoutes();
+
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "{controller}/{action}/{id}",
+                routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
         }

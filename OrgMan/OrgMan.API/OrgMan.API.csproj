@@ -156,6 +156,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ControllerBase\ApiControllerBase.cs" />
+    <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="HttpModule\SessionModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -176,6 +177,20 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OrgMan.DataContracts\OrgMan.DataContracts.csproj">
+      <Project>{c9b399f6-5f50-4fd2-bb44-8a06dd39ea82}</Project>
+      <Name>OrgMan.DataContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OrgMan.DataModel\OrgMan.DataModel.csproj">
+      <Project>{2d742792-2d0e-4847-9e79-ed4e4af423f2}</Project>
+      <Name>OrgMan.DataModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OrgMan.Data\OrgMan.Data.csproj">
+      <Project>{3ab5e7e2-0d2a-47da-8004-05f0c37fe7a2}</Project>
+      <Name>OrgMan.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

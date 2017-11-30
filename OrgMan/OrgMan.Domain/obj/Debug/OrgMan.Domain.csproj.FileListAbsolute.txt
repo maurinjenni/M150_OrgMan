@@ -24,3 +24,6 @@ C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Domain\bin\Debug\Uni
 C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Domain\bin\Debug\Unity.Interception.Configuration.pdb
 C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Domain\bin\Debug\Unity.RegistrationByConvention.pdb
 C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Domain\bin\Debug\Unity.ServiceLocation.pdb
+C:\Users\bbzw\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Domain\obj\Debug\OrgMan.Domain.csprojResolveAssemblyReference.cache
+C:\Users\bbzw\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Domain\obj\Debug\OrgMan.Domain.dll
+C:\Users\bbzw\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Domain\obj\Debug\OrgMan.Domain.pdb

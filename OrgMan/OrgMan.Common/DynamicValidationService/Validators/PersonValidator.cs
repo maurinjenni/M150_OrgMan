@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OrgMan.Common.LinqExpressionService;
+﻿using OrgMan.Common.LinqExpressionService;
 using OrgMan.DataModel;
 
 namespace OrgMan.Common.DynamicValidationService.Validators

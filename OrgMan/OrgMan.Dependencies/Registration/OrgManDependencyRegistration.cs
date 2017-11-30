@@ -1,6 +1,4 @@
 ﻿using Microsoft.Practices.Unity;
-using OrgMan.Common.DynamicValidationService;
-using OrgMan.Common.DynamicValidationService.Validators;
 using OrgMan.Common.LinqExpressionService;
 using OrgMan.DataModel;
 namespace OrgMan.Dependencies.Registration

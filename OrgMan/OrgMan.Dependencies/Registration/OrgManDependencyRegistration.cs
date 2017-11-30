@@ -16,10 +16,6 @@ namespace OrgMan.Dependencies.Registration
         {
             /*LinqExpressionService*/
             unityContainer.RegisterType<ILinqExpressionService<Person>, LinqExpressionService<Person>>();
-
-            /*Validators*/
-            unityContainer.RegisterType<PersonValidator>(
-                new InjectionConstructor(unityContainer.Resolve<ILinqExpressionService<Person>>()));
         }
     }
 }

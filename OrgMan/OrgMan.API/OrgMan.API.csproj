@@ -156,7 +156,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ControllerBase\ApiControllerBase.cs" />
-    <Compile Include="HttpModule\AuthenticationModule.cs" />
+    <Compile Include="HttpModule\SessionModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

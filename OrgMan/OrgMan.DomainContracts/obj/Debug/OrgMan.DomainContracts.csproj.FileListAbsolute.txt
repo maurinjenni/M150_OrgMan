@@ -8,3 +8,10 @@ C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainContracts\bin\Debug\Org
 C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainContracts\obj\Debug\OrgMan.DomainContracts.csprojResolveAssemblyReference.cache
 C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainContracts\obj\Debug\OrgMan.DomainContracts.dll
 C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainContracts\obj\Debug\OrgMan.DomainContracts.pdb
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainContracts\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainContracts\bin\Debug\Microsoft.Practices.Unity.Configuration.dll
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainContracts\bin\Debug\Microsoft.Practices.Unity.dll
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainContracts\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainContracts\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainContracts\bin\Debug\Microsoft.Practices.Unity.xml
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainContracts\bin\Debug\Microsoft.Practices.Unity.Configuration.xml

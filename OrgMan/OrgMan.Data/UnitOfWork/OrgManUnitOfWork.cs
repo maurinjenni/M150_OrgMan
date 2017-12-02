@@ -10,9 +10,9 @@ namespace OrgMan.Data.UnitOfWork
     {
         private readonly OrgManEntities _context;
 
-        public OrgManUnitOfWork(OrgManEntities context)
+        public OrgManUnitOfWork(OrgManEntities context =  null)
         {
-            _context = context;
+            _context = context ?? new OrgManEntities();
 
             AccountRepository = new AccountRepository(context);
             AccountToMandatorRepository = new AccountToMandatorRepository(context);

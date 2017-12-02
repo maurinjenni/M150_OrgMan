@@ -195,6 +195,18 @@
       <Project>{3ab5e7e2-0d2a-47da-8004-05f0c37fe7a2}</Project>
       <Name>OrgMan.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\OrgMan.DomainContracts\OrgMan.DomainContracts.csproj">
+      <Project>{4FBAB203-2C71-4C05-8FA0-38DD921C53F8}</Project>
+      <Name>OrgMan.DomainContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OrgMan.DomainObjects\OrgMan.DomainObjects.csproj">
+      <Project>{41E7CB85-5DC3-45B7-92D0-499EB7304D71}</Project>
+      <Name>OrgMan.DomainObjects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OrgMan.Domain\OrgMan.Domain.csproj">
+      <Project>{C02E4D8A-13DC-46AF-AB24-DA2BAD17F6CB}</Project>
+      <Name>OrgMan.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -210,16 +222,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>52037</DevelopmentServerPort>
-          <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:51737/</IISUrl>
-          <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
-          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>

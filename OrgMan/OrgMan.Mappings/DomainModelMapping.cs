@@ -1,4 +1,6 @@
 ﻿using System;
+using OrgMan.DataModel;
+using OrgMan.DomainObjects;
 
 namespace OrgMan.Mappings
 {
@@ -6,7 +8,7 @@ namespace OrgMan.Mappings
     {
         public static void CreateMappings()
         {
-            throw new NotImplementedException();
+            AutoMapper.Mapper.CreateMap<Person, PersonDomainModel>();
         }
     }
 }

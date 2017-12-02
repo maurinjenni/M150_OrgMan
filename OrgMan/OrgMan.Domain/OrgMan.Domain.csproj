@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=2.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.2.1.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
@@ -50,10 +53,33 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Handler\HandlerBase\QueryHandlerBase.cs" />
+    <Compile Include="Handler\Person\GetPersonQueryHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OrgMan.DataContracts\OrgMan.DataContracts.csproj">
+      <Project>{C9B399F6-5F50-4FD2-BB44-8A06DD39EA82}</Project>
+      <Name>OrgMan.DataContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OrgMan.DataModel\OrgMan.DataModel.csproj">
+      <Project>{2D742792-2D0E-4847-9E79-ED4E4AF423F2}</Project>
+      <Name>OrgMan.DataModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OrgMan.Data\OrgMan.Data.csproj">
+      <Project>{3ab5e7e2-0d2a-47da-8004-05f0c37fe7a2}</Project>
+      <Name>OrgMan.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OrgMan.DomainContracts\OrgMan.DomainContracts.csproj">
+      <Project>{4fbab203-2c71-4c05-8fa0-38dd921c53f8}</Project>
+      <Name>OrgMan.DomainContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OrgMan.DomainObjects\OrgMan.DomainObjects.csproj">
+      <Project>{41e7cb85-5dc3-45b7-92d0-499eb7304d71}</Project>
+      <Name>OrgMan.DomainObjects</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,24 +1,29 @@
 ﻿using OrgMan.API.Controllers.ControllerBase;
 using System;
+using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using OrgMan.DataModel;
 using OrgMan.Data.UnitOfWork;
+using OrgMan.Domain.Handler.Person;
+using OrgMan.DomainContracts.Person;
 
 namespace OrgMan.API.Controllers
 {
     public class PersonController : ApiControllerBase
     {
-        //[HttpGet]
-        //[Route("person/{id}]")]
         [HttpGet]
-        public HttpResponseMessage Get(int id)
+        [Route("person/{uid}")]
+        public HttpResponseMessage Get(Guid uid)
         {
-            OrgManUnitOfWork uow = new OrgManUnitOfWork(new OrgManEntities());
+            GetPersonQuery query = new GetPersonQuery()
+            {
+                PersonUID = uid
+            };
 
-            var data = uow.PersonRepository.Get(Guid.Empty,null,null,null,null);
+            GetPersonQueryHandler handler = new GetPersonQueryHandler(query, UnityContainer);
 
-            return new HttpResponseMessage(System.Net.HttpStatusCode.OK);
+            return Request.CreateResponse(HttpStatusCode.OK, handler.Handle());
         }
     }
 }

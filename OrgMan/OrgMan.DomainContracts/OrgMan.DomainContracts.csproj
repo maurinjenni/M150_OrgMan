@@ -49,11 +49,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adress\DeleteAdressQuery.cs" />
+    <Compile Include="Adress\GetAdressQuery.cs" />
+    <Compile Include="Adress\InsertAdressQuery.cs" />
+    <Compile Include="Adress\SearchAdressQuery.cs" />
+    <Compile Include="Adress\UpdateAdressQuery.cs" />
     <Compile Include="Person\GetPersonQuery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OrgMan.Common\OrgMan.Common.csproj">
+      <Project>{24804630-41C1-4A6F-BCD7-C2D6B987E605}</Project>
+      <Name>OrgMan.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OrgMan.DomainObjects\OrgMan.DomainObjects.csproj">
+      <Project>{41E7CB85-5DC3-45B7-92D0-499EB7304D71}</Project>
+      <Name>OrgMan.DomainObjects</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

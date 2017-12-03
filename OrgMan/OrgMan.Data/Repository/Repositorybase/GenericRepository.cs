@@ -28,14 +28,12 @@ namespace OrgMan.Data.Repository.Repositorybase
         {
             IQueryable<TEntity> query = DbSet;
 
-            query = query.Where(d => d.MandatorUID == mandatorUid);
+            //query = query.Where(d => d.MandatorUID == mandatorUid);
 
             if (filter != null)
             {
                 query = query.Where(filter);
             }
-
-            //query = query.Where(t => t.MandatorUID == mandatorUid);
 
             if (!string.IsNullOrEmpty(includeProperties))
             {

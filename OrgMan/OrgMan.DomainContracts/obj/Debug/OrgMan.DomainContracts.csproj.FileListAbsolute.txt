@@ -15,3 +15,15 @@ C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainContracts\bin\
 C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainContracts\bin\Debug\Microsoft.Practices.ServiceLocation.xml
 C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainContracts\bin\Debug\Microsoft.Practices.Unity.xml
 C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainContracts\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainContracts\bin\Debug\OrgMan.Common.dll
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainContracts\bin\Debug\OrgMan.DataModel.dll
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainContracts\bin\Debug\FluentValidation.dll
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainContracts\bin\Debug\Newtonsoft.Json.dll
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainContracts\bin\Debug\EntityFramework.dll
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainContracts\bin\Debug\OrgMan.Common.pdb
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainContracts\bin\Debug\OrgMan.DataModel.pdb
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainContracts\bin\Debug\OrgMan.DataModel.dll.config
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainContracts\bin\Debug\FluentValidation.xml
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainContracts\bin\Debug\Newtonsoft.Json.xml
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainContracts\bin\Debug\EntityFramework.xml
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainContracts\bin\Debug\de\EntityFramework.resources.dll

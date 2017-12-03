@@ -52,6 +52,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Handler\Adress\GetAdressQueryHandler.cs" />
+    <Compile Include="Handler\Adress\SearchAdressQueryHandler.cs" />
+    <Compile Include="Handler\Adress\UpdateAdressQueryHandler.cs" />
     <Compile Include="Handler\HandlerBase\QueryHandlerBase.cs" />
     <Compile Include="Handler\Person\GetPersonQueryHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -60,6 +63,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\OrgMan.Common\OrgMan.Common.csproj">
+      <Project>{24804630-41C1-4A6F-BCD7-C2D6B987E605}</Project>
+      <Name>OrgMan.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OrgMan.DataContracts\OrgMan.DataContracts.csproj">
       <Project>{C9B399F6-5F50-4FD2-BB44-8A06DD39EA82}</Project>
       <Name>OrgMan.DataContracts</Name>

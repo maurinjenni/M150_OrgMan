@@ -14,24 +14,24 @@ namespace OrgMan.Data.UnitOfWork
         {
             _context = context ?? new OrgManEntities();
 
-            AccountRepository = new AccountRepository(context);
-            AccountToMandatorRepository = new AccountToMandatorRepository(context);
-            AdressRepository = new AdressRepository(context);
-            CommunicationTypeRepository = new CommunicationTypeRepository(context);
-            CountryRepository = new CountryRepository(context);
-            EmailAdressRepository = new EmailAdressRepository(context);
-            EmailAdressToPersonRepository = new EmailAdressToPersonRepository(context);
-            LoginRepository = new LoginRepository(context);
-            MandatorRepository = new MandatorRepository(context);
-            MeetingRepository = new MeetingRepository(context);
-            MemberInformationRepository = new MemberInformationRepository(context);
-            MemberInformationToMembershipRepository = new MemberInformationToMembershipRepository(context);
+            AccountRepository = new AccountRepository(_context);
+            AccountToMandatorRepository = new AccountToMandatorRepository(_context);
+            AdressRepository = new AdressRepository(_context);
+            CommunicationTypeRepository = new CommunicationTypeRepository(_context);
+            CountryRepository = new CountryRepository(_context);
+            EmailAdressRepository = new EmailAdressRepository(_context);
+            EmailAdressToPersonRepository = new EmailAdressToPersonRepository(_context);
+            LoginRepository = new LoginRepository(_context);
+            MandatorRepository = new MandatorRepository(_context);
+            MeetingRepository = new MeetingRepository(_context);
+            MemberInformationRepository = new MemberInformationRepository(_context);
+            MemberInformationToMembershipRepository = new MemberInformationToMembershipRepository(_context);
 
-            MembershipRepository = new MembershipRepository(context);
-            PersonRepository = new PersonRepository(context);
-            PhoneRepository = new PhoneRepository(context);
-            PhoneToPersonRepository = new PhoneToPersonRepository(context);
-            SalutationRepository = new SalutationRepository(context);
+            MembershipRepository = new MembershipRepository(_context);
+            PersonRepository = new PersonRepository(_context);
+            PhoneRepository = new PhoneRepository(_context);
+            PhoneToPersonRepository = new PhoneToPersonRepository(_context);
+            SalutationRepository = new SalutationRepository(_context);
         }
 
         public IGenericRepository<Account> AccountRepository { get; set; }

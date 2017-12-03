@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adress\AdressDetailDomainModel.cs" />
+    <Compile Include="Adress\AdressSearchDomainModel.cs" />
     <Compile Include="PersonDomainModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

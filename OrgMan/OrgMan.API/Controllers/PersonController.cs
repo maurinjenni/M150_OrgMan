@@ -11,7 +11,7 @@ using OrgMan.DomainContracts.Person;
 namespace OrgMan.API.Controllers
 {
     public class PersonController : ApiControllerBase
-    {
+    { 
         [HttpGet]
         [Route("person/{uid}")]
         public HttpResponseMessage Get(Guid uid)

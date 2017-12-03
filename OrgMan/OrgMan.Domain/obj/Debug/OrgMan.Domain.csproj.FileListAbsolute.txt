@@ -35,3 +35,9 @@ C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Domain\bin\Debug\Mic
 C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Domain\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
 C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Domain\bin\Debug\EntityFramework.xml
 C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Domain\bin\Debug\de\EntityFramework.resources.dll
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Domain\bin\Debug\OrgMan.Common.dll
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Domain\bin\Debug\FluentValidation.dll
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Domain\bin\Debug\Newtonsoft.Json.dll
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Domain\bin\Debug\OrgMan.Common.pdb
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Domain\bin\Debug\FluentValidation.xml
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Domain\bin\Debug\Newtonsoft.Json.xml

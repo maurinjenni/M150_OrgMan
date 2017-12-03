@@ -307,3 +307,7 @@ C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\Microsoft.Pr
 C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\EntityFramework.xml
 C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\AutoMapper.xml
 C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\de\EntityFramework.resources.dll
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\OrgMan.Common.dll
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\FluentValidation.dll
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\OrgMan.Common.pdb
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\FluentValidation.xml

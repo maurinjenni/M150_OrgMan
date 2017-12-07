@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using Microsoft.Practices.Unity;
 using OrgMan.API.Controllers.ControllerBase;
+using OrgMan.Mappings;
 
 namespace OrgMan.API
 {
@@ -12,6 +13,7 @@ namespace OrgMan.API
 
         protected void Application_Start(object sender, EventArgs e)
         {
+            DomainModelMapping.CreateMappings();
             ApiControllerBase.UnityContainer = new UnityContainer();
 
             AreaRegistration.RegisterAllAreas();

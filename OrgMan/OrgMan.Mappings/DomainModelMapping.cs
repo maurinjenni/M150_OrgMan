@@ -12,7 +12,10 @@ namespace OrgMan.Mappings
             AutoMapper.Mapper.CreateMap<Person, PersonDomainModel>();
 
 
-            AutoMapper.Mapper.CreateMap<Adress, AdressSearchDomainModel>();
+            AutoMapper.Mapper.CreateMap<Adress, AdressSearchDomainModel>()
+                .ForMember(dest => dest.StreetAdress, opt => opt.MapFrom(src => src.Street + ' ' + src.HouseNumber))
+                .ForMember(dest => dest.Firstname, opt => opt.MapFrom(src => src.Person));
+
             AutoMapper.Mapper.CreateMap<Adress, AdressDetailDomainModel>();
         }
     }

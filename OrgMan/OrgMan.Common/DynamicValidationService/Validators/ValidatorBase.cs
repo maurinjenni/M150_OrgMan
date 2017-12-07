@@ -113,7 +113,6 @@ namespace OrgMan.Common.DynamicValidationService.Validators
                 Expression<Func<T, int>> intExpression = ExpressionToIntExpression(propertyExpression);
 
                 CreateValidationsForInt(intExpression, property.ValidationCriterias);
-
             }
         }
 

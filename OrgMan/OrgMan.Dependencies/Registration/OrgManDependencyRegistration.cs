@@ -12,8 +12,11 @@ namespace OrgMan.Dependencies.Registration
 
         public void Load(IUnityContainer unityContainer)
         {
+            unityContainer.RegisterType<LinqExpressionService<Person>>(new InjectionConstructor());
+
+            unityContainer.RegisterType<ILinqExpressionService<Person>, LinqExpressionService<Person>>(new InjectionConstructor());
             /*LinqExpressionService*/
-            unityContainer.RegisterType<ILinqExpressionService<Person>, LinqExpressionService<Person>>();
+            //unityContainer.RegisterType<ILinqExpressionService<Person>, LinqExpressionService<Person>>();
         }
     }
 }

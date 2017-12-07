@@ -7,7 +7,7 @@
       <Diagram DiagramId="c59f346ee4d047b4947dfb2acc52a0a8" Name="Diagram1" ZoomLevel="72" >
         <EntityTypeShape EntityType="OrgManModel.Account" Width="1.5" PointX="3.75" PointY="0.75" />
         <EntityTypeShape EntityType="OrgManModel.AccountToMandator" Width="1.5" PointX="6" PointY="10.375" />
-        <EntityTypeShape EntityType="OrgManModel.Adress" Width="1.5" PointX="0.75" PointY="17.75" />
+        <EntityTypeShape EntityType="OrgManModel.Adress" Width="1.5" PointX="0.5" PointY="18.375" />
         <EntityTypeShape EntityType="OrgManModel.CommunicationType" Width="1.5" PointX="3" PointY="28" />
         <EntityTypeShape EntityType="OrgManModel.Country" Width="1.5" PointX="1.5" PointY="24.125" />
         <EntityTypeShape EntityType="OrgManModel.EmailAdress" Width="1.5" PointX="6" PointY="14.625" />

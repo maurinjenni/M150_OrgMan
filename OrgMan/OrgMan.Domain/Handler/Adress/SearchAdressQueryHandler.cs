@@ -38,7 +38,9 @@ namespace OrgMan.Domain.Handler.Adress
                 whereExpression = searchService.GetWhereExpression<DataModel.Adress>(_query.SearchCriterias);
             }
 
-            adresses = Mapper.Map<List<AdressSearchDomainModel>>(uow.AdressRepository.Get(_query.MandatorUID, whereExpression, null, null, _query.NumberOfRows));
+            var items = uow.AdressRepository.Get(_query.MandatorUID, whereExpression, null, "person", _query.NumberOfRows);
+            
+            adresses = Mapper.Map<List<AdressSearchDomainModel>>(items);
 
             return adresses;
         }

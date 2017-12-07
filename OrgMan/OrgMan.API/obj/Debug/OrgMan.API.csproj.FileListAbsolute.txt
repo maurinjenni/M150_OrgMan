@@ -323,3 +323,5 @@ C:\Users\bbzw\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\OrgMan.DomainObject
 C:\Users\bbzw\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\OrgMan.Domain.pdb
 C:\Users\bbzw\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\FluentValidation.xml
 C:\Users\bbzw\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\AutoMapper.xml
+C:\Users\bbzw\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\OrgMan.Mappings.dll
+C:\Users\bbzw\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\OrgMan.Mappings.pdb

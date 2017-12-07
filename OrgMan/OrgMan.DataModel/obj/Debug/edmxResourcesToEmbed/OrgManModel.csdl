@@ -102,8 +102,8 @@
     <Property Name="UID" Type="Guid" Nullable="false" />
     <Property Name="SysInsertTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
     <Property Name="SysInsertAccountUID" Type="Guid" Nullable="false" />
-    <Property Name="SysUpdateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
-    <Property Name="SysUpdateAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="SysUpdateTime" Type="DateTimeOffset" Precision="7" />
+    <Property Name="SysUpdateAccountUID" Type="Guid" />
     <Property Name="SalutationUID" Type="Guid" />
     <Property Name="Firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -123,8 +123,8 @@
     <Property Name="UID" Type="Guid" Nullable="false" />
     <Property Name="SysInsertTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
     <Property Name="SysInsertAccountUID" Type="Guid" Nullable="false" />
-    <Property Name="SysUpdateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
-    <Property Name="SysUpdateAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="SysUpdateTime" Type="DateTimeOffset" Precision="7" />
+    <Property Name="SysUpdateAccountUID" Type="Guid" />
     <Property Name="MandatorUID" Type="Guid" Nullable="false" />
     <Property Name="AccountUID" Type="Guid" Nullable="false" />
     <NavigationProperty Name="Account" Relationship="OrgManModel.FK__AccountTo__Accou__534D60F1" FromRole="AccountToMandator" ToRole="Account" />
@@ -137,8 +137,8 @@
     <Property Name="UID" Type="Guid" Nullable="false" />
     <Property Name="SysInsertTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
     <Property Name="SysInsertAccountUID" Type="Guid" Nullable="false" />
-    <Property Name="SysUpdateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
-    <Property Name="SysUpdateAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="SysUpdateTime" Type="DateTimeOffset" Precision="7" />
+    <Property Name="SysUpdateAccountUID" Type="Guid" />
     <Property Name="Street" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="HouseNumber" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="Additional" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
@@ -155,8 +155,8 @@
     <Property Name="UID" Type="Guid" Nullable="false" />
     <Property Name="SysInsertTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
     <Property Name="SysInsertAccountUID" Type="Guid" Nullable="false" />
-    <Property Name="SysUpdateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
-    <Property Name="SysUpdateAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="SysUpdateTime" Type="DateTimeOffset" Precision="7" />
+    <Property Name="SysUpdateAccountUID" Type="Guid" />
     <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="Title" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="OrderKey" Type="Int32" />
@@ -170,8 +170,8 @@
     <Property Name="UID" Type="Guid" Nullable="false" />
     <Property Name="SysInsertTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
     <Property Name="SysInsertAccountUID" Type="Guid" Nullable="false" />
-    <Property Name="SysUpdateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
-    <Property Name="SysUpdateAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="SysUpdateTime" Type="DateTimeOffset" Precision="7" />
+    <Property Name="SysUpdateAccountUID" Type="Guid" />
     <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="Title" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="OrderKey" Type="Int32" />
@@ -184,8 +184,8 @@
     <Property Name="UID" Type="Guid" Nullable="false" />
     <Property Name="SysInsertTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
     <Property Name="SysInsertAccountUID" Type="Guid" Nullable="false" />
-    <Property Name="SysUpdateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
-    <Property Name="SysUpdateAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="SysUpdateTime" Type="DateTimeOffset" Precision="7" />
+    <Property Name="SysUpdateAccountUID" Type="Guid" />
     <Property Name="EmailAdress1" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="EmailAdressToPerson" Relationship="OrgManModel.FK__EmailAdre__Email__4AB81AF0" FromRole="EmailAdress" ToRole="EmailAdressToPerson" />
   </EntityType>
@@ -196,8 +196,8 @@
     <Property Name="UID" Type="Guid" Nullable="false" />
     <Property Name="SysInsertTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
     <Property Name="SysInsertAccountUID" Type="Guid" Nullable="false" />
-    <Property Name="SysUpdateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
-    <Property Name="SysUpdateAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="SysUpdateTime" Type="DateTimeOffset" Precision="7" />
+    <Property Name="SysUpdateAccountUID" Type="Guid" />
     <Property Name="EmailAdressUID" Type="Guid" Nullable="false" />
     <Property Name="PersonUID" Type="Guid" Nullable="false" />
     <Property Name="CommunicationTypeUID" Type="Guid" Nullable="false" />
@@ -213,8 +213,8 @@
     <Property Name="UID" Type="Guid" Nullable="false" />
     <Property Name="SysInsertTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
     <Property Name="SysInsertAccountUID" Type="Guid" Nullable="false" />
-    <Property Name="SysUpdateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
-    <Property Name="SysUpdateAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="SysUpdateTime" Type="DateTimeOffset" Precision="7" />
+    <Property Name="SysUpdateAccountUID" Type="Guid" />
     <Property Name="AccountUID" Type="Guid" Nullable="false" />
     <Property Name="PasswordHash" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
     <Property Name="Locked" Type="Boolean" Nullable="false" />
@@ -230,8 +230,8 @@
     <Property Name="UID" Type="Guid" Nullable="false" />
     <Property Name="SysInsertTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
     <Property Name="SysInsertAccountUID" Type="Guid" Nullable="false" />
-    <Property Name="SysUpdateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
-    <Property Name="SysUpdateAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="SysUpdateTime" Type="DateTimeOffset" Precision="7" />
+    <Property Name="SysUpdateAccountUID" Type="Guid" />
     <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="Title" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="AccountToMandator" Relationship="OrgManModel.FK__AccountTo__Manda__52593CB8" FromRole="Mandator" ToRole="AccountToMandator" />
@@ -245,8 +245,8 @@
     <Property Name="UID" Type="Guid" Nullable="false" />
     <Property Name="SysInsertTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
     <Property Name="SysInsertAccountUID" Type="Guid" Nullable="false" />
-    <Property Name="SysUpdateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
-    <Property Name="SysUpdateAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="SysUpdateTime" Type="DateTimeOffset" Precision="7" />
+    <Property Name="SysUpdateAccountUID" Type="Guid" />
     <Property Name="MandatorUID" Type="Guid" Nullable="false" />
     <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="StartDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
@@ -262,8 +262,8 @@
     <Property Name="UID" Type="Guid" Nullable="false" />
     <Property Name="SysInsertTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
     <Property Name="SysInsertAccountUID" Type="Guid" Nullable="false" />
-    <Property Name="SysUpdateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
-    <Property Name="SysUpdateAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="SysUpdateTime" Type="DateTimeOffset" Precision="7" />
+    <Property Name="SysUpdateAccountUID" Type="Guid" />
     <Property Name="EntryDate" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="ExitDate" Type="DateTime" Nullable="false" Precision="0" />
     <NavigationProperty Name="MemberInformationToMembership" Relationship="OrgManModel.FK__MemberInf__Membe__5070F446" FromRole="MemberInformation" ToRole="MemberInformationToMembership" />
@@ -276,8 +276,8 @@
     <Property Name="UID" Type="Guid" Nullable="false" />
     <Property Name="SysInsertTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
     <Property Name="SysInsertAccountUID" Type="Guid" Nullable="false" />
-    <Property Name="SysUpdateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
-    <Property Name="SysUpdateAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="SysUpdateTime" Type="DateTimeOffset" Precision="7" />
+    <Property Name="SysUpdateAccountUID" Type="Guid" />
     <Property Name="MemberInformationUID" Type="Guid" Nullable="false" />
     <Property Name="MembershipUID" Type="Guid" Nullable="false" />
     <NavigationProperty Name="MemberInformation" Relationship="OrgManModel.FK__MemberInf__Membe__5070F446" FromRole="MemberInformationToMembership" ToRole="MemberInformation" />
@@ -290,8 +290,8 @@
     <Property Name="UID" Type="Guid" Nullable="false" />
     <Property Name="SysInsertTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
     <Property Name="SysInsertAccountUID" Type="Guid" Nullable="false" />
-    <Property Name="SysUpdateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
-    <Property Name="SysUpdateAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="SysUpdateTime" Type="DateTimeOffset" Precision="7" />
+    <Property Name="SysUpdateAccountUID" Type="Guid" />
     <Property Name="MandatorUID" Type="Guid" Nullable="false" />
     <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="Title" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
@@ -305,8 +305,8 @@
     <Property Name="UID" Type="Guid" Nullable="false" />
     <Property Name="SysInsertTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
     <Property Name="SysInsertAccountUID" Type="Guid" Nullable="false" />
-    <Property Name="SysUpdateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
-    <Property Name="SysUpdateAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="SysUpdateTime" Type="DateTimeOffset" Precision="7" />
+    <Property Name="SysUpdateAccountUID" Type="Guid" />
     <Property Name="MandatorUID" Type="Guid" Nullable="false" />
     <Property Name="SalutationUID" Type="Guid" Nullable="false" />
     <Property Name="AccountUID" Type="Guid" Nullable="false" />
@@ -314,7 +314,7 @@
     <Property Name="AdressUID" Type="Guid" Nullable="false" />
     <Property Name="Firstname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Lastname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Company" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Company" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Birthdate" Type="DateTime" Precision="0" />
     <Property Name="Comment" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Account" Relationship="OrgManModel.FK__Person__AccountU__45F365D3" FromRole="Person" ToRole="Account" />
@@ -332,8 +332,8 @@
     <Property Name="UID" Type="Guid" Nullable="false" />
     <Property Name="SysInsertTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
     <Property Name="SysInsertAccountUID" Type="Guid" Nullable="false" />
-    <Property Name="SysUpdateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
-    <Property Name="SysUpdateAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="SysUpdateTime" Type="DateTimeOffset" Precision="7" />
+    <Property Name="SysUpdateAccountUID" Type="Guid" />
     <Property Name="PhoneNumberPrefix" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
     <Property Name="Number" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="PhoneToPerson" Relationship="OrgManModel.FK__PhoneToPe__Phone__4E88ABD4" FromRole="Phone" ToRole="PhoneToPerson" />
@@ -345,8 +345,8 @@
     <Property Name="UID" Type="Guid" Nullable="false" />
     <Property Name="SysInsertTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
     <Property Name="SysInsertAccountUID" Type="Guid" Nullable="false" />
-    <Property Name="SysUpdateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
-    <Property Name="SysUpdateAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="SysUpdateTime" Type="DateTimeOffset" Precision="7" />
+    <Property Name="SysUpdateAccountUID" Type="Guid" />
     <Property Name="PhoneUID" Type="Guid" Nullable="false" />
     <Property Name="PersonUID" Type="Guid" Nullable="false" />
     <Property Name="CommunicationTypeUID" Type="Guid" Nullable="false" />
@@ -362,8 +362,8 @@
     <Property Name="UID" Type="Guid" Nullable="false" />
     <Property Name="SysInsertTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
     <Property Name="SysInsertAccountUID" Type="Guid" Nullable="false" />
-    <Property Name="SysUpdateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
-    <Property Name="SysUpdateAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="SysUpdateTime" Type="DateTimeOffset" Precision="7" />
+    <Property Name="SysUpdateAccountUID" Type="Guid" />
     <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="Title" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="OrderKey" Type="Int32" />

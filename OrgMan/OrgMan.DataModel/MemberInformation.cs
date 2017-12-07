@@ -24,8 +24,8 @@ namespace OrgMan.DataModel
         public System.Guid UID { get; set; }
         public System.DateTimeOffset SysInsertTime { get; set; }
         public System.Guid SysInsertAccountUID { get; set; }
-        public System.DateTimeOffset SysUpdateTime { get; set; }
-        public System.Guid SysUpdateAccountUID { get; set; }
+        public Nullable<System.DateTimeOffset> SysUpdateTime { get; set; }
+        public Nullable<System.Guid> SysUpdateAccountUID { get; set; }
         public System.DateTime EntryDate { get; set; }
         public System.DateTime ExitDate { get; set; }
     

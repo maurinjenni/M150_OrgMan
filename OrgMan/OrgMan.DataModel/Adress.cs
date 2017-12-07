@@ -23,8 +23,8 @@ namespace OrgMan.DataModel
         public System.Guid UID { get; set; }
         public System.DateTimeOffset SysInsertTime { get; set; }
         public System.Guid SysInsertAccountUID { get; set; }
-        public System.DateTimeOffset SysUpdateTime { get; set; }
-        public System.Guid SysUpdateAccountUID { get; set; }
+        public Nullable<System.DateTimeOffset> SysUpdateTime { get; set; }
+        public Nullable<System.Guid> SysUpdateAccountUID { get; set; }
         public string Street { get; set; }
         public string HouseNumber { get; set; }
         public string Additional { get; set; }

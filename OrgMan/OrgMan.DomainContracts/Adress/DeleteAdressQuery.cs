@@ -9,5 +9,7 @@ namespace OrgMan.DomainContracts.Adress
     public class DeleteAdressQuery
     {
         public Guid AdressUID { get; set; }
+
+        public Guid MandatorUID { get; set; }
     }
 }

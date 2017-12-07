@@ -311,3 +311,15 @@ C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\OrgMan.Commo
 C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\FluentValidation.dll
 C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\OrgMan.Common.pdb
 C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\FluentValidation.xml
+C:\Users\bbzw\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\OrgMan.Common.dll
+C:\Users\bbzw\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\OrgMan.Domain.dll
+C:\Users\bbzw\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\OrgMan.DomainContracts.dll
+C:\Users\bbzw\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\OrgMan.DomainObjects.dll
+C:\Users\bbzw\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\FluentValidation.dll
+C:\Users\bbzw\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\AutoMapper.dll
+C:\Users\bbzw\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\OrgMan.Common.pdb
+C:\Users\bbzw\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\OrgMan.DomainContracts.pdb
+C:\Users\bbzw\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\OrgMan.DomainObjects.pdb
+C:\Users\bbzw\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\OrgMan.Domain.pdb
+C:\Users\bbzw\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\FluentValidation.xml
+C:\Users\bbzw\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\AutoMapper.xml

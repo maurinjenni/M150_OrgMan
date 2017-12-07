@@ -53,7 +53,7 @@ namespace OrgMan.API.Controllers
         {
             UpdateAdressQuery query = new UpdateAdressQuery()
             {
-                
+                Adress = adress
             };
 
             UpdateAdressQueryHandler handler = new UpdateAdressQueryHandler(query, UnityContainer);
@@ -67,7 +67,7 @@ namespace OrgMan.API.Controllers
         {
             InsertAdressQuery query = new InsertAdressQuery()
             {
-
+                Adress = adress                
             };
 
             InsertAdressQueryHandler handler = new InsertAdressQueryHandler(query, UnityContainer);
@@ -78,6 +78,15 @@ namespace OrgMan.API.Controllers
         [Route("adress/{uid}")]
         public HttpResponseMessage Delete(Guid uid)
         {
+            DeleteAdressQuery query = new DeleteAdressQuery()
+            {
+                AdressUID = uid,
+                MandatorUID = Guid.Empty,
+            };
+
+            DeleteAdressQueryHandler handler = new DeleteAdressQueryHandler(query, UnityContainer);
+            handler.Handle();
+
             return Request.CreateResponse(HttpStatusCode.Accepted);
         }
 

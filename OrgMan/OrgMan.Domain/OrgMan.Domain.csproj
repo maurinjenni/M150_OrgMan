@@ -52,7 +52,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Handler\Adress\DeleteAdressQueryHandler.cs" />
     <Compile Include="Handler\Adress\GetAdressQueryHandler.cs" />
+    <Compile Include="Handler\Adress\InsertAdressQueryHandler.cs" />
     <Compile Include="Handler\Adress\SearchAdressQueryHandler.cs" />
     <Compile Include="Handler\Adress\UpdateAdressQueryHandler.cs" />
     <Compile Include="Handler\HandlerBase\QueryHandlerBase.cs" />

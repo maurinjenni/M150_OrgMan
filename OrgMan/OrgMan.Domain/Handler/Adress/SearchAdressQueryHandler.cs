@@ -10,6 +10,7 @@ using OrgMan.Data.UnitOfWork;
 using OrgMan.Domain.Handler.HandlerBase;
 using OrgMan.DomainContracts.Adress;
 using OrgMan.DomainObjects.Adress;
+using System.Linq.Expressions;
 
 namespace OrgMan.Domain.Handler.Adress
 {
@@ -27,11 +28,19 @@ namespace OrgMan.Domain.Handler.Adress
             OrgManUnitOfWork uow = new OrgManUnitOfWork();
 
             DynamicSearchService searchService = new DynamicSearchService();
-            
 
-            var adresses = uow.AdressRepository.Get(_query.MandatorUID, searchService.GetWhereExpression<DataModel.Adress>(_query.SearchCriterias), null, null, _query.NumberOfRows);
+            List<AdressSearchDomainModel> adresses = null;
 
-            return Mapper.Map<List<AdressSearchDomainModel>>(adresses);
+            Expression<Func<DataModel.Adress, bool>> whereExpression = null;
+
+            if (_query.SearchCriterias != null)
+            {
+                whereExpression = searchService.GetWhereExpression<DataModel.Adress>(_query.SearchCriterias);
+            }
+
+            adresses = Mapper.Map<List<AdressSearchDomainModel>>(uow.AdressRepository.Get(_query.MandatorUID, whereExpression, null, null, _query.NumberOfRows));
+
+            return adresses;
         }
 
     }

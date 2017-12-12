@@ -4,9 +4,9 @@ using OrgMan.DataModel;
 
 namespace OrgMan.Data.Repository
 {
-    public class EmailAdressRepository : GenericRepository<Email>, IGenericRepository<Email>
+    public class EmailRepository : GenericRepository<Email>, IGenericRepository<Email>
     {
-        public EmailAdressRepository(OrgManEntities context) : base(context)
+        public EmailRepository(OrgManEntities context) : base(context)
         {
 
         }

@@ -53,19 +53,18 @@
     <Compile Include="Repository\AdressRepository.cs" />
     <Compile Include="Repository\CommunicationTypeRepository.cs" />
     <Compile Include="Repository\CountryRepository.cs" />
-    <Compile Include="Repository\EmailAdressRepository.cs" />
-    <Compile Include="Repository\EmailAdressToPersonRepository.cs" />
+    <Compile Include="Repository\EmailRepository.cs" />
+    <Compile Include="Repository\IndividualPersonRepository.cs" />
     <Compile Include="Repository\LoginRepository.cs" />
     <Compile Include="Repository\MandatorRepository.cs" />
     <Compile Include="Repository\MeetingRepository.cs" />
     <Compile Include="Repository\MemberInformationRepository.cs" />
     <Compile Include="Repository\MemberInformationToMembershipRepository.cs" />
     <Compile Include="Repository\MembershipRepository.cs" />
-    <Compile Include="Repository\PersonRepository.cs" />
     <Compile Include="Repository\PhoneRepository.cs" />
-    <Compile Include="Repository\PhoneToPersonRepository.cs" />
     <Compile Include="Repository\Repositorybase\GenericRepository.cs" />
     <Compile Include="Repository\SalutationRepository.cs" />
+    <Compile Include="Repository\SystemPersonRepository.cs" />
     <Compile Include="UnitOfWork\OrgManUnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup />

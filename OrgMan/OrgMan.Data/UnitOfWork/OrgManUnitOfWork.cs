@@ -3,6 +3,7 @@ using System.Linq;
 using OrgMan.DataModel;
 using OrgMan.DataContracts.Repository.RepositoryBase;
 using OrgMan.Data.Repository;
+using OrgMan.Data.Repository.Repositorybase;
 
 namespace OrgMan.Data.UnitOfWork
 {
@@ -24,6 +25,8 @@ namespace OrgMan.Data.UnitOfWork
             MembershipRepository = new MembershipRepository(_context);
             PhoneRepository = new PhoneRepository(_context);
             SalutationRepository = new SalutationRepository(_context);
+            IndividualPersonRepository = new GenericRepository<IndividualPerson>(_context);
+            SystemPersonRepository = new GenericRepository<SystemPerson>(_context);
         }
 
 
@@ -52,6 +55,11 @@ namespace OrgMan.Data.UnitOfWork
         public IGenericRepository<Phone> PhoneRepository { get; set; }
 
         public IGenericRepository<Salutation> SalutationRepository{ get; set; }
+
+        public IGenericRepository<IndividualPerson> IndividualPersonRepository { get; set; }
+
+        public IGenericRepository<SystemPerson> SystemPersonRepository { get; set; }
+
 
         public void Commit()
         {

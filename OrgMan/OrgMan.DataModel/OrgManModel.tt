@@ -301,38 +301,38 @@ public class CodeStringGenerator
             "{0} {1} {2} {{ {3}get; {4}set; }}",
             AccessibilityAndVirtual(Accessibility.ForNavigationProperty(navProp)),
             navProp.ToEndMember.RelationshipMultiplicity == RelationshipMultiplicity.Many ? ("ICollection<" + endType + ">") : endType,
-            _code.Escape(navProp),
-            _code.SpaceAfter(Accessibility.ForGetter(navProp)),
-            _code.SpaceAfter(Accessibility.ForSetter(navProp)));
-    }
-    
-    public string AccessibilityAndVirtual(string accessibility)
-    {
-        return accessibility + (accessibility != "private" ? " virtual" : "");
-    }
-    
-    public string EntityClassOpening(EntityType entity)
-    {
-        return string.Format(
-            CultureInfo.InvariantCulture,
-            "{0} {1}partial class {2}{3} : IEntityUID",
-            Accessibility.ForType(entity),
-            _code.SpaceAfter(_code.AbstractOption(entity)),
-            _code.Escape(entity),
-            _code.StringBefore(" : ", _typeMapper.GetTypeName(entity.BaseType)));
-    }
-    
-    public string EnumOpening(SimpleType enumType)
-    {
-        return string.Format(
-            CultureInfo.InvariantCulture,
-            "{0} enum {1} : {2}",
-            Accessibility.ForType(enumType),
-            _code.Escape(enumType),
-            _code.Escape(_typeMapper.UnderlyingClrType(enumType)));
-        }
-    
-    public void WriteFunctionParameters(EdmFunction edmFunction, Action<string, string, string, string> writeParameter)
+              _code.Escape(navProp),
+              _code.SpaceAfter(Accessibility.ForGetter(navProp)),
+              _code.SpaceAfter(Accessibility.ForSetter(navProp)));
+              }
+
+              public string AccessibilityAndVirtual(string accessibility)
+              {
+              return accessibility + (accessibility != "private" ? " virtual" : "");
+              }
+
+              public string EntityClassOpening(EntityType entity)
+              {
+              return string.Format(
+              CultureInfo.InvariantCulture,
+              "{0} {1}partial class {2}{3} : IEntityUID",
+              Accessibility.ForType(entity),
+              _code.SpaceAfter(_code.AbstractOption(entity)),
+              _code.Escape(entity),
+              _code.StringBefore(" : ", _typeMapper.GetTypeName(entity.BaseType)));
+              }
+
+              public string EnumOpening(SimpleType enumType)
+              {
+              return string.Format(
+              CultureInfo.InvariantCulture,
+              "{0} enum {1} : {2}",
+              Accessibility.ForType(enumType),
+              _code.Escape(enumType),
+              _code.Escape(_typeMapper.UnderlyingClrType(enumType)));
+              }
+
+              public void WriteFunctionParameters(EdmFunction edmFunction, Action<string, string, string, string> writeParameter)
     {
         var parameters = FunctionImportParameter.Create(edmFunction.Parameters, _code, _ef);
         foreach (var parameter in parameters.Where(p => p.NeedsLocalVariable))

@@ -49,12 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Account.cs">
-      <DependentUpon>OrgManModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AccountToMandator.cs">
-      <DependentUpon>OrgManModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Adress.cs">
       <DependentUpon>OrgManModel.tt</DependentUpon>
     </Compile>
@@ -64,13 +58,13 @@
     <Compile Include="Country.cs">
       <DependentUpon>OrgManModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EmailAdress.cs">
-      <DependentUpon>OrgManModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EmailAdressToPerson.cs">
+    <Compile Include="Email.cs">
       <DependentUpon>OrgManModel.tt</DependentUpon>
     </Compile>
     <Compile Include="IEntityUID.cs" />
+    <Compile Include="IndividualPerson.cs">
+      <DependentUpon>OrgManModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <DependentUpon>OrgManModel.tt</DependentUpon>
     </Compile>
@@ -108,44 +102,46 @@
     <Compile Include="Person.cs">
       <DependentUpon>OrgManModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Phone.cs">
+    <Compile Include="PersonToMandator.cs">
       <DependentUpon>OrgManModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="PhoneToPerson.cs">
+    <Compile Include="Phone.cs">
       <DependentUpon>OrgManModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Salutation.cs">
       <DependentUpon>OrgManModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SystemPerson.cs">
+      <DependentUpon>OrgManModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.Config" />
     <EntityDeploy Include="OrgManModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>OrgManModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
     <None Include="OrgManModel.edmx.diagram">
       <DependentUpon>OrgManModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="OrgManModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>OrgManModel.Context.cs</LastGenOutput>
       <DependentUpon>OrgManModel.edmx</DependentUpon>
+      <LastGenOutput>OrgManModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="OrgManModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>OrgManModel.edmx</DependentUpon>
       <LastGenOutput>OrgManModel.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

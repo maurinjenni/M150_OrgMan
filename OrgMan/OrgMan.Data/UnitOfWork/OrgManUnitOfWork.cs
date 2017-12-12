@@ -13,30 +13,19 @@ namespace OrgMan.Data.UnitOfWork
         public OrgManUnitOfWork(OrgManEntities context =  null)
         {
             _context = context ?? new OrgManEntities();
-
-            AccountRepository = new AccountRepository(_context);
-            AccountToMandatorRepository = new AccountToMandatorRepository(_context);
             AdressRepository = new AdressRepository(_context);
             CommunicationTypeRepository = new CommunicationTypeRepository(_context);
             CountryRepository = new CountryRepository(_context);
-            EmailAdressRepository = new EmailAdressRepository(_context);
-            EmailAdressToPersonRepository = new EmailAdressToPersonRepository(_context);
             LoginRepository = new LoginRepository(_context);
             MandatorRepository = new MandatorRepository(_context);
             MeetingRepository = new MeetingRepository(_context);
             MemberInformationRepository = new MemberInformationRepository(_context);
             MemberInformationToMembershipRepository = new MemberInformationToMembershipRepository(_context);
-
             MembershipRepository = new MembershipRepository(_context);
-            PersonRepository = new PersonRepository(_context);
             PhoneRepository = new PhoneRepository(_context);
-            PhoneToPersonRepository = new PhoneToPersonRepository(_context);
             SalutationRepository = new SalutationRepository(_context);
         }
 
-        public IGenericRepository<Account> AccountRepository { get; set; }
-
-        public IGenericRepository<AccountToMandator> AccountToMandatorRepository { get; set; }
 
         public IGenericRepository<Adress> AdressRepository { get; set; }
 
@@ -44,9 +33,7 @@ namespace OrgMan.Data.UnitOfWork
 
         public IGenericRepository<Country> CountryRepository { get; set; }
 
-        public IGenericRepository<EmailAdress> EmailAdressRepository { get; set; }
-
-        public IGenericRepository<EmailAdressToPerson> EmailAdressToPersonRepository { get; set; }
+        public IGenericRepository<Email> EmailAdressRepository { get; set; }
 
         public IGenericRepository<Login> LoginRepository { get; set; }
 
@@ -63,8 +50,6 @@ namespace OrgMan.Data.UnitOfWork
         public IGenericRepository<Person> PersonRepository { get; set; }
 
         public IGenericRepository<Phone> PhoneRepository { get; set; }
-
-        public IGenericRepository<PhoneToPerson> PhoneToPersonRepository { get; set; }
 
         public IGenericRepository<Salutation> SalutationRepository{ get; set; }
 

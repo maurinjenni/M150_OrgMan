@@ -8,5 +8,6 @@ namespace OrgMan.DomainObjects.Adress
 {
     public class AdressDetailDomainModel
     {
+        public Guid UID { get; set; }
     }
 }

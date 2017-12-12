@@ -15,8 +15,8 @@ namespace OrgMan.Mappings
 
             AutoMapper.Mapper.CreateMap<Adress, AdressSearchDomainModel>()
                 .ForMember(dest => dest.StreetAdress, opt => opt.MapFrom(src => src.Street + ' ' + src.HouseNumber))
-                .ForMember(dest => dest.Firstname, opt => opt.MapFrom(src => src.Person.First().Firstname))
-                .ForMember(dest => dest.Lastname, opt => opt.MapFrom(src => src.Person.First().Lastname));
+                .ForMember(dest => dest.Firstname, opt => opt.MapFrom(src => src.IndividualPersons.First().Person.Firstname))
+                .ForMember(dest => dest.Lastname, opt => opt.MapFrom(src => src.IndividualPersons.First().Person.Lastname));
 
             AutoMapper.Mapper.CreateMap<Adress, AdressDetailDomainModel>();
         }

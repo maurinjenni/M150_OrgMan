@@ -32,3 +32,4 @@ C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Mappings\bin\Debug\de\EntityF
 C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Mappings\obj\Debug\OrgMan.Mappings.csprojResolveAssemblyReference.cache
 C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Mappings\obj\Debug\OrgMan.Mappings.dll
 C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Mappings\obj\Debug\OrgMan.Mappings.pdb
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Mappings\bin\Debug\OrgMan.DataModel.dll.config

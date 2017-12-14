@@ -10,7 +10,7 @@
         <EntityTypeShape EntityType="OrgManModel.Country" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
         <EntityTypeShape EntityType="OrgManModel.Email" Width="1.5" PointX="7.5" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="OrgManModel.IndividualPerson" Width="1.5" PointX="5.25" PointY="6.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="OrgManModel.Login" Width="1.5" PointX="5.25" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrgManModel.Login" Width="1.5" PointX="6.25" PointY="12.625" IsExpanded="true" />
         <EntityTypeShape EntityType="OrgManModel.Mandator" Width="1.5" PointX="6" PointY="23.25" IsExpanded="true" />
         <EntityTypeShape EntityType="OrgManModel.Meeting" Width="1.5" PointX="8.25" PointY="22.875" IsExpanded="true" />
         <EntityTypeShape EntityType="OrgManModel.MemberInformation" Width="1.5" PointX="3" PointY="13.375" IsExpanded="true" />
@@ -35,7 +35,6 @@
         <AssociationConnector Association="OrgManModel.FK__MemberInf__Membe__48CFD27E" ManuallyRouted="false" />
         <AssociationConnector Association="OrgManModel.FK__MemberInf__Membe__49C3F6B7" ManuallyRouted="false" />
         <AssociationConnector Association="OrgManModel.FK__Person__Salutati__4316F928" ManuallyRouted="false" />
-        <AssociationConnector Association="OrgManModel.FK__Person__Salutati__4AB81AF0" ManuallyRouted="false" />
         <AssociationConnector Association="OrgManModel.FK__PersonToM__Perso__4222D4EF" ManuallyRouted="false" />
         <AssociationConnector Association="OrgManModel.FK__SystemPer__Perso__47DBAE45" ManuallyRouted="false" />
       </Diagram>

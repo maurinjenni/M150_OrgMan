@@ -69,3 +69,4 @@ C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Dependencies\bin\Debug\de\Ent
 C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Dependencies\obj\Debug\OrgMan.Dependencies.csprojResolveAssemblyReference.cache
 C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Dependencies\obj\Debug\OrgMan.Dependencies.dll
 C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Dependencies\obj\Debug\OrgMan.Dependencies.pdb
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Dependencies\bin\Debug\OrgMan.DataModel.dll.config

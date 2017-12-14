@@ -18,7 +18,6 @@ namespace OrgMan.DataModel
         public Salutation()
         {
             this.People = new HashSet<Person>();
-            this.People1 = new HashSet<Person>();
         }
     
         public System.Guid UID { get; set; }
@@ -32,7 +31,5 @@ namespace OrgMan.DataModel
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Person> People { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Person> People1 { get; set; }
     }
 }

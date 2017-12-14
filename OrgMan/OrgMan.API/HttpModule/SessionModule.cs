@@ -1,10 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Web;
+using Microsoft.Ajax.Utilities;
+using Context = System.Runtime.Remoting.Contexts.Context;
 
 namespace OrgMan.API.HttpModule
 {
     public class SessionModule : IHttpModule
     {
+        private static readonly List<string> controllersToSkip = new List<string>(){"person","",""};
+
         public void Dispose()
         {
             throw new NotImplementedException();
@@ -12,32 +17,50 @@ namespace OrgMan.API.HttpModule
 
         public void Init(HttpApplication application)
         {
-            application.AuthenticateRequest += new EventHandler(Authenticate);
+            application.BeginRequest += new EventHandler(SkipAuthentication);
+            application.AuthorizeRequest += new EventHandler(Authorize);
         }
 
-        private void Authenticate(object sender, EventArgs e)
+        private void SkipAuthentication(object sender, EventArgs e)
+        {
+            foreach (string skipableControllers in controllersToSkip)
+            {
+                if (!string.IsNullOrEmpty(skipableControllers) && HttpContext.Current.Request.Url.LocalPath.Contains(skipableControllers))
+                {
+                    // Bypass
+                    HttpContext.Current.SkipAuthorization = true;
+                }
+            }
+        }
+
+        private void Authorize(object sender, EventArgs e)
         {
             HttpApplication app = (HttpApplication)sender;
             var request = HttpContext.Current.Request;
 
-            HttpCookie cookie = request.Cookies.Get("OrgMan_Session_UID");
-
-            if (cookie == null)
+            if (!HttpContext.Current.SkipAuthorization)
             {
-                // Loginpage
-                UnAuthorized(app);
-            }
-            else
-            {
-                Guid SessionUid = Guid.Empty;
+                HttpCookie cookie = request.Cookies.Get("OrgMan_Session_UID");
 
-                if (Guid.TryParse(cookie.Value, out SessionUid))
+                if (cookie == null)
                 {
-                    SessionUid = Guid.Parse(cookie.Value);
+                    // Loginpage
+                    UnAuthorized(app);
                 }
                 else
                 {
-                    UnAuthorized(app);
+                    Guid SessionUid = Guid.Empty;
+
+                    if (Guid.TryParse(cookie.Value, out SessionUid))
+                    {
+                        SessionUid = Guid.Parse(cookie.Value);
+
+                        //validate SessionUid
+                    }
+                    else
+                    {
+                        UnAuthorized(app);
+                    }
                 }
             }
         }

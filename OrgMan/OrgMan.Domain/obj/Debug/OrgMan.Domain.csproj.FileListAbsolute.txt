@@ -101,3 +101,5 @@ C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Domain\bin\Debug\de\EntityFra
 C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Domain\obj\Debug\OrgMan.Domain.csprojResolveAssemblyReference.cache
 C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Domain\obj\Debug\OrgMan.Domain.dll
 C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Domain\obj\Debug\OrgMan.Domain.pdb
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Domain\bin\Debug\OrgMan.DataModel.dll.config
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Domain\bin\Debug\OrgMan.Data.dll.config

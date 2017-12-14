@@ -189,7 +189,6 @@
     <NavigationProperty Name="IndividualPerson" Relationship="Self.FK__Individua__Perso__44FF419A" FromRole="Person" ToRole="IndividualPerson" />
     <NavigationProperty Name="Login" Relationship="Self.FK__Login__PersonUID__440B1D61" FromRole="Person" ToRole="Login" />
     <NavigationProperty Name="Salutation" Relationship="Self.FK__Person__Salutati__4316F928" FromRole="Person" ToRole="Salutation" />
-    <NavigationProperty Name="Salutation1" Relationship="Self.FK__Person__Salutati__4AB81AF0" FromRole="Person" ToRole="Salutation" />
     <NavigationProperty Name="PersonToMandators" Relationship="Self.FK__PersonToM__Perso__4222D4EF" FromRole="Person" ToRole="PersonToMandator" />
     <NavigationProperty Name="SystemPerson" Relationship="Self.FK__SystemPer__Perso__47DBAE45" FromRole="Person" ToRole="SystemPerson" />
   </EntityType>
@@ -236,7 +235,6 @@
     <Property Name="Title" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="OrderKey" Type="Int32" />
     <NavigationProperty Name="People" Relationship="Self.FK__Person__Salutati__4316F928" FromRole="Salutation" ToRole="Person" />
-    <NavigationProperty Name="People1" Relationship="Self.FK__Person__Salutati__4AB81AF0" FromRole="Salutation" ToRole="Person" />
   </EntityType>
   <EntityType Name="SystemPerson">
     <Key>
@@ -419,18 +417,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Person__Salutati__4AB81AF0">
-    <End Role="Salutation" Type="Self.Salutation" Multiplicity="1" />
-    <End Role="Person" Type="Self.Person" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Salutation">
-        <PropertyRef Name="UID" />
-      </Principal>
-      <Dependent Role="Person">
-        <PropertyRef Name="SalutationUID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__PersonToM__Perso__4222D4EF">
     <End Role="Person" Type="Self.Person" Multiplicity="1" />
     <End Role="PersonToMandator" Type="Self.PersonToMandator" Multiplicity="*" />
@@ -525,10 +511,6 @@
       <End Role="MemberInformationToMembership" EntitySet="MemberInformationToMemberships" />
     </AssociationSet>
     <AssociationSet Name="FK__Person__Salutati__4316F928" Association="Self.FK__Person__Salutati__4316F928">
-      <End Role="Salutation" EntitySet="Salutations" />
-      <End Role="Person" EntitySet="People" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Person__Salutati__4AB81AF0" Association="Self.FK__Person__Salutati__4AB81AF0">
       <End Role="Salutation" EntitySet="Salutations" />
       <End Role="Person" EntitySet="People" />
     </AssociationSet>

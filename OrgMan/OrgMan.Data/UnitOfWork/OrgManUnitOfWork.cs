@@ -4,6 +4,7 @@ using OrgMan.DataModel;
 using OrgMan.DataContracts.Repository.RepositoryBase;
 using OrgMan.Data.Repository;
 using OrgMan.Data.Repository.Repositorybase;
+using OrgMan.DataContracts.Repository;
 
 namespace OrgMan.Data.UnitOfWork
 {
@@ -27,6 +28,7 @@ namespace OrgMan.Data.UnitOfWork
             SalutationRepository = new SalutationRepository(_context);
             IndividualPersonRepository = new GenericRepository<IndividualPerson>(_context);
             SystemPersonRepository = new GenericRepository<SystemPerson>(_context);
+            AuthenticationRepository = new AuthenticationRepository(_context);
         }
 
 
@@ -59,6 +61,8 @@ namespace OrgMan.Data.UnitOfWork
         public IGenericRepository<IndividualPerson> IndividualPersonRepository { get; set; }
 
         public IGenericRepository<SystemPerson> SystemPersonRepository { get; set; }
+
+        public IAuthenticationRepository AuthenticationRepository { get; set; }
 
 
         public void Commit()

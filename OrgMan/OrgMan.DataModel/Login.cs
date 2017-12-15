@@ -24,6 +24,8 @@ namespace OrgMan.DataModel
         public Nullable<System.DateTimeOffset> LockedDate { get; set; }
         public string LockedComment { get; set; }
         public bool AccessFailedCount { get; set; }
+        public string Username { get; set; }
+        public string Salt { get; set; }
     
         public virtual Person Person { get; set; }
     }

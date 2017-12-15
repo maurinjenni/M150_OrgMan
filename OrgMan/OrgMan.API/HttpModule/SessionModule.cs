@@ -8,7 +8,7 @@ namespace OrgMan.API.HttpModule
 {
     public class SessionModule : IHttpModule
     {
-        private static readonly List<string> controllersToSkip = new List<string>(){"person","",""};
+        private static readonly List<string> controllersToSkip = new List<string>(){ "authentication", "",""};
 
         public void Dispose()
         {
@@ -40,7 +40,7 @@ namespace OrgMan.API.HttpModule
 
             if (!HttpContext.Current.SkipAuthorization)
             {
-                HttpCookie cookie = request.Cookies.Get("OrgMan_Session_UID");
+                HttpCookie cookie = request.Cookies["OrgMan_SessionUid"];
 
                 if (cookie == null)
                 {

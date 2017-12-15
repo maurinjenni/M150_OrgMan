@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
+using Newtonsoft.Json.Linq;
 using OrgMan.API.Controllers.ControllerBase;
 using OrgMan.Domain.Handler.Authentication;
 using OrgMan.DomainContracts.Authentication;
@@ -12,34 +14,107 @@ namespace OrgMan.API.Controllers
     {
         [HttpPost]
         [Route("authentication/login")]
-        public HttpResponseMessage Login(string username, string password)
+        public HttpResponseMessage Login([FromBody]JObject data)
         {
+            JToken parameter_Username = data["username"];
+            JToken parameter_Password = data["password"];
 
-            LoginQuery query = new LoginQuery()
+            try
             {
-                Username = username,
-                Password = password
-            };
+                if (string.IsNullOrEmpty(parameter_Username.ToString()))
+                {
+                    throw new ArgumentNullException(nameof(parameter_Username));
+                }
 
-            LoginQueryHandler handler = new LoginQueryHandler(query, UnityContainer);
-            
+                if (string.IsNullOrEmpty(parameter_Password.ToString()))
+                {
+                    throw new ArgumentNullException(nameof(parameter_Password));
+                }
 
-            return Request.CreateResponse(HttpStatusCode.OK, handler.Handle());
+                string username = parameter_Username.ToString();
+                string password = parameter_Password.ToString();
+
+                LoginQuery query = new LoginQuery()
+                {
+                    Username = username,
+                    Password = password
+                };
+
+                LoginQueryHandler handler = new LoginQueryHandler(query, UnityContainer);
+
+                Guid sessionUid = handler.Handle();
+
+                HttpCookie requestCookie = HttpContext.Current.Request.Cookies.Get("OrgMan_SessionUid");
+
+                if (requestCookie == null)
+                {
+                    HttpCookie cookie = new HttpCookie("OrgMan_SessionUid")
+                    {
+                        Value = sessionUid.ToString(),
+                        Domain = HttpContext.Current.Request.Url.Host,
+                        Expires = DateTime.Now.AddDays(1),
+                        HttpOnly = false,
+                    };
+
+                    HttpContext.Current.Response.AppendCookie(cookie);
+                }
+                else
+                {
+                    HttpCookie responseCookie = HttpContext.Current.Response.Cookies.Get("OrgMan_SessionUid");
+
+                    if (responseCookie != null)
+                    {
+                        responseCookie.Value = sessionUid.ToString();
+                    }
+                    else
+                    {
+                        throw new NullReferenceException(nameof(responseCookie));
+                    }
+                }
+
+                return Request.CreateResponse(HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
+            }
         }
 
         [HttpDelete]
         [Route("authentication/logout")]
-        public HttpResponseMessage Logout(Guid sessionUid)
+        public HttpResponseMessage Logout()
         {
-            LogoutQuery query = new LogoutQuery()
+            try
             {
-                SessionUID = sessionUid
-            };
+                HttpCookie cookie = HttpContext.Current.Request.Cookies.Get("OrgMan_SessionUid");
 
-            LogoutQueryHandler handler = new LogoutQueryHandler(query, UnityContainer);
-            handler.Handle();
+                if (cookie != null)
+                {
+                    Guid sessionUid;
+                    if (Guid.TryParse(cookie.Value, out sessionUid))
+                    {
+                        LogoutQuery query = new LogoutQuery()
+                        {
+                            SessionUID = sessionUid
+                        };
 
-            return Request.CreateResponse(HttpStatusCode.OK);
+                        LogoutQueryHandler handler = new LogoutQueryHandler(query, UnityContainer);
+                        handler.Handle();
+
+                        return Request.CreateResponse(HttpStatusCode.OK);
+                    }
+                }
+                else
+                {
+                    throw new Exception("Could not find the Cookie");
+                }
+
+                return Request.CreateResponse(HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
+            }
         }
     }
 }

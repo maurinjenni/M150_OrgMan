@@ -41,7 +41,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\IAuthenticationRepository.cs" />
     <Compile Include="Repository\RepositoryBase\IGenericRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OrgMan.DataModel\OrgMan.DataModel.csproj">
+      <Project>{2D742792-2D0E-4847-9E79-ED4E4AF423F2}</Project>
+      <Name>OrgMan.DataModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

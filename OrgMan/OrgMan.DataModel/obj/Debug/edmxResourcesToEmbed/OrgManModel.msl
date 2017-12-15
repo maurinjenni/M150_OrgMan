@@ -78,22 +78,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Logins">
-      <EntityTypeMapping TypeName="OrgManModel.Login">
-        <MappingFragment StoreEntitySet="Login">
-          <ScalarProperty Name="PersonUID" ColumnName="PersonUID" />
-          <ScalarProperty Name="SysInsertTime" ColumnName="SysInsertTime" />
-          <ScalarProperty Name="SysInsertAccountUID" ColumnName="SysInsertAccountUID" />
-          <ScalarProperty Name="SysUpdateTime" ColumnName="SysUpdateTime" />
-          <ScalarProperty Name="SysUpdateAccountUID" ColumnName="SysUpdateAccountUID" />
-          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
-          <ScalarProperty Name="Locked" ColumnName="Locked" />
-          <ScalarProperty Name="LockedDate" ColumnName="LockedDate" />
-          <ScalarProperty Name="LockedComment" ColumnName="LockedComment" />
-          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Mandators">
       <EntityTypeMapping TypeName="OrgManModel.Mandator">
         <MappingFragment StoreEntitySet="Mandator">
@@ -231,6 +215,24 @@
           <ScalarProperty Name="SysUpdateAccountUID" ColumnName="SysUpdateAccountUID" />
           <ScalarProperty Name="EmailAdress" ColumnName="EmailAdress" />
           <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Logins">
+      <EntityTypeMapping TypeName="OrgManModel.Login">
+        <MappingFragment StoreEntitySet="Login">
+          <ScalarProperty Name="Salt" ColumnName="Salt" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="LockedComment" ColumnName="LockedComment" />
+          <ScalarProperty Name="LockedDate" ColumnName="LockedDate" />
+          <ScalarProperty Name="Locked" ColumnName="Locked" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="SysUpdateAccountUID" ColumnName="SysUpdateAccountUID" />
+          <ScalarProperty Name="SysUpdateTime" ColumnName="SysUpdateTime" />
+          <ScalarProperty Name="SysInsertAccountUID" ColumnName="SysInsertAccountUID" />
+          <ScalarProperty Name="SysInsertTime" ColumnName="SysInsertTime" />
+          <ScalarProperty Name="PersonUID" ColumnName="PersonUID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

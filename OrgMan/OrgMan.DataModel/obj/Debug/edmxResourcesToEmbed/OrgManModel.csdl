@@ -84,22 +84,6 @@
     <NavigationProperty Name="Person" Relationship="Self.FK__Individua__Perso__44FF419A" FromRole="IndividualPerson" ToRole="Person" />
     <NavigationProperty Name="Phones" Relationship="Self.FK__Phone__Individua__4E88ABD4" FromRole="IndividualPerson" ToRole="Phone" />
   </EntityType>
-  <EntityType Name="Login">
-    <Key>
-      <PropertyRef Name="PersonUID" />
-    </Key>
-    <Property Name="PersonUID" Type="Guid" Nullable="false" />
-    <Property Name="SysInsertTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
-    <Property Name="SysInsertAccountUID" Type="Guid" Nullable="false" />
-    <Property Name="SysUpdateTime" Type="DateTimeOffset" Precision="7" />
-    <Property Name="SysUpdateAccountUID" Type="Guid" />
-    <Property Name="PasswordHash" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Locked" Type="Boolean" Nullable="false" />
-    <Property Name="LockedDate" Type="DateTimeOffset" Precision="7" />
-    <Property Name="LockedComment" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
-    <Property Name="AccessFailedCount" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="Person" Relationship="Self.FK__Login__PersonUID__440B1D61" FromRole="Login" ToRole="Person" />
-  </EntityType>
   <EntityType Name="Mandator">
     <Key>
       <PropertyRef Name="UID" />
@@ -187,10 +171,10 @@
     <Property Name="Firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="IndividualPerson" Relationship="Self.FK__Individua__Perso__44FF419A" FromRole="Person" ToRole="IndividualPerson" />
-    <NavigationProperty Name="Login" Relationship="Self.FK__Login__PersonUID__440B1D61" FromRole="Person" ToRole="Login" />
     <NavigationProperty Name="Salutation" Relationship="Self.FK__Person__Salutati__4316F928" FromRole="Person" ToRole="Salutation" />
     <NavigationProperty Name="PersonToMandators" Relationship="Self.FK__PersonToM__Perso__4222D4EF" FromRole="Person" ToRole="PersonToMandator" />
     <NavigationProperty Name="SystemPerson" Relationship="Self.FK__SystemPer__Perso__47DBAE45" FromRole="Person" ToRole="SystemPerson" />
+    <NavigationProperty Name="Login" Relationship="OrgManModel.FK__Login__PersonUID__440B1D61" FromRole="Person" ToRole="Login" />
   </EntityType>
   <EntityType Name="PersonToMandator">
     <Key>
@@ -345,18 +329,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Login__PersonUID__440B1D61">
-    <End Role="Person" Type="Self.Person" Multiplicity="1" />
-    <End Role="Login" Type="Self.Login" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="Person">
-        <PropertyRef Name="UID" />
-      </Principal>
-      <Dependent Role="Login">
-        <PropertyRef Name="PersonUID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__Meeting__Mandato__403A8C7D">
     <End Role="Mandator" Type="Self.Mandator" Multiplicity="1" />
     <End Role="Meeting" Type="Self.Meeting" Multiplicity="*" />
@@ -447,7 +419,6 @@
     <EntitySet Name="Countries" EntityType="Self.Country" />
     <EntitySet Name="Emails" EntityType="Self.Email" />
     <EntitySet Name="IndividualPersons" EntityType="Self.IndividualPerson" />
-    <EntitySet Name="Logins" EntityType="Self.Login" />
     <EntitySet Name="Mandators" EntityType="Self.Mandator" />
     <EntitySet Name="Meetings" EntityType="Self.Meeting" />
     <EntitySet Name="MemberInformations" EntityType="Self.MemberInformation" />
@@ -490,10 +461,6 @@
       <End Role="IndividualPerson" EntitySet="IndividualPersons" />
       <End Role="Phone" EntitySet="Phones" />
     </AssociationSet>
-    <AssociationSet Name="FK__Login__PersonUID__440B1D61" Association="Self.FK__Login__PersonUID__440B1D61">
-      <End Role="Person" EntitySet="People" />
-      <End Role="Login" EntitySet="Logins" />
-    </AssociationSet>
     <AssociationSet Name="FK__Meeting__Mandato__403A8C7D" Association="Self.FK__Meeting__Mandato__403A8C7D">
       <End Role="Mandator" EntitySet="Mandators" />
       <End Role="Meeting" EntitySet="Meetings" />
@@ -522,5 +489,40 @@
       <End Role="Person" EntitySet="People" />
       <End Role="SystemPerson" EntitySet="SystemPersons" />
     </AssociationSet>
+    <EntitySet Name="Logins" EntityType="OrgManModel.Login" />
+    <AssociationSet Name="FK__Login__PersonUID__440B1D61" Association="OrgManModel.FK__Login__PersonUID__440B1D61">
+      <End Role="Person" EntitySet="People" />
+      <End Role="Login" EntitySet="Logins" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="Login">
+    <Key>
+      <PropertyRef Name="PersonUID" />
+    </Key>
+    <Property Name="PersonUID" Type="Guid" Nullable="false" />
+    <Property Name="SysInsertTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="SysInsertAccountUID" Type="Guid" Nullable="false" />
+    <Property Name="SysUpdateTime" Type="DateTimeOffset" Precision="7" />
+    <Property Name="SysUpdateAccountUID" Type="Guid" />
+    <Property Name="PasswordHash" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="Locked" Type="Boolean" Nullable="false" />
+    <Property Name="LockedDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="LockedComment" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="AccessFailedCount" Type="Boolean" Nullable="false" />
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Salt" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Person" Relationship="OrgManModel.FK__Login__PersonUID__440B1D61" FromRole="Login" ToRole="Person" />
+  </EntityType>
+  <Association Name="FK__Login__PersonUID__440B1D61">
+    <End Type="OrgManModel.Person" Role="Person" Multiplicity="1" />
+    <End Type="OrgManModel.Login" Role="Login" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="UID" />
+      </Principal>
+      <Dependent Role="Login">
+        <PropertyRef Name="PersonUID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

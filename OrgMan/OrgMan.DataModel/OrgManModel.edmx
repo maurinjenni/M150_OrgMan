@@ -86,13 +86,13 @@
           <Property Name="SysInsertAccountUID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="SysUpdateTime" Type="datetimeoffset" Precision="7" />
           <Property Name="SysUpdateAccountUID" Type="uniqueidentifier" />
-          <Property Name="PasswordHash" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="PasswordHash" Type="varchar" MaxLength="1000" Nullable="false" />
           <Property Name="Locked" Type="bit" Nullable="false" />
           <Property Name="LockedDate" Type="datetimeoffset" Precision="7" />
           <Property Name="LockedComment" Type="varchar" MaxLength="300" />
           <Property Name="AccessFailedCount" Type="bit" Nullable="false" />
           <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Salt" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Salt" Type="varchar" MaxLength="256" Nullable="false" />
         </EntityType>
         <EntityType Name="Mandator">
           <Key>
@@ -211,6 +211,18 @@
           <Property Name="Code" Type="varchar" MaxLength="10" />
           <Property Name="Title" Type="varchar" MaxLength="30" />
           <Property Name="OrderKey" Type="int" />
+        </EntityType>
+        <EntityType Name="Session">
+          <Key>
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="SysInsertTime" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="SysInsertAccountUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SysUpdateTime" Type="datetimeoffset" Precision="7" />
+          <Property Name="SysUpdateAccountUID" Type="uniqueidentifier" />
+          <Property Name="LoginUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ExpireDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="UID" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="SystemPerson">
           <Key>
@@ -416,6 +428,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Session__LoginUI__71D1E811">
+          <End Role="Login" Type="Self.Login" Multiplicity="1" />
+          <End Role="Session" Type="Self.Session" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Login">
+              <PropertyRef Name="PersonUID" />
+            </Principal>
+            <Dependent Role="Session">
+              <PropertyRef Name="LoginUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__SystemPer__Perso__47DBAE45">
           <End Role="Person" Type="Self.Person" Multiplicity="1" />
           <End Role="SystemPerson" Type="Self.SystemPerson" Multiplicity="0..1" />
@@ -444,6 +468,7 @@
           <EntitySet Name="PersonToMandator" EntityType="Self.PersonToMandator" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Phone" EntityType="Self.Phone" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Salutation" EntityType="Self.Salutation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Session" EntityType="Self.Session" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SystemPerson" EntityType="Self.SystemPerson" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Adress__CountryU__59FA5E80" Association="Self.FK__Adress__CountryU__59FA5E80">
             <End Role="Country" EntitySet="Country" />
@@ -508,6 +533,10 @@
           <AssociationSet Name="FK__Phone__Individua__4E88ABD4" Association="Self.FK__Phone__Individua__4E88ABD4">
             <End Role="IndividualPerson" EntitySet="IndividualPerson" />
             <End Role="Phone" EntitySet="Phone" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Session__LoginUI__71D1E811" Association="Self.FK__Session__LoginUI__71D1E811">
+            <End Role="Login" EntitySet="Login" />
+            <End Role="Session" EntitySet="Session" />
           </AssociationSet>
           <AssociationSet Name="FK__SystemPer__Perso__47DBAE45" Association="Self.FK__SystemPer__Perso__47DBAE45">
             <End Role="Person" EntitySet="Person" />
@@ -1012,6 +1041,11 @@
             <End Role="Person" EntitySet="People" />
             <End Role="Login" EntitySet="Logins" />
           </AssociationSet>
+          <EntitySet Name="Sessions" EntityType="OrgManModel.Session" />
+          <AssociationSet Name="FK__Session__LoginUI__71D1E811" Association="OrgManModel.FK__Session__LoginUI__71D1E811">
+            <End Role="Login" EntitySet="Logins" />
+            <End Role="Session" EntitySet="Sessions" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Login">
           <Key>
@@ -1022,14 +1056,15 @@
           <Property Name="SysInsertAccountUID" Type="Guid" Nullable="false" />
           <Property Name="SysUpdateTime" Type="DateTimeOffset" Precision="7" />
           <Property Name="SysUpdateAccountUID" Type="Guid" />
-          <Property Name="PasswordHash" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="PasswordHash" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
           <Property Name="Locked" Type="Boolean" Nullable="false" />
           <Property Name="LockedDate" Type="DateTimeOffset" Precision="7" />
           <Property Name="LockedComment" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
           <Property Name="AccessFailedCount" Type="Boolean" Nullable="false" />
           <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Salt" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Salt" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Person" Relationship="OrgManModel.FK__Login__PersonUID__440B1D61" FromRole="Login" ToRole="Person" />
+          <NavigationProperty Name="Sessions" Relationship="OrgManModel.FK__Session__LoginUI__71D1E811" FromRole="Login" ToRole="Session" />
         </EntityType>
         <Association Name="FK__Login__PersonUID__440B1D61">
           <End Type="OrgManModel.Person" Role="Person" Multiplicity="1" />
@@ -1040,6 +1075,31 @@
             </Principal>
             <Dependent Role="Login">
               <PropertyRef Name="PersonUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Session">
+          <Key>
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="SysInsertTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="SysInsertAccountUID" Type="Guid" Nullable="false" />
+          <Property Name="SysUpdateTime" Type="DateTimeOffset" Precision="7" />
+          <Property Name="SysUpdateAccountUID" Type="Guid" />
+          <Property Name="LoginUID" Type="Guid" Nullable="false" />
+          <Property Name="ExpireDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="UID" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Login" Relationship="OrgManModel.FK__Session__LoginUI__71D1E811" FromRole="Session" ToRole="Login" />
+        </EntityType>
+        <Association Name="FK__Session__LoginUI__71D1E811">
+          <End Type="OrgManModel.Login" Role="Login" Multiplicity="1" />
+          <End Type="OrgManModel.Session" Role="Session" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Login">
+              <PropertyRef Name="PersonUID" />
+            </Principal>
+            <Dependent Role="Session">
+              <PropertyRef Name="LoginUID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1281,6 +1341,19 @@
                 <ScalarProperty Name="SysInsertAccountUID" ColumnName="SysInsertAccountUID" />
                 <ScalarProperty Name="SysInsertTime" ColumnName="SysInsertTime" />
                 <ScalarProperty Name="PersonUID" ColumnName="PersonUID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sessions">
+            <EntityTypeMapping TypeName="OrgManModel.Session">
+              <MappingFragment StoreEntitySet="Session">
+                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="ExpireDate" ColumnName="ExpireDate" />
+                <ScalarProperty Name="LoginUID" ColumnName="LoginUID" />
+                <ScalarProperty Name="SysUpdateAccountUID" ColumnName="SysUpdateAccountUID" />
+                <ScalarProperty Name="SysUpdateTime" ColumnName="SysUpdateTime" />
+                <ScalarProperty Name="SysInsertAccountUID" ColumnName="SysInsertAccountUID" />
+                <ScalarProperty Name="SysInsertTime" ColumnName="SysInsertTime" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

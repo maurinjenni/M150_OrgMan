@@ -236,5 +236,18 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Sessions">
+      <EntityTypeMapping TypeName="OrgManModel.Session">
+        <MappingFragment StoreEntitySet="Session">
+          <ScalarProperty Name="UID" ColumnName="UID" />
+          <ScalarProperty Name="ExpireDate" ColumnName="ExpireDate" />
+          <ScalarProperty Name="LoginUID" ColumnName="LoginUID" />
+          <ScalarProperty Name="SysUpdateAccountUID" ColumnName="SysUpdateAccountUID" />
+          <ScalarProperty Name="SysUpdateTime" ColumnName="SysUpdateTime" />
+          <ScalarProperty Name="SysInsertAccountUID" ColumnName="SysInsertAccountUID" />
+          <ScalarProperty Name="SysInsertTime" ColumnName="SysInsertTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

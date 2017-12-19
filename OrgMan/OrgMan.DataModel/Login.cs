@@ -14,6 +14,12 @@ namespace OrgMan.DataModel
     
     public partial class Login : IEntityUID
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Login()
+        {
+            this.Sessions = new HashSet<Session>();
+        }
+    
         public System.Guid PersonUID { get; set; }
         public System.DateTimeOffset SysInsertTime { get; set; }
         public System.Guid SysInsertAccountUID { get; set; }
@@ -28,5 +34,7 @@ namespace OrgMan.DataModel
         public string Salt { get; set; }
     
         public virtual Person Person { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Session> Sessions { get; set; }
     }
 }

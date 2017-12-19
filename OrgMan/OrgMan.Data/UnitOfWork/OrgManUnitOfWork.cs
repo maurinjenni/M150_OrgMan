@@ -29,6 +29,7 @@ namespace OrgMan.Data.UnitOfWork
             IndividualPersonRepository = new GenericRepository<IndividualPerson>(_context);
             SystemPersonRepository = new GenericRepository<SystemPerson>(_context);
             AuthenticationRepository = new AuthenticationRepository(_context);
+            SessionRepository = new GenericRepository<Session>(_context);
         }
 
 
@@ -64,6 +65,7 @@ namespace OrgMan.Data.UnitOfWork
 
         public IAuthenticationRepository AuthenticationRepository { get; set; }
 
+        public IGenericRepository<Session> SessionRepository { get; set; }
 
         public void Commit()
         {

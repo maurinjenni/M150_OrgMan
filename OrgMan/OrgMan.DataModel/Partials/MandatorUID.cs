@@ -115,7 +115,7 @@ namespace OrgMan.DataModel
             get { return this.MandatorUID; }
             set
             {
-                throw new DataException("Cannot set MandatorUID on Table Adress. The Column does not exists.");
+                throw new DataException("Cannot set MandatorUID on Table CommunicationType. The Column does not exists.");
             }
         }
     }
@@ -127,7 +127,7 @@ namespace OrgMan.DataModel
             get { return this.MandatorUID; }
             set
             {
-                throw new DataException("Cannot set MandatorUID on Table Adress. The Column does not exists.");
+                throw new DataException("Cannot set MandatorUID on Table Email. The Column does not exists.");
             }
         }
     }
@@ -139,7 +139,7 @@ namespace OrgMan.DataModel
             get { return this.MandatorUID; }
             set
             {
-                throw new DataException("Cannot set MandatorUID on Table Adress. The Column does not exists.");
+                throw new DataException("Cannot set MandatorUID on Table Phone. The Column does not exists.");
             }
         }
     }
@@ -158,7 +158,7 @@ namespace OrgMan.DataModel
             get { return this.Person.PersonToMandators.First().MandatorUID; }
             set
             {
-                throw new DataException("Cannot set MandatorUID on Table Login. The Column does not exists.");
+                throw new DataException("Cannot set MandatorUID on Table IndividualPerson. The Column does not exists.");
             }
         }
     }
@@ -177,7 +177,7 @@ namespace OrgMan.DataModel
             get { return this.Person.PersonToMandators.First().MandatorUID; }
             set
             {
-                throw new DataException("Cannot set MandatorUID on Table Login. The Column does not exists.");
+                throw new DataException("Cannot set MandatorUID on Table SysPerson. The Column does not exists.");
             }
         }
     }
@@ -189,7 +189,19 @@ namespace OrgMan.DataModel
             get { return this.PersonToMandators.First().MandatorUID; }
             set
             {
-                throw new DataException("Cannot set MandatorUID on Table Login. The Column does not exists.");
+                throw new DataException("Cannot set MandatorUID on Table Person. The Column does not exists.");
+            }
+        }
+    }
+
+    public partial class Session
+    {
+        public Guid MandatorUID
+        {
+            get { return this.Login.Person.PersonToMandators.First().MandatorUID; }
+            set
+            {
+                throw new DataException("Cannot set MandatorUID on Table Session. The Column does not exists.");
             }
         }
     }

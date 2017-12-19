@@ -60,7 +60,8 @@ namespace OrgMan.Data.Repository.Repositorybase
 
         public virtual TEntity Get(Guid mandatorUid, Guid uid)
         {
-            return DbSet.Where(t => t.MandatorUID == mandatorUid).FirstOrDefault(t => t.UID == uid);
+            //return DbSet.Where(t => t.MandatorUID == mandatorUid).FirstOrDefault(t => t.UID == uid);
+            return DbSet.FirstOrDefault(t => t.UID == uid);
         }
 
         public virtual void Insert(TEntity entity)

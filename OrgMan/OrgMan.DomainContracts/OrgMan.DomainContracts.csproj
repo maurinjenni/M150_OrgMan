@@ -58,6 +58,9 @@
     <Compile Include="Authentication\LogoutQuery.cs" />
     <Compile Include="Person\GetPersonQuery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Session\CreateSessionQuery.cs" />
+    <Compile Include="Session\GetSessionQuery.cs" />
+    <Compile Include="Session\UpdateSessionQuery.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

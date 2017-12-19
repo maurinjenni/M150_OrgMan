@@ -30,7 +30,7 @@ namespace OrgMan.Domain.Handler.Authentication
 
             if (personUid != null)
             {
-                return Guid.NewGuid();
+                return personUid;
             }
 
             throw new UnauthorizedAccessException("Invalid Userinformation");

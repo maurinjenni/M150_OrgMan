@@ -38,8 +38,8 @@ namespace OrgMan.Domain.Handler.Adress
                 whereExpression = searchService.GetWhereExpression<DataModel.Adress>(_query.SearchCriterias);
             }
 
-            var items = uow.AdressRepository.Get(_query.MandatorUID, whereExpression, null, "person", _query.NumberOfRows);
-            
+            var items = uow.AdressRepository.Get(_query.MandatorUID, whereExpression, null, "IndividualPersons,IndividualPersons.Person", _query.NumberOfRows);
+
             adresses = Mapper.Map<List<AdressSearchDomainModel>>(items);
 
             return adresses;

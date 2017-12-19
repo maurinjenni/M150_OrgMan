@@ -41,5 +41,6 @@ namespace OrgMan.DataModel
         public virtual DbSet<Salutation> Salutations { get; set; }
         public virtual DbSet<SystemPerson> SystemPersons { get; set; }
         public virtual DbSet<Login> Logins { get; set; }
+        public virtual DbSet<Session> Sessions { get; set; }
     }
 }

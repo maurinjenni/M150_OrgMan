@@ -65,6 +65,7 @@
     <Compile Include="Repository\PhoneRepository.cs" />
     <Compile Include="Repository\Repositorybase\GenericRepository.cs" />
     <Compile Include="Repository\SalutationRepository.cs" />
+    <Compile Include="Repository\SessionRepository.cs" />
     <Compile Include="Repository\SystemPersonRepository.cs" />
     <Compile Include="UnitOfWork\OrgManUnitOfWork.cs" />
   </ItemGroup>

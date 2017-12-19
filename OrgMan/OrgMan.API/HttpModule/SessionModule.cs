@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using System.Web;
 using Microsoft.Ajax.Utilities;
+using Microsoft.Practices.Unity;
+using OrgMan.Domain.Handler.Session;
+using OrgMan.DomainContracts.Session;
 using Context = System.Runtime.Remoting.Contexts.Context;
 
 namespace OrgMan.API.HttpModule
 {
     public class SessionModule : IHttpModule
     {
-        private static readonly List<string> controllersToSkip = new List<string>(){ "authentication", "",""};
+        private static readonly List<string> controllersToSkip = new List<string>() {"authentication", string.Empty, string.Empty};
 
         public void Dispose()
         {
@@ -25,7 +28,8 @@ namespace OrgMan.API.HttpModule
         {
             foreach (string skipableControllers in controllersToSkip)
             {
-                if (!string.IsNullOrEmpty(skipableControllers) && HttpContext.Current.Request.Url.LocalPath.Contains(skipableControllers))
+                if (!string.IsNullOrEmpty(skipableControllers) &&
+                    HttpContext.Current.Request.Url.LocalPath.Contains(skipableControllers))
                 {
                     // Bypass
                     HttpContext.Current.SkipAuthorization = true;
@@ -35,7 +39,7 @@ namespace OrgMan.API.HttpModule
 
         private void Authorize(object sender, EventArgs e)
         {
-            HttpApplication app = (HttpApplication)sender;
+            HttpApplication app = (HttpApplication) sender;
             var request = HttpContext.Current.Request;
 
             if (!HttpContext.Current.SkipAuthorization)
@@ -53,9 +57,34 @@ namespace OrgMan.API.HttpModule
 
                     if (Guid.TryParse(cookie.Value, out SessionUid))
                     {
-                        SessionUid = Guid.Parse(cookie.Value);
+                        GetSessionQuery getSessionQuery = new GetSessionQuery()
+                        {
+                            SessionUID = SessionUid
+                        };
 
-                        //validate SessionUid
+                        GetSessionQueryHandler getSessionQueryHandler = new GetSessionQueryHandler(getSessionQuery, new UnityContainer());
+                        var session = getSessionQueryHandler.Handle();
+
+                        if (session == null || session.ExpireDate < DateTimeOffset.Now)
+                        {
+                            // Loginpage
+                            UnAuthorized(app);
+                        }
+
+                        if (session.ExpireDate < DateTimeOffset.Now.AddHours(-1))
+                        {
+                            session.ExpireDate = DateTimeOffset.Now.AddDays(1);
+
+                            HttpContext.Current.Response.Cookies["OrgMan_SessionUid"].Expires = session.ExpireDate.DateTime;
+
+                            UpdateSessionQuery updateSessionQuery = new UpdateSessionQuery()
+                            {
+                                Session = session
+                            };
+
+                            UpdateSessionQueryHandler updateSessionQueryHandler = new UpdateSessionQueryHandler(updateSessionQuery, new UnityContainer());
+                            updateSessionQueryHandler.Handle();
+                        }                                           
                     }
                     else
                     {

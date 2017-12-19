@@ -112,6 +112,9 @@
     <Compile Include="Salutation.cs">
       <DependentUpon>OrgManModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Session.cs">
+      <DependentUpon>OrgManModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SystemPerson.cs">
       <DependentUpon>OrgManModel.tt</DependentUpon>
     </Compile>

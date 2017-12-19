@@ -3,10 +3,14 @@ using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http;
+using Microsoft.Practices.Unity;
 using Newtonsoft.Json.Linq;
 using OrgMan.API.Controllers.ControllerBase;
 using OrgMan.Domain.Handler.Authentication;
+using OrgMan.Domain.Handler.Session;
 using OrgMan.DomainContracts.Authentication;
+using OrgMan.DomainContracts.Session;
+using OrgMan.DomainObjects.Session;
 
 namespace OrgMan.API.Controllers
 {
@@ -14,7 +18,7 @@ namespace OrgMan.API.Controllers
     {
         [HttpPost]
         [Route("authentication/login")]
-        public HttpResponseMessage Login([FromBody]JObject data)
+        public HttpResponseMessage Login([FromBody] JObject data)
         {
             JToken parameter_Username = data["username"];
             JToken parameter_Password = data["password"];
@@ -34,20 +38,32 @@ namespace OrgMan.API.Controllers
                 string username = parameter_Username.ToString();
                 string password = parameter_Password.ToString();
 
-                LoginQuery query = new LoginQuery()
+                LoginQuery loginQuery = new LoginQuery()
                 {
                     Username = username,
                     Password = password
                 };
 
-                LoginQueryHandler handler = new LoginQueryHandler(query, UnityContainer);
+                LoginQueryHandler loginQueryHandler = new LoginQueryHandler(loginQuery, UnityContainer);
 
-                Guid sessionUid = handler.Handle();
+                Guid personUid = loginQueryHandler.Handle();
 
                 HttpCookie requestCookie = HttpContext.Current.Request.Cookies.Get("OrgMan_SessionUid");
 
                 if (requestCookie == null)
                 {
+                    CreateSessionQuery createSessionQuery = new CreateSessionQuery()
+                    {
+                        Session = new SessionDomainModel()
+                        {
+                            LoginUID = personUid,
+                            ExpireDate = DateTimeOffset.Now.AddDays(1)
+                        }
+                    };
+
+                    CreateSessionQueryHandler createSessionQueryHandler = new CreateSessionQueryHandler(createSessionQuery,new UnityContainer());
+                    Guid sessionUid = createSessionQueryHandler.Handle();
+
                     HttpCookie cookie = new HttpCookie("OrgMan_SessionUid")
                     {
                         Value = sessionUid.ToString(),
@@ -58,20 +74,20 @@ namespace OrgMan.API.Controllers
 
                     HttpContext.Current.Response.AppendCookie(cookie);
                 }
-                else
-                {
-                    HttpCookie responseCookie = HttpContext.Current.Response.Cookies.Get("OrgMan_SessionUid");
 
-                    if (responseCookie != null)
-                    {
-                        responseCookie.Value = sessionUid.ToString();
-                    }
-                    else
-                    {
-                        throw new NullReferenceException(nameof(responseCookie));
-                    }
-                }
+                // else
+                // {
+                // HttpCookie responseCookie = HttpContext.Current.Response.Cookies.Get("OrgMan_SessionUid");
 
+                // if (responseCookie != null)
+                // {
+                // responseCookie.Value = sessionUid.ToString();
+                // }
+                // else
+                // {
+                // throw new NullReferenceException(nameof(responseCookie));
+                // }
+                // }
                 return Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (Exception ex)

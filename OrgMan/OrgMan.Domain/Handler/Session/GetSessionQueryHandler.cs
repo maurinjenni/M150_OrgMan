@@ -26,7 +26,7 @@ namespace OrgMan.Domain.Handler.Session
         {
             OrgManUnitOfWork uow = new OrgManUnitOfWork();
 
-            var session = uow.SessionRepository.Get(Guid.Empty, _query.SessionUID);
+            var session = uow.SessionRepository.Get(_query.MandatorUID, _query.SessionUID);
 
             return Mapper.Map<SessionDomainModel>(session);
         }

@@ -12,6 +12,8 @@ namespace OrgMan.DomainObjects.Session
 
         public Guid LoginUID { get; set; }
 
+        public List<Guid> MandatorUIDs { get; set; }
+
         public DateTimeOffset ExpireDate { get; set; }
     }
 }

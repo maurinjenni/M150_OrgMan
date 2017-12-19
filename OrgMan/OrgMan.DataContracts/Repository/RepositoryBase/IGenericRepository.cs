@@ -8,12 +8,12 @@ namespace OrgMan.DataContracts.Repository.RepositoryBase
     public interface IGenericRepository<TEntity>
     {
         IEnumerable<TEntity> Get(
-    Guid mandatorUid,
+    List<Guid> mandatorUid,
     Expression<Func<TEntity, bool>> filter = null,
     Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
     string includeProperties = "", int? numberOfRows = null);
 
-        TEntity Get(Guid mandatorUid, Guid uid);
+        TEntity Get(List<Guid> mandatorUid, Guid uid);
 
         void Insert(TEntity entity);
 

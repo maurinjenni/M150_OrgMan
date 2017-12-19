@@ -20,7 +20,7 @@ namespace OrgMan.Data.Repository.Repositorybase
         }
 
         public virtual IEnumerable<TEntity> Get(
-            Guid mandatorUid,
+            List<Guid> mandatorUid,
             Expression<Func<TEntity, bool>> filter = null,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
             string includeProperties = "",
@@ -58,7 +58,7 @@ namespace OrgMan.Data.Repository.Repositorybase
             }
         }
 
-        public virtual TEntity Get(Guid mandatorUid, Guid uid)
+        public virtual TEntity Get(List<Guid> mandatorUid, Guid uid)
         {
             //return DbSet.Where(t => t.MandatorUID == mandatorUid).FirstOrDefault(t => t.UID == uid);
             return DbSet.FirstOrDefault(t => t.UID == uid);
@@ -75,7 +75,7 @@ namespace OrgMan.Data.Repository.Repositorybase
 
             if (entityToDelete != null)
             {
-                if (entityToDelete.MandatorUID != mandatorUid)
+                if (mandatorUid != entityToDelete.MandatorUID)
                 {
                     throw new Exception("Trying to delete Entity with false Mandator : " + uid);
                 }
@@ -95,7 +95,7 @@ namespace OrgMan.Data.Repository.Repositorybase
 
         public virtual void Delete(Guid mandatorUid, TEntity entityToDelete)
         {
-            if (entityToDelete.MandatorUID != mandatorUid)
+            if (mandatorUid != entityToDelete.MandatorUID)
             {
                 throw new Exception("Trying to delete Entity with false Mandator : " + entityToDelete.UID);
             }
@@ -109,7 +109,7 @@ namespace OrgMan.Data.Repository.Repositorybase
 
         public virtual void Update(Guid mandatorUid, TEntity entityToUpdate)
         {
-            if (entityToUpdate.MandatorUID != mandatorUid)
+            if (mandatorUid != entityToUpdate.MandatorUID)
             {
                 throw new Exception("Trying to delete Entity with false Mandator : " + entityToUpdate.UID);
             }

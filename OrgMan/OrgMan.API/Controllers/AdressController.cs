@@ -20,9 +20,18 @@ namespace OrgMan.API.Controllers
         [Route("adress")]
         public HttpResponseMessage Get([FromUri] List<SearchCriteriaDomainModel> searchCriterias = null, [FromUri]int? numberOfRows = null)
         {
+            var mandatorUidStrings = HttpContext.Current.Request.ServerVariables.Get("MandatorUID").Split(',');
+
+            List<Guid> mandatorUids = new List<Guid>();
+
+            foreach (var mandatorString in mandatorUidStrings)
+            {
+                mandatorUids.Add(Guid.Parse(mandatorString));
+            }
+
             SearchAdressQuery qurey = new SearchAdressQuery()
             {
-                MandatorUID = Guid.Empty,
+                MandatorUID = mandatorUids,
                 SearchCriterias = searchCriterias,
                 NumberOfRows = numberOfRows
             };
@@ -36,14 +45,23 @@ namespace OrgMan.API.Controllers
         [Route("adress/{uid}")]
         public HttpResponseMessage Get(Guid uid)
         {
+            var mandatorUidStrings = HttpContext.Current.Request.ServerVariables.Get("MandatorUID").Split(',');
+
+            List<Guid> mandatorUids = new List<Guid>();
+
+            foreach (var mandatorString in mandatorUidStrings)
+            {
+                mandatorUids.Add(Guid.Parse(mandatorString));
+            }
+
             GetAdressQuery query = new GetAdressQuery()
             {
+                MandatorUID = mandatorUids,
                 AdressUID = uid,
-                MandatorUID = Guid.Empty
             };
 
             GetAdressQueryHandler handler = new GetAdressQueryHandler(query, UnityContainer);
-
+            
             return Request.CreateResponse(HttpStatusCode.Accepted);
         }
 
@@ -53,6 +71,7 @@ namespace OrgMan.API.Controllers
         {
             UpdateAdressQuery query = new UpdateAdressQuery()
             {
+                MandatorUID = Guid.Parse(HttpContext.Current.Request.ServerVariables.Get("MandatorUID")),
                 Adress = adress
             };
 
@@ -67,6 +86,7 @@ namespace OrgMan.API.Controllers
         {
             InsertAdressQuery query = new InsertAdressQuery()
             {
+                MandatorUID = Guid.Parse(HttpContext.Current.Request.ServerVariables.Get("MandatorUID")),
                 Adress = adress                
             };
 

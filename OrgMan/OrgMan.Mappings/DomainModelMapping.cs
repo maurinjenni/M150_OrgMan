@@ -20,7 +20,9 @@ namespace OrgMan.Mappings
 
             AutoMapper.Mapper.CreateMap<Adress, AdressDetailDomainModel>();
 
-            AutoMapper.Mapper.CreateMap<Session, SessionDomainModel>();
+            AutoMapper.Mapper.CreateMap<Session, SessionDomainModel>()
+                .ForMember(dest => dest.MandatorUIDs, opt => opt.MapFrom(src => src.Login.Person.PersonToMandators.Select(ptm => ptm.MandatorUID)));
+                
             AutoMapper.Mapper.CreateMap<SessionDomainModel, Session>();
         }
     }

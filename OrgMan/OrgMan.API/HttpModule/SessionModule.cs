@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web;
 using Microsoft.Ajax.Utilities;
 using Microsoft.Practices.Unity;
@@ -69,6 +70,29 @@ namespace OrgMan.API.HttpModule
                         {
                             // Loginpage
                             UnAuthorized(app);
+                        }
+
+                        if (session.MandatorUIDs == null || !session.MandatorUIDs.Any())
+                        {
+                            throw new Exception("No Mandator found to Session");
+                        }
+                        else
+                        {
+                            string serverVariableValue = string.Empty;
+
+                            foreach (Guid mandatorUid in session.MandatorUIDs)
+                            {
+                                if (string.IsNullOrEmpty(serverVariableValue))
+                                {
+                                    serverVariableValue += mandatorUid.ToString();
+                                }
+                                else
+                                {
+                                    serverVariableValue += "," + mandatorUid.ToString();
+                                }
+                            }
+
+                            HttpContext.Current.Request.ServerVariables.Add("MandatorUID", serverVariableValue);
                         }
 
                         if (session.ExpireDate < DateTimeOffset.Now.AddHours(-1))

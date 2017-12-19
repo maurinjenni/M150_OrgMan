@@ -9,7 +9,7 @@ namespace OrgMan.DomainContracts.Adress
 {
     public class SearchAdressQuery
     {
-        public Guid MandatorUID { get; set; }
+        public List<Guid> MandatorUID { get; set; }
 
         public List<SearchCriteriaDomainModel> SearchCriterias { get; set; }
 

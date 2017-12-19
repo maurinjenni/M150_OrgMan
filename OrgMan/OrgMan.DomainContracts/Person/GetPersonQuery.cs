@@ -10,7 +10,7 @@ namespace OrgMan.DomainContracts.Person
     {
         public Guid PersonUID { get; set; }
 
-        public Guid MandatorUID { get; set; }
+        public List<Guid> MandatorUID { get; set; }
 
         public Guid PermissionUID { get; set; }
     }

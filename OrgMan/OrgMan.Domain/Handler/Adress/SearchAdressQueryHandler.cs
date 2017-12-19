@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
 using AutoMapper;
 using Microsoft.Practices.Unity;
 using OrgMan.Common.DynamicSearchService;
@@ -44,6 +41,5 @@ namespace OrgMan.Domain.Handler.Adress
 
             return adresses;
         }
-
     }
 }

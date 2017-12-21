@@ -12,7 +12,9 @@ namespace OrgMan.DomainObjects.Adress
 
         public string Lastname { get; set; }
 
-        public string StreetAdress { get; set; }
+        public string Street { get; set; }
+
+        public string HouseNumber { get; set; }
 
         public string PostCode { get; set; }
 

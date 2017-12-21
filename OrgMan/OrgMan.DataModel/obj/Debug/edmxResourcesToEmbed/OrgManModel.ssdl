@@ -66,9 +66,9 @@
     <Property Name="SysUpdateTime" Type="datetimeoffset" Precision="7" />
     <Property Name="SysUpdateAccountUID" Type="uniqueidentifier" />
     <Property Name="AdressUID" Type="uniqueidentifier" Nullable="false" />
-    <Property Name="MemberInformationUID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="MemberInformationUID" Type="uniqueidentifier" />
     <Property Name="Company" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="Birthdate" Type="date" />
+    <Property Name="Birthdate" Type="datetime" />
     <Property Name="Comment" Type="varchar" MaxLength="2000" />
     <Property Name="PictureLink" Type="varchar" MaxLength="256" />
   </EntityType>
@@ -126,8 +126,8 @@
     <Property Name="SysInsertAccountUID" Type="uniqueidentifier" Nullable="false" />
     <Property Name="SysUpdateTime" Type="datetimeoffset" Precision="7" />
     <Property Name="SysUpdateAccountUID" Type="uniqueidentifier" />
-    <Property Name="EntryDate" Type="date" Nullable="false" />
-    <Property Name="ExitDate" Type="date" Nullable="false" />
+    <Property Name="EntryDate" Type="datetime" Nullable="false" />
+    <Property Name="ExitDate" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="MemberInformationToMembership">
     <Key>
@@ -267,7 +267,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Individua__Adres__45F365D3">
+  <Association Name="FK__Individua__Adres__5BE2A6F2">
     <End Role="Adress" Type="Self.Adress" Multiplicity="1" />
     <End Role="IndividualPerson" Type="Self.IndividualPerson" Multiplicity="*" />
     <ReferentialConstraint>
@@ -280,7 +280,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__Individua__Membe__46E78A0C">
-    <End Role="MemberInformation" Type="Self.MemberInformation" Multiplicity="1" />
+    <End Role="MemberInformation" Type="Self.MemberInformation" Multiplicity="0..1" />
     <End Role="IndividualPerson" Type="Self.IndividualPerson" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="MemberInformation">
@@ -352,18 +352,6 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__Person__Salutati__4316F928">
-    <End Role="Salutation" Type="Self.Salutation" Multiplicity="1" />
-    <End Role="Person" Type="Self.Person" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Salutation">
-        <PropertyRef Name="UID" />
-      </Principal>
-      <Dependent Role="Person">
-        <PropertyRef Name="SalutationUID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Person__Salutati__4AB81AF0">
     <End Role="Salutation" Type="Self.Salutation" Multiplicity="1" />
     <End Role="Person" Type="Self.Person" Multiplicity="*" />
     <ReferentialConstraint>
@@ -477,7 +465,7 @@
       <End Role="IndividualPerson" EntitySet="IndividualPerson" />
       <End Role="Email" EntitySet="Email" />
     </AssociationSet>
-    <AssociationSet Name="FK__Individua__Adres__45F365D3" Association="Self.FK__Individua__Adres__45F365D3">
+    <AssociationSet Name="FK__Individua__Adres__5BE2A6F2" Association="Self.FK__Individua__Adres__5BE2A6F2">
       <End Role="Adress" EntitySet="Adress" />
       <End Role="IndividualPerson" EntitySet="IndividualPerson" />
     </AssociationSet>
@@ -506,10 +494,6 @@
       <End Role="MemberInformationToMembership" EntitySet="MemberInformationToMembership" />
     </AssociationSet>
     <AssociationSet Name="FK__Person__Salutati__4316F928" Association="Self.FK__Person__Salutati__4316F928">
-      <End Role="Salutation" EntitySet="Salutation" />
-      <End Role="Person" EntitySet="Person" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Person__Salutati__4AB81AF0" Association="Self.FK__Person__Salutati__4AB81AF0">
       <End Role="Salutation" EntitySet="Salutation" />
       <End Role="Person" EntitySet="Person" />
     </AssociationSet>

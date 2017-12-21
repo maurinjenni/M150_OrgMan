@@ -28,14 +28,14 @@ namespace OrgMan.Domain.Handler.Adress
 
             List<AdressSearchDomainModel> adresses = null;
 
-            Expression<Func<DataModel.Adress, bool>> whereExpression = null;
+            Expression<Func<DataModel.IndividualPerson, bool>> whereExpression = null;
 
             if (_query.SearchCriterias != null)
             {
-                whereExpression = searchService.GetWhereExpression<DataModel.Adress>(_query.SearchCriterias);
+                whereExpression = searchService.GetWhereExpression<DataModel.IndividualPerson>(_query.SearchCriterias);
             }
 
-            var items = uow.AdressRepository.Get(_query.MandatorUID, whereExpression, null, "IndividualPersons,IndividualPersons.Person", _query.NumberOfRows);
+            var items = uow.IndividualPersonRepository.Get(_query.MandatorUID, whereExpression, null, "Person, MemberInformation, Adress", _query.NumberOfRows);
 
             adresses = Mapper.Map<List<AdressSearchDomainModel>>(items);
 

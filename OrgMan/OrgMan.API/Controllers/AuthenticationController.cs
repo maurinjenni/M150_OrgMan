@@ -11,6 +11,7 @@ using OrgMan.Domain.Handler.Session;
 using OrgMan.DomainContracts.Authentication;
 using OrgMan.DomainContracts.Session;
 using OrgMan.DomainObjects.Session;
+using System.Configuration;
 
 namespace OrgMan.API.Controllers
 {
@@ -48,7 +49,7 @@ namespace OrgMan.API.Controllers
 
                 Guid personUid = loginQueryHandler.Handle();
 
-                HttpCookie requestCookie = HttpContext.Current.Request.Cookies.Get("OrgMan_SessionUid");
+                HttpCookie requestCookie = HttpContext.Current.Request.Cookies.Get(ConfigurationManager.AppSettings["SessionCookieName"]);
 
                 if (requestCookie == null)
                 {
@@ -64,7 +65,7 @@ namespace OrgMan.API.Controllers
                     CreateSessionQueryHandler createSessionQueryHandler = new CreateSessionQueryHandler(createSessionQuery,new UnityContainer());
                     Guid sessionUid = createSessionQueryHandler.Handle();
 
-                    HttpCookie cookie = new HttpCookie("OrgMan_SessionUid")
+                    HttpCookie cookie = new HttpCookie(ConfigurationManager.AppSettings["SessionCookieName"])
                     {
                         Value = sessionUid.ToString(),
                         Domain = HttpContext.Current.Request.Url.Host,
@@ -77,7 +78,7 @@ namespace OrgMan.API.Controllers
 
                 // else
                 // {
-                // HttpCookie responseCookie = HttpContext.Current.Response.Cookies.Get("OrgMan_SessionUid");
+                // HttpCookie responseCookie = HttpContext.Current.Response.Cookies.Get(ConfigurationManager.AppSettings["SessionCookieName"]);
 
                 // if (responseCookie != null)
                 // {
@@ -102,7 +103,7 @@ namespace OrgMan.API.Controllers
         {
             try
             {
-                HttpCookie cookie = HttpContext.Current.Request.Cookies.Get("OrgMan_SessionUid");
+                HttpCookie cookie = HttpContext.Current.Request.Cookies.Get(ConfigurationManager.AppSettings["SessionCookieName"]);
 
                 if (cookie != null)
                 {

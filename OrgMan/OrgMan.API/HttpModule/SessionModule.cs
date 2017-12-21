@@ -7,12 +7,13 @@ using Microsoft.Practices.Unity;
 using OrgMan.Domain.Handler.Session;
 using OrgMan.DomainContracts.Session;
 using Context = System.Runtime.Remoting.Contexts.Context;
+using System.Configuration;
 
 namespace OrgMan.API.HttpModule
 {
     public class SessionModule : IHttpModule
     {
-        private static readonly List<string> controllersToSkip = new List<string>() {"authentication", string.Empty, string.Empty};
+        private static readonly List<string> controllersToSkip = ConfigurationManager.AppSettings["WhitelistedControllers"].Split(',').ToList();
 
         public void Dispose()
         {
@@ -45,7 +46,7 @@ namespace OrgMan.API.HttpModule
 
             if (!HttpContext.Current.SkipAuthorization)
             {
-                HttpCookie cookie = request.Cookies["OrgMan_SessionUid"];
+                HttpCookie cookie = request.Cookies[ConfigurationManager.AppSettings["SessionCookieName"]];
 
                 if (cookie == null)
                 {
@@ -99,7 +100,7 @@ namespace OrgMan.API.HttpModule
                         {
                             session.ExpireDate = DateTimeOffset.Now.AddDays(1);
 
-                            HttpContext.Current.Response.Cookies["OrgMan_SessionUid"].Expires = session.ExpireDate.DateTime;
+                            HttpContext.Current.Response.Cookies[ConfigurationManager.AppSettings["SessionCookieName"]].Expires = session.ExpireDate.DateTime;
 
                             UpdateSessionQuery updateSessionQuery = new UpdateSessionQuery()
                             {

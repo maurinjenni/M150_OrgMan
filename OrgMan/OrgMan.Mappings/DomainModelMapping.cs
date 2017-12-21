@@ -13,10 +13,15 @@ namespace OrgMan.Mappings
         {
             AutoMapper.Mapper.CreateMap<Person, PersonDomainModel>();
 
-            AutoMapper.Mapper.CreateMap<Adress, AdressSearchDomainModel>()
-                .ForMember(dest => dest.StreetAdress, opt => opt.MapFrom(src => src.Street + ' ' + src.HouseNumber))
-                .ForMember(dest => dest.Firstname, opt => opt.MapFrom(src => src.IndividualPersons.First().Person.Firstname))
-                .ForMember(dest => dest.Lastname, opt => opt.MapFrom(src => src.IndividualPersons.First().Person.Lastname));
+            AutoMapper.Mapper.CreateMap<IndividualPerson, AdressSearchDomainModel>()
+                .ForMember(dest => dest.Firstname, opt => opt.MapFrom(src => src.Person != null ? src.Person.Firstname : null ))
+                .ForMember(dest => dest.Lastname, opt => opt.MapFrom(src => src.Person != null? src.Person.Lastname : null))
+                .ForMember(dest => dest.IsMember, opt => opt.MapFrom(src => src.MemberInformation != null))
+                .ForMember(dest => dest.PostCode, opt => opt.MapFrom(src => src.Adress != null ? src.Adress.PostCode : null))
+                .ForMember(dest => dest.City, opt => opt.MapFrom(src => src.Adress != null ? src.Adress.City : null))
+                .ForMember(dest => dest.Street, opt => opt.MapFrom(src => src.Adress != null ? src.Adress.Street : null))
+                .ForMember(dest => dest.HouseNumber, opt => opt.MapFrom(src => src.Adress != null ? src.Adress.HouseNumber: null));
+
 
             AutoMapper.Mapper.CreateMap<Adress, AdressDetailDomainModel>();
 

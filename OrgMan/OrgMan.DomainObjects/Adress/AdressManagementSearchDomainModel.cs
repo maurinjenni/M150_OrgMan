@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace OrgMan.DomainObjects.Adress
 {
-    public class AdressSearchDomainModel
+    public class AdressManagementSearchDomainModel
     {
+        public Guid UID { get; set; }
+
         public string Firstname { get; set; }
 
         public string Lastname { get; set; }

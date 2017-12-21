@@ -36,7 +36,7 @@ namespace OrgMan.Data.Repository
             string pwdString = Convert.ToBase64String(pbkdf2.GetBytes(256));
             if (logindata.PasswordHash == pwdString)
             {
-                return logindata.PersonUID;
+                return logindata.Person.UID;
             }
 
             throw new Exception("Invalid Userinformation");

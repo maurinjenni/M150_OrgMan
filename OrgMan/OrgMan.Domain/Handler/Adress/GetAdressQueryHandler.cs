@@ -21,13 +21,13 @@ namespace OrgMan.Domain.Handler.Adress
             _query = query;
         }
 
-        public AdressSearchDomainModel Handle()
+        public AdressManagementDetailDomainModel Handle()
         {
             OrgManUnitOfWork uow = new OrgManUnitOfWork();
 
-            var adresse = uow.AdressRepository.Get(_query.MandatorUID,_query.AdressUID);
+            var adresse = uow.IndividualPersonRepository.Get(_query.MandatorUID,_query.AdressUID);
 
-            return Mapper.Map<AdressSearchDomainModel>(adresse);
+            return Mapper.Map<AdressManagementDetailDomainModel>(adresse);
         }
 
     }

@@ -20,13 +20,13 @@ namespace OrgMan.Domain.Handler.Adress
             _query = query;
         }
 
-        public List<AdressSearchDomainModel> Handle()
+        public List<AdressManagementSearchDomainModel> Handle()
         {
             OrgManUnitOfWork uow = new OrgManUnitOfWork();
 
             DynamicSearchService searchService = new DynamicSearchService();
 
-            List<AdressSearchDomainModel> adresses = null;
+            List<AdressManagementSearchDomainModel> adresses = null;
 
             Expression<Func<DataModel.IndividualPerson, bool>> whereExpression = null;
 
@@ -37,7 +37,7 @@ namespace OrgMan.Domain.Handler.Adress
 
             var items = uow.IndividualPersonRepository.Get(_query.MandatorUID, whereExpression, null, "Person, MemberInformation, Adress", _query.NumberOfRows);
 
-            adresses = Mapper.Map<List<AdressSearchDomainModel>>(items);
+            adresses = Mapper.Map<List<AdressManagementSearchDomainModel>>(items);
 
             return adresses;
         }

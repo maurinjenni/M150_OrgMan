@@ -18,13 +18,6 @@ namespace OrgMan.DataModel
 
     public partial class Login
     {
-        public Guid UID
-        {
-            get { return PersonUID; }
-
-            set { PersonUID = value; }
-        }
-
         public Guid MandatorUID
         {
             get { return this.Person.PersonToMandators.First().MandatorUID; }
@@ -91,13 +84,6 @@ namespace OrgMan.DataModel
 
     public partial class Adress
     {
-        public Guid UID
-        {
-            get { return PersonUID; }
-
-            set { PersonUID = value; }
-        }
-
         public Guid MandatorUID
         {
             get { return this.IndividualPersons.FirstOrDefault().Person.PersonToMandators.FirstOrDefault().MandatorUID; }
@@ -146,13 +132,6 @@ namespace OrgMan.DataModel
 
     public partial class IndividualPerson
     {
-        public Guid UID
-        {
-            get { return PersonUID; }
-
-            set { PersonUID = value; }
-        }
-
         public Guid MandatorUID
         {
             get { return this.Person.PersonToMandators.First().MandatorUID; }
@@ -165,13 +144,6 @@ namespace OrgMan.DataModel
 
     public partial class SystemPerson
     {
-        public Guid UID
-        {
-            get { return PersonUID; }
-
-            set { PersonUID = value; }
-        }
-
         public Guid MandatorUID
         {
             get { return this.Person.PersonToMandators.First().MandatorUID; }

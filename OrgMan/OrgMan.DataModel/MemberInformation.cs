@@ -17,8 +17,8 @@ namespace OrgMan.DataModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public MemberInformation()
         {
-            this.IndividualPersons = new HashSet<IndividualPerson>();
             this.MemberInformationToMemberships = new HashSet<MemberInformationToMembership>();
+            this.IndividualPersons = new HashSet<IndividualPerson>();
         }
     
         public System.Guid UID { get; set; }
@@ -30,8 +30,8 @@ namespace OrgMan.DataModel
         public System.DateTime ExitDate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<IndividualPerson> IndividualPersons { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MemberInformationToMembership> MemberInformationToMemberships { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<IndividualPerson> IndividualPersons { get; set; }
     }
 }

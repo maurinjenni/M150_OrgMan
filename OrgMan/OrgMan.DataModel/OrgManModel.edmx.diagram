@@ -4,13 +4,10 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="867af795b2a74734b8b12da8e7ca7692" Name="Diagram1" ZoomLevel="10">
-        <EntityTypeShape EntityType="OrgManModel.Adress" Width="1.5" PointX="6" PointY="23.875" />
+      <Diagram DiagramId="867af795b2a74734b8b12da8e7ca7692" Name="Diagram1" ZoomLevel="78">
         <EntityTypeShape EntityType="OrgManModel.CommunicationType" Width="1.5" PointX="11.25" PointY="8.375" />
         <EntityTypeShape EntityType="OrgManModel.Country" Width="1.5" PointX="3.75" PointY="24.25" />
         <EntityTypeShape EntityType="OrgManModel.Email" Width="1.5" PointX="13.5" PointY="12.375" />
-        <EntityTypeShape EntityType="OrgManModel.IndividualPerson" Width="1.5" PointX="8.25" PointY="11.875" />
-        <EntityTypeShape EntityType="OrgManModel.Login" Width="1.5" PointX="5.25" PointY="7.375" />
         <EntityTypeShape EntityType="OrgManModel.Mandator" Width="1.5" PointX="3" PointY="13.5" />
         <EntityTypeShape EntityType="OrgManModel.Meeting" Width="1.5" PointX="5.25" PointY="3.25" />
         <EntityTypeShape EntityType="OrgManModel.MemberInformation" Width="1.5" PointX="6" PointY="16.375" />
@@ -21,23 +18,26 @@
         <EntityTypeShape EntityType="OrgManModel.Phone" Width="1.5" PointX="10.5" PointY="12.375" />
         <EntityTypeShape EntityType="OrgManModel.Salutation" Width="1.5" PointX="0.75" PointY="9.5" />
         <EntityTypeShape EntityType="OrgManModel.Session" Width="1.5" PointX="7.5" PointY="8" />
-        <EntityTypeShape EntityType="OrgManModel.SystemPerson" Width="1.5" PointX="5.25" PointY="20.125" />
-        <AssociationConnector Association="OrgManModel.FK__Adress__CountryU__59FA5E80" />
-        <AssociationConnector Association="OrgManModel.FK__Individua__Adres__5BE2A6F2" />
         <AssociationConnector Association="OrgManModel.FK__Email__Communica__4BAC3F29" />
         <AssociationConnector Association="OrgManModel.FK__Phone__Communica__4CA06362" />
-        <AssociationConnector Association="OrgManModel.FK__Email__Individua__4D94879B" />
-        <AssociationConnector Association="OrgManModel.FK__Individua__Membe__46E78A0C" />
-        <AssociationConnector Association="OrgManModel.FK__Individua__Perso__44FF419A" />
-        <AssociationConnector Association="OrgManModel.FK__Phone__Individua__4E88ABD4" />
-        <AssociationConnector Association="OrgManModel.FK__Login__PersonUID__440B1D61" />
-        <AssociationConnector Association="OrgManModel.FK__Session__LoginUI__71D1E811" />
         <AssociationConnector Association="OrgManModel.FK__Meeting__Mandato__403A8C7D" />
         <AssociationConnector Association="OrgManModel.FK__PersonToM__Manda__412EB0B6" />
         <AssociationConnector Association="OrgManModel.FK__MemberInf__Membe__48CFD27E" />
         <AssociationConnector Association="OrgManModel.FK__MemberInf__Membe__49C3F6B7" />
         <AssociationConnector Association="OrgManModel.FK__Person__Salutati__4316F928" />
         <AssociationConnector Association="OrgManModel.FK__PersonToM__Perso__4222D4EF" />
+        <EntityTypeShape EntityType="OrgManModel.Adress" Width="1.5" PointX="6" PointY="22.375" />
+        <EntityTypeShape EntityType="OrgManModel.IndividualPerson" Width="1.5" PointX="8.25" PointY="14.125" />
+        <EntityTypeShape EntityType="OrgManModel.Login" Width="1.5" PointX="5.25" PointY="0.75" />
+        <EntityTypeShape EntityType="OrgManModel.SystemPerson" Width="1.5" PointX="5.25" PointY="9.5" />
+        <AssociationConnector Association="OrgManModel.FK__Adress__CountryU__59FA5E80" />
+        <AssociationConnector Association="OrgManModel.FK__Individua__Adres__5BE2A6F2" />
+        <AssociationConnector Association="OrgManModel.FK__Email__Individua__4D94879B" />
+        <AssociationConnector Association="OrgManModel.FK__Individua__Membe__46E78A0C" />
+        <AssociationConnector Association="OrgManModel.FK__Individua__Perso__44FF419A" />
+        <AssociationConnector Association="OrgManModel.FK__Phone__Individua__4E88ABD4" />
+        <AssociationConnector Association="OrgManModel.FK__Login__PersonUID__440B1D61" />
+        <AssociationConnector Association="OrgManModel.FK__Session__LoginUI__71D1E811" />
         <AssociationConnector Association="OrgManModel.FK__SystemPer__Perso__47DBAE45" />
       </Diagram>
     </edmx:Diagrams>

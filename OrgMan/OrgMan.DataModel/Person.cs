@@ -29,11 +29,11 @@ namespace OrgMan.DataModel
         public string Firstname { get; set; }
         public string Lastname { get; set; }
     
-        public virtual IndividualPerson IndividualPerson { get; set; }
-        public virtual Login Login { get; set; }
         public virtual Salutation Salutation { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PersonToMandator> PersonToMandators { get; set; }
+        public virtual IndividualPerson IndividualPerson { get; set; }
+        public virtual Login Login { get; set; }
         public virtual SystemPerson SystemPerson { get; set; }
     }
 }

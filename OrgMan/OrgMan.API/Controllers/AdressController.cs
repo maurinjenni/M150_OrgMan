@@ -11,6 +11,7 @@ using OrgMan.Domain.Handler.Adress;
 using OrgMan.DomainContracts.Adress;
 using OrgMan.DomainObjects;
 using OrgMan.DomainObjects.Adress;
+using Newtonsoft.Json.Linq;
 
 namespace OrgMan.API.Controllers
 {
@@ -20,6 +21,17 @@ namespace OrgMan.API.Controllers
         [Route("adress")]
         public HttpResponseMessage Get([FromUri] List<SearchCriteriaDomainModel> searchCriterias = null, [FromUri]int? numberOfRows = null)
         {
+            numberOfRows = 100;
+            searchCriterias = new List<SearchCriteriaDomainModel>();
+            searchCriterias.Add(new SearchCriteriaDomainModel()
+            {
+                DataType = Common.DynamicSearchService.DynamicSearchModel.Enums.SearchCriteriaDataTypeDomainModelEnum.String,
+                OperationType = Common.DynamicSearchService.DynamicSearchModel.Enums.SearchCriteriaOperationTypeDomainModelEnum.Contains,
+                Values = new List<object>(){ "Malcolm" },
+                Title = "Firstname",
+                FieldName = "Person.Firstname"
+            });
+
             //var mandatorUidStrings = HttpContext.Current.Request.ServerVariables.Get("MandatorUID").Split(',');
             var mandatorUidStrings = new List<string>() { "72920FF1-4C81-F677-D5EE-00FD566FAE86" };
 
@@ -46,7 +58,8 @@ namespace OrgMan.API.Controllers
         [Route("adress/{uid}")]
         public HttpResponseMessage Get(Guid uid)
         {
-            var mandatorUidStrings = HttpContext.Current.Request.ServerVariables.Get("MandatorUID").Split(',');
+            //var mandatorUidStrings = HttpContext.Current.Request.ServerVariables.Get("MandatorUID").Split(',');
+            var mandatorUidStrings = new List<string>() { "72920FF1-4C81-F677-D5EE-00FD566FAE86" };
 
             List<Guid> mandatorUids = new List<Guid>();
 
@@ -63,17 +76,22 @@ namespace OrgMan.API.Controllers
 
             GetAdressQueryHandler handler = new GetAdressQueryHandler(query, UnityContainer);
             
-            return Request.CreateResponse(HttpStatusCode.Accepted);
+            return Request.CreateResponse(HttpStatusCode.Accepted, handler.Handle());
         }
 
         [HttpPost]
         [Route("adress")]
-        public HttpResponseMessage Post(AdressDetailDomainModel adress)
+        public HttpResponseMessage Post([FromBody] JObject adress)
         {
+            AdressManagementDetailDomainModel adressDomainModel = new AdressManagementDetailDomainModel()
+            {
+                //UID = Guid.Parse(adress["UID"].ToString())
+            };
+
             UpdateAdressQuery query = new UpdateAdressQuery()
             {
                 MandatorUID = Guid.Parse(HttpContext.Current.Request.ServerVariables.Get("MandatorUID")),
-                Adress = adress
+                Adress = adressDomainModel
             };
 
             UpdateAdressQueryHandler handler = new UpdateAdressQueryHandler(query, UnityContainer);
@@ -83,7 +101,7 @@ namespace OrgMan.API.Controllers
 
         [HttpPut]
         [Route("adress")]
-        public HttpResponseMessage Put(AdressDetailDomainModel adress)
+        public HttpResponseMessage Put(AdressManagementDetailDomainModel adress)
         {
             InsertAdressQuery query = new InsertAdressQuery()
             {

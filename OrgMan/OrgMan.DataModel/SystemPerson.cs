@@ -14,7 +14,7 @@ namespace OrgMan.DataModel
     
     public partial class SystemPerson : IEntityUID
     {
-        public System.Guid PersonUID { get; set; }
+        public System.Guid UID { get; set; }
         public System.DateTimeOffset SysInsertTime { get; set; }
         public System.Guid SysInsertAccountUID { get; set; }
         public Nullable<System.DateTimeOffset> SysUpdateTime { get; set; }

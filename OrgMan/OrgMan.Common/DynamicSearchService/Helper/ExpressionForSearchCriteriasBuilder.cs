@@ -37,11 +37,14 @@ namespace OrgMan.Common.DynamicSearchService.Helper
             var isCriteriaCollection = false;
             var constants = new List<ConstantExpression>();
             var allFieldParts = searchCriteria.FieldName.Split('.').ToList();
+
+            //MemberExpression member = null;
             var member = Expression.Property(parameter, allFieldParts.First());
+            allFieldParts.Remove(allFieldParts.First());
 
             Expression expression = null;
 
-            if (allFieldParts.Count > 1)
+            if (allFieldParts.Count > 0)
             {
                 foreach (string searchFieldPart in allFieldParts)
                 {

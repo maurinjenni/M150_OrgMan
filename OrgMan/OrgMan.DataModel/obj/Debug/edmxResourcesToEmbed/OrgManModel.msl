@@ -1,23 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="OrgManModelStoreContainer" CdmEntityContainer="OrgManEntities">
-    <EntitySetMapping Name="Adresses">
-      <EntityTypeMapping TypeName="OrgManModel.Adress">
-        <MappingFragment StoreEntitySet="Adress">
-          <ScalarProperty Name="CountryUID" ColumnName="CountryUID" />
-          <ScalarProperty Name="PostCode" ColumnName="PostCode" />
-          <ScalarProperty Name="City" ColumnName="City" />
-          <ScalarProperty Name="Additional" ColumnName="Additional" />
-          <ScalarProperty Name="HouseNumber" ColumnName="HouseNumber" />
-          <ScalarProperty Name="Street" ColumnName="Street" />
-          <ScalarProperty Name="SysUpdateAccountUID" ColumnName="SysUpdateAccountUID" />
-          <ScalarProperty Name="SysUpdateTime" ColumnName="SysUpdateTime" />
-          <ScalarProperty Name="SysInsertAccountUID" ColumnName="SysInsertAccountUID" />
-          <ScalarProperty Name="SysInsertTime" ColumnName="SysInsertTime" />
-          <ScalarProperty Name="PersonUID" ColumnName="PersonUID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="CommunicationTypes">
       <EntityTypeMapping TypeName="OrgManModel.CommunicationType">
         <MappingFragment StoreEntitySet="CommunicationType">
@@ -58,41 +41,6 @@
           <ScalarProperty Name="SysInsertAccountUID" ColumnName="SysInsertAccountUID" />
           <ScalarProperty Name="SysInsertTime" ColumnName="SysInsertTime" />
           <ScalarProperty Name="UID" ColumnName="UID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="IndividualPersons">
-      <EntityTypeMapping TypeName="OrgManModel.IndividualPerson">
-        <MappingFragment StoreEntitySet="IndividualPerson">
-          <ScalarProperty Name="PictureLink" ColumnName="PictureLink" />
-          <ScalarProperty Name="Comment" ColumnName="Comment" />
-          <ScalarProperty Name="Birthdate" ColumnName="Birthdate" />
-          <ScalarProperty Name="Company" ColumnName="Company" />
-          <ScalarProperty Name="MemberInformationUID" ColumnName="MemberInformationUID" />
-          <ScalarProperty Name="AdressUID" ColumnName="AdressUID" />
-          <ScalarProperty Name="SysUpdateAccountUID" ColumnName="SysUpdateAccountUID" />
-          <ScalarProperty Name="SysUpdateTime" ColumnName="SysUpdateTime" />
-          <ScalarProperty Name="SysInsertAccountUID" ColumnName="SysInsertAccountUID" />
-          <ScalarProperty Name="SysInsertTime" ColumnName="SysInsertTime" />
-          <ScalarProperty Name="PersonUID" ColumnName="PersonUID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Logins">
-      <EntityTypeMapping TypeName="OrgManModel.Login">
-        <MappingFragment StoreEntitySet="Login">
-          <ScalarProperty Name="Salt" ColumnName="Salt" />
-          <ScalarProperty Name="Username" ColumnName="Username" />
-          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
-          <ScalarProperty Name="LockedComment" ColumnName="LockedComment" />
-          <ScalarProperty Name="LockedDate" ColumnName="LockedDate" />
-          <ScalarProperty Name="Locked" ColumnName="Locked" />
-          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
-          <ScalarProperty Name="SysUpdateAccountUID" ColumnName="SysUpdateAccountUID" />
-          <ScalarProperty Name="SysUpdateTime" ColumnName="SysUpdateTime" />
-          <ScalarProperty Name="SysInsertAccountUID" ColumnName="SysInsertAccountUID" />
-          <ScalarProperty Name="SysInsertTime" ColumnName="SysInsertTime" />
-          <ScalarProperty Name="PersonUID" ColumnName="PersonUID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -236,6 +184,58 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Adresses">
+      <EntityTypeMapping TypeName="OrgManModel.Adress">
+        <MappingFragment StoreEntitySet="Adress">
+          <ScalarProperty Name="CountryUID" ColumnName="CountryUID" />
+          <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Additional" ColumnName="Additional" />
+          <ScalarProperty Name="HouseNumber" ColumnName="HouseNumber" />
+          <ScalarProperty Name="Street" ColumnName="Street" />
+          <ScalarProperty Name="SysUpdateAccountUID" ColumnName="SysUpdateAccountUID" />
+          <ScalarProperty Name="SysUpdateTime" ColumnName="SysUpdateTime" />
+          <ScalarProperty Name="SysInsertAccountUID" ColumnName="SysInsertAccountUID" />
+          <ScalarProperty Name="SysInsertTime" ColumnName="SysInsertTime" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IndividualPersons">
+      <EntityTypeMapping TypeName="OrgManModel.IndividualPerson">
+        <MappingFragment StoreEntitySet="IndividualPerson">
+          <ScalarProperty Name="PictureLink" ColumnName="PictureLink" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="Birthdate" ColumnName="Birthdate" />
+          <ScalarProperty Name="Company" ColumnName="Company" />
+          <ScalarProperty Name="MemberInformationUID" ColumnName="MemberInformationUID" />
+          <ScalarProperty Name="AdressUID" ColumnName="AdressUID" />
+          <ScalarProperty Name="SysUpdateAccountUID" ColumnName="SysUpdateAccountUID" />
+          <ScalarProperty Name="SysUpdateTime" ColumnName="SysUpdateTime" />
+          <ScalarProperty Name="SysInsertAccountUID" ColumnName="SysInsertAccountUID" />
+          <ScalarProperty Name="SysInsertTime" ColumnName="SysInsertTime" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Logins">
+      <EntityTypeMapping TypeName="OrgManModel.Login">
+        <MappingFragment StoreEntitySet="Login">
+          <ScalarProperty Name="Salt" ColumnName="Salt" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="LockedComment" ColumnName="LockedComment" />
+          <ScalarProperty Name="LockedDate" ColumnName="LockedDate" />
+          <ScalarProperty Name="Locked" ColumnName="Locked" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="SysUpdateAccountUID" ColumnName="SysUpdateAccountUID" />
+          <ScalarProperty Name="SysUpdateTime" ColumnName="SysUpdateTime" />
+          <ScalarProperty Name="SysInsertAccountUID" ColumnName="SysInsertAccountUID" />
+          <ScalarProperty Name="SysInsertTime" ColumnName="SysInsertTime" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="SystemPersons">
       <EntityTypeMapping TypeName="OrgManModel.SystemPerson">
         <MappingFragment StoreEntitySet="SystemPerson">
@@ -245,7 +245,7 @@
           <ScalarProperty Name="SysUpdateTime" ColumnName="SysUpdateTime" />
           <ScalarProperty Name="SysInsertAccountUID" ColumnName="SysInsertAccountUID" />
           <ScalarProperty Name="SysInsertTime" ColumnName="SysInsertTime" />
-          <ScalarProperty Name="PersonUID" ColumnName="PersonUID" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -10,6 +10,7 @@ using OrgMan.Domain.Handler.HandlerBase;
 using Microsoft.Practices.Unity;
 using OrgMan.DomainObjects;
 using OrgMan.Data.UnitOfWork;
+using OrgMan.DomainObjects.Common;
 
 namespace OrgMan.Domain.Handler.Person
 {

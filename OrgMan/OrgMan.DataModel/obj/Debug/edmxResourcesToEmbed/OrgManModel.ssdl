@@ -2,9 +2,9 @@
 <Schema Namespace="OrgManModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Adress">
     <Key>
-      <PropertyRef Name="PersonUID" />
+      <PropertyRef Name="UID" />
     </Key>
-    <Property Name="PersonUID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UID" Type="uniqueidentifier" Nullable="false" />
     <Property Name="SysInsertTime" Type="datetimeoffset" Precision="7" Nullable="false" />
     <Property Name="SysInsertAccountUID" Type="uniqueidentifier" Nullable="false" />
     <Property Name="SysUpdateTime" Type="datetimeoffset" Precision="7" />
@@ -58,9 +58,9 @@
   </EntityType>
   <EntityType Name="IndividualPerson">
     <Key>
-      <PropertyRef Name="PersonUID" />
+      <PropertyRef Name="UID" />
     </Key>
-    <Property Name="PersonUID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UID" Type="uniqueidentifier" Nullable="false" />
     <Property Name="SysInsertTime" Type="datetimeoffset" Precision="7" Nullable="false" />
     <Property Name="SysInsertAccountUID" Type="uniqueidentifier" Nullable="false" />
     <Property Name="SysUpdateTime" Type="datetimeoffset" Precision="7" />
@@ -74,9 +74,9 @@
   </EntityType>
   <EntityType Name="Login">
     <Key>
-      <PropertyRef Name="PersonUID" />
+      <PropertyRef Name="UID" />
     </Key>
-    <Property Name="PersonUID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UID" Type="uniqueidentifier" Nullable="false" />
     <Property Name="SysInsertTime" Type="datetimeoffset" Precision="7" Nullable="false" />
     <Property Name="SysInsertAccountUID" Type="uniqueidentifier" Nullable="false" />
     <Property Name="SysUpdateTime" Type="datetimeoffset" Precision="7" />
@@ -221,9 +221,9 @@
   </EntityType>
   <EntityType Name="SystemPerson">
     <Key>
-      <PropertyRef Name="PersonUID" />
+      <PropertyRef Name="UID" />
     </Key>
-    <Property Name="PersonUID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UID" Type="uniqueidentifier" Nullable="false" />
     <Property Name="SysInsertTime" Type="datetimeoffset" Precision="7" Nullable="false" />
     <Property Name="SysInsertAccountUID" Type="uniqueidentifier" Nullable="false" />
     <Property Name="SysUpdateTime" Type="datetimeoffset" Precision="7" />
@@ -260,7 +260,7 @@
     <End Role="Email" Type="Self.Email" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="IndividualPerson">
-        <PropertyRef Name="PersonUID" />
+        <PropertyRef Name="UID" />
       </Principal>
       <Dependent Role="Email">
         <PropertyRef Name="IndividualPersonUID" />
@@ -272,7 +272,7 @@
     <End Role="IndividualPerson" Type="Self.IndividualPerson" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Adress">
-        <PropertyRef Name="PersonUID" />
+        <PropertyRef Name="UID" />
       </Principal>
       <Dependent Role="IndividualPerson">
         <PropertyRef Name="AdressUID" />
@@ -299,7 +299,7 @@
         <PropertyRef Name="UID" />
       </Principal>
       <Dependent Role="IndividualPerson">
-        <PropertyRef Name="PersonUID" />
+        <PropertyRef Name="UID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -311,7 +311,7 @@
         <PropertyRef Name="UID" />
       </Principal>
       <Dependent Role="Login">
-        <PropertyRef Name="PersonUID" />
+        <PropertyRef Name="UID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -404,7 +404,7 @@
     <End Role="Phone" Type="Self.Phone" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="IndividualPerson">
-        <PropertyRef Name="PersonUID" />
+        <PropertyRef Name="UID" />
       </Principal>
       <Dependent Role="Phone">
         <PropertyRef Name="IndividualPersonUID" />
@@ -416,7 +416,7 @@
     <End Role="Session" Type="Self.Session" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Login">
-        <PropertyRef Name="PersonUID" />
+        <PropertyRef Name="UID" />
       </Principal>
       <Dependent Role="Session">
         <PropertyRef Name="LoginUID" />
@@ -431,7 +431,7 @@
         <PropertyRef Name="UID" />
       </Principal>
       <Dependent Role="SystemPerson">
-        <PropertyRef Name="PersonUID" />
+        <PropertyRef Name="UID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

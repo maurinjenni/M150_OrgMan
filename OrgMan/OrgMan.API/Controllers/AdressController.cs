@@ -12,6 +12,7 @@ using OrgMan.DomainContracts.Adress;
 using OrgMan.DomainObjects;
 using OrgMan.DomainObjects.Adress;
 using Newtonsoft.Json.Linq;
+using OrgMan.DomainObjects.Common;
 
 namespace OrgMan.API.Controllers
 {
@@ -81,21 +82,20 @@ namespace OrgMan.API.Controllers
 
         [HttpPost]
         [Route("adress")]
-        public HttpResponseMessage Post([FromBody] JObject adress)
+        public HttpResponseMessage Post([FromBody] JObject jsonObject)
         {
-            AdressManagementDetailDomainModel adressDomainModel = new AdressManagementDetailDomainModel()
-            {
-                //UID = Guid.Parse(adress["UID"].ToString())
-            };
+
+            AdressManagementDetailDomainModel adressDomainModel =
+                jsonObject.ToObject<AdressManagementDetailDomainModel>();
 
             UpdateAdressQuery query = new UpdateAdressQuery()
             {
                 MandatorUID = Guid.Parse(HttpContext.Current.Request.ServerVariables.Get("MandatorUID")),
-                Adress = adressDomainModel
+                AdressManagementDetailDomainModel = adressDomainModel
             };
 
             UpdateAdressQueryHandler handler = new UpdateAdressQueryHandler(query, UnityContainer);
-            
+            handler.Handle();
             return Request.CreateResponse(HttpStatusCode.Accepted);
         }
 

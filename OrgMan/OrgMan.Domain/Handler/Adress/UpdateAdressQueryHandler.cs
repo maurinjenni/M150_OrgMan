@@ -26,7 +26,7 @@ namespace OrgMan.Domain.Handler.Adress
         {
             OrgManUnitOfWork uow = new OrgManUnitOfWork();
 
-           uow.AdressRepository.Update(_query.MandatorUID, Mapper.Map<DataModel.Adress>(_query.Adress));
+           uow.AdressRepository.Update(_query.MandatorUID, Mapper.Map<DataModel.Adress>(_query.AdressManagementDetailDomainModel));
         }
     }
 }

@@ -161,7 +161,6 @@ namespace OrgMan.API.Controllers
             {
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
-
         }
 
         [HttpDelete]
@@ -177,6 +176,7 @@ namespace OrgMan.API.Controllers
             try
             {
                 DeleteAdressQueryHandler handler = new DeleteAdressQueryHandler(query, UnityContainer);
+
                 handler.Handle();
 
                 return Request.CreateResponse(HttpStatusCode.Accepted);
@@ -186,6 +186,5 @@ namespace OrgMan.API.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
         }
-       
     }
 }

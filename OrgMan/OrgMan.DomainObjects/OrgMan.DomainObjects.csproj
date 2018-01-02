@@ -45,11 +45,13 @@
     <Compile Include="Adress\AdressManagementSearchDomainModel.cs" />
     <Compile Include="Common\EmailDomainModel.cs" />
     <Compile Include="Common\IndividualPersonDomainModel.cs" />
+    <Compile Include="Common\MeetingDomainModel.cs" />
     <Compile Include="Common\MemberInformationDomainModel.cs" />
     <Compile Include="Common\MemberInformationToMembershipDomainModel.cs" />
     <Compile Include="Common\MembershipDomainModel.cs" />
     <Compile Include="Common\PersonDomainModel.cs" />
     <Compile Include="Common\PhoneDomainModel.cs" />
+    <Compile Include="MeetingDetailDomainModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Session\SessionDomainModel.cs" />
   </ItemGroup>

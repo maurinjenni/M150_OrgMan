@@ -59,6 +59,11 @@
     <Compile Include="Adress\UpdateAdressQuery.cs" />
     <Compile Include="Authentication\LoginQuery.cs" />
     <Compile Include="Authentication\LogoutQuery.cs" />
+    <Compile Include="Meeting\DeleteMeetingQuery.cs" />
+    <Compile Include="Meeting\GetMeetingQuery.cs" />
+    <Compile Include="Meeting\InsertMeetingQuery.cs" />
+    <Compile Include="Meeting\SearchMeetingQuery.cs" />
+    <Compile Include="Meeting\UpdateMeetingQuery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Session\CreateSessionQuery.cs" />
     <Compile Include="Session\GetSessionQuery.cs" />

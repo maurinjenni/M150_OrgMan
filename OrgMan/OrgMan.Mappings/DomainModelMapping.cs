@@ -12,7 +12,6 @@ namespace OrgMan.Mappings
     {
         public static void CreateMappings()
         {
-
             AutoMapper.Mapper.CreateMap<IndividualPerson, AdressManagementSearchDomainModel>()
                 .ForMember(dest => dest.UID, opt => opt.MapFrom(src => src.Person.UID))
                 .ForMember(dest => dest.Firstname, opt => opt.MapFrom(src => src.Person != null ? src.Person.Firstname : null ))

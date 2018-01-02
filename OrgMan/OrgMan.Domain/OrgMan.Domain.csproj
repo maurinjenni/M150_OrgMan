@@ -62,6 +62,11 @@
     <Compile Include="Handler\Authentication\LoginQueryHandler.cs" />
     <Compile Include="Handler\Authentication\LogoutQueryHandler.cs" />
     <Compile Include="Handler\HandlerBase\QueryHandlerBase.cs" />
+    <Compile Include="Handler\Meeting\DeleteMeetingQueryHandler.cs" />
+    <Compile Include="Handler\Meeting\GetMeetingQueryHandler.cs" />
+    <Compile Include="Handler\Meeting\InsertMeetingQueryHandler.cs" />
+    <Compile Include="Handler\Meeting\SearchMeetingQueryHandler.cs" />
+    <Compile Include="Handler\Meeting\UpdateMeetingQueryHandler.cs" />
     <Compile Include="Handler\Session\CreateSessionQueryHandler.cs" />
     <Compile Include="Handler\Session\GetSessionQueryHandler.cs" />
     <Compile Include="Handler\Session\UpdateSessionQueryHandler.cs" />

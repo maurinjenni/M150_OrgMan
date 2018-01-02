@@ -11,6 +11,6 @@ namespace OrgMan.DomainContracts.Adress
     {
         public Guid MandatorUID { get; set; }
 
-        public AdressManagementDetailDomainModel Adress { get; set; }
+        public AdressManagementDetailDomainModel AdressManagementDetailDomainModel { get; set; }
     }
 }

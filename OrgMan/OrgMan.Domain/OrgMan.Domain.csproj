@@ -62,7 +62,6 @@
     <Compile Include="Handler\Authentication\LoginQueryHandler.cs" />
     <Compile Include="Handler\Authentication\LogoutQueryHandler.cs" />
     <Compile Include="Handler\HandlerBase\QueryHandlerBase.cs" />
-    <Compile Include="Handler\Person\GetPersonQueryHandler.cs" />
     <Compile Include="Handler\Session\CreateSessionQueryHandler.cs" />
     <Compile Include="Handler\Session\GetSessionQueryHandler.cs" />
     <Compile Include="Handler\Session\UpdateSessionQueryHandler.cs" />

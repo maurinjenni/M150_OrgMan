@@ -23,34 +23,32 @@ namespace OrgMan.Mappings
                 .ForMember(dest => dest.Street, opt => opt.MapFrom(src => src.Adress != null ? src.Adress.Street : null))
                 .ForMember(dest => dest.HouseNumber, opt => opt.MapFrom(src => src.Adress != null ? src.Adress.HouseNumber: null));
 
-            //AutoMapper.Mapper.CreateMap<IndividualPerson, IndividualPersonDomainModel>();
+            
+
             AutoMapper.Mapper.CreateMap<Adress, AdressDomainModel>();
-            AutoMapper.Mapper.CreateMap<Person, PersonDomainModel>();
+            AutoMapper.Mapper.CreateMap<AdressDomainModel,Adress>();
+
+            AutoMapper.Mapper.CreateMap<IndividualPerson, AdressManagementDetailDomainModel>();
+            AutoMapper.Mapper.CreateMap<AdressManagementDetailDomainModel, IndividualPerson>();
+
             AutoMapper.Mapper.CreateMap<IndividualPerson, IndividualPersonDomainModel>();
-            AutoMapper.Mapper.CreateMap<IndividualPerson, AdressManagementDetailDomainModel>()
-                .ForMember(dest => dest.IndividualPerson, opt => opt.MapFrom(src => src)); ;
+            AutoMapper.Mapper.CreateMap<IndividualPersonDomainModel, IndividualPerson>();
+
+            AutoMapper.Mapper.CreateMap<Person, PersonDomainModel>();
+            AutoMapper.Mapper.CreateMap<PersonDomainModel, Person>();
+
             AutoMapper.Mapper.CreateMap<Email, EmailDomainModel>();
+            AutoMapper.Mapper.CreateMap<EmailDomainModel, Email>();
+
             AutoMapper.Mapper.CreateMap<Phone, PhoneDomainModel>();
-
-                //.ForMember(dest => dest.IndividualPerson)
-                //.ForMember(dest => dest.IndividualPerson.UID, opt => opt.MapFrom(src => src.UID))
-                //.ForMember(dest => dest.IndividualPerson.BirthDate, opt => opt.MapFrom(src => src.Person.IndividualPerson.Birthdate))
-                //.ForMember(dest => dest.IndividualPerson.Comment, opt => opt.MapFrom(src => src.Person.IndividualPerson.Comment))
-                //.ForMember(dest => dest.IndividualPerson.Company, opt => opt.MapFrom(src => src.Person.IndividualPerson.Company));
-                //.ForMember(dest => dest.IndividualPerson.Person.UID, opt => opt.MapFrom(src => src.Person.UID))
-                //.ForMember(dest => dest.IndividualPerson.Person.Firstname, opt => opt.MapFrom(src => src.Person.Firstname))
-                //.ForMember(dest => dest.IndividualPerson.Person.Lastname, opt => opt.MapFrom(src => src.Person.Lastname))
-                //.ForMember(dest => dest.IndividualPerson.Person.SalutationUID, opt => opt.MapFrom(src => src.Person.SalutationUID))
-                //.ForMember(dest => dest.Adress, opt => opt.MapFrom(src => src.Person.IndividualPerson.Adress))
-
-
-
-
+            AutoMapper.Mapper.CreateMap<PhoneDomainModel, Phone>();
+                
             AutoMapper.Mapper.CreateMap<Adress, AdressManagementDetailDomainModel>();
+            AutoMapper.Mapper.CreateMap<AdressManagementDetailDomainModel, Adress>()
+                .ForMember(dest => dest.IndividualPersons, opt => opt.MapFrom(src => src));
 
             AutoMapper.Mapper.CreateMap<Session, SessionDomainModel>()
                 .ForMember(dest => dest.MandatorUIDs, opt => opt.MapFrom(src => src.Login.Person.PersonToMandators.Select(ptm => ptm.MandatorUID)));
-                
             AutoMapper.Mapper.CreateMap<SessionDomainModel, Session>();
         }
     }

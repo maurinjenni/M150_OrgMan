@@ -12,6 +12,8 @@ namespace OrgMan.DomainObjects.Common
 
         public Guid CommunicationTypeUID { get; set; }
 
+        public Guid IndividualPersonUID { get; set; }
+
         public string Number { get; set; }
 
         public bool IsMain { get; set; }

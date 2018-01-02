@@ -28,7 +28,7 @@ namespace OrgMan.Domain.Handler.Session
             session.SysUpdateAccountUID = Guid.NewGuid();
 
             OrgManUnitOfWork uow = new OrgManUnitOfWork();
-            uow.SessionRepository.Update(Guid.Empty, session);
+            uow.SessionRepository.Update(session);
 
             uow.Commit();
         }

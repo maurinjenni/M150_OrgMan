@@ -5,6 +5,10 @@ using OrgMan.DataContracts.Repository.RepositoryBase;
 using OrgMan.Data.Repository;
 using OrgMan.Data.Repository.Repositorybase;
 using OrgMan.DataContracts.Repository;
+using System.Collections;
+using System.Data.Entity.Core.Objects;
+using System.Collections.Generic;
+using System;
 
 namespace OrgMan.Data.UnitOfWork
 {
@@ -20,14 +24,17 @@ namespace OrgMan.Data.UnitOfWork
             CountryRepository = new CountryRepository(_context);
             LoginRepository = new LoginRepository(_context);
             MandatorRepository = new MandatorRepository(_context);
+            PersonToMandatorRepository = new GenericRepository<PersonToMandator>(_context);
             MeetingRepository = new MeetingRepository(_context);
             MemberInformationRepository = new MemberInformationRepository(_context);
             MemberInformationToMembershipRepository = new MemberInformationToMembershipRepository(_context);
             MembershipRepository = new MembershipRepository(_context);
             PhoneRepository = new PhoneRepository(_context);
+            EmailRepository = new EmailRepository(_context);
             SalutationRepository = new SalutationRepository(_context);
             IndividualPersonRepository = new GenericRepository<IndividualPerson>(_context);
             SystemPersonRepository = new GenericRepository<SystemPerson>(_context);
+            PersonRepository = new GenericRepository<Person>(_context);
             AuthenticationRepository = new AuthenticationRepository(_context);
             SessionRepository = new GenericRepository<Session>(_context);
         }
@@ -39,7 +46,7 @@ namespace OrgMan.Data.UnitOfWork
 
         public IGenericRepository<Country> CountryRepository { get; set; }
 
-        public IGenericRepository<Email> EmailAdressRepository { get; set; }
+        public IGenericRepository<Email> EmailRepository { get; set; }
 
         public IGenericRepository<Login> LoginRepository { get; set; }
 
@@ -67,8 +74,29 @@ namespace OrgMan.Data.UnitOfWork
 
         public IGenericRepository<Session> SessionRepository { get; set; }
 
+        public IGenericRepository<PersonToMandator> PersonToMandatorRepository { get; set; }
+
         public void Commit()
         {
+            ObjectContext context = ((IObjectContextAdapter)_context).ObjectContext;
+
+            IEnumerable<ObjectStateEntry> objectStateEntries = context.ObjectStateManager.GetObjectStateEntries(System.Data.Entity.EntityState.Added | System.Data.Entity.EntityState.Modified);
+
+            foreach (var entry in objectStateEntries)
+            {
+                var entityBase = entry.Entity as IEntityUID;
+
+                if(entry.State == System.Data.Entity.EntityState.Added)
+                {
+                    entityBase.SysInsertAccountUID = Guid.NewGuid();
+                    entityBase.SysInsertTime = DateTimeOffset.Now;
+                } else if(entry.State == System.Data.Entity.EntityState.Modified)
+                {
+                    entityBase.SysUpdateAccountUID = Guid.NewGuid();
+                    entityBase.SysUpdateTime = DateTimeOffset.Now;
+                }
+            }
+
             bool saveFailed;
             do
             {

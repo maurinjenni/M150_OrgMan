@@ -22,11 +22,64 @@ namespace OrgMan.Domain.Handler.Adress
             _query = query;
         }
 
-        public void Handle()
+        public AdressManagementDetailDomainModel Handle()
         {
             OrgManUnitOfWork uow = new OrgManUnitOfWork();
 
-           uow.AdressRepository.Update(_query.MandatorUID, Mapper.Map<DataModel.Adress>(_query.AdressManagementDetailDomainModel));
+            var individualPerson = Mapper.Map<DataModel.IndividualPerson>(_query.AdressManagementDetailDomainModel);
+
+            //individualPerson.SysUpdateAccountUID = Guid.NewGuid();
+            //individualPerson.SysUpdateTime = DateTimeOffset.Now;
+
+            //individualPerson.Person.SysUpdateAccountUID = Guid.NewGuid();
+            //individualPerson.Person.SysUpdateTime = DateTimeOffset.Now;
+
+            if(individualPerson.MemberInformation != null)
+            {
+                //individualPerson.MemberInformation.SysUpdateAccountUID = Guid.NewGuid();
+                //individualPerson.MemberInformation.SysUpdateTime = DateTimeOffset.Now;
+            }
+
+            if(individualPerson.Adress != null)
+            {
+                //individualPerson.Adress.SysUpdateAccountUID = Guid.NewGuid();
+                //individualPerson.Adress.SysUpdateTime = DateTimeOffset.Now;
+            }
+
+            foreach (var phone in individualPerson.Phones)
+            {
+                //phone.SysUpdateAccountUID = Guid.NewGuid();
+                //phone.SysUpdateTime = DateTimeOffset.Now;
+            }
+
+            foreach (var email in individualPerson.Emails)
+            {
+                //email.SysUpdateAccountUID = Guid.NewGuid();
+                //email.SysUpdateTime = DateTimeOffset.Now;
+            }
+
+
+            uow.IndividualPersonRepository.Update(individualPerson);
+            uow.PersonRepository.Update(individualPerson.Person);
+            uow.AdressRepository.Update(individualPerson.Adress);
+
+            foreach (var phone in individualPerson.Phones)
+            {
+                uow.PhoneRepository.Update(phone);
+                //phone.SysUpdateAccountUID = Guid.NewGuid();
+                //phone.SysUpdateTime = DateTimeOffset.Now;
+            }
+
+            foreach (var email in individualPerson.Emails)
+            {
+                uow.EmailRepository.Update(email);
+                //email.SysUpdateAccountUID = Guid.NewGuid();
+                //email.SysUpdateTime = DateTimeOffset.Now;
+            }
+
+            uow.Commit();
+
+            return Mapper.Map<AdressManagementDetailDomainModel>(individualPerson);
         }
     }
 }

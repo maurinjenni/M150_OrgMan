@@ -13,14 +13,14 @@ namespace OrgMan.DataContracts.Repository.RepositoryBase
     Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
     string includeProperties = "", int? numberOfRows = null);
 
-        TEntity Get(List<Guid> mandatorUid, Guid uid);
+        TEntity Get(Guid uid);
 
         void Insert(TEntity entity);
 
-        void Delete(Guid mandatorUid, Guid uid);
+        void Delete(Guid uid);
 
-        void Delete(Guid mandatorUid, TEntity entityToDelete);
+        void Delete(TEntity entityToDelete);
 
-        void Update(Guid mandatorUid, TEntity entityToUpdate);
+        void Update(TEntity entityToUpdate);
     }
 }

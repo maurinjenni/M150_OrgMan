@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace OrgMan.DataModel
 {
@@ -10,6 +11,10 @@ namespace OrgMan.DataModel
 
         DateTimeOffset SysInsertTime { get; set; }
 
-        Guid MandatorUID { get; set; }
+        Nullable<Guid> SysUpdateAccountUID { get; set; }
+
+        Nullable<DateTimeOffset> SysUpdateTime { get; set; }
+
+        IEnumerable<Guid> MandatorUIDs { get; set; }
     }
 }

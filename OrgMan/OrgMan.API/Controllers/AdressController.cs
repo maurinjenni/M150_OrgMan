@@ -23,18 +23,18 @@ namespace OrgMan.API.Controllers
         public HttpResponseMessage Get([FromUri] List<SearchCriteriaDomainModel> searchCriterias = null, [FromUri]int? numberOfRows = null)
         {
             numberOfRows = 100;
-            searchCriterias = new List<SearchCriteriaDomainModel>();
-            searchCriterias.Add(new SearchCriteriaDomainModel()
-            {
-                DataType = Common.DynamicSearchService.DynamicSearchModel.Enums.SearchCriteriaDataTypeDomainModelEnum.String,
-                OperationType = Common.DynamicSearchService.DynamicSearchModel.Enums.SearchCriteriaOperationTypeDomainModelEnum.Contains,
-                Values = new List<object>(){ "Malcolm" },
-                Title = "Firstname",
-                FieldName = "Person.Firstname"
-            });
+            //searchCriterias = new List<SearchCriteriaDomainModel>();
+            //searchCriterias.Add(new SearchCriteriaDomainModel()
+            //{
+            //    DataType = Common.DynamicSearchService.DynamicSearchModel.Enums.SearchCriteriaDataTypeDomainModelEnum.String,
+            //    OperationType = Common.DynamicSearchService.DynamicSearchModel.Enums.SearchCriteriaOperationTypeDomainModelEnum.Contains,
+            //    Values = new List<object>() { "Anna" },
+            //    Title = "Firstname",
+            //    FieldName = "Person.Firstname"
+            //});
 
             //var mandatorUidStrings = HttpContext.Current.Request.ServerVariables.Get("MandatorUID").Split(',');
-            var mandatorUidStrings = new List<string>() { "72920FF1-4C81-F677-D5EE-00FD566FAE86" };
+            var mandatorUidStrings = new List<string>() { "9C383D13-D557-564F-2060-01CFA1288167" };
 
             List<Guid> mandatorUids = new List<Guid>();
 
@@ -84,33 +84,45 @@ namespace OrgMan.API.Controllers
         [Route("adress")]
         public HttpResponseMessage Post([FromBody] JObject jsonObject)
         {
+            //var mandatorUidStrings = HttpContext.Current.Request.ServerVariables.Get("MandatorUID").Split(',');
+            var mandatorUidStrings = new List<string>() { "72920FF1-4C81-F677-D5EE-00FD566FAE86" };
 
             AdressManagementDetailDomainModel adressDomainModel =
                 jsonObject.ToObject<AdressManagementDetailDomainModel>();
 
+            var individualPerson = jsonObject["IndividualPerson"];
+            
             UpdateAdressQuery query = new UpdateAdressQuery()
             {
-                MandatorUID = Guid.Parse(HttpContext.Current.Request.ServerVariables.Get("MandatorUID")),
+                MandatorUID = Guid.Parse(mandatorUidStrings[0]),
                 AdressManagementDetailDomainModel = adressDomainModel
             };
 
             UpdateAdressQueryHandler handler = new UpdateAdressQueryHandler(query, UnityContainer);
-            handler.Handle();
-            return Request.CreateResponse(HttpStatusCode.Accepted);
+            
+            return Request.CreateResponse(HttpStatusCode.Accepted, handler.Handle());
         }
 
         [HttpPut]
         [Route("adress")]
-        public HttpResponseMessage Put(AdressManagementDetailDomainModel adress)
+        public HttpResponseMessage Put([FromBody] JObject jsonObject)
         {
+            //var mandatorUidStrings = HttpContext.Current.Request.ServerVariables.Get("MandatorUID").Split(',');
+            var mandatorUidStrings = new List<string>() { "72920FF1-4C81-F677-D5EE-00FD566FAE86" };
+
+            AdressManagementDetailDomainModel adressDomainModel =
+                jsonObject.ToObject<AdressManagementDetailDomainModel>();
+
             InsertAdressQuery query = new InsertAdressQuery()
             {
-                MandatorUID = Guid.Parse(HttpContext.Current.Request.ServerVariables.Get("MandatorUID")),
-                Adress = adress                
+                //MandatorUID = Guid.Parse(HttpContext.Current.Request.ServerVariables.Get("MandatorUID")),
+                MandatorUID = Guid.Parse(mandatorUidStrings[0]),
+                AdressManagementDetailDomainModel = adressDomainModel
             };
 
             InsertAdressQueryHandler handler = new InsertAdressQueryHandler(query, UnityContainer);
-            return Request.CreateResponse(HttpStatusCode.Accepted);
+
+            return Request.CreateResponse(HttpStatusCode.Accepted, handler.Handle());
         }
 
         [HttpDelete]
@@ -119,7 +131,7 @@ namespace OrgMan.API.Controllers
         {
             DeleteAdressQuery query = new DeleteAdressQuery()
             {
-                AdressUID = uid,
+                IndividualPersonUID = uid,
                 MandatorUID = Guid.Empty,
             };
 

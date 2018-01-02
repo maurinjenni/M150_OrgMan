@@ -25,6 +25,8 @@ namespace OrgMan.DomainObjects.Adress
 
         public AdressDomainModel Adress {get;set;}
 
+        public MemberInformationDomainModel MemberInformation { get; set; }
+
         public List<PhoneDomainModel> Phones { get; set; }
 
         public List<EmailDomainModel> Emails { get; set; }

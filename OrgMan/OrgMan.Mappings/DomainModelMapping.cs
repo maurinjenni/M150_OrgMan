@@ -23,8 +23,6 @@ namespace OrgMan.Mappings
                 .ForMember(dest => dest.Street, opt => opt.MapFrom(src => src.Adress != null ? src.Adress.Street : null))
                 .ForMember(dest => dest.HouseNumber, opt => opt.MapFrom(src => src.Adress != null ? src.Adress.HouseNumber: null));
 
-            
-
             AutoMapper.Mapper.CreateMap<Adress, AdressDomainModel>();
             AutoMapper.Mapper.CreateMap<AdressDomainModel,Adress>();
 
@@ -42,7 +40,16 @@ namespace OrgMan.Mappings
 
             AutoMapper.Mapper.CreateMap<Phone, PhoneDomainModel>();
             AutoMapper.Mapper.CreateMap<PhoneDomainModel, Phone>();
-                
+
+            AutoMapper.Mapper.CreateMap<MemberInformation, MemberInformationDomainModel>();
+            AutoMapper.Mapper.CreateMap<MemberInformationDomainModel, MemberInformation>();
+
+            AutoMapper.Mapper.CreateMap<MemberInformationToMembership, MemberInformationToMembershipDomainModel>();
+            AutoMapper.Mapper.CreateMap<MemberInformationToMembershipDomainModel, MemberInformationToMembership>();
+
+            AutoMapper.Mapper.CreateMap<Membership, MembershipDomainModel>();
+            AutoMapper.Mapper.CreateMap<MembershipDomainModel, Membership>();
+
             AutoMapper.Mapper.CreateMap<Adress, AdressManagementDetailDomainModel>();
             AutoMapper.Mapper.CreateMap<AdressManagementDetailDomainModel, Adress>()
                 .ForMember(dest => dest.IndividualPersons, opt => opt.MapFrom(src => src));

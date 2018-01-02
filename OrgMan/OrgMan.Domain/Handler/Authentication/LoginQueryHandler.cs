@@ -11,6 +11,7 @@ using Microsoft.Practices.Unity;
 using OrgMan.Data.UnitOfWork;
 using OrgMan.Domain.Handler.HandlerBase;
 using OrgMan.DomainContracts.Authentication;
+using System.Data;
 
 namespace OrgMan.Domain.Handler.Authentication
 {
@@ -24,16 +25,34 @@ namespace OrgMan.Domain.Handler.Authentication
         }
 
         public Guid Handle()
-        {
-            OrgManUnitOfWork uow = new OrgManUnitOfWork();
-            Guid personUid = uow.AuthenticationRepository.Login(_query.Username, _query.Password);
-
-            if (personUid != null)
+        {   
+            try
             {
-                return personUid;
-            }
+                OrgManUnitOfWork uow = new OrgManUnitOfWork();
 
-            throw new UnauthorizedAccessException("Invalid Userinformation");
+                Guid personUid = uow.AuthenticationRepository.Login(_query.Username, _query.Password);
+
+                if (personUid != null)
+                {
+                    return personUid;
+                }
+                else
+                {
+                    throw new UnauthorizedAccessException("Invalid Userinformation");
+                }                
+            }
+            catch (DataException e)
+            {
+                throw new Exception("Internal Server Error", e);
+            }
+            catch (UnauthorizedAccessException e)
+            {
+                throw new Exception("Unauthorized Access", e);
+            }
+            catch(Exception e)
+            {
+                throw new Exception("Internal Server Error");
+            }
         }
     }
 }

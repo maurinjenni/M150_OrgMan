@@ -5,6 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using OrgMan.DataContracts.Repository.RepositoryBase;
 using OrgMan.DataModel;
+using System.Data;
 
 namespace OrgMan.Data.Repository.Repositorybase
 {
@@ -88,9 +89,8 @@ namespace OrgMan.Data.Repository.Repositorybase
             }
             else
             {
-                throw new Exception("No Entity found to UID : " + uid);
+                throw new DataException("No Entity found to UID : " + uid);
             }
-
         }
 
 

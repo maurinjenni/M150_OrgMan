@@ -22,10 +22,14 @@ namespace OrgMan.Common.DynamicSearchService
                 // convert all Values from Searchcriterias 
                 searchCriterias = SearchCriteriaConverter.Convert(searchCriterias);
             }
+            catch(FormatException e)
+            {
+                throw new InvalidOperationException("Invalid SearchCriteria... False Format of SearchCriteria");
+            }
             catch (Exception e)
             {
                 // Cant convert an Value
-                throw new Exception("Invalid SearchCriteria... Exception thrown while Convert SearchCriteria", e);
+                throw new InvalidOperationException("Invalid SearchCriteria... Exception thrown while Convert SearchCriteria");
             }
 
             try
@@ -33,12 +37,13 @@ namespace OrgMan.Common.DynamicSearchService
 
                 ParameterExpression parameter = Expression.Parameter(typeof(T), typeof(T).Name);
                 Expression expression = ExpressionForSearchCriteriasBuilder.GetExpression(searchCriterias, parameter);
+
                 return expression == null ? null : Expression.Lambda<Func<T, bool>>(expression, parameter);
             }
             catch (Exception e)
             {
                 // Cant build the Expression for the SearchCriterias
-                throw new Exception("Invalid SearchCriteria... Exception thrown while Building Expression", e);
+                throw new InvalidOperationException("Invalid SearchCriteria... Exception thrown while Building Expression");
             }
         }
     }

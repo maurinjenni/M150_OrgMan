@@ -6,6 +6,7 @@ using OrgMan.Domain.Handler.HandlerBase;
 using OrgMan.DomainContracts.Adress;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -15,72 +16,108 @@ namespace OrgMan.Domain.Handler.Adress
     public class DeleteAdressQueryHandler : QueryHandlerBase
     {
         private DeleteAdressQuery _query;
-        private OrgManUnitOfWork uow;
+        private OrgManUnitOfWork _uow;
 
         public DeleteAdressQueryHandler(DeleteAdressQuery query, IUnityContainer unityContainer) : base(unityContainer)
         {
             _query = query;
-            uow = new OrgManUnitOfWork();
+            _uow = new OrgManUnitOfWork();
         }
 
         public void Handle()
         {
-            IndividualPerson individualPerson = uow.IndividualPersonRepository.Get(_query.IndividualPersonUID);
-
-            Guid adressUid = individualPerson.AdressUID;
-
-            if (individualPerson.Phones != null && individualPerson.Phones.Any())
+            try
             {
-                DeletePhones(individualPerson.Phones.Select(p => p.UID).ToList());
-            }
+                IndividualPerson individualPerson = _uow.IndividualPersonRepository.Get(_query.IndividualPersonUID);
 
-            if (individualPerson.Emails != null && individualPerson.Emails.Any())
-            {
-                DeleteEmails(individualPerson.Emails.Select(p => p.UID).ToList());
-            }
-
-            if (individualPerson.Person.PersonToMandators != null && individualPerson.Person.PersonToMandators.Any())
-            {
-                DeletePersonToMandators(individualPerson.Person.PersonToMandators.Select(p => p.UID).ToList());
-            }
-
-            if (individualPerson.Person.Login != null)
-            {
-                if (individualPerson.Person.Login.Sessions != null && individualPerson.Person.Login.Sessions.Any())
+                if(individualPerson == null)
                 {
-                    DeleteSessions(individualPerson.Person.Login.Sessions.Select(s => s.UID).ToList());
+                    throw new DataException("No Entity found to UID : " + _query.IndividualPersonUID);
+                }
+                
+                Guid adressUid = individualPerson.AdressUID;
+
+                if(adressUid == null)
+                {
+                    throw new DataException("No Adress found to Entity with the UID : " + _query.IndividualPersonUID);
                 }
 
-                uow.LoginRepository.Delete(individualPerson.Person.Login.UID);
-            }
-
-            if (individualPerson.Person != null && individualPerson.Person.IndividualPerson != null && individualPerson.Person.SystemPerson == null)
-            {
-                uow.PersonRepository.Delete(individualPerson.Person.UID);
-            }
-
-            uow.IndividualPersonRepository.Delete(_query.IndividualPersonUID);
-
-            if (individualPerson.MemberInformationUID != null)
-            {
-                if (individualPerson.MemberInformation.MemberInformationToMemberships != null && individualPerson.MemberInformation.MemberInformationToMemberships.Any())
+                if (individualPerson.Phones != null && individualPerson.Phones.Any())
                 {
-                    DeleteMemberInformationToMemberships(individualPerson.MemberInformation.MemberInformationToMemberships.Select(m => m.UID).ToList());
+                    DeletePhones(individualPerson.Phones.Select(p => p.UID).ToList());
                 }
 
-                DeleteMemberInformation(individualPerson.MemberInformationUID.Value);
+                if (individualPerson.Emails != null && individualPerson.Emails.Any())
+                {
+                    DeleteEmails(individualPerson.Emails.Select(p => p.UID).ToList());
+                }
+
+                if (individualPerson.Person.PersonToMandators != null && individualPerson.Person.PersonToMandators.Any())
+                {
+                    DeletePersonToMandators(individualPerson.Person.PersonToMandators.Select(p => p.UID).ToList());
+                }
+                else
+                {
+                    throw new DataException("No MandatorUDIs found for Entity with the UID : " + _query.IndividualPersonUID);
+                }
+
+                if (individualPerson.Person.Login != null)
+                {
+                    if (individualPerson.Person.Login.Sessions != null && individualPerson.Person.Login.Sessions.Any())
+                    {
+                        DeleteSessions(individualPerson.Person.Login.Sessions.Select(s => s.UID).ToList());
+                    }
+
+                    _uow.LoginRepository.Delete(individualPerson.Person.Login.UID);
+                }
+
+                if (individualPerson.Person != null && individualPerson.Person.IndividualPerson != null && individualPerson.Person.SystemPerson == null)
+                {
+                    _uow.PersonRepository.Delete(individualPerson.Person.UID);
+                }
+
+                _uow.IndividualPersonRepository.Delete(_query.IndividualPersonUID);
+
+                if (individualPerson.MemberInformationUID != null)
+                {
+                    if (individualPerson.MemberInformation.MemberInformationToMemberships != null && individualPerson.MemberInformation.MemberInformationToMemberships.Any())
+                    {
+                        DeleteMemberInformationToMemberships(individualPerson.MemberInformation.MemberInformationToMemberships.Select(m => m.UID).ToList());
+                    }
+
+                    DeleteMemberInformation(individualPerson.MemberInformationUID.Value);
+                }
+
+                DeleteAdress(individualPerson.AdressUID);
+            }
+            catch (DataException e)
+            {
+                throw new Exception("Internal Server Error", e);
+            }
+            catch(Exception e)
+            {
+                throw new Exception("Internal Server Error");
             }
 
-            DeleteAdress(individualPerson.AdressUID);
-
-            uow.Commit();
+            try
+            {
+                _uow.Commit();
+            }
+            catch (DataException e)
+            {
+                throw new Exception("Internal Server Error during Saving changes", e);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Internal Server Error during Saving changes");
+            }
         }
 
         private void DeletePhones(List<Guid> uids)
         {
             foreach (var uid in uids)
             {
-                uow.PhoneRepository.Delete(uid);
+                _uow.PhoneRepository.Delete(uid);
             }
         }
 
@@ -88,7 +125,7 @@ namespace OrgMan.Domain.Handler.Adress
         {
             foreach (var uid in uids)
             {
-                uow.EmailRepository.Delete(uid);
+                _uow.EmailRepository.Delete(uid);
             }
         }
 
@@ -96,7 +133,7 @@ namespace OrgMan.Domain.Handler.Adress
         {
             foreach (var uid in uids)
             {
-                uow.PersonToMandatorRepository.Delete(uid);
+                _uow.PersonToMandatorRepository.Delete(uid);
             }
         }
 
@@ -104,7 +141,7 @@ namespace OrgMan.Domain.Handler.Adress
         {
             foreach (var uid in uids)
             {
-                uow.SessionRepository.Delete(uid);
+                _uow.SessionRepository.Delete(uid);
             }
         }
 
@@ -112,27 +149,27 @@ namespace OrgMan.Domain.Handler.Adress
         {
             foreach (var uid in uids)
             {
-                uow.MemberInformationToMembershipRepository.Delete(uid);
+                _uow.MemberInformationToMembershipRepository.Delete(uid);
             }
         }
 
         private void DeleteAdress(Guid uid)
         {
-            var adress = uow.AdressRepository.Get(uid);
+            var adress = _uow.AdressRepository.Get(uid);
 
             if (adress.IndividualPersons.Count == 0)
             {
-                uow.AdressRepository.Delete(uid);
+                _uow.AdressRepository.Delete(uid);
             }
         }
 
         private void DeleteMemberInformation(Guid uid)
         {
-            var memberinformation = uow.MemberInformationRepository.Get(uid);
+            var memberinformation = _uow.MemberInformationRepository.Get(uid);
 
             if(memberinformation.IndividualPersons.Count == 0)
             {
-                uow.MemberInformationRepository.Delete(uid);
+                _uow.MemberInformationRepository.Delete(uid);
             }
         }
     }

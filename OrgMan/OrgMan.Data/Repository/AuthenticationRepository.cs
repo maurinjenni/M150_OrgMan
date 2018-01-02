@@ -24,7 +24,7 @@ namespace OrgMan.Data.Repository
 
             if (!_context.Logins.Any() || _context.Logins.FirstOrDefault(l => l.Username == username) == null)
             {
-                throw new Exception("Invalid Userinformation");
+                throw new DataException("Invalid Userinformation");
             }
 
             Login logindata = _context.Logins.FirstOrDefault(l => l.Username == username);
@@ -34,12 +34,13 @@ namespace OrgMan.Data.Repository
             var pbkdf2 = new Rfc2898DeriveBytes(password, saltBytes, 1000);
 
             string pwdString = Convert.ToBase64String(pbkdf2.GetBytes(256));
+
             if (logindata.PasswordHash == pwdString)
             {
                 return logindata.Person.UID;
             }
 
-            throw new Exception("Invalid Userinformation");
+            throw new UnauthorizedAccessException("Invalid Userinformation");
         }
     }
 }

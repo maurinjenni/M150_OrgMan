@@ -13,6 +13,7 @@ using OrgMan.DomainObjects;
 using OrgMan.DomainObjects.Adress;
 using Newtonsoft.Json.Linq;
 using OrgMan.DomainObjects.Common;
+using System.IO;
 
 namespace OrgMan.API.Controllers
 {
@@ -34,6 +35,7 @@ namespace OrgMan.API.Controllers
             //});
 
             //var mandatorUidStrings = HttpContext.Current.Request.ServerVariables.Get("MandatorUID").Split(',');
+
             var mandatorUidStrings = new List<string>() { "9C383D13-D557-564F-2060-01CFA1288167" };
 
             List<Guid> mandatorUids = new List<Guid>();
@@ -50,9 +52,17 @@ namespace OrgMan.API.Controllers
                 NumberOfRows = numberOfRows
             };
 
-            SearchAdressQueryHandler handler = new SearchAdressQueryHandler(qurey, UnityContainer);
+            try
+            {
+                SearchAdressQueryHandler handler = new SearchAdressQueryHandler(qurey, UnityContainer);
 
-            return Request.CreateResponse(HttpStatusCode.OK, handler.Handle());
+
+                return Request.CreateResponse(HttpStatusCode.OK, handler.Handle());
+            }
+            catch(Exception e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+            }         
         }
 
         [HttpGet]
@@ -75,9 +85,16 @@ namespace OrgMan.API.Controllers
                 AdressUID = uid,
             };
 
-            GetAdressQueryHandler handler = new GetAdressQueryHandler(query, UnityContainer);
-            
-            return Request.CreateResponse(HttpStatusCode.Accepted, handler.Handle());
+            try
+            {
+                GetAdressQueryHandler handler = new GetAdressQueryHandler(query, UnityContainer);
+
+                return Request.CreateResponse(HttpStatusCode.Accepted, handler.Handle());
+            }
+            catch(Exception e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+            }
         }
 
         [HttpPost]
@@ -87,20 +104,30 @@ namespace OrgMan.API.Controllers
             //var mandatorUidStrings = HttpContext.Current.Request.ServerVariables.Get("MandatorUID").Split(',');
             var mandatorUidStrings = new List<string>() { "72920FF1-4C81-F677-D5EE-00FD566FAE86" };
 
-            AdressManagementDetailDomainModel adressDomainModel =
-                jsonObject.ToObject<AdressManagementDetailDomainModel>();
-
-            var individualPerson = jsonObject["IndividualPerson"];
-            
-            UpdateAdressQuery query = new UpdateAdressQuery()
+            try
             {
-                MandatorUID = Guid.Parse(mandatorUidStrings[0]),
-                AdressManagementDetailDomainModel = adressDomainModel
-            };
+                AdressManagementDetailDomainModel adressDomainModel =
+                    jsonObject.ToObject<AdressManagementDetailDomainModel>();
 
-            UpdateAdressQueryHandler handler = new UpdateAdressQueryHandler(query, UnityContainer);
-            
-            return Request.CreateResponse(HttpStatusCode.Accepted, handler.Handle());
+                if(adressDomainModel == null)
+                {
+                    throw new Exception("Invalid JSON Object");
+                }
+
+                UpdateAdressQuery query = new UpdateAdressQuery()
+                {
+                    MandatorUID = Guid.Parse(mandatorUidStrings[0]),
+                    AdressManagementDetailDomainModel = adressDomainModel
+                };
+
+                UpdateAdressQueryHandler handler = new UpdateAdressQueryHandler(query, UnityContainer);
+
+                return Request.CreateResponse(HttpStatusCode.Accepted, handler.Handle());
+            }
+            catch(Exception e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+            }
         }
 
         [HttpPut]
@@ -110,19 +137,31 @@ namespace OrgMan.API.Controllers
             //var mandatorUidStrings = HttpContext.Current.Request.ServerVariables.Get("MandatorUID").Split(',');
             var mandatorUidStrings = new List<string>() { "72920FF1-4C81-F677-D5EE-00FD566FAE86" };
 
-            AdressManagementDetailDomainModel adressDomainModel =
-                jsonObject.ToObject<AdressManagementDetailDomainModel>();
-
-            InsertAdressQuery query = new InsertAdressQuery()
+            try
             {
-                //MandatorUID = Guid.Parse(HttpContext.Current.Request.ServerVariables.Get("MandatorUID")),
-                MandatorUID = Guid.Parse(mandatorUidStrings[0]),
-                AdressManagementDetailDomainModel = adressDomainModel
-            };
+                AdressManagementDetailDomainModel adressDomainModel =
+                    jsonObject.ToObject<AdressManagementDetailDomainModel>();
 
-            InsertAdressQueryHandler handler = new InsertAdressQueryHandler(query, UnityContainer);
+                if(adressDomainModel == null)
+                {
+                    throw new Exception("Invalid JSON Object");
+                }
 
-            return Request.CreateResponse(HttpStatusCode.Accepted, handler.Handle());
+                InsertAdressQuery query = new InsertAdressQuery()
+                {
+                    MandatorUID = Guid.Parse(mandatorUidStrings[0]),
+                    AdressManagementDetailDomainModel = adressDomainModel
+                };
+
+                InsertAdressQueryHandler handler = new InsertAdressQueryHandler(query, UnityContainer);
+
+                return Request.CreateResponse(HttpStatusCode.Accepted, handler.Handle());
+            }
+            catch(Exception e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+            }
+
         }
 
         [HttpDelete]
@@ -135,12 +174,18 @@ namespace OrgMan.API.Controllers
                 MandatorUID = Guid.Empty,
             };
 
-            DeleteAdressQueryHandler handler = new DeleteAdressQueryHandler(query, UnityContainer);
-            handler.Handle();
+            try
+            {
+                DeleteAdressQueryHandler handler = new DeleteAdressQueryHandler(query, UnityContainer);
+                handler.Handle();
 
-            return Request.CreateResponse(HttpStatusCode.Accepted);
+                return Request.CreateResponse(HttpStatusCode.Accepted);
+            }
+            catch (Exception e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+            }
         }
-
-
+       
     }
 }

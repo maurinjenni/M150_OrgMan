@@ -28,7 +28,7 @@ namespace OrgMan.DataModel
                     return this.Person.PersonToMandators.Select(p => p.MandatorUID);
                 }
 
-                throw new Exception("Could not load MandatorUIDs");
+                throw new DataException("Could not load MandatorUIDs");
             }
             set
             {
@@ -66,7 +66,7 @@ namespace OrgMan.DataModel
                     return this.IndividualPersons.FirstOrDefault().Person.PersonToMandators.Select(p => p.MandatorUID);
                 }
 
-                throw new Exception("Could not load MandatorUIDs");
+                throw new DataException("Could not load MandatorUIDs");
 
             }
             set
@@ -90,7 +90,7 @@ namespace OrgMan.DataModel
                     return uids.AsEnumerable();
                 }
 
-                throw new Exception("Could not load MandatorUIDs");
+                throw new DataException("Could not load MandatorUIDs");
             }
             set
             {
@@ -122,7 +122,7 @@ namespace OrgMan.DataModel
                     return this.IndividualPersons.FirstOrDefault().Person.PersonToMandators.Select(p => p.MandatorUID);
                 }
 
-                throw new Exception("Could not load MandatorUIDs");
+                throw new DataException("Could not load MandatorUIDs");
             }
             set
             {
@@ -154,7 +154,7 @@ namespace OrgMan.DataModel
                     return this.IndividualPerson.Person.PersonToMandators.Select(p => p.MandatorUID);
                 }
 
-                throw new Exception("Could not load MandatorUIDs");
+                throw new DataException("Could not load MandatorUIDs");
             }
             set
             {
@@ -174,7 +174,7 @@ namespace OrgMan.DataModel
                     return this.IndividualPerson.Person.PersonToMandators.Select(p => p.MandatorUID);
                 }
 
-                throw new Exception("Could not load MandatorUIDs");
+                throw new DataException("Could not load MandatorUIDs");
             }
             set
             {
@@ -214,7 +214,7 @@ namespace OrgMan.DataModel
                     return this.Person.PersonToMandators.Select(p => p.MandatorUID);
                 }
 
-                throw new Exception("Could not load MandatorUIDs");
+                throw new DataException("Could not load MandatorUIDs");
             }
             set
             {
@@ -234,7 +234,7 @@ namespace OrgMan.DataModel
                     return this.PersonToMandators.Select(p => p.MandatorUID);
                 }
 
-                throw new Exception("Could not load MandatorUIDs");
+                throw new DataException("Could not load MandatorUIDs");
             }
             set
             {
@@ -254,7 +254,7 @@ namespace OrgMan.DataModel
                     return this.Login.Person.PersonToMandators.Select(p => p.MandatorUID);
                 }
 
-                throw new Exception("Could not load MandatorUIDs");
+                throw new DataException("Could not load MandatorUIDs");
             }
             set
             {

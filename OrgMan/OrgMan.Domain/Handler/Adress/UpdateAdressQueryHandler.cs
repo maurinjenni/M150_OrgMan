@@ -10,6 +10,7 @@ using OrgMan.Data.UnitOfWork;
 using OrgMan.Domain.Handler.HandlerBase;
 using OrgMan.DomainContracts.Adress;
 using OrgMan.DomainObjects.Adress;
+using System.Data;
 
 namespace OrgMan.Domain.Handler.Adress
 {
@@ -24,62 +25,42 @@ namespace OrgMan.Domain.Handler.Adress
 
         public AdressManagementDetailDomainModel Handle()
         {
-            OrgManUnitOfWork uow = new OrgManUnitOfWork();
-
-            var individualPerson = Mapper.Map<DataModel.IndividualPerson>(_query.AdressManagementDetailDomainModel);
-
-            //individualPerson.SysUpdateAccountUID = Guid.NewGuid();
-            //individualPerson.SysUpdateTime = DateTimeOffset.Now;
-
-            //individualPerson.Person.SysUpdateAccountUID = Guid.NewGuid();
-            //individualPerson.Person.SysUpdateTime = DateTimeOffset.Now;
-
-            if(individualPerson.MemberInformation != null)
+            try
             {
-                //individualPerson.MemberInformation.SysUpdateAccountUID = Guid.NewGuid();
-                //individualPerson.MemberInformation.SysUpdateTime = DateTimeOffset.Now;
-            }
+                OrgManUnitOfWork uow = new OrgManUnitOfWork();
 
-            if(individualPerson.Adress != null)
+                var individualPerson = Mapper.Map<DataModel.IndividualPerson>(_query.AdressManagementDetailDomainModel);
+
+                uow.IndividualPersonRepository.Update(individualPerson);
+                uow.PersonRepository.Update(individualPerson.Person);
+                uow.AdressRepository.Update(individualPerson.Adress);
+
+                foreach (var phone in individualPerson.Phones)
+                {
+                    uow.PhoneRepository.Update(phone);
+                }
+
+                foreach (var email in individualPerson.Emails)
+                {
+                    uow.EmailRepository.Update(email);
+                }
+
+                uow.Commit();
+
+                return Mapper.Map<AdressManagementDetailDomainModel>(individualPerson);
+            }
+            catch(InvalidOperationException e)
             {
-                //individualPerson.Adress.SysUpdateAccountUID = Guid.NewGuid();
-                //individualPerson.Adress.SysUpdateTime = DateTimeOffset.Now;
+                throw new Exception("Internal Server Error thrown during update process");
             }
-
-            foreach (var phone in individualPerson.Phones)
+            catch (DataException e)
             {
-                //phone.SysUpdateAccountUID = Guid.NewGuid();
-                //phone.SysUpdateTime = DateTimeOffset.Now;
+                throw new Exception("Internal Server Error", e);
             }
-
-            foreach (var email in individualPerson.Emails)
+            catch (Exception e)
             {
-                //email.SysUpdateAccountUID = Guid.NewGuid();
-                //email.SysUpdateTime = DateTimeOffset.Now;
+                throw new Exception("Internal Server Error");
             }
-
-
-            uow.IndividualPersonRepository.Update(individualPerson);
-            uow.PersonRepository.Update(individualPerson.Person);
-            uow.AdressRepository.Update(individualPerson.Adress);
-
-            foreach (var phone in individualPerson.Phones)
-            {
-                uow.PhoneRepository.Update(phone);
-                //phone.SysUpdateAccountUID = Guid.NewGuid();
-                //phone.SysUpdateTime = DateTimeOffset.Now;
-            }
-
-            foreach (var email in individualPerson.Emails)
-            {
-                uow.EmailRepository.Update(email);
-                //email.SysUpdateAccountUID = Guid.NewGuid();
-                //email.SysUpdateTime = DateTimeOffset.Now;
-            }
-
-            uow.Commit();
-
-            return Mapper.Map<AdressManagementDetailDomainModel>(individualPerson);
         }
     }
 }

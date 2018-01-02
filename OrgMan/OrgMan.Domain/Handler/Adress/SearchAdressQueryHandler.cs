@@ -22,24 +22,42 @@ namespace OrgMan.Domain.Handler.Adress
 
         public List<AdressManagementSearchDomainModel> Handle()
         {
-            OrgManUnitOfWork uow = new OrgManUnitOfWork();
-
-            DynamicSearchService searchService = new DynamicSearchService();
-
-            List<AdressManagementSearchDomainModel> adresses = null;
-
-            Expression<Func<DataModel.IndividualPerson, bool>> whereExpression = null;
-
-            if (_query.SearchCriterias != null)
+            try
             {
-                whereExpression = searchService.GetWhereExpression<DataModel.IndividualPerson>(_query.SearchCriterias);
+                OrgManUnitOfWork uow = new OrgManUnitOfWork();
+
+                DynamicSearchService searchService = new DynamicSearchService();
+
+                List<AdressManagementSearchDomainModel> adresses = null;
+
+                Expression<Func<DataModel.IndividualPerson, bool>> whereExpression = null;
+
+                if (_query.SearchCriterias != null)
+                {
+                    try
+                    {
+                        whereExpression = searchService.GetWhereExpression<DataModel.IndividualPerson>(_query.SearchCriterias);
+                    }
+                    catch(Exception e)
+                    {
+                        throw new InvalidOperationException("Exception thrown while Building Search Expression from SearchCriteria");
+                    }
+                }
+
+                var items = uow.IndividualPersonRepository.Get(_query.MandatorUID, whereExpression, null, "Person, Person.PersonToMandators, MemberInformation, Adress", _query.NumberOfRows);
+
+                adresses = Mapper.Map<List<AdressManagementSearchDomainModel>>(items);
+
+                return adresses;
             }
-
-            var items = uow.IndividualPersonRepository.Get(_query.MandatorUID, whereExpression, null, "Person, Person.PersonToMandators, MemberInformation, Adress", _query.NumberOfRows);
-
-            adresses = Mapper.Map<List<AdressManagementSearchDomainModel>>(items);
-
-            return adresses;
+            catch (InvalidOperationException e)
+            {
+                throw new Exception("Internal Server Error", e);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Internal Server Error");
+            }
         }
     }
 }

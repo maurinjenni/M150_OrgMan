@@ -3,18 +3,14 @@ using OrgMan.Data.UnitOfWork;
 using OrgMan.Domain.Handler.HandlerBase;
 using OrgMan.DomainContracts.Meeting;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OrgMan.Domain.Handler.Meeting
 {
     public class DeleteMeetingQueryHandler : QueryHandlerBase
     {
-        private DeleteMeetingQuery _query;
-        private OrgManUnitOfWork _uow;
+        private readonly DeleteMeetingQuery _query;
+        private readonly OrgManUnitOfWork _uow;
 
         public DeleteMeetingQueryHandler(DeleteMeetingQuery query, IUnityContainer unityContainer) : base(unityContainer)
         {
@@ -40,7 +36,7 @@ namespace OrgMan.Domain.Handler.Meeting
             {
                 throw new Exception("Internal Server Error during Saving Changes", e);
             }
-            catch(Exception e)
+            catch(Exception)
             {
                 throw new Exception("Internal Server Error during Saving Changes");
             }

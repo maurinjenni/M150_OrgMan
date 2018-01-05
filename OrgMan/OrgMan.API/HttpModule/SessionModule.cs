@@ -2,18 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Microsoft.Ajax.Utilities;
 using Microsoft.Practices.Unity;
 using OrgMan.Domain.Handler.Session;
 using OrgMan.DomainContracts.Session;
-using Context = System.Runtime.Remoting.Contexts.Context;
 using System.Configuration;
 
 namespace OrgMan.API.HttpModule
 {
     public class SessionModule : IHttpModule
     {
-        private static readonly List<string> controllersToSkip = ConfigurationManager.AppSettings["WhitelistedControllers"].Split(',').ToList();
+        private static readonly List<string> ControllersToSkip = ConfigurationManager.AppSettings["WhitelistedControllers"].Split(',').ToList();
 
         public void Dispose()
         {
@@ -22,13 +20,13 @@ namespace OrgMan.API.HttpModule
 
         public void Init(HttpApplication application)
         {
-            application.BeginRequest += new EventHandler(SkipAuthentication);
-            application.AuthorizeRequest += new EventHandler(Authorize);
+            application.BeginRequest += (SkipAuthentication);
+            application.AuthorizeRequest += (Authorize);
         }
 
         private void SkipAuthentication(object sender, EventArgs e)
         {
-            foreach (string skipableControllers in controllersToSkip)
+            foreach (string skipableControllers in ControllersToSkip)
             {
                 if (!string.IsNullOrEmpty(skipableControllers) &&
                     HttpContext.Current.Request.Url.LocalPath.Contains(skipableControllers))
@@ -43,6 +41,7 @@ namespace OrgMan.API.HttpModule
         {
             HttpApplication app = (HttpApplication) sender;
             var request = HttpContext.Current.Request;
+            var response = HttpContext.Current.Response;
 
             if (!HttpContext.Current.SkipAuthorization)
             {
@@ -72,44 +71,51 @@ namespace OrgMan.API.HttpModule
                             // Loginpage
                             UnAuthorized(app);
                         }
-
-                        if (session.MandatorUIDs == null || !session.MandatorUIDs.Any())
-                        {
-                            throw new Exception("No Mandator found to Session");
-                        }
                         else
                         {
-                            string serverVariableValue = string.Empty;
-
-                            foreach (Guid mandatorUid in session.MandatorUIDs)
+                            if (session.MandatorUIDs == null || !session.MandatorUIDs.Any())
                             {
-                                if (string.IsNullOrEmpty(serverVariableValue))
+                                throw new Exception("No Mandator found to Session");
+                            }
+                            else
+                            {
+                                string serverVariableValue = string.Empty;
+
+                                foreach (Guid mandatorUid in session.MandatorUIDs)
                                 {
-                                    serverVariableValue += mandatorUid.ToString();
+                                    if (string.IsNullOrEmpty(serverVariableValue))
+                                    {
+                                        serverVariableValue += mandatorUid.ToString();
+                                    }
+                                    else
+                                    {
+                                        serverVariableValue += "," + mandatorUid.ToString();
+                                    }
                                 }
-                                else
-                                {
-                                    serverVariableValue += "," + mandatorUid.ToString();
-                                }
+
+                                request.ServerVariables.Add("MandatorUID", serverVariableValue);
                             }
 
-                            HttpContext.Current.Request.ServerVariables.Add("MandatorUID", serverVariableValue);
-                        }
-
-                        if (session.ExpireDate < DateTimeOffset.Now.AddHours(-1))
-                        {
-                            session.ExpireDate = DateTimeOffset.Now.AddDays(1);
-
-                            HttpContext.Current.Response.Cookies[ConfigurationManager.AppSettings["SessionCookieName"]].Expires = session.ExpireDate.DateTime;
-
-                            UpdateSessionQuery updateSessionQuery = new UpdateSessionQuery()
+                            if (session.ExpireDate < DateTimeOffset.Now.AddHours(-1))
                             {
-                                Session = session
-                            };
+                                session.ExpireDate = DateTimeOffset.Now.AddDays(1);
 
-                            UpdateSessionQueryHandler updateSessionQueryHandler = new UpdateSessionQueryHandler(updateSessionQuery, new UnityContainer());
-                            updateSessionQueryHandler.Handle();
-                        }                                           
+                                var sessioncookie = response.Cookies[ConfigurationManager.AppSettings["SessionCookieName"]];
+
+                                if (sessioncookie != null)
+                                {
+                                    sessioncookie.Expires = session.ExpireDate.DateTime;
+                                }
+
+                                UpdateSessionQuery updateSessionQuery = new UpdateSessionQuery()
+                                {
+                                    Session = session
+                                };
+
+                                UpdateSessionQueryHandler updateSessionQueryHandler = new UpdateSessionQueryHandler(updateSessionQuery, new UnityContainer());
+                                updateSessionQueryHandler.Handle();
+                            }
+                        }                                 
                     }
                     else
                     {

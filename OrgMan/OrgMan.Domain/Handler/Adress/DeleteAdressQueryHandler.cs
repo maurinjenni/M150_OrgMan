@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Microsoft.Practices.Unity;
+﻿using Microsoft.Practices.Unity;
 using OrgMan.Data.UnitOfWork;
 using OrgMan.DataModel;
 using OrgMan.Domain.Handler.HandlerBase;
@@ -7,16 +6,14 @@ using OrgMan.DomainContracts.Adress;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.IO;
 using System.Linq;
-using System.Text;
 
 namespace OrgMan.Domain.Handler.Adress
 {
     public class DeleteAdressQueryHandler : QueryHandlerBase
     {
-        private DeleteAdressQuery _query;
-        private OrgManUnitOfWork _uow;
+        private readonly DeleteAdressQuery _query;
+        private readonly OrgManUnitOfWork _uow;
 
         public DeleteAdressQueryHandler(DeleteAdressQuery query, IUnityContainer unityContainer) : base(unityContainer)
         {
@@ -35,13 +32,6 @@ namespace OrgMan.Domain.Handler.Adress
                     throw new DataException("No Entity found to UID : " + _query.IndividualPersonUID);
                 }
                 
-                Guid adressUid = individualPerson.AdressUID;
-
-                if(adressUid == null)
-                {
-                    throw new DataException("No Adress found to Entity with the UID : " + _query.IndividualPersonUID);
-                }
-
                 if (individualPerson.Phones != null && individualPerson.Phones.Any())
                 {
                     DeletePhones(individualPerson.Phones.Select(p => p.UID).ToList());
@@ -94,7 +84,7 @@ namespace OrgMan.Domain.Handler.Adress
             {
                 throw new Exception("Internal Server Error", e);
             }
-            catch(Exception e)
+            catch(Exception)
             {
                 throw new Exception("Internal Server Error");
             }
@@ -107,7 +97,7 @@ namespace OrgMan.Domain.Handler.Adress
             {
                 throw new Exception("Internal Server Error during Saving changes", e);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 throw new Exception("Internal Server Error during Saving changes");
             }

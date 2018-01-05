@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.Practices.Unity;
 using OrgMan.Data.UnitOfWork;
 using OrgMan.Domain.Handler.HandlerBase;
@@ -14,7 +9,7 @@ namespace OrgMan.Domain.Handler.Adress
 {
     public class GetAdressQueryHandler : QueryHandlerBase
     {
-        private GetAdressQuery _query;
+        private readonly GetAdressQuery _query;
 
         public GetAdressQueryHandler(GetAdressQuery query, IUnityContainer unityContainer) : base(unityContainer)
         {

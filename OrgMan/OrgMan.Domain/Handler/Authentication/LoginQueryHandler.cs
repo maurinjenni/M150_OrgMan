@@ -1,12 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Security.Claims;
-using System.Security.Cryptography;
-using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Practices.Unity;
 using OrgMan.Data.UnitOfWork;
 using OrgMan.Domain.Handler.HandlerBase;
@@ -17,7 +9,7 @@ namespace OrgMan.Domain.Handler.Authentication
 {
     public class LoginQueryHandler : QueryHandlerBase
     {
-        private LoginQuery _query;
+        private readonly LoginQuery _query;
 
         public LoginQueryHandler(LoginQuery query, IUnityContainer unityContainer) : base(unityContainer)
         {
@@ -30,11 +22,11 @@ namespace OrgMan.Domain.Handler.Authentication
             {
                 OrgManUnitOfWork uow = new OrgManUnitOfWork();
 
-                Guid personUid = uow.AuthenticationRepository.Login(_query.Username, _query.Password);
+                Guid? personUid = uow.AuthenticationRepository.Login(_query.Username, _query.Password);
 
                 if (personUid != null)
                 {
-                    return personUid;
+                    return personUid.Value;
                 }
                 else
                 {
@@ -49,7 +41,7 @@ namespace OrgMan.Domain.Handler.Authentication
             {
                 throw new Exception("Unauthorized Access", e);
             }
-            catch(Exception e)
+            catch(Exception)
             {
                 throw new Exception("Internal Server Error");
             }

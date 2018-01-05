@@ -5,17 +5,14 @@ using OrgMan.Domain.Handler.HandlerBase;
 using OrgMan.DomainContracts.Meeting;
 using OrgMan.DomainObjects;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OrgMan.Domain.Handler.Meeting
 {
     public class UpdateMeetingQueryHandler : QueryHandlerBase
     {
-        private UpdateMeetingQuery _query;
+        private readonly UpdateMeetingQuery _query;
 
         public UpdateMeetingQueryHandler(UpdateMeetingQuery query, IUnityContainer unityContainer) : base(unityContainer)
         {
@@ -41,11 +38,11 @@ namespace OrgMan.Domain.Handler.Meeting
 
                 throw new UnauthorizedAccessException("Meeting from another mandator");
             }
-            catch (UnauthorizedAccessException e)
+            catch (UnauthorizedAccessException)
             {
                 throw new Exception("Not Authorized to Update the Entity");
             }
-            catch (InvalidOperationException e)
+            catch (InvalidOperationException)
             {
                 throw new Exception("Internal Server Error thrown during update process");
             }
@@ -53,7 +50,7 @@ namespace OrgMan.Domain.Handler.Meeting
             {
                 throw new Exception("Internal Server Error", e);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 throw new Exception("Internal Server Error");
             }

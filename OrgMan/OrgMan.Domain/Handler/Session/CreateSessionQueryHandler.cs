@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.Practices.Unity;
 using OrgMan.Data.UnitOfWork;
@@ -13,7 +9,7 @@ namespace OrgMan.Domain.Handler.Session
 {
     public class CreateSessionQueryHandler : QueryHandlerBase
     {
-        private CreateSessionQuery _query;
+        private readonly CreateSessionQuery _query;
 
         public CreateSessionQueryHandler(CreateSessionQuery query, IUnityContainer unityContainer)
             : base(unityContainer)

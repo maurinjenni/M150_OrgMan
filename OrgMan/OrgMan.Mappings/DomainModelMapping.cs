@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using OrgMan.DataModel;
 using OrgMan.DomainObjects;
 using OrgMan.DomainObjects.Adress;

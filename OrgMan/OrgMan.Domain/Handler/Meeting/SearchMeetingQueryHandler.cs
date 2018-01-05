@@ -3,20 +3,16 @@ using OrgMan.Domain.Handler.HandlerBase;
 using OrgMan.DomainContracts.Meeting;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 using OrgMan.Common.DynamicSearchService;
 using OrgMan.Data.UnitOfWork;
-using OrgMan.DomainObjects.Adress;
 using OrgMan.DomainObjects.Meeting;
 
 namespace OrgMan.Domain.Handler.Meeting
 {
     public class SearchMeetingQueryHandler : QueryHandlerBase
     {
-        private SearchMeetingQuery _query;
+        private readonly SearchMeetingQuery _query;
 
         public SearchMeetingQueryHandler(SearchMeetingQuery query, IUnityContainer unityContainer) : base(unityContainer)
         {
@@ -29,8 +25,6 @@ namespace OrgMan.Domain.Handler.Meeting
 
             DynamicSearchService searchService = new DynamicSearchService();
 
-            List<AdressManagementSearchDomainModel> adresses = null;
-
             Expression<Func<DataModel.Meeting, bool>> whereExpression = null;
 
             if (_query.SearchCriterias != null)
@@ -39,7 +33,7 @@ namespace OrgMan.Domain.Handler.Meeting
                 {
                     whereExpression = searchService.GetWhereExpression<DataModel.Meeting>(_query.SearchCriterias);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     throw new InvalidOperationException("Exception thrown while Building Search Expression from SearchCriteria");
                 }

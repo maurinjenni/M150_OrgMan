@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Practices.Unity;
+﻿using Microsoft.Practices.Unity;
+using OrgMan.Data.UnitOfWork;
 using OrgMan.Domain.Handler.HandlerBase;
 using OrgMan.DomainContracts.Authentication;
 
@@ -11,7 +7,8 @@ namespace OrgMan.Domain.Handler.Authentication
 {
     public class LogoutQueryHandler : QueryHandlerBase
     {
-        private LogoutQuery _query;
+        private readonly LogoutQuery _query;
+
         public LogoutQueryHandler(LogoutQuery query, IUnityContainer unityContainer) : base(unityContainer)
         {
             _query = query;
@@ -19,7 +16,9 @@ namespace OrgMan.Domain.Handler.Authentication
 
         public void Handle()
         {
-            return;
+            OrgManUnitOfWork uow = new OrgManUnitOfWork();
+
+            //uow.AuthenticationRepository.Logout(_query.SessionUID);
         }
     }
 }

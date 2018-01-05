@@ -1,6 +1,4 @@
 ﻿using Microsoft.Practices.Unity;
-using OrgMan.DataModel;
-using System;
 
 namespace OrgMan.Domain.Handler.HandlerBase
 {

@@ -13,7 +13,7 @@ namespace OrgMan.Domain.Handler.Adress
 {
     public class SearchAdressQueryHandler : QueryHandlerBase
     {
-        private SearchAdressQuery _query;
+        private readonly SearchAdressQuery _query;
 
         public SearchAdressQueryHandler(SearchAdressQuery query, IUnityContainer unityContainer) : base(unityContainer)
         {
@@ -28,8 +28,6 @@ namespace OrgMan.Domain.Handler.Adress
 
                 DynamicSearchService searchService = new DynamicSearchService();
 
-                List<AdressManagementSearchDomainModel> adresses = null;
-
                 Expression<Func<DataModel.IndividualPerson, bool>> whereExpression = null;
 
                 if (_query.SearchCriterias != null)
@@ -38,7 +36,7 @@ namespace OrgMan.Domain.Handler.Adress
                     {
                         whereExpression = searchService.GetWhereExpression<DataModel.IndividualPerson>(_query.SearchCriterias);
                     }
-                    catch(Exception e)
+                    catch(Exception)
                     {
                         throw new InvalidOperationException("Exception thrown while Building Search Expression from SearchCriteria");
                     }
@@ -46,15 +44,13 @@ namespace OrgMan.Domain.Handler.Adress
 
                 var items = uow.IndividualPersonRepository.Get(_query.MandatorUID, whereExpression, null, "Person, Person.PersonToMandators, MemberInformation, Adress", _query.NumberOfRows);
 
-                adresses = Mapper.Map<List<AdressManagementSearchDomainModel>>(items);
-
-                return adresses;
+                return Mapper.Map<List<AdressManagementSearchDomainModel>>(items);
             }
             catch (InvalidOperationException e)
             {
                 throw new Exception("Internal Server Error", e);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 throw new Exception("Internal Server Error");
             }

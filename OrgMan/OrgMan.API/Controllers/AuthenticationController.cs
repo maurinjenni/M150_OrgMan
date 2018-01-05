@@ -21,23 +21,23 @@ namespace OrgMan.API.Controllers
         [Route("authentication/login")]
         public HttpResponseMessage Login([FromBody] JObject data)
         {
-            JToken parameter_Username = data["username"];
-            JToken parameter_Password = data["password"];
+            JToken parameterUsername = data["username"];
+            JToken parameterPassword = data["password"];
 
             try
             {
-                if (string.IsNullOrEmpty(parameter_Username.ToString()))
+                if (string.IsNullOrEmpty(parameterUsername.ToString()))
                 {
-                    throw new ArgumentNullException(nameof(parameter_Username));
+                    throw new ArgumentNullException(nameof(parameterUsername));
                 }
 
-                if (string.IsNullOrEmpty(parameter_Password.ToString()))
+                if (string.IsNullOrEmpty(parameterPassword.ToString()))
                 {
-                    throw new ArgumentNullException(nameof(parameter_Password));
+                    throw new ArgumentNullException(nameof(parameterPassword));
                 }
 
-                string username = parameter_Username.ToString();
-                string password = parameter_Password.ToString();
+                string username = parameterUsername.ToString();
+                string password = parameterPassword.ToString();
 
                 LoginQuery loginQuery = new LoginQuery()
                 {

@@ -3,18 +3,15 @@ using OrgMan.Data.UnitOfWork;
 using OrgMan.Domain.Handler.HandlerBase;
 using OrgMan.DomainContracts.Meeting;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OrgMan.Domain.Handler.Meeting
 {
     public class InsertMeetingQueryHandler : QueryHandlerBase
     {
-        private InsertMeetingQuery _query;
-        private OrgManUnitOfWork _uow;
+        private readonly InsertMeetingQuery _query;
+        private readonly OrgManUnitOfWork _uow;
 
         public InsertMeetingQueryHandler(InsertMeetingQuery query, IUnityContainer unityContainer) : base(unityContainer)
         {
@@ -46,11 +43,11 @@ namespace OrgMan.Domain.Handler.Meeting
 
                 throw new UnauthorizedAccessException("Meeting from another mandator");
             }
-            catch (UnauthorizedAccessException e)
+            catch (UnauthorizedAccessException)
             {
                 throw new Exception("Not Authorized to Create the Entity");
             }
-            catch (InvalidOperationException e)
+            catch (InvalidOperationException)
             {
                 throw new Exception("Internal Server Error thrown during create process");
             }
@@ -58,7 +55,7 @@ namespace OrgMan.Domain.Handler.Meeting
             {
                 throw new Exception("Internal Server Error", e);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 throw new Exception("Internal Server Error");
             }

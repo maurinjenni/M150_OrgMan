@@ -5,7 +5,6 @@ using OrgMan.DataContracts.Repository.RepositoryBase;
 using OrgMan.Data.Repository;
 using OrgMan.Data.Repository.Repositorybase;
 using OrgMan.DataContracts.Repository;
-using System.Collections;
 using System.Data.Entity.Core.Objects;
 using System.Collections.Generic;
 using System;

@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.Practices.Unity;
-using OrgMan.Common.DynamicSearchService;
 using OrgMan.Data.UnitOfWork;
 using OrgMan.Domain.Handler.HandlerBase;
 using OrgMan.DomainContracts.Adress;
@@ -16,7 +11,7 @@ namespace OrgMan.Domain.Handler.Adress
 {
     public class UpdateAdressQueryHandler : QueryHandlerBase
     {
-        private UpdateAdressQuery _query;
+        private readonly UpdateAdressQuery _query;
 
         public UpdateAdressQueryHandler(UpdateAdressQuery query, IUnityContainer unityContainer) : base(unityContainer)
         {
@@ -49,7 +44,7 @@ namespace OrgMan.Domain.Handler.Adress
 
                 return Mapper.Map<AdressManagementDetailDomainModel>(individualPerson);
             }
-            catch(InvalidOperationException e)
+            catch(InvalidOperationException)
             {
                 throw new Exception("Internal Server Error thrown during update process");
             }
@@ -57,7 +52,7 @@ namespace OrgMan.Domain.Handler.Adress
             {
                 throw new Exception("Internal Server Error", e);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 throw new Exception("Internal Server Error");
             }

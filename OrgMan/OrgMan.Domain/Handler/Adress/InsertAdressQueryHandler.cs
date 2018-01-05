@@ -11,8 +11,8 @@ namespace OrgMan.Domain.Handler.Adress
 {
     public class InsertAdressQueryHandler : QueryHandlerBase
     {
-        private InsertAdressQuery _query;
-        private OrgManUnitOfWork _uow;
+        private readonly InsertAdressQuery _query;
+        private readonly OrgManUnitOfWork _uow;
 
         public InsertAdressQueryHandler(InsertAdressQuery query, IUnityContainer unityContainer) : base(unityContainer)
         {
@@ -24,7 +24,7 @@ namespace OrgMan.Domain.Handler.Adress
         {
             try
             {
-                IndividualPerson individualPerson = Mapper.Map<DataModel.IndividualPerson>(_query.AdressManagementDetailDomainModel);
+                IndividualPerson individualPerson = Mapper.Map<IndividualPerson>(_query.AdressManagementDetailDomainModel);
 
                 if(individualPerson == null)
                 {
@@ -72,7 +72,7 @@ namespace OrgMan.Domain.Handler.Adress
             {
                 throw new Exception("Internal Server Error", e);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 throw new Exception("Internal Server Error");
             }

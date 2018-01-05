@@ -49,6 +49,15 @@ namespace OrgMan.Mappings
             AutoMapper.Mapper.CreateMap<Membership, MembershipDomainModel>();
             AutoMapper.Mapper.CreateMap<MembershipDomainModel, Membership>();
 
+            AutoMapper.Mapper.CreateMap<Mandator, MandatorDomainModel>();
+            AutoMapper.Mapper.CreateMap<MandatorDomainModel, Mandator>();
+
+            AutoMapper.Mapper.CreateMap<Meeting, MeetingDomainModel>();
+            AutoMapper.Mapper.CreateMap<MeetingDomainModel, Meeting>();
+
+            AutoMapper.Mapper.CreateMap<Meeting, MeetingDetailDomainModel>();
+            AutoMapper.Mapper.CreateMap<MeetingDetailDomainModel, Meeting>();
+
             AutoMapper.Mapper.CreateMap<Adress, AdressManagementDetailDomainModel>();
             AutoMapper.Mapper.CreateMap<AdressManagementDetailDomainModel, Adress>()
                 .ForMember(dest => dest.IndividualPersons, opt => opt.MapFrom(src => src));

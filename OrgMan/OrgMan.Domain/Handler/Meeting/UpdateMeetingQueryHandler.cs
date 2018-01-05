@@ -30,11 +30,20 @@ namespace OrgMan.Domain.Handler.Meeting
 
                 var meeting = Mapper.Map<DataModel.Meeting>(_query.MeetingDetailDomainModel);
 
-                uow.MeetingRepository.Update(meeting);
+                if (_query.MandatorUIDs.Intersect(meeting.MandatorUIDs).Any())
+                {
+                    uow.MeetingRepository.Update(meeting);
 
-                uow.Commit();
+                    uow.Commit();
 
-                return Mapper.Map<MeetingDetailDomainModel>(meeting);
+                    return Mapper.Map<MeetingDetailDomainModel>(meeting);
+                }
+
+                throw new UnauthorizedAccessException("Meeting from another mandator");
+            }
+            catch (UnauthorizedAccessException e)
+            {
+                throw new Exception("Not Authorized to Update the Entity");
             }
             catch (InvalidOperationException e)
             {

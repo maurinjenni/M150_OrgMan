@@ -33,15 +33,27 @@ namespace OrgMan.Domain.Handler.Meeting
                     throw new DataException("Could not Map MeetingDetailDomainModel to Meeting");
                 }
 
-                Guid meetingUid = Guid.NewGuid();
-                meeting.UID = meetingUid;
+                if (_query.MandatorUIDs.Intersect(meeting.MandatorUIDs).Any())
+                {
+                    Guid meetingUid = Guid.NewGuid();
+                    meeting.UID = meetingUid;
 
-                _uow.MeetingRepository.Insert(meeting);
-                _uow.Commit();
+                    _uow.MeetingRepository.Insert(meeting);
+                    _uow.Commit();
 
-                return meeting.UID;
+                    return meeting.UID;
+                }
+
+                throw new UnauthorizedAccessException("Meeting from another mandator");
             }
-
+            catch (UnauthorizedAccessException e)
+            {
+                throw new Exception("Not Authorized to Create the Entity");
+            }
+            catch (InvalidOperationException e)
+            {
+                throw new Exception("Internal Server Error thrown during create process");
+            }
             catch (DataException e)
             {
                 throw new Exception("Internal Server Error", e);

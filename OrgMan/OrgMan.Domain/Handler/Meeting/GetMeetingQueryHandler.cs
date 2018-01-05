@@ -27,7 +27,12 @@ namespace OrgMan.Domain.Handler.Meeting
 
             var meeting = uow.MeetingRepository.Get(_query.MeetingUID);
 
-            return Mapper.Map<MeetingDetailDomainModel>(meeting);
+            if (_query.MandatorUIDs.Intersect(meeting.MandatorUIDs).Any())
+            {
+                return Mapper.Map<MeetingDetailDomainModel>(meeting);
+            }
+
+            return null;
         }
     }
 }

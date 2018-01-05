@@ -9,7 +9,7 @@ namespace OrgMan.DomainContracts.Meeting
 {
     public class UpdateMeetingQuery
     {
-        public Guid MandatorUID { get; set; }
+        public List<Guid> MandatorUIDs { get; set; }
 
         public MeetingDetailDomainModel MeetingDetailDomainModel { get; set; }
     }

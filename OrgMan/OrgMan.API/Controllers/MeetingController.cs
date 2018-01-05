@@ -20,15 +20,52 @@ namespace OrgMan.API.Controllers
         [Route("meeting")]
         public HttpResponseMessage Get([FromUri] List<SearchCriteriaDomainModel> searchCriterias = null, [FromUri]int? numberOfRows = null)
         {
-            return null;
+            //var mandatorUidStrings = HttpContext.Current.Request.ServerVariables.Get("MandatorUID").Split(',');
+            var mandatorUidStrings = new List<string>() { "72920FF1-4C81-F677-D5EE-00FD566FAE86" };
+
+            List<Guid> mandatorUids = new List<Guid>();
+
+            foreach (var mandatorString in mandatorUidStrings)
+            {
+                mandatorUids.Add(Guid.Parse(mandatorString));
+            }
+
+            SearchMeetingQuery query = new SearchMeetingQuery()
+            {
+                MandatorUIDs = mandatorUids,
+                SearchCriterias = searchCriterias,
+                NumberOfRows = numberOfRows
+            };
+
+            try
+            {
+                SearchMeetingQueryHandler handler = new SearchMeetingQueryHandler(query, UnityContainer);
+                return Request.CreateResponse(HttpStatusCode.OK, handler.Handle());
+            }
+            catch (Exception e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+            }
+
         }
 
         [HttpGet]
         [Route("adress/{uid}")]
         public HttpResponseMessage Get(Guid uid)
         {
+            //var mandatorUidStrings = HttpContext.Current.Request.ServerVariables.Get("MandatorUID").Split(',');
+            var mandatorUidStrings = new List<string>() { "72920FF1-4C81-F677-D5EE-00FD566FAE86" };
+
+            List<Guid> mandatorUids = new List<Guid>();
+
+            foreach (var mandatorString in mandatorUidStrings)
+            {
+                mandatorUids.Add(Guid.Parse(mandatorString));
+            }
+
             GetMeetingQuery query = new GetMeetingQuery()
             {
+                MandatorUIDs = mandatorUids,
                 MeetingUID = uid
             };            
 
@@ -50,6 +87,14 @@ namespace OrgMan.API.Controllers
             //var mandatorUidStrings = HttpContext.Current.Request.ServerVariables.Get("MandatorUID").Split(',');
             var mandatorUidStrings = new List<string>() { "72920FF1-4C81-F677-D5EE-00FD566FAE86" };
 
+
+            List<Guid> mandatorUids = new List<Guid>();
+
+            foreach (var mandatorString in mandatorUidStrings)
+            {
+                mandatorUids.Add(Guid.Parse(mandatorString));
+            }
+
             try
             {
                 MeetingDetailDomainModel meetinDomainModel = jsonObject.ToObject<MeetingDetailDomainModel>();
@@ -61,7 +106,7 @@ namespace OrgMan.API.Controllers
 
                 UpdateMeetingQuery query = new UpdateMeetingQuery()
                 {
-                    MandatorUID = Guid.Parse(mandatorUidStrings[0]),
+                    MandatorUIDs = mandatorUids,
                     MeetingDetailDomainModel = meetinDomainModel
                 };
 
@@ -82,6 +127,14 @@ namespace OrgMan.API.Controllers
             //var mandatorUidStrings = HttpContext.Current.Request.ServerVariables.Get("MandatorUID").Split(',');
             var mandatorUidStrings = new List<string>() { "72920FF1-4C81-F677-D5EE-00FD566FAE86" };
 
+
+            List<Guid> mandatorUids = new List<Guid>();
+
+            foreach (var mandatorString in mandatorUidStrings)
+            {
+                mandatorUids.Add(Guid.Parse(mandatorString));
+            }
+
             try
             {
                 MeetingDetailDomainModel meetingDomainModel =
@@ -94,7 +147,7 @@ namespace OrgMan.API.Controllers
 
                 InsertMeetingQuery query = new InsertMeetingQuery()
                 {
-                    MandatorUID = Guid.Parse(mandatorUidStrings[0]),
+                    MandatorUIDs = mandatorUids,
                     MeetingDetailDomainModel = meetingDomainModel
                 };
 
@@ -106,7 +159,6 @@ namespace OrgMan.API.Controllers
             {
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
-
         }
 
         [HttpDelete]

@@ -30,7 +30,7 @@ namespace OrgMan.Common.DynamicValidationService
                 {typeof(Meeting), new Action<Meeting>(m =>
                     {
                         Meeting meeting = (Meeting)(object)obj;
-                        MeetingValidator meetingValidator = new MeetingValidator (_unityContainer.Resolve<ILinqExpressionService<Meeting>>());
+                        MeetingValidator meetingValidator = new MeetingValidator(_unityContainer.Resolve<ILinqExpressionService<Meeting>>());
                         meetingValidator.Validate(meeting);
                     })
                 }

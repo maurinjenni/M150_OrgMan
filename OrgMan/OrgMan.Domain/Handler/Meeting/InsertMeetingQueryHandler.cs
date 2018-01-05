@@ -5,6 +5,7 @@ using OrgMan.DomainContracts.Meeting;
 using System;
 using System.Data;
 using System.Linq;
+using OrgMan.Common.DynamicValidationService;
 
 namespace OrgMan.Domain.Handler.Meeting
 {
@@ -21,6 +22,7 @@ namespace OrgMan.Domain.Handler.Meeting
 
         public Guid Handle()
         {
+
             try
             {
                 DataModel.Meeting meeting = AutoMapper.Mapper.Map<DataModel.Meeting>(_query.MeetingDetailDomainModel);
@@ -28,6 +30,13 @@ namespace OrgMan.Domain.Handler.Meeting
                 if(meeting == null)
                 {
                     throw new DataException("Could not Map MeetingDetailDomainModel to Meeting");
+                }
+
+                DynamicValidationService<DataModel.Meeting> validationService = new DynamicValidationService<DataModel.Meeting>(new UnityContainer());
+
+                if (!validationService.Validate(meeting))
+                {
+                    throw new DataException("Entity is Invalid");
                 }
 
                 if (_query.MandatorUIDs.Intersect(meeting.MandatorUIDs).Any())

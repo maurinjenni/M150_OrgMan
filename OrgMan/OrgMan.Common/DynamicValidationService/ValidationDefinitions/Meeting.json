@@ -1,0 +1,17 @@
+﻿{
+  "DynamicValidationType": {
+    "Type": "Meeting",
+    "Properties": [
+      {
+        "PropertyName": "Title",
+        "AllowNullOrEmpty": true,
+        "ValidationCriterias": [
+          {
+            "CriteriaType": "Length",
+            "Value": "30"
+          }
+        ]
+      }
+    ]
+  }
+}

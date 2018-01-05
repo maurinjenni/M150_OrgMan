@@ -4,6 +4,7 @@ using OrgMan.Domain.Handler.HandlerBase;
 using OrgMan.DomainContracts.Meeting;
 using System;
 using System.Data;
+using System.Linq;
 
 namespace OrgMan.Domain.Handler.Meeting
 {
@@ -29,8 +30,17 @@ namespace OrgMan.Domain.Handler.Meeting
                     throw new DataException("No Entity found to UID : " + _query.MeetingUID);
                 }
 
+                if (!_query.MandatorUIDs.Intersect(meeting.MandatorUIDs).Any())
+                {
+                    throw new UnauthorizedAccessException("Meeting from another mandator");
+                }
+
                 _uow.MeetingRepository.Delete(_query.MeetingUID);
                 _uow.Commit();
+            }
+            catch (UnauthorizedAccessException)
+            {
+                throw new Exception("Not Authorized to Delete the Entity");
             }
             catch (DataException e)
             {

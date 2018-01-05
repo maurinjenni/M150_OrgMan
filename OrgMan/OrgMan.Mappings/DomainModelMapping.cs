@@ -4,6 +4,8 @@ using OrgMan.DomainObjects;
 using OrgMan.DomainObjects.Adress;
 using OrgMan.DomainObjects.Session;
 using OrgMan.DomainObjects.Common;
+using System;
+using OrgMan.DomainObjects.Meeting;
 
 namespace OrgMan.Mappings
 {
@@ -51,11 +53,20 @@ namespace OrgMan.Mappings
             AutoMapper.Mapper.CreateMap<Mandator, MandatorDomainModel>();
             AutoMapper.Mapper.CreateMap<MandatorDomainModel, Mandator>();
 
-            AutoMapper.Mapper.CreateMap<Meeting, MeetingDomainModel>();
+            AutoMapper.Mapper.CreateMap<Meeting, MeetingDomainModel>()
+                .ForMember(dest => dest.EndDate, opt => opt.MapFrom(src => src.EndDate.DateTime))
+                .ForMember(dest => dest.StartDate, opt => opt.MapFrom(src => src.StartDate.DateTime));
             AutoMapper.Mapper.CreateMap<MeetingDomainModel, Meeting>();
 
-            AutoMapper.Mapper.CreateMap<Meeting, MeetingDetailDomainModel>();
+            AutoMapper.Mapper.CreateMap<Meeting, MeetingDetailDomainModel>()
+                .ForMember(dest => dest.EndDate, opt => opt.MapFrom(src => src.EndDate.DateTime))
+                .ForMember(dest => dest.StartDate, opt => opt.MapFrom(src => src.StartDate.DateTime));
             AutoMapper.Mapper.CreateMap<MeetingDetailDomainModel, Meeting>();
+
+            AutoMapper.Mapper.CreateMap<Meeting, MeetingSearchDomainModel>()
+                .ForMember(dest => dest.EndDate, opt => opt.MapFrom(src => src.EndDate.DateTime))
+                .ForMember(dest => dest.StartDate, opt => opt.MapFrom(src => src.StartDate.DateTime));
+            AutoMapper.Mapper.CreateMap<MeetingSearchDomainModel, Meeting>();
 
             AutoMapper.Mapper.CreateMap<Adress, AdressManagementDetailDomainModel>();
             AutoMapper.Mapper.CreateMap<AdressManagementDetailDomainModel, Adress>()

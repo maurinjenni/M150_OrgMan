@@ -19,7 +19,7 @@ namespace OrgMan.API.Controllers
         public HttpResponseMessage Get([FromUri] List<SearchCriteriaDomainModel> searchCriterias = null, [FromUri]int? numberOfRows = null)
         {
             //var mandatorUidStrings = HttpContext.Current.Request.ServerVariables.Get("MandatorUID").Split(',');
-            var mandatorUidStrings = new List<string>() { "72920FF1-4C81-F677-D5EE-00FD566FAE86" };
+            var mandatorUidStrings = new List<string>() { "E91019DA-26C8-B201-1385-0011F6C365E9" };
 
             List<Guid> mandatorUids = new List<Guid>();
 
@@ -48,7 +48,7 @@ namespace OrgMan.API.Controllers
         }
 
         [HttpGet]
-        [Route("adress/{uid}")]
+        [Route("meeting/{uid}")]
         public HttpResponseMessage Get(Guid uid)
         {
             //var mandatorUidStrings = HttpContext.Current.Request.ServerVariables.Get("MandatorUID").Split(',');
@@ -79,7 +79,7 @@ namespace OrgMan.API.Controllers
         }
 
         [HttpPost]
-        [Route("adress")]
+        [Route("meeting")]
         public HttpResponseMessage Post([FromBody] JObject jsonObject)
         {
             //var mandatorUidStrings = HttpContext.Current.Request.ServerVariables.Get("MandatorUID").Split(',');
@@ -119,7 +119,7 @@ namespace OrgMan.API.Controllers
         }
 
         [HttpPut]
-        [Route("adress")]
+        [Route("meeting")]
         public HttpResponseMessage Put([FromBody] JObject jsonObject)
         {
             //var mandatorUidStrings = HttpContext.Current.Request.ServerVariables.Get("MandatorUID").Split(',');
@@ -160,11 +160,21 @@ namespace OrgMan.API.Controllers
         }
 
         [HttpDelete]
-        [Route("adress/{uid}")]
+        [Route("meeting/{uid}")]
         public HttpResponseMessage Delete(Guid uid)
         {
+            var mandatorUidStrings = new List<string>() { "E91019DA-26C8-B201-1385-0011F6C365E9" };
+
+            List<Guid> mandatorUids = new List<Guid>();
+
+            foreach (var mandatorString in mandatorUidStrings)
+            {
+                mandatorUids.Add(Guid.Parse(mandatorString));
+            }
+
             DeleteMeetingQuery query = new DeleteMeetingQuery()
             {
+                MandatorUIDs = mandatorUids,
                 MeetingUID = uid
             };
 

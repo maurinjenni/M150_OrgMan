@@ -52,6 +52,8 @@
     <Compile Include="Common\MembershipDomainModel.cs" />
     <Compile Include="Common\PersonDomainModel.cs" />
     <Compile Include="Common\PhoneDomainModel.cs" />
+    <Compile Include="File\DirectoryDomainModel.cs" />
+    <Compile Include="File\FileDomainModel.cs" />
     <Compile Include="MeetingDetailDomainModel.cs" />
     <Compile Include="Meeting\MeetingSearchDomainModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

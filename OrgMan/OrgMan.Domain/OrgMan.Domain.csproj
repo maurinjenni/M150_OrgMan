@@ -61,6 +61,9 @@
     <Compile Include="Handler\Adress\UpdateAdressQueryHandler.cs" />
     <Compile Include="Handler\Authentication\LoginQueryHandler.cs" />
     <Compile Include="Handler\Authentication\LogoutQueryHandler.cs" />
+    <Compile Include="Handler\File\DeleteFileQueryHandler.cs" />
+    <Compile Include="Handler\File\GetFileQueryHandler.cs" />
+    <Compile Include="Handler\File\GetFileTreeQueryHandler.cs" />
     <Compile Include="Handler\HandlerBase\QueryHandlerBase.cs" />
     <Compile Include="Handler\Meeting\DeleteMeetingQueryHandler.cs" />
     <Compile Include="Handler\Meeting\GetMeetingQueryHandler.cs" />

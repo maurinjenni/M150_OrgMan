@@ -16,7 +16,7 @@ namespace OrgMan.DomainObjects.Adress
 
         public string Comment { get; set; }
 
-        public string Picture { get; set; }
+        public string PictureLink { get; set; }
 
         public PersonDomainModel Person { get; set; }
 

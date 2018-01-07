@@ -46,6 +46,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.IdentityModel" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -64,6 +65,7 @@
     <Compile Include="Handler\File\DeleteFileQueryHandler.cs" />
     <Compile Include="Handler\File\GetFileQueryHandler.cs" />
     <Compile Include="Handler\File\GetFileTreeQueryHandler.cs" />
+    <Compile Include="Handler\File\UploadFileQueryHandler.cs" />
     <Compile Include="Handler\HandlerBase\QueryHandlerBase.cs" />
     <Compile Include="Handler\Meeting\DeleteMeetingQueryHandler.cs" />
     <Compile Include="Handler\Meeting\GetMeetingQueryHandler.cs" />

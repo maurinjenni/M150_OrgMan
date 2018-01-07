@@ -44,6 +44,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -62,6 +63,7 @@
     <Compile Include="File\DeleteFileQuery.cs" />
     <Compile Include="File\GetFileQuery.cs" />
     <Compile Include="File\GetFileTreeQuery.cs" />
+    <Compile Include="File\UploadFileQuery.cs" />
     <Compile Include="Meeting\DeleteMeetingQuery.cs" />
     <Compile Include="Meeting\GetMeetingQuery.cs" />
     <Compile Include="Meeting\InsertMeetingQuery.cs" />

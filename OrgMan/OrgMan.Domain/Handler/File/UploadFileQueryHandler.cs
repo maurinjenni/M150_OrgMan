@@ -10,18 +10,18 @@ using System.Threading.Tasks;
 
 namespace OrgMan.Domain.Handler.File
 {
-    public class DeleteFileQueryHandler : QueryHandlerBase
+    public class UploadFileQueryHandler : QueryHandlerBase
     {
-        private readonly DeleteFileQuery _query;
+        private UploadFileQuery _query;
 
-        public DeleteFileQueryHandler(DeleteFileQuery query, IUnityContainer unityContainer) : base(unityContainer)
+        public UploadFileQueryHandler(UploadFileQuery query, IUnityContainer unityContainer) : base(unityContainer)
         {
             _query = query;
         }
 
         public void Handle()
         {
-            foreach (Guid fileMandatorUid in _query.FileMandatorUIDs)
+            foreach(Guid fileMandatorUid in _query.FileMandatorUIDs)
             {
                 if (_query.MandatorUIDs.Contains(fileMandatorUid))
                 {
@@ -29,14 +29,15 @@ namespace OrgMan.Domain.Handler.File
 
                     if (!Directory.Exists(fileSavePath))
                     {
-                        return;
+                        Directory.CreateDirectory(fileSavePath);
                     }
 
-                    fileSavePath = Path.Combine(fileSavePath, _query.FilePath);
+                    fileSavePath = Path.Combine(fileSavePath, _query.File.FileName);
 
-                    Directory.Delete(fileSavePath);
+                    _query.File.SaveAs(fileSavePath);
                 }
             }
         }
     }
 }
+

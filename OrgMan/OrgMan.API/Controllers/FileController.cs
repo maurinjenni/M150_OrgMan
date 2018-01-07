@@ -112,42 +112,55 @@ namespace OrgMan.API.Controllers
             }
         }
 
-        //[HttpPut]
-        //[Route("meeting")]
-        //public HttpResponseMessage Put()
-        //{
-        //    //var mandatorUidStrings = HttpContext.Current.Request.ServerVariables.Get("MandatorUID").Split(',');
-        //    var mandatorUidStrings = new List<string>() { "72920FF1-4C81-F677-D5EE-00FD566FAE86" };
+        [HttpPut]
+        [Route("file")]
+        public HttpResponseMessage Upload([FromUri]List<Guid> fileMandatorUids)
+        {
+             var mandatorUidStrings = new List<string>() { "76cb37fc-1128-4a21-ad93-248bf198a857" };
 
+            List<Guid> mandatorUids = new List<Guid>();
 
-        //    List<Guid> mandatorUids = new List<Guid>();
+            foreach (var mandatorString in mandatorUidStrings)
+            {
+                mandatorUids.Add(Guid.Parse(mandatorString));
+            }
 
-        //    foreach (var mandatorString in mandatorUidStrings)
-        //    {
-        //        mandatorUids.Add(Guid.Parse(mandatorString));
-        //    }
+            try
+            {
+                if (HttpContext.Current.Request.Files.AllKeys.Any())
+                {
+                    var httpUploadedFile = HttpContext.Current.Request.Files["UploadFile"];
 
-        //    try
-        //    {
-        //        UploadFileQuery query = new UploadFileQuery()
-        //        {
-        //            MandatorUIDs = mandatorUids,
-        //            File = file
-        //        };
+                    if (httpUploadedFile != null)
+                    {
+                        UploadFileQuery query = new UploadFileQuery()
+                        {
+                            MandatorUIDs = mandatorUids,
+                            FileMandatorUIDs = fileMandatorUids,
+                            File = httpUploadedFile,
+                            FileSystemDirectoryPath = ConfigurationManager.AppSettings["FileSystemDirectory"]
+                        };
 
-        //        UploadFileQueryHandler handler = new UploadFileQueryHandler(query, UnityContainer);
+                        UploadFileQueryHandler handler = new UploadFileQueryHandler(query, UnityContainer);
+                        
+                        handler.Handle();
 
-        //        return Request.CreateResponse(HttpStatusCode.Accepted, handler.Handle());
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
-        //    }
-        //}
+                        return Request.CreateResponse(HttpStatusCode.OK);
+                    }
+                }
+
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Invalid File");
+            }
+            catch (Exception e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Invalid File");
+            }
+        }
+
 
         [HttpDelete]
         [Route("file/{uid}")]
-        public HttpResponseMessage Delete(Guid uid)
+        public HttpResponseMessage Delete([FromUri]List<Guid> fileMandatorUids, [FromUri]string filePath)
         {
             var mandatorUidStrings = new List<string>() { "E91019DA-26C8-B201-1385-0011F6C365E9" };
 
@@ -161,7 +174,9 @@ namespace OrgMan.API.Controllers
             DeleteFileQuery query = new DeleteFileQuery()
             {
                 MandatorUIDs = mandatorUids,
-                MeetingUID = uid
+                FilePath = filePath,
+                FileMandatorUIDs = fileMandatorUids,
+                FileSystemDirectoryPath = ConfigurationManager.AppSettings["FileSystemDirectory"]
             };
 
             try

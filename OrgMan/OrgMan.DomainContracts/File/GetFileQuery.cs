@@ -11,5 +11,7 @@ namespace OrgMan.DomainContracts.File
         public List<Guid> MandatorUIDs { get; set; }
 
         public string Path { get; set; }
+
+        public string FileSystemDirectoryPath { get; set; }
     }
 }

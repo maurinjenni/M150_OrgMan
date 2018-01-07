@@ -21,19 +21,9 @@ namespace OrgMan.API.Controllers
         [Route("file")]
         public HttpResponseMessage Get()
         {
-            //var mandatorUidStrings = HttpContext.Current.Request.ServerVariables.Get("MandatorUID").Split(',');
-            var mandatorUidStrings = new List<string>() { "E91019DA-26C8-B201-1385-0011F6C365E9" };
-
-            List<Guid> mandatorUids = new List<Guid>();
-
-            foreach (var mandatorString in mandatorUidStrings)
-            {
-                mandatorUids.Add(Guid.Parse(mandatorString));
-            }
-
             GetFileTreeQuery query = new GetFileTreeQuery()
             {
-                MandatorUIDs = mandatorUids,
+                MandatorUIDs = RequestMandatorUIDs,
                 DirectoryPath = ConfigurationManager.AppSettings["FileSystemDirectory"]
             };
 
@@ -67,44 +57,26 @@ namespace OrgMan.API.Controllers
             GetFileQuery query = new GetFileQuery()
             {
                 MandatorUIDs = mandatorUids,
+                FileSystemDirectoryPath = ConfigurationManager.AppSettings["FileSystemDirectory"],
                 Path = path
             };
 
             try
             {
-                string fileMandatorUidString = query.Path.Split('\\')[0];
-                Guid fileMandatorUid = Guid.Empty;
+                GetFileQueryHandler handler = new GetFileQueryHandler(query, UnityContainer);
 
-                if (Guid.TryParse(fileMandatorUidString, out fileMandatorUid))
+                var response = Request.CreateResponse(HttpStatusCode.OK);
+
+                response.Content = handler.Handle();
+
+                response.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
                 {
-                    if (query.MandatorUIDs.Contains(fileMandatorUid))
-                    {
-                        OrgManUnitOfWork uow = new OrgManUnitOfWork();
+                    FileName = Path.GetFileName(query.Path)
+                };
 
-                        string combinedPath = Path.Combine(ConfigurationManager.AppSettings["FileSystemDirectory"], query.Path);
+                response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
 
-                        if (!File.Exists(combinedPath))
-                        {
-                            throw new Exception("The file does not exist.");
-                        }
-
-                        HttpResponseMessage result = new HttpResponseMessage(HttpStatusCode.OK)
-                        {
-                            Content = new StreamContent(new FileStream(combinedPath, FileMode.Open, FileAccess.Read))
-                        };
-
-                        result.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
-                        {
-                            FileName = Path.GetFileName(combinedPath)
-                        };
-
-                        result.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
-
-                        return result;
-                    }
-                }
-
-                return null;
+                return response;
             }
             catch (Exception e)
             {
@@ -116,7 +88,8 @@ namespace OrgMan.API.Controllers
         [Route("file")]
         public HttpResponseMessage Upload([FromUri]List<Guid> fileMandatorUids)
         {
-             var mandatorUidStrings = new List<string>() { "76cb37fc-1128-4a21-ad93-248bf198a857" };
+            //var mandatorUidStrings = HttpContext.Current.Request.ServerVariables.Get("MandatorUID").Split(',');
+            var mandatorUidStrings = new List<string>() { "76cb37fc-1128-4a21-ad93-248bf198a857" };
 
             List<Guid> mandatorUids = new List<Guid>();
 
@@ -147,9 +120,15 @@ namespace OrgMan.API.Controllers
 
                         return Request.CreateResponse(HttpStatusCode.OK);
                     }
+                    else
+                    {
+                        throw new Exception("Invalid File");
+                    }
                 }
-
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Invalid File");
+                else
+                {
+                    throw new Exception("Invalid File");
+                }
             }
             catch (Exception e)
             {

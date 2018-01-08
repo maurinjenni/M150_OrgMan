@@ -61,6 +61,28 @@ namespace OrgMan.API.Controllers
         }
 
         [HttpGet]
+        [Route("adress")]
+        public HttpResponseMessage Get([FromUri]string searchString)
+        {
+            FullTextSearchAdressQuery query = new FullTextSearchAdressQuery()
+            {
+                MandatorUids = RequestMandatorUIDs,
+                SeachText = searchString
+            };
+
+            try
+            {
+                FullTextSearchAdressQueryHandler handler = new FullTextSearchAdressQueryHandler(query, UnityContainer);
+
+                return Request.CreateResponse(handler.Handle());
+            }
+            catch (Exception e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError,e);
+            }
+        }
+
+        [HttpGet]
         [Route("adress/{uid}")]
         public HttpResponseMessage Get(Guid uid)
         {

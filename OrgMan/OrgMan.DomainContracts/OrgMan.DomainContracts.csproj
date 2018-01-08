@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Adress\DeleteAdressQuery.cs" />
+    <Compile Include="Adress\FullTextSearchAdressQuery.cs" />
     <Compile Include="Adress\GetAdressQuery.cs" />
     <Compile Include="Adress\InsertAdressQuery.cs" />
     <Compile Include="Adress\SearchAdressQuery.cs" />

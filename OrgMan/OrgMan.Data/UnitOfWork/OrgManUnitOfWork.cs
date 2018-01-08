@@ -31,7 +31,7 @@ namespace OrgMan.Data.UnitOfWork
             PhoneRepository = new PhoneRepository(_context);
             EmailRepository = new EmailRepository(_context);
             SalutationRepository = new SalutationRepository(_context);
-            IndividualPersonRepository = new GenericRepository<IndividualPerson>(_context);
+            IndividualPersonRepository = new IndividualPersonRepository(_context);
             SystemPersonRepository = new GenericRepository<SystemPerson>(_context);
             PersonRepository = new GenericRepository<Person>(_context);
             AuthenticationRepository = new AuthenticationRepository(_context);
@@ -65,7 +65,7 @@ namespace OrgMan.Data.UnitOfWork
 
         public IGenericRepository<Salutation> SalutationRepository{ get; set; }
 
-        public IGenericRepository<IndividualPerson> IndividualPersonRepository { get; set; }
+        public IIndividualPersonRepository IndividualPersonRepository { get; set; }
 
         public IGenericRepository<SystemPerson> SystemPersonRepository { get; set; }
 

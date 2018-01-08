@@ -17,7 +17,7 @@ namespace OrgMan.API.Controllers
     public class PictureController : ApiControllerBase
     {
         [HttpGet]
-        [Route("adress/{uid}")]
+        [Route("picture/{uid}")]
         public HttpResponseMessage Get(Guid uid)
         {
             //var mandatorUidStrings = HttpContext.Current.Request.ServerVariables.Get("MandatorUID").Split(',');
@@ -50,7 +50,7 @@ namespace OrgMan.API.Controllers
         }
 
         [HttpPost]
-        [Route("adress")]
+        [Route("picture")]
         public HttpResponseMessage Post([FromBody] JObject jsonObject)
         {
             //var mandatorUidStrings = HttpContext.Current.Request.ServerVariables.Get("MandatorUID").Split(',');
@@ -84,7 +84,7 @@ namespace OrgMan.API.Controllers
         }
 
         [HttpPut]
-        [Route("adress")]
+        [Route("picture")]
         public HttpResponseMessage Put([FromBody] JObject jsonObject)
         {
             //var mandatorUidStrings = HttpContext.Current.Request.ServerVariables.Get("MandatorUID").Split(',');
@@ -118,7 +118,7 @@ namespace OrgMan.API.Controllers
         }
 
         [HttpDelete]
-        [Route("adress/{uid}")]
+        [Route("picture/{uid}")]
         public HttpResponseMessage Delete(Guid uid)
         {
             DeletePictureQuery query = new DeletePictureQuery()

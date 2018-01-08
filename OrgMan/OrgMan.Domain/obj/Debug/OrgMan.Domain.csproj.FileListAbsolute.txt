@@ -103,3 +103,4 @@ C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Domain\obj\Debug\OrgMan.Domai
 C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Domain\obj\Debug\OrgMan.Domain.pdb
 C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Domain\bin\Debug\OrgMan.DataModel.dll.config
 C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Domain\bin\Debug\OrgMan.Data.dll.config
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Domain\bin\Debug\Fissoft.EntityFramework.Fts.dll

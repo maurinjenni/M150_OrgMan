@@ -22,7 +22,7 @@ namespace OrgMan.Domain.Handler.Session
             DataModel.Session session = Mapper.Map<DataModel.Session>(_query.Session);
             session.UID = Guid.NewGuid();
             session.SysInsertTime = DateTimeOffset.Now;
-            session.SysInsertAccountUID = Guid.NewGuid();
+            session.SysInsertAccountUID = Guid.NewGuid();            
 
             OrgManUnitOfWork uow = new OrgManUnitOfWork();
             uow.SessionRepository.Insert(session);

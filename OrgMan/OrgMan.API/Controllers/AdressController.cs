@@ -29,20 +29,9 @@ namespace OrgMan.API.Controllers
             //    FieldName = "Person.Firstname"
             //});
 
-            //var mandatorUidStrings = HttpContext.Current.Request.ServerVariables.Get("MandatorUID").Split(',');
-
-            var mandatorUidStrings = new List<string>() { "9C383D13-D557-564F-2060-01CFA1288167" };
-
-            List<Guid> mandatorUids = new List<Guid>();
-
-            foreach (var mandatorString in mandatorUidStrings)
-            {
-                mandatorUids.Add(Guid.Parse(mandatorString));
-            }
-
             SearchAdressQuery qurey = new SearchAdressQuery()
             {
-                MandatorUID = mandatorUids,
+                MandatorUID = RequestMandatorUIDs,
                 SearchCriterias = searchCriterias,
                 NumberOfRows = numberOfRows
             };
@@ -86,19 +75,9 @@ namespace OrgMan.API.Controllers
         [Route("adress/{uid}")]
         public HttpResponseMessage Get(Guid uid)
         {
-            //var mandatorUidStrings = HttpContext.Current.Request.ServerVariables.Get("MandatorUID").Split(',');
-            var mandatorUidStrings = new List<string>() { "72920FF1-4C81-F677-D5EE-00FD566FAE86" };
-
-            List<Guid> mandatorUids = new List<Guid>();
-
-            foreach (var mandatorString in mandatorUidStrings)
-            {
-                mandatorUids.Add(Guid.Parse(mandatorString));
-            }
-
             GetAdressQuery query = new GetAdressQuery()
             {
-                MandatorUID = mandatorUids,
+                MandatorUID = RequestMandatorUIDs,
                 AdressUID = uid,
             };
 
@@ -118,9 +97,6 @@ namespace OrgMan.API.Controllers
         [Route("adress")]
         public HttpResponseMessage Post([FromBody] JObject jsonObject)
         {
-            //var mandatorUidStrings = HttpContext.Current.Request.ServerVariables.Get("MandatorUID").Split(',');
-            var mandatorUidStrings = new List<string>() { "72920FF1-4C81-F677-D5EE-00FD566FAE86" };
-
             try
             {
                 AdressManagementDetailDomainModel adressDomainModel =
@@ -133,7 +109,7 @@ namespace OrgMan.API.Controllers
 
                 UpdateAdressQuery query = new UpdateAdressQuery()
                 {
-                    MandatorUID = Guid.Parse(mandatorUidStrings[0]),
+                    MandatorUID = RequestMandatorUIDs[0],
                     AdressManagementDetailDomainModel = adressDomainModel
                 };
 
@@ -151,9 +127,6 @@ namespace OrgMan.API.Controllers
         [Route("adress")]
         public HttpResponseMessage Put([FromBody] JObject jsonObject)
         {
-            //var mandatorUidStrings = HttpContext.Current.Request.ServerVariables.Get("MandatorUID").Split(',');
-            var mandatorUidStrings = new List<string>() { "72920FF1-4C81-F677-D5EE-00FD566FAE86" };
-
             try
             {
                 AdressManagementDetailDomainModel adressDomainModel =
@@ -166,7 +139,7 @@ namespace OrgMan.API.Controllers
 
                 InsertAdressQuery query = new InsertAdressQuery()
                 {
-                    MandatorUID = Guid.Parse(mandatorUidStrings[0]),
+                    MandatorUID = RequestMandatorUIDs[0],
                     AdressManagementDetailDomainModel = adressDomainModel
                 };
 

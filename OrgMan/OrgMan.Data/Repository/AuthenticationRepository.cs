@@ -40,5 +40,15 @@ namespace OrgMan.Data.Repository
 
             throw new UnauthorizedAccessException("Invalid Userinformation");
         }
+
+        public void Logout(Guid sessionUid)
+        {
+            if(_context.Sessions != null && _context.Sessions.Any() && _context.Sessions.FirstOrDefault(s => s.UID == sessionUid) != null)
+            {
+                throw new DataException("Invalid SessionUID");
+            }
+
+            _context.Sessions.Remove(_context.Sessions.FirstOrDefault(s => s.UID == sessionUid));
+        }
     }
 }

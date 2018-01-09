@@ -59,8 +59,8 @@
     <Compile Include="Adress\InsertAdressQuery.cs" />
     <Compile Include="Adress\SearchAdressQuery.cs" />
     <Compile Include="Adress\UpdateAdressQuery.cs" />
+    <Compile Include="Authentication\DeleteSessionQuery.cs" />
     <Compile Include="Authentication\LoginQuery.cs" />
-    <Compile Include="Authentication\LogoutQuery.cs" />
     <Compile Include="File\DeleteFileQuery.cs" />
     <Compile Include="File\GetFileQuery.cs" />
     <Compile Include="File\GetFileTreeQuery.cs" />

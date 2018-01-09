@@ -21,8 +21,8 @@ namespace OrgMan.API.Controllers
         [Route("authentication/login")]
         public HttpResponseMessage Login([FromBody] JObject data)
         {
-            JToken parameterUsername = data["username"];
-            JToken parameterPassword = data["password"];
+            JToken parameterUsername = data["Username"];
+            JToken parameterPassword = data["Password"];
 
             try
             {
@@ -36,13 +36,10 @@ namespace OrgMan.API.Controllers
                     throw new ArgumentNullException(nameof(parameterPassword));
                 }
 
-                string username = parameterUsername.ToString();
-                string password = parameterPassword.ToString();
-
                 LoginQuery loginQuery = new LoginQuery()
                 {
-                    Username = username,
-                    Password = password
+                    Username = parameterUsername.ToString(),
+                    Password = parameterPassword.ToString()
                 };
 
                 LoginQueryHandler loginQueryHandler = new LoginQueryHandler(loginQuery, UnityContainer);
@@ -63,11 +60,10 @@ namespace OrgMan.API.Controllers
                     };
 
                     CreateSessionQueryHandler createSessionQueryHandler = new CreateSessionQueryHandler(createSessionQuery,new UnityContainer());
-                    Guid sessionUid = createSessionQueryHandler.Handle();
 
                     HttpCookie cookie = new HttpCookie(ConfigurationManager.AppSettings["SessionCookieName"])
                     {
-                        Value = sessionUid.ToString(),
+                        Value = createSessionQueryHandler.Handle().ToString(),
                         Domain = HttpContext.Current.Request.Url.Host,
                         Expires = DateTime.Now.AddDays(1),
                         HttpOnly = false,
@@ -76,19 +72,6 @@ namespace OrgMan.API.Controllers
                     HttpContext.Current.Response.AppendCookie(cookie);
                 }
 
-                // else
-                // {
-                // HttpCookie responseCookie = HttpContext.Current.Response.Cookies.Get(ConfigurationManager.AppSettings["SessionCookieName"]);
-
-                // if (responseCookie != null)
-                // {
-                // responseCookie.Value = sessionUid.ToString();
-                // }
-                // else
-                // {
-                // throw new NullReferenceException(nameof(responseCookie));
-                // }
-                // }
                 return Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (Exception ex)
@@ -110,13 +93,17 @@ namespace OrgMan.API.Controllers
                     Guid sessionUid;
                     if (Guid.TryParse(cookie.Value, out sessionUid))
                     {
-                        LogoutQuery query = new LogoutQuery()
+                        DeleteSessionQuery query = new DeleteSessionQuery()
                         {
                             SessionUID = sessionUid
                         };
 
-                        LogoutQueryHandler handler = new LogoutQueryHandler(query, UnityContainer);
+                        DeleteSessionQueryHandler handler = new DeleteSessionQueryHandler(query, UnityContainer);
                         handler.Handle();
+
+                        cookie.Expires = DateTime.Now.AddDays(-1);
+
+                        HttpContext.Current.Response.Cookies.Set(cookie);
 
                         return Request.CreateResponse(HttpStatusCode.OK);
                     }

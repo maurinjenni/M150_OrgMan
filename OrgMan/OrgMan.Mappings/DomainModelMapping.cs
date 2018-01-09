@@ -74,7 +74,8 @@ namespace OrgMan.Mappings
 
             AutoMapper.Mapper.CreateMap<Session, SessionDomainModel>()
                 .ForMember(dest => dest.MandatorUIDs, opt => opt.MapFrom(src => src.Login.Person.PersonToMandators.Select(ptm => ptm.MandatorUID)));
-            AutoMapper.Mapper.CreateMap<SessionDomainModel, Session>();
+            AutoMapper.Mapper.CreateMap<SessionDomainModel, Session>()
+                .ForMember(dest => dest.MandatorUIDs, opt => opt.Ignore());
         }
     }
 }

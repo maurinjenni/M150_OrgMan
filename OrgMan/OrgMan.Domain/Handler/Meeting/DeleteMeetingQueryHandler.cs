@@ -40,11 +40,11 @@ namespace OrgMan.Domain.Handler.Meeting
             }
             catch (UnauthorizedAccessException)
             {
-                throw new Exception("Not Authorized to Delete the Entity");
+                throw new UnauthorizedAccessException("Not Authorized to Delete the Entity");
             }
             catch (DataException e)
             {
-                throw new Exception("Internal Server Error during Saving Changes", e);
+                throw new DataException("Internal Server Error during Saving Changes", e);
             }
             catch(Exception)
             {

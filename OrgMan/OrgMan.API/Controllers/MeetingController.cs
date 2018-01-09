@@ -6,6 +6,7 @@ using OrgMan.DomainContracts.Meeting;
 using OrgMan.DomainObjects;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -18,81 +19,65 @@ namespace OrgMan.API.Controllers
         [Route("meeting")]
         public HttpResponseMessage Get([FromUri] List<SearchCriteriaDomainModel> searchCriterias = null, [FromUri]int? numberOfRows = null)
         {
-            //var mandatorUidStrings = HttpContext.Current.Request.ServerVariables.Get("MandatorUID").Split(',');
-            var mandatorUidStrings = new List<string>() { "E91019DA-26C8-B201-1385-0011F6C365E9" };
-
-            List<Guid> mandatorUids = new List<Guid>();
-
-            foreach (var mandatorString in mandatorUidStrings)
-            {
-                mandatorUids.Add(Guid.Parse(mandatorString));
-            }
-
-            SearchMeetingQuery query = new SearchMeetingQuery()
-            {
-                MandatorUIDs = mandatorUids,
-                SearchCriterias = searchCriterias,
-                NumberOfRows = numberOfRows
-            };
-
             try
             {
+                SearchMeetingQuery query = new SearchMeetingQuery()
+                {
+                    MandatorUIDs = RequestMandatorUIDs,
+                    SearchCriterias = searchCriterias,
+                    NumberOfRows = numberOfRows
+                };
+
                 SearchMeetingQueryHandler handler = new SearchMeetingQueryHandler(query, UnityContainer);
                 return Request.CreateResponse(HttpStatusCode.OK, handler.Handle());
+            }
+            catch (UnauthorizedAccessException e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.Unauthorized, e);
+            }
+            catch (DataException e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
             catch (Exception e)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
-
         }
 
         [HttpGet]
         [Route("meeting/{uid}")]
         public HttpResponseMessage Get(Guid uid)
         {
-            //var mandatorUidStrings = HttpContext.Current.Request.ServerVariables.Get("MandatorUID").Split(',');
-            var mandatorUidStrings = new List<string>() { "72920FF1-4C81-F677-D5EE-00FD566FAE86" };
-
-            List<Guid> mandatorUids = new List<Guid>();
-
-            foreach (var mandatorString in mandatorUidStrings)
-            {
-                mandatorUids.Add(Guid.Parse(mandatorString));
-            }
-
-            GetMeetingQuery query = new GetMeetingQuery()
-            {
-                MandatorUIDs = mandatorUids,
-                MeetingUID = uid
-            };            
-
             try
             {
+                GetMeetingQuery query = new GetMeetingQuery()
+                {
+                    MandatorUIDs = RequestMandatorUIDs,
+                    MeetingUID = uid
+                };
+
                 GetMeetingQueryHandler handler = new GetMeetingQueryHandler(query, UnityContainer);
                 return Request.CreateResponse(HttpStatusCode.OK, handler.Handle());
             }
-            catch(Exception e)
+            catch (UnauthorizedAccessException e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.Unauthorized, e);
+            }
+            catch (DataException e)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
-            }            
+            }
+            catch (Exception e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+            }
         }
 
         [HttpPost]
         [Route("meeting")]
         public HttpResponseMessage Post([FromBody] JObject jsonObject)
         {
-            //var mandatorUidStrings = HttpContext.Current.Request.ServerVariables.Get("MandatorUID").Split(',');
-            var mandatorUidStrings = new List<string>() { "72920FF1-4C81-F677-D5EE-00FD566FAE86" };
-
-
-            List<Guid> mandatorUids = new List<Guid>();
-
-            foreach (var mandatorString in mandatorUidStrings)
-            {
-                mandatorUids.Add(Guid.Parse(mandatorString));
-            }
-
             try
             {
                 MeetingDetailDomainModel meetinDomainModel = jsonObject.ToObject<MeetingDetailDomainModel>();
@@ -104,7 +89,7 @@ namespace OrgMan.API.Controllers
 
                 UpdateMeetingQuery query = new UpdateMeetingQuery()
                 {
-                    MandatorUIDs = mandatorUids,
+                    MandatorUIDs = RequestMandatorUIDs,
                     MeetingDetailDomainModel = meetinDomainModel
                 };
 
@@ -112,7 +97,15 @@ namespace OrgMan.API.Controllers
 
                 return Request.CreateResponse(HttpStatusCode.OK, handler.Handle());                
             }
-            catch(Exception e)
+            catch (UnauthorizedAccessException e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.Unauthorized, e);
+            }
+            catch (DataException e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+            }
+            catch (Exception e)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
@@ -122,17 +115,6 @@ namespace OrgMan.API.Controllers
         [Route("meeting")]
         public HttpResponseMessage Put([FromBody] JObject jsonObject)
         {
-            //var mandatorUidStrings = HttpContext.Current.Request.ServerVariables.Get("MandatorUID").Split(',');
-            var mandatorUidStrings = new List<string>() { "72920FF1-4C81-F677-D5EE-00FD566FAE86" };
-
-
-            List<Guid> mandatorUids = new List<Guid>();
-
-            foreach (var mandatorString in mandatorUidStrings)
-            {
-                mandatorUids.Add(Guid.Parse(mandatorString));
-            }
-
             try
             {
                 MeetingDetailDomainModel meetingDomainModel =
@@ -145,13 +127,21 @@ namespace OrgMan.API.Controllers
 
                 InsertMeetingQuery query = new InsertMeetingQuery()
                 {
-                    MandatorUIDs = mandatorUids,
+                    MandatorUIDs = RequestMandatorUIDs,
                     MeetingDetailDomainModel = meetingDomainModel
                 };
 
                 InsertMeetingQueryHandler handler = new InsertMeetingQueryHandler(query, UnityContainer);
 
                 return Request.CreateResponse(HttpStatusCode.Accepted, handler.Handle());
+            }
+            catch (UnauthorizedAccessException e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.Unauthorized, e);
+            }
+            catch (DataException e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
             catch (Exception e)
             {
@@ -163,30 +153,29 @@ namespace OrgMan.API.Controllers
         [Route("meeting/{uid}")]
         public HttpResponseMessage Delete(Guid uid)
         {
-            var mandatorUidStrings = new List<string>() { "E91019DA-26C8-B201-1385-0011F6C365E9" };
-
-            List<Guid> mandatorUids = new List<Guid>();
-
-            foreach (var mandatorString in mandatorUidStrings)
-            {
-                mandatorUids.Add(Guid.Parse(mandatorString));
-            }
-
-            DeleteMeetingQuery query = new DeleteMeetingQuery()
-            {
-                MandatorUIDs = mandatorUids,
-                MeetingUID = uid
-            };
-
             try
             {
+                DeleteMeetingQuery query = new DeleteMeetingQuery()
+                {
+                    MandatorUIDs = RequestMandatorUIDs,
+                    MeetingUID = uid
+                };
+
                 DeleteMeetingQueryHandler handler = new DeleteMeetingQueryHandler(query, UnityContainer);
 
                 handler.Handle();
 
                 return Request.CreateResponse(HttpStatusCode.Accepted);
             }
-            catch(Exception e)
+            catch (UnauthorizedAccessException e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.Unauthorized, e);
+            }
+            catch (DataException e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+            }
+            catch (Exception e)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }

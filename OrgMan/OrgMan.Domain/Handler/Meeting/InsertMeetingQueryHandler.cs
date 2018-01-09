@@ -54,15 +54,15 @@ namespace OrgMan.Domain.Handler.Meeting
             }
             catch (UnauthorizedAccessException)
             {
-                throw new Exception("Not Authorized to Create the Entity");
+                throw new UnauthorizedAccessException("Not Authorized to Create the Entity");
             }
             catch (InvalidOperationException)
             {
-                throw new Exception("Internal Server Error thrown during create process");
+                throw new InvalidOperationException("Internal Server Error thrown during create process");
             }
             catch (DataException e)
             {
-                throw new Exception("Internal Server Error", e);
+                throw new DataException("Internal Server Error", e);
             }
             catch (Exception)
             {

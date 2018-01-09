@@ -40,15 +40,15 @@ namespace OrgMan.Domain.Handler.Meeting
             }
             catch (UnauthorizedAccessException)
             {
-                throw new Exception("Not Authorized to Update the Entity");
+                throw new UnauthorizedAccessException("Not Authorized to Update the Entity");
             }
             catch (InvalidOperationException)
             {
-                throw new Exception("Internal Server Error thrown during update process");
+                throw new InvalidOperationException("Internal Server Error thrown during update process");
             }
             catch (DataException e)
             {
-                throw new Exception("Internal Server Error", e);
+                throw new DataException("Internal Server Error", e);
             }
             catch (Exception)
             {

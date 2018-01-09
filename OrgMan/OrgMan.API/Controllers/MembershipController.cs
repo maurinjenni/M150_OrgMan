@@ -33,6 +33,14 @@ namespace OrgMan.API.Controllers
 
                 return Request.CreateResponse(HttpStatusCode.OK, handler.Handle());
             }
+            catch (UnauthorizedAccessException e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.Unauthorized, e);
+            }
+            catch (DataException e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+            }
             catch (Exception e)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);

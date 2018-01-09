@@ -6,6 +6,8 @@ using OrgMan.DomainObjects.Picture;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -20,28 +22,30 @@ namespace OrgMan.API.Controllers
         [Route("picture/{uid}")]
         public HttpResponseMessage Get(Guid uid)
         {
-            //var mandatorUidStrings = HttpContext.Current.Request.ServerVariables.Get("MandatorUID").Split(',');
-            var mandatorUidStrings = new List<string>() { "72920FF1-4C81-F677-D5EE-00FD566FAE86" };
-
-            List<Guid> mandatorUids = new List<Guid>();
-
-            foreach (var mandatorString in mandatorUidStrings)
-            {
-                mandatorUids.Add(Guid.Parse(mandatorString));
-            }
-
-            GetPictureQuery query = new GetPictureQuery()
-            {
-                MandatorUIDs = RequestMandatorUIDs,
-                IndividualPersonUID = uid,
-                PictureDirectoryPath = ConfigurationManager.AppSettings["PictureDirectoryPath"]
-            };
-
             try
             {
+                GetPictureQuery query = new GetPictureQuery()
+                {
+                    MandatorUIDs = RequestMandatorUIDs,
+                    IndividualPersonUID = uid,
+                    PictureDirectoryPath = ConfigurationManager.AppSettings["PictureDirectoryPath"]
+                };
+
                 GetPictureQueryHandler handler = new GetPictureQueryHandler(query, UnityContainer);
 
                 return Request.CreateResponse(HttpStatusCode.Accepted, handler.Handle());
+            }
+            catch (UnauthorizedAccessException e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.Unauthorized, e);
+            }
+            catch (DataException e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+            }
+            catch (FileNotFoundException e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, e);
             }
             catch (Exception e)
             {
@@ -53,9 +57,6 @@ namespace OrgMan.API.Controllers
         [Route("picture")]
         public HttpResponseMessage Post([FromBody] JObject jsonObject)
         {
-            //var mandatorUidStrings = HttpContext.Current.Request.ServerVariables.Get("MandatorUID").Split(',');
-            var mandatorUidStrings = new List<string>() { "72920FF1-4C81-F677-D5EE-00FD566FAE86" };
-
             try
             {
                 PictureDomainModel pictureDomainModel =
@@ -77,6 +78,18 @@ namespace OrgMan.API.Controllers
 
                 return Request.CreateResponse(HttpStatusCode.Accepted, handler.Handle());
             }
+            catch (UnauthorizedAccessException e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.Unauthorized, e);
+            }
+            catch (DataException e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+            }
+            catch (FileNotFoundException e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, e);
+            }
             catch (Exception e)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
@@ -87,9 +100,6 @@ namespace OrgMan.API.Controllers
         [Route("picture")]
         public HttpResponseMessage Put([FromBody] JObject jsonObject)
         {
-            //var mandatorUidStrings = HttpContext.Current.Request.ServerVariables.Get("MandatorUID").Split(',');
-            var mandatorUidStrings = new List<string>() { "72920FF1-4C81-F677-D5EE-00FD566FAE86" };
-
             try
             {
                 PictureDomainModel pictureDomainModel =
@@ -111,6 +121,18 @@ namespace OrgMan.API.Controllers
 
                 return Request.CreateResponse(HttpStatusCode.Accepted, handler.Handle());
             }
+            catch (UnauthorizedAccessException e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.Unauthorized, e);
+            }
+            catch (DataException e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+            }
+            catch (FileNotFoundException e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, e);
+            }
             catch (Exception e)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
@@ -121,20 +143,32 @@ namespace OrgMan.API.Controllers
         [Route("picture/{uid}")]
         public HttpResponseMessage Delete(Guid uid)
         {
-            DeletePictureQuery query = new DeletePictureQuery()
-            {
-                MandatorUIDs = RequestMandatorUIDs,
-                PictureDirectoryPath = ConfigurationManager.AppSettings["PictureDirectoryPath"],
-                IndividualPersonUID = uid
-            };
-
             try
             {
+                DeletePictureQuery query = new DeletePictureQuery()
+                {
+                    MandatorUIDs = RequestMandatorUIDs,
+                    PictureDirectoryPath = ConfigurationManager.AppSettings["PictureDirectoryPath"],
+                    IndividualPersonUID = uid
+                };
+
                 DeletePictureQueryHandler handler = new DeletePictureQueryHandler(query, UnityContainer);
 
                 handler.Handle();
 
                 return Request.CreateResponse(HttpStatusCode.Accepted);
+            }
+            catch (UnauthorizedAccessException e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.Unauthorized, e);
+            }
+            catch (DataException e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+            }
+            catch (FileNotFoundException e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, e);
             }
             catch (Exception e)
             {

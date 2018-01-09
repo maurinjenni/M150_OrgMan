@@ -54,11 +54,11 @@ namespace OrgMan.Domain.Handler.Picture
             }
             catch (DataException e)
             {
-                throw new Exception("Internal Server Error", e);
+                throw new DataException("Internal Server Error", e);
             }
             catch (UnauthorizedAccessException e)
             {
-                throw new Exception("Internal Server Error", e);
+                throw new UnauthorizedAccessException("Internal Server Error", e);
             }
             catch (Exception)
             {

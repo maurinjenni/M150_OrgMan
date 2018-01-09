@@ -39,6 +39,9 @@ namespace OrgMan.Domain.Handler.Picture
                         {
                             return System.IO.File.ReadAllBytes(fullLink);
                         }
+
+                        throw new FileNotFoundException(string.Format("File {0} does not Exists", fullLink));
+                        
                     }
 
                     throw new UnauthorizedAccessException("Individual Person from another Mandator");
@@ -48,11 +51,15 @@ namespace OrgMan.Domain.Handler.Picture
             }
             catch (DataException e)
             {
-                throw new Exception("Internal Server Error", e);
+                throw new DataException("Internal Server Error", e);
             }
             catch (UnauthorizedAccessException e)
             {
-                throw new Exception("Internal Server Error", e);
+                throw new UnauthorizedAccessException("Internal Server Error", e);
+            }
+            catch (FileNotFoundException e)
+            {
+                throw new FileNotFoundException("Internal Server Error", e);
             }
             catch (Exception)
             {

@@ -70,6 +70,11 @@
     <Compile Include="Meeting\InsertMeetingQuery.cs" />
     <Compile Include="Meeting\SearchMeetingQuery.cs" />
     <Compile Include="Meeting\UpdateMeetingQuery.cs" />
+    <Compile Include="Membership\DeleteMembershipQuery.cs" />
+    <Compile Include="Membership\GetAllMembershipsQuery.cs" />
+    <Compile Include="Membership\GetMembershipQuery.cs" />
+    <Compile Include="Membership\InsertMembershipQuery.cs" />
+    <Compile Include="Membership\UpdateMembershipQuery.cs" />
     <Compile Include="Picture\DeletePictureQuery.cs" />
     <Compile Include="Picture\GetPictureQuery.cs" />
     <Compile Include="Picture\InsertPictureQuery.cs" />

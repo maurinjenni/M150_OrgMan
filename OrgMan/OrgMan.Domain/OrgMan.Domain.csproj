@@ -73,6 +73,11 @@
     <Compile Include="Handler\Meeting\InsertMeetingQueryHandler.cs" />
     <Compile Include="Handler\Meeting\SearchMeetingQueryHandler.cs" />
     <Compile Include="Handler\Meeting\UpdateMeetingQueryHandler.cs" />
+    <Compile Include="Handler\Membership\DeleteMembershipQueryHandler.cs" />
+    <Compile Include="Handler\Membership\GetAllMembershipsQueryHandler.cs" />
+    <Compile Include="Handler\Membership\GetMembershipQueryHandler.cs" />
+    <Compile Include="Handler\Membership\InsertMembershipQueryHandler.cs" />
+    <Compile Include="Handler\Membership\UpdateMembershipQueryHandler.cs" />
     <Compile Include="Handler\Picture\DeletePictureQueryHandler.cs" />
     <Compile Include="Handler\Picture\GetPictureQueryHandler.cs" />
     <Compile Include="Handler\Picture\InsertPictureQueryHandler.cs" />

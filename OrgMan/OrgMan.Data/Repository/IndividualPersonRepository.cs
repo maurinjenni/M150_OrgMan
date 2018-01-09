@@ -18,17 +18,10 @@ namespace OrgMan.Data.Repository
 
         public IEnumerable<IndividualPerson> Get(List<Guid> mandatorUids, string fullTextSeachString)
         {
-            var text = FullTextSearchModelUtil.Contains(fullTextSeachString);
+            /*Use this Term to use FullTextSearch*/
+            var containsTermOnIndex = FullTextSearchModelUtil.Contains(fullTextSeachString);
 
-            return Context.IndividualPersons.Where(i =>
-                (i.Company != null && i.Company.Contains(text)) ||
-                (i.Person != null && i.Person.Firstname.Contains(text)) ||
-                (i.Person != null && i.Person.Lastname.Contains(text)) ||
-                (i.Person != null && i.Person.Salutation.Title.Contains(text)) ||
-                (i.Adress != null && i.Adress.City.Contains(text)) ||
-                (i.Adress != null && i.Adress.Street.Contains(text)) ||
-                (i.Adress != null && i.Adress.HouseNumber.Contains(text)) ||
-                (i.Adress != null && i.Adress.Country != null && i.Adress.Country.Title.Contains(text))).ToList();
+            return Context.IndividualPersons.Where(i => (i.Person.Firstname + i.Person.Lastname).Contains(fullTextSeachString));
         }
     }
 }

@@ -33,14 +33,14 @@ namespace OrgMan.Domain.Handler.File
                     {
                         string combinedPath = Path.Combine(_query.FileSystemDirectoryPath, _query.Path);
 
-                        if (!System.IO.File.Exists(combinedPath))
+                        if (System.IO.File.Exists(combinedPath))
                         {
-                            throw new InvalidOperationException("The file does not exist.");
+                            StreamContent stream = new StreamContent(new FileStream(combinedPath, FileMode.Open, FileAccess.Read));
+
+                            return stream;
                         }
 
-                        StreamContent stream = new StreamContent(new FileStream(combinedPath, FileMode.Open, FileAccess.Read));
-
-                        return stream;
+                        throw new FileNotFoundException(string.Format("File {0} does not Exists", combinedPath));
                     }
                     else
                     {
@@ -58,9 +58,13 @@ namespace OrgMan.Domain.Handler.File
             }
             catch(InvalidOperationException e)
             {
-                throw new Exception("Internal Server Error during the loading the File");
+                throw new Exception("Internal Server Error during loading the File", e);
             }
-            catch (Exception )
+            catch(FormatException e)
+            {
+                throw new Exception("Internal Server Error during loading the File", e);
+            }
+            catch (Exception)
             {
                 throw new Exception("Internal Server Error");
             }

@@ -5,6 +5,7 @@ using OrgMan.DomainContracts.File;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -21,48 +22,49 @@ namespace OrgMan.API.Controllers
         [Route("file")]
         public HttpResponseMessage Get()
         {
-            GetFileTreeQuery query = new GetFileTreeQuery()
-            {
-                MandatorUIDs = RequestMandatorUIDs,
-                DirectoryPath = ConfigurationManager.AppSettings["FileSystemDirectory"]
-            };
-
             try
             {
+                GetFileTreeQuery query = new GetFileTreeQuery()
+                {
+                    MandatorUIDs = RequestMandatorUIDs,
+                    DirectoryPath = ConfigurationManager.AppSettings["FileSystemDirectory"]
+                };
+
                 GetFileTreeQueryHandler handler = new GetFileTreeQueryHandler(query, UnityContainer);
 
                 return Request.CreateResponse(HttpStatusCode.OK, handler.Handle());
+            }
+            catch (UnauthorizedAccessException e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.Unauthorized, e);
+            }
+            catch (DataException e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+            }
+            catch (FileNotFoundException e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, e);
             }
             catch (Exception e)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
-
         }
 
         [HttpGet]
         [Route("file")]
         public HttpResponseMessage Get([FromUri]string path)
         {
-            //var mandatorUidStrings = HttpContext.Current.Request.ServerVariables.Get("MandatorUID").Split(',');
-            var mandatorUidStrings = new List<string>() { "72920FF1-4C81-F677-D5EE-00FD566FAE86" };
-
-            List<Guid> mandatorUids = new List<Guid>();
-
-            foreach (var mandatorString in mandatorUidStrings)
-            {
-                mandatorUids.Add(Guid.Parse(mandatorString));
-            }
-
-            GetFileQuery query = new GetFileQuery()
-            {
-                MandatorUIDs = mandatorUids,
-                FileSystemDirectoryPath = ConfigurationManager.AppSettings["FileSystemDirectory"],
-                Path = path
-            };
-
             try
             {
+                GetFileQuery query = new GetFileQuery()
+                {
+                    MandatorUIDs = RequestMandatorUIDs,
+                    FileSystemDirectoryPath = ConfigurationManager.AppSettings["FileSystemDirectory"],
+                    Path = path
+                };
+
                 GetFileQueryHandler handler = new GetFileQueryHandler(query, UnityContainer);
 
                 var response = Request.CreateResponse(HttpStatusCode.OK);
@@ -78,6 +80,18 @@ namespace OrgMan.API.Controllers
 
                 return response;
             }
+            catch (UnauthorizedAccessException e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.Unauthorized, e);
+            }
+            catch (DataException e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+            }
+            catch (FileNotFoundException e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, e);
+            }
             catch (Exception e)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
@@ -88,16 +102,6 @@ namespace OrgMan.API.Controllers
         [Route("file")]
         public HttpResponseMessage Upload([FromUri]List<Guid> fileMandatorUids)
         {
-            //var mandatorUidStrings = HttpContext.Current.Request.ServerVariables.Get("MandatorUID").Split(',');
-            var mandatorUidStrings = new List<string>() { "76cb37fc-1128-4a21-ad93-248bf198a857" };
-
-            List<Guid> mandatorUids = new List<Guid>();
-
-            foreach (var mandatorString in mandatorUidStrings)
-            {
-                mandatorUids.Add(Guid.Parse(mandatorString));
-            }
-
             try
             {
                 if (HttpContext.Current.Request.Files.AllKeys.Any())
@@ -108,7 +112,7 @@ namespace OrgMan.API.Controllers
                     {
                         UploadFileQuery query = new UploadFileQuery()
                         {
-                            MandatorUIDs = mandatorUids,
+                            MandatorUIDs = RequestMandatorUIDs,
                             FileMandatorUIDs = fileMandatorUids,
                             File = httpUploadedFile,
                             FileSystemDirectoryPath = ConfigurationManager.AppSettings["FileSystemDirectory"]
@@ -130,9 +134,13 @@ namespace OrgMan.API.Controllers
                     throw new Exception("Invalid File");
                 }
             }
+            catch (UnauthorizedAccessException e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.Unauthorized, e);
+            }
             catch (Exception e)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Invalid File");
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
         }
 
@@ -141,30 +149,29 @@ namespace OrgMan.API.Controllers
         [Route("file/{uid}")]
         public HttpResponseMessage Delete([FromUri]List<Guid> fileMandatorUids, [FromUri]string filePath)
         {
-            var mandatorUidStrings = new List<string>() { "E91019DA-26C8-B201-1385-0011F6C365E9" };
-
-            List<Guid> mandatorUids = new List<Guid>();
-
-            foreach (var mandatorString in mandatorUidStrings)
-            {
-                mandatorUids.Add(Guid.Parse(mandatorString));
-            }
-
-            DeleteFileQuery query = new DeleteFileQuery()
-            {
-                MandatorUIDs = mandatorUids,
-                FilePath = filePath,
-                FileMandatorUIDs = fileMandatorUids,
-                FileSystemDirectoryPath = ConfigurationManager.AppSettings["FileSystemDirectory"]
-            };
-
             try
             {
+                DeleteFileQuery query = new DeleteFileQuery()
+                {
+                    MandatorUIDs = RequestMandatorUIDs,
+                    FilePath = filePath,
+                    FileMandatorUIDs = fileMandatorUids,
+                    FileSystemDirectoryPath = ConfigurationManager.AppSettings["FileSystemDirectory"]
+                };
+
                 DeleteFileQueryHandler handler = new DeleteFileQueryHandler(query, UnityContainer);
 
                 handler.Handle();
 
                 return Request.CreateResponse(HttpStatusCode.Accepted);
+            }
+            catch (UnauthorizedAccessException e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.Unauthorized, e);
+            }
+            catch (FileNotFoundException e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, e);
             }
             catch (Exception e)
             {

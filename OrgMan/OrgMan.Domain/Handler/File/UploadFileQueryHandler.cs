@@ -21,21 +21,36 @@ namespace OrgMan.Domain.Handler.File
 
         public void Handle()
         {
-            foreach(Guid fileMandatorUid in _query.FileMandatorUIDs)
+            try
             {
-                if (_query.MandatorUIDs.Contains(fileMandatorUid))
+                foreach (Guid fileMandatorUid in _query.FileMandatorUIDs)
                 {
-                    string fileSavePath = Path.Combine(_query.FileSystemDirectoryPath, fileMandatorUid.ToString());
-
-                    if (!Directory.Exists(fileSavePath))
+                    if (_query.MandatorUIDs.Contains(fileMandatorUid))
                     {
-                        Directory.CreateDirectory(fileSavePath);
+                        string fileSavePath = Path.Combine(_query.FileSystemDirectoryPath, fileMandatorUid.ToString());
+
+                        if (!Directory.Exists(fileSavePath))
+                        {
+                            Directory.CreateDirectory(fileSavePath);
+                        }
+
+                        fileSavePath = Path.Combine(fileSavePath, _query.File.FileName);
+
+                        _query.File.SaveAs(fileSavePath);
                     }
-
-                    fileSavePath = Path.Combine(fileSavePath, _query.File.FileName);
-
-                    _query.File.SaveAs(fileSavePath);
+                    else
+                    {
+                        throw new UnauthorizedAccessException("File from another Mandator");
+                    }
                 }
+            }
+            catch (UnauthorizedAccessException e)
+            {
+                throw new Exception("Unauthorized Access", e);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Internal Server Error");
             }
         }
     }

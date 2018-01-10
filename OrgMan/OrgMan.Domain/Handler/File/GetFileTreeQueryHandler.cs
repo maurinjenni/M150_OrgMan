@@ -32,7 +32,7 @@ namespace OrgMan.Domain.Handler.File
 
                 foreach (var mandatorUid in _query.MandatorUIDs)
                 {
-                    MandatorDomainModel mandator = AutoMapper.Mapper.Map<MandatorDomainModel>(_uow.MandatorRepository.Get(mandatorUid));
+                    MandatorDomainModel mandator = AutoMapper.Mapper.Map<MandatorDomainModel>(_uow.MandatorRepository.Get(_query.MandatorUIDs, mandatorUid));
 
                     if (mandator == null)
                     {
@@ -76,7 +76,7 @@ namespace OrgMan.Domain.Handler.File
             {
                 throw new Exception("Internal Server Error", e);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 throw new Exception("Internal Server Error");
             }

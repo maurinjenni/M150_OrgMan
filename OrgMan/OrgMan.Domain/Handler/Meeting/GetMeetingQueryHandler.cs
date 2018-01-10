@@ -21,7 +21,7 @@ namespace OrgMan.Domain.Handler.Meeting
         {
             OrgManUnitOfWork uow = new OrgManUnitOfWork();
 
-            var meeting = uow.MeetingRepository.Get(_query.MeetingUID);
+            var meeting = uow.MeetingRepository.Get(_query.MandatorUIDs, _query.MeetingUID);
 
             if (_query.MandatorUIDs.Intersect(meeting.MandatorUIDs).Any())
             {

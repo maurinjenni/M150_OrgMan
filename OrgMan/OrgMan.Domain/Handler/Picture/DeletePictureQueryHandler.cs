@@ -26,7 +26,7 @@ namespace OrgMan.Domain.Handler.Picture
             {
                 OrgManUnitOfWork uow = new OrgManUnitOfWork();
 
-                var individualPerson = uow.IndividualPersonRepository.Get(_query.IndividualPersonUID);
+                var individualPerson = uow.IndividualPersonRepository.Get(_query.MandatorUIDs, _query.IndividualPersonUID);
 
                 if (individualPerson != null)
                 {
@@ -39,7 +39,7 @@ namespace OrgMan.Domain.Handler.Picture
 
                             individualPerson.PictureLink = null;
 
-                            uow.IndividualPersonRepository.Update(individualPerson);
+                            uow.IndividualPersonRepository.Update(_query.MandatorUIDs, individualPerson);
                         }
 
                         throw new FileNotFoundException(string.Format("File {0} does not Exists", fullLink));

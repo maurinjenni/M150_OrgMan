@@ -44,7 +44,7 @@ namespace OrgMan.Domain.Handler.Meeting
                     Guid meetingUid = Guid.NewGuid();
                     meeting.UID = meetingUid;
 
-                    _uow.MeetingRepository.Insert(meeting);
+                    _uow.MeetingRepository.Insert(_query.MandatorUIDs, meeting);
                     _uow.Commit();
 
                     return meeting.UID;

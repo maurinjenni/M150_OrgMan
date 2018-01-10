@@ -23,7 +23,7 @@ namespace OrgMan.Domain.Handler.Authentication
         {
             OrgManUnitOfWork uow = new OrgManUnitOfWork();
 
-            uow.SessionRepository.Delete(_query.SessionUID);
+            uow.SessionRepository.Delete(_query.MandatorUIDs, _query.SessionUID);
 
             uow.Commit();
         }

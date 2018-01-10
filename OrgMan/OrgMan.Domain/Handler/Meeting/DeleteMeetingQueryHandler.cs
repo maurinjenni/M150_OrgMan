@@ -23,7 +23,7 @@ namespace OrgMan.Domain.Handler.Meeting
         {
             try
             {
-                DataModel.Meeting meeting = _uow.MeetingRepository.Get(_query.MeetingUID);
+                DataModel.Meeting meeting = _uow.MeetingRepository.Get(_query.MandatorUIDs, _query.MeetingUID);
 
                 if (meeting == null)
                 {
@@ -35,7 +35,7 @@ namespace OrgMan.Domain.Handler.Meeting
                     throw new UnauthorizedAccessException("Meeting from another mandator");
                 }
 
-                _uow.MeetingRepository.Delete(_query.MeetingUID);
+                _uow.MeetingRepository.Delete(_query.MandatorUIDs, _query.MeetingUID);
                 _uow.Commit();
             }
             catch (UnauthorizedAccessException)

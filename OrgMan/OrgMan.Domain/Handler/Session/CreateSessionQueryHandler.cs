@@ -20,12 +20,13 @@ namespace OrgMan.Domain.Handler.Session
         public Guid Handle()
         {
             DataModel.Session session = Mapper.Map<DataModel.Session>(_query.Session);
+
             session.UID = Guid.NewGuid();
             session.SysInsertTime = DateTimeOffset.Now;
             session.SysInsertAccountUID = Guid.NewGuid();            
 
             OrgManUnitOfWork uow = new OrgManUnitOfWork();
-            uow.SessionRepository.Insert(session);
+            uow.SessionRepository.Insert(_query.MandatorUIDs, session);
             uow.Commit();
             return session.UID;
         }

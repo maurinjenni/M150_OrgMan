@@ -62,7 +62,7 @@ namespace OrgMan.Domain.Handler.Adress
                     email.UID = Guid.NewGuid();
                 }
 
-                _uow.IndividualPersonRepository.Insert(individualPerson);
+                _uow.IndividualPersonRepository.Insert(_query.MandatorUIDs, individualPerson);
 
                 _uow.Commit();
 

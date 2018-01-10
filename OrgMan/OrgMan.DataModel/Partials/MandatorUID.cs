@@ -276,7 +276,8 @@ namespace OrgMan.DataModel
             }
             set
             {
-                throw new DataException("Cannot set MandatorUIDs on Table Session. The Column does not exists.");
+                this.MandatorUID = value.First();
+                //throw new DataException("Cannot set MandatorUIDs on Table Membership. The Column does not exists.");
             }
         }
     }

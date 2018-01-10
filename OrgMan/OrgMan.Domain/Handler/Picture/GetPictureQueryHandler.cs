@@ -28,7 +28,7 @@ namespace OrgMan.Domain.Handler.Picture
             {
                 OrgManUnitOfWork uow = new OrgManUnitOfWork();
 
-                var individualPerson = uow.IndividualPersonRepository.Get(_query.IndividualPersonUID);
+                var individualPerson = uow.IndividualPersonRepository.Get(_query.MandatorUIDs, _query.IndividualPersonUID);
 
                 if (individualPerson != null)
                 {

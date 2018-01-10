@@ -36,7 +36,7 @@ namespace OrgMan.Domain.Handler.Membership
 
                 if (_query.MandatorUIDs.Intersect(membership.MandatorUIDs).Any())
                 {
-                    uow.MembershipRepository.Update(membership);
+                    uow.MembershipRepository.Update(_query.MandatorUIDs, membership);
 
                     uow.Commit();
 

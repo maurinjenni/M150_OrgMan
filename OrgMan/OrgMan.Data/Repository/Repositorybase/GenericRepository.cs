@@ -62,58 +62,115 @@ namespace OrgMan.Data.Repository.Repositorybase
             return list;
         }
 
-        public virtual TEntity Get(Guid uid)
+        public virtual TEntity Get(List<Guid> mandatorUids, Guid uid)
         {
-            //return DbSet.Where(t => t.MandatorUID == mandatorUid).FirstOrDefault(t => t.UID == uid);
+            var entity = DbSet.FirstOrDefault(t => t.UID == uid);
 
-            return DbSet.FirstOrDefault(t => t.UID == uid);
-        }
-
-        public virtual void Insert(TEntity entity)
-        {
-            DbSet.Add(entity);
-        }
-
-        public virtual void Delete(Guid uid)
-        {
-            TEntity entityToDelete = DbSet.Find(uid);
-
-            if (entityToDelete != null)
+            if (entity.MandatorUIDs.Intersect(mandatorUids).Any())
             {
-                if (Context.Entry(entityToDelete).State == EntityState.Detached)
-                {
-                    DbSet.Attach(entityToDelete);
-                }
-
-                DbSet.Remove(entityToDelete);
+                return entity;
             }
             else
             {
-                throw new DataException("No Entity found to UID : " + uid);
+                throw new UnauthorizedAccessException(string.Format("{0} from another Mandator", entity.GetType().BaseType.Name));
             }
         }
 
-
-        public virtual void Delete(TEntity entityToDelete)
+        public virtual TEntity Get(Guid uid)
         {
-            if (Context.Entry(entityToDelete).State == EntityState.Detached)
+            return DbSet.FirstOrDefault(t => t.UID == uid);
+        }
+
+        public virtual void Insert(List<Guid> mandatorUids, TEntity entity)
+        {
+            if (entity.MandatorUIDs.Intersect(mandatorUids).Any())
             {
-                DbSet.Attach(entityToDelete);
+                DbSet.Add(entity);
             }
-            DbSet.Remove(entityToDelete);
+            else
+            {
+                throw new UnauthorizedAccessException(string.Format("{0} from another Mandator", entity.GetType().BaseType.Name));
+            }
         }
 
-        public virtual void Update(TEntity entityToUpdate)
+        public virtual void Delete(List<Guid> mandatorUids, Guid uid)
         {
-            DbSet.Attach(entityToUpdate);
+            TEntity entityToDelete = DbSet.FirstOrDefault(e => e.UID == uid);
 
-            var entry = Context.Entry(entityToUpdate);
+            if (entityToDelete != null)
+            {
+                if (entityToDelete.MandatorUIDs.Intersect(mandatorUids).Any())
+                {
+                    if (Context.Entry(entityToDelete).State == EntityState.Detached)
+                    {
+                        DbSet.Attach(entityToDelete);
+                    }
 
-            entry.Property(x => x.SysInsertAccountUID).IsModified = false;
-            entry.Property(x => x.SysInsertTime).IsModified = false;
+                    DbSet.Remove(entityToDelete);
+                }
+                else
+                {
+                    throw new UnauthorizedAccessException(string.Format("{0} from another Mandator", entityToDelete.GetType().BaseType.Name));
+                }
+            }
+            else
+            {
+                throw new DataException(string.Format("No Entity found to UID : {1}", uid));
+            }
+        }
 
 
-            entry.State = EntityState.Modified;
+        public virtual void Delete(List<Guid> mandatorUids, TEntity entityToDelete)
+        {
+            if(entityToDelete != null)
+            {
+                if (entityToDelete.MandatorUIDs.Intersect(mandatorUids).Any())
+                {
+                    if (Context.Entry(entityToDelete).State == EntityState.Detached)
+                    {
+                        DbSet.Attach(entityToDelete);
+                    }
+
+                    DbSet.Remove(entityToDelete);
+                }
+                else
+                {
+                    throw new UnauthorizedAccessException(string.Format("{0} from another Mandator", entityToDelete.GetType().BaseType.Name));
+                }
+            }
+            else
+            {
+                throw new DataException("No Entity found to delete");
+            }
+        }
+
+        public virtual void Update(List<Guid> mandatorUids, TEntity entityToUpdate)
+        {
+            //var oldEntity = DbSet.FirstOrDefault(e => e.UID == entityToUpdate.UID);
+
+            //if(oldEntity != null)
+            //{
+            //    if (oldEntity.MandatorUIDs.Intersect(mandatorUids).Any())
+            //    {
+                    DbSet.Attach(entityToUpdate);
+
+                    var entry = Context.Entry(entityToUpdate);
+
+                    entry.Property(x => x.SysInsertAccountUID).IsModified = false;
+                    entry.Property(x => x.SysInsertTime).IsModified = false;
+
+
+                    entry.State = EntityState.Modified;
+                //}
+        //        else
+        //        {
+        //            throw new UnauthorizedAccessException(string.Format("{0} from another Mandator", entityToUpdate.GetType().BaseType.Name));
+        //        }
+        //    }
+        //    else
+        //    {
+        //        throw new DataException(string.Format("No Entity found to UID : {1}", entityToUpdate.UID));
+        //    }
         }
     }
 }

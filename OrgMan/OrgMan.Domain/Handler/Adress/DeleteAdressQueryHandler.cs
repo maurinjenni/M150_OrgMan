@@ -25,7 +25,7 @@ namespace OrgMan.Domain.Handler.Adress
         {
             try
             {
-                IndividualPerson individualPerson = _uow.IndividualPersonRepository.Get(_query.IndividualPersonUID);
+                IndividualPerson individualPerson = _uow.IndividualPersonRepository.Get(_query.MandatorUIDs,_query.IndividualPersonUID);
 
                 if(individualPerson == null)
                 {
@@ -34,17 +34,17 @@ namespace OrgMan.Domain.Handler.Adress
                 
                 if (individualPerson.Phones != null && individualPerson.Phones.Any())
                 {
-                    DeletePhones(individualPerson.Phones.Select(p => p.UID).ToList());
+                    DeletePhones(_query.MandatorUIDs, individualPerson.Phones.Select(p => p.UID).ToList());
                 }
 
                 if (individualPerson.Emails != null && individualPerson.Emails.Any())
                 {
-                    DeleteEmails(individualPerson.Emails.Select(p => p.UID).ToList());
+                    DeleteEmails(_query.MandatorUIDs, individualPerson.Emails.Select(p => p.UID).ToList());
                 }
 
                 if (individualPerson.Person.PersonToMandators != null && individualPerson.Person.PersonToMandators.Any())
                 {
-                    DeletePersonToMandators(individualPerson.Person.PersonToMandators.Select(p => p.UID).ToList());
+                    DeletePersonToMandators(_query.MandatorUIDs, individualPerson.Person.PersonToMandators.Select(p => p.UID).ToList());
                 }
                 else
                 {
@@ -55,30 +55,30 @@ namespace OrgMan.Domain.Handler.Adress
                 {
                     if (individualPerson.Person.Login.Sessions != null && individualPerson.Person.Login.Sessions.Any())
                     {
-                        DeleteSessions(individualPerson.Person.Login.Sessions.Select(s => s.UID).ToList());
+                        DeleteSessions(_query.MandatorUIDs, individualPerson.Person.Login.Sessions.Select(s => s.UID).ToList());
                     }
 
-                    _uow.LoginRepository.Delete(individualPerson.Person.Login.UID);
+                    _uow.LoginRepository.Delete(_query.MandatorUIDs, individualPerson.Person.Login.UID);
                 }
 
                 if (individualPerson.Person != null && individualPerson.Person.IndividualPerson != null && individualPerson.Person.SystemPerson == null)
                 {
-                    _uow.PersonRepository.Delete(individualPerson.Person.UID);
+                    _uow.PersonRepository.Delete(_query.MandatorUIDs, individualPerson.Person.UID);
                 }
 
-                _uow.IndividualPersonRepository.Delete(_query.IndividualPersonUID);
+                _uow.IndividualPersonRepository.Delete(_query.MandatorUIDs, _query.IndividualPersonUID);
 
                 if (individualPerson.MemberInformationUID != null)
                 {
                     if (individualPerson.MemberInformation.MemberInformationToMemberships != null && individualPerson.MemberInformation.MemberInformationToMemberships.Any())
                     {
-                        DeleteMemberInformationToMemberships(individualPerson.MemberInformation.MemberInformationToMemberships.Select(m => m.UID).ToList());
+                        DeleteMemberInformationToMemberships(_query.MandatorUIDs, individualPerson.MemberInformation.MemberInformationToMemberships.Select(m => m.UID).ToList());
                     }
 
-                    DeleteMemberInformation(individualPerson.MemberInformationUID.Value);
+                    DeleteMemberInformation(_query.MandatorUIDs, individualPerson.MemberInformationUID.Value);
                 }
 
-                DeleteAdress(individualPerson.AdressUID);
+                DeleteAdress(_query.MandatorUIDs, individualPerson.AdressUID);
             }
             catch (DataException e)
             {
@@ -103,63 +103,63 @@ namespace OrgMan.Domain.Handler.Adress
             }
         }
 
-        private void DeletePhones(List<Guid> uids)
+        private void DeletePhones(List<Guid> mandatorUids, List<Guid> uids)
         {
             foreach (var uid in uids)
             {
-                _uow.PhoneRepository.Delete(uid);
+                _uow.PhoneRepository.Delete(mandatorUids, uid);
             }
         }
 
-        private void DeleteEmails(List<Guid> uids)
+        private void DeleteEmails(List<Guid> mandatorUids, List<Guid> uids)
         {
             foreach (var uid in uids)
             {
-                _uow.EmailRepository.Delete(uid);
+                _uow.EmailRepository.Delete(mandatorUids, uid);
             }
         }
 
-        private void DeletePersonToMandators(List<Guid> uids)
+        private void DeletePersonToMandators(List<Guid> mandatorUids, List<Guid> uids)
         {
             foreach (var uid in uids)
             {
-                _uow.PersonToMandatorRepository.Delete(uid);
+                _uow.PersonToMandatorRepository.Delete(mandatorUids, uid);
             }
         }
 
-        private void DeleteSessions(List<Guid> uids)
+        private void DeleteSessions(List<Guid> mandatorUids, List<Guid> uids)
         {
             foreach (var uid in uids)
             {
-                _uow.SessionRepository.Delete(uid);
+                _uow.SessionRepository.Delete(mandatorUids, uid);
             }
         }
 
-        private void DeleteMemberInformationToMemberships(List<Guid> uids)
+        private void DeleteMemberInformationToMemberships(List<Guid> mandatorUids, List<Guid> uids)
         {
             foreach (var uid in uids)
             {
-                _uow.MemberInformationToMembershipRepository.Delete(uid);
+                _uow.MemberInformationToMembershipRepository.Delete(mandatorUids, uid);
             }
         }
 
-        private void DeleteAdress(Guid uid)
+        private void DeleteAdress(List<Guid> mandatorUids, Guid uid)
         {
-            var adress = _uow.AdressRepository.Get(uid);
+            var adress = _uow.AdressRepository.Get(mandatorUids, uid);
 
             if (adress.IndividualPersons.Count == 0)
             {
-                _uow.AdressRepository.Delete(uid);
+                _uow.AdressRepository.Delete(mandatorUids, uid);
             }
         }
 
-        private void DeleteMemberInformation(Guid uid)
+        private void DeleteMemberInformation(List<Guid> mandatorUids, Guid uid)
         {
-            var memberinformation = _uow.MemberInformationRepository.Get(uid);
+            var memberinformation = _uow.MemberInformationRepository.Get(mandatorUids, uid);
 
             if(memberinformation.IndividualPersons.Count == 0)
             {
-                _uow.MemberInformationRepository.Delete(uid);
+                _uow.MemberInformationRepository.Delete(mandatorUids, uid);
             }
         }
     }

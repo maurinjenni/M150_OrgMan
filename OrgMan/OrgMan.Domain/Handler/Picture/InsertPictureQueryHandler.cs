@@ -28,7 +28,7 @@ namespace OrgMan.Domain.Handler.Picture
             {
                 OrgManUnitOfWork uow = new OrgManUnitOfWork();
 
-                var individualPerson = uow.IndividualPersonRepository.Get(_query.Picture.IndividualPersonUID);
+                var individualPerson = uow.IndividualPersonRepository.Get(_query.MandatorUIDs, _query.Picture.IndividualPersonUID);
 
                 if (individualPerson != null)
                 {
@@ -47,7 +47,7 @@ namespace OrgMan.Domain.Handler.Picture
 
                     individualPerson.PictureLink = combinedPath;
 
-                    uow.IndividualPersonRepository.Update(individualPerson);
+                    uow.IndividualPersonRepository.Update(_query.MandatorUIDs, individualPerson);
 
                     return _query.Picture;
                 }

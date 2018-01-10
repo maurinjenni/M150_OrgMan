@@ -38,7 +38,7 @@ namespace OrgMan.Domain.Handler.Membership
                 {
                     membership.UID = Guid.NewGuid();
 
-                    uow.MembershipRepository.Insert(membership);
+                    uow.MembershipRepository.Insert(_query.MandatorUIDs, membership);
 
                     uow.Commit();
 

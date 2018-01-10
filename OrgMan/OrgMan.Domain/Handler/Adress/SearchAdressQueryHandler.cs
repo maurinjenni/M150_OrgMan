@@ -42,7 +42,7 @@ namespace OrgMan.Domain.Handler.Adress
                     }
                 }
 
-                var items = uow.IndividualPersonRepository.Get(_query.MandatorUID, whereExpression, null, "Person, Person.PersonToMandators, MemberInformation, Adress", _query.NumberOfRows);
+                var items = uow.IndividualPersonRepository.Get(_query.MandatorUIDs, whereExpression, null, "Person, Person.PersonToMandators, MemberInformation, Adress", _query.NumberOfRows);
 
                 return Mapper.Map<List<AdressManagementSearchDomainModel>>(items);
             }

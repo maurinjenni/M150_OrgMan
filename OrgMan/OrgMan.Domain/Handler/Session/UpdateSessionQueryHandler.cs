@@ -23,7 +23,7 @@ namespace OrgMan.Domain.Handler.Session
             session.SysUpdateAccountUID = Guid.NewGuid();
 
             OrgManUnitOfWork uow = new OrgManUnitOfWork();
-            uow.SessionRepository.Update(session);
+            uow.SessionRepository.Update(_query.MandatorUIDs, session);
 
             uow.Commit();
         }

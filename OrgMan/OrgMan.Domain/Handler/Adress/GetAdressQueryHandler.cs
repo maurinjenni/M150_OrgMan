@@ -20,7 +20,7 @@ namespace OrgMan.Domain.Handler.Adress
         {
             OrgManUnitOfWork uow = new OrgManUnitOfWork();
 
-            var individualPerson = uow.IndividualPersonRepository.Get(_query.AdressUID);
+            var individualPerson = uow.IndividualPersonRepository.Get(_query.MandatorUIDs, _query.AdressUID);
 
             return Mapper.Map<AdressManagementDetailDomainModel>(individualPerson);
         }

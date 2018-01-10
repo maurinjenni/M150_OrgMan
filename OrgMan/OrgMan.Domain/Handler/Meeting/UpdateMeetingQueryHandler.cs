@@ -29,7 +29,7 @@ namespace OrgMan.Domain.Handler.Meeting
 
                 if (_query.MandatorUIDs.Intersect(meeting.MandatorUIDs).Any())
                 {
-                    uow.MeetingRepository.Update(meeting);
+                    uow.MeetingRepository.Update(_query.MandatorUIDs, meeting);
 
                     uow.Commit();
 

@@ -8,19 +8,21 @@ namespace OrgMan.DataContracts.Repository.RepositoryBase
     public interface IGenericRepository<TEntity>
     {
         IEnumerable<TEntity> Get(
-    List<Guid> mandatorUid,
-    Expression<Func<TEntity, bool>> filter = null,
-    Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
-    string includeProperties = "", int? numberOfRows = null);
+            List<Guid> mandatorUid,
+            Expression<Func<TEntity, bool>> filter = null,
+            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
+            string includeProperties = "", int? numberOfRows = null);
+
+        TEntity Get(List<Guid> mandatorUid, Guid uid);
 
         TEntity Get(Guid uid);
 
-        void Insert(TEntity entity);
+        void Insert(List<Guid> mandatorUid, TEntity entity);
 
-        void Delete(Guid uid);
+        void Delete(List<Guid> mandatorUid, Guid uid);
 
-        void Delete(TEntity entityToDelete);
+        void Delete(List<Guid> mandatorUid, TEntity entityToDelete);
 
-        void Update(TEntity entityToUpdate);
+        void Update(List<Guid> mandatorUid, TEntity entityToUpdate);
     }
 }

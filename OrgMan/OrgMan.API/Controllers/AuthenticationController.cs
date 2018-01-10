@@ -56,7 +56,8 @@ namespace OrgMan.API.Controllers
                         {
                             LoginUID = personUid,
                             ExpireDate = DateTimeOffset.Now.AddDays(1)
-                        }
+                        },
+                        MandatorUIDs = RequestMandatorUIDs
                     };
 
                     CreateSessionQueryHandler createSessionQueryHandler = new CreateSessionQueryHandler(createSessionQuery,new UnityContainer());
@@ -95,7 +96,8 @@ namespace OrgMan.API.Controllers
                     {
                         DeleteSessionQuery query = new DeleteSessionQuery()
                         {
-                            SessionUID = sessionUid
+                            SessionUID = sessionUid,
+                            MandatorUIDs = RequestMandatorUIDs
                         };
 
                         DeleteSessionQueryHandler handler = new DeleteSessionQueryHandler(query, UnityContainer);

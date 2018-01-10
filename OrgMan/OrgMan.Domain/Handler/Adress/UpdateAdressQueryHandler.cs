@@ -26,27 +26,27 @@ namespace OrgMan.Domain.Handler.Adress
 
                 var individualPerson = Mapper.Map<DataModel.IndividualPerson>(_query.AdressManagementDetailDomainModel);
 
-                uow.IndividualPersonRepository.Update(individualPerson);
-                uow.PersonRepository.Update(individualPerson.Person);
-                uow.AdressRepository.Update(individualPerson.Adress);
+                uow.IndividualPersonRepository.Update(_query.MandatorUIDs, individualPerson);
+                uow.PersonRepository.Update(_query.MandatorUIDs, individualPerson.Person);
+                uow.AdressRepository.Update(_query.MandatorUIDs, individualPerson.Adress);
 
                 foreach (var phone in individualPerson.Phones)
                 {
-                    uow.PhoneRepository.Update(phone);
+                    uow.PhoneRepository.Update(_query.MandatorUIDs, phone);
                 }
 
                 foreach (var email in individualPerson.Emails)
                 {
-                    uow.EmailRepository.Update(email);
+                    uow.EmailRepository.Update(_query.MandatorUIDs, email);
                 }
 
                 uow.Commit();
 
                 return Mapper.Map<AdressManagementDetailDomainModel>(individualPerson);
             }
-            catch(InvalidOperationException)
+            catch(InvalidOperationException e)
             {
-                throw new Exception("Internal Server Error thrown during update process");
+                throw new Exception("Internal Server Error thrown during update process", e);
             }
             catch (DataException e)
             {

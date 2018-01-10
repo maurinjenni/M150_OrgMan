@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace OrgMan.DomainContracts.Adress
 {
@@ -6,6 +7,6 @@ namespace OrgMan.DomainContracts.Adress
     {
         public Guid IndividualPersonUID { get; set; }
 
-        public Guid MandatorUID { get; set; }
+        public List<Guid> MandatorUIDs { get; set; }
     }
 }

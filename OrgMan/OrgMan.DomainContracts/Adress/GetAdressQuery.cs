@@ -7,6 +7,6 @@ namespace OrgMan.DomainContracts.Adress
     {
         public Guid AdressUID { get; set; }
 
-        public List<Guid> MandatorUID { get; set; }
+        public List<Guid> MandatorUIDs { get; set; }
     }
 }

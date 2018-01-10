@@ -28,7 +28,7 @@ namespace OrgMan.Domain.Handler.Membership
 
             try
             {
-                var membership = uow.MembershipRepository.Get(_query.MembershipUID);
+                var membership = uow.MembershipRepository.Get(_query.MandatorUIDs, _query.MembershipUID);
 
                 if (membership == null)
                 {
@@ -46,7 +46,7 @@ namespace OrgMan.Domain.Handler.Membership
                                 membership.MemberInformationToMemberships.Count));
                     }
 
-                    uow.MembershipRepository.Delete(_query.MembershipUID);
+                    uow.MembershipRepository.Delete(_query.MandatorUIDs, _query.MembershipUID);
                 }
                 else
                 {

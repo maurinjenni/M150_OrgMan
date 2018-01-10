@@ -31,7 +31,7 @@ namespace OrgMan.API.Controllers
 
             SearchAdressQuery qurey = new SearchAdressQuery()
             {
-                MandatorUID = RequestMandatorUIDs,
+                MandatorUIDs = RequestMandatorUIDs,
                 SearchCriterias = searchCriterias,
                 NumberOfRows = numberOfRows
             };
@@ -77,7 +77,7 @@ namespace OrgMan.API.Controllers
         {
             GetAdressQuery query = new GetAdressQuery()
             {
-                MandatorUID = RequestMandatorUIDs,
+                MandatorUIDs = RequestMandatorUIDs,
                 AdressUID = uid,
             };
 
@@ -109,7 +109,7 @@ namespace OrgMan.API.Controllers
 
                 UpdateAdressQuery query = new UpdateAdressQuery()
                 {
-                    MandatorUID = RequestMandatorUIDs[0],
+                    MandatorUIDs = RequestMandatorUIDs,
                     AdressManagementDetailDomainModel = adressDomainModel
                 };
 
@@ -139,7 +139,7 @@ namespace OrgMan.API.Controllers
 
                 InsertAdressQuery query = new InsertAdressQuery()
                 {
-                    MandatorUID = RequestMandatorUIDs[0],
+                    MandatorUIDs = RequestMandatorUIDs,
                     AdressManagementDetailDomainModel = adressDomainModel
                 };
 
@@ -160,7 +160,7 @@ namespace OrgMan.API.Controllers
             DeleteAdressQuery query = new DeleteAdressQuery()
             {
                 IndividualPersonUID = uid,
-                MandatorUID = Guid.Empty,
+                MandatorUIDs = RequestMandatorUIDs
             };
 
             try

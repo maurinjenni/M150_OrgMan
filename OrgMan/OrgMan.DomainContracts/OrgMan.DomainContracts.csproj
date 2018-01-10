@@ -81,6 +81,7 @@
     <Compile Include="Picture\UpdatePictureQuery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Session\CreateSessionQuery.cs" />
+    <Compile Include="Session\GetMandatorsQuery.cs" />
     <Compile Include="Session\GetSessionQuery.cs" />
     <Compile Include="Session\UpdateSessionQuery.cs" />
   </ItemGroup>

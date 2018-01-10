@@ -83,6 +83,7 @@
     <Compile Include="Handler\Picture\InsertPictureQueryHandler.cs" />
     <Compile Include="Handler\Picture\UpdatePictureQueryHandler.cs" />
     <Compile Include="Handler\Session\CreateSessionQueryHandler.cs" />
+    <Compile Include="Handler\Session\GetMandatorsQueryHandler.cs" />
     <Compile Include="Handler\Session\GetSessionQueryHandler.cs" />
     <Compile Include="Handler\Session\UpdateSessionQueryHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

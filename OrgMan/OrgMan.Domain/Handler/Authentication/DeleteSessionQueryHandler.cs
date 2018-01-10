@@ -24,6 +24,8 @@ namespace OrgMan.Domain.Handler.Authentication
             OrgManUnitOfWork uow = new OrgManUnitOfWork();
 
             uow.SessionRepository.Delete(_query.SessionUID);
+
+            uow.Commit();
         }
     }
 }

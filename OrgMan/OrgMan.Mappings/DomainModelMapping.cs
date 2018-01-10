@@ -44,7 +44,7 @@ namespace OrgMan.Mappings
             AutoMapper.Mapper.CreateMap<MemberInformation, MemberInformationDomainModel>();
             AutoMapper.Mapper.CreateMap<MemberInformationDomainModel, MemberInformation>();
 
-            AutoMapper.Mapper.CreateMap<MemberInformationToMembership, MemberInformationToMembershipDomainModel>()
+            AutoMapper.Mapper.CreateMap<MemberInformationToMembership, MemberInformationToMembershipDomainModel>();
             AutoMapper.Mapper.CreateMap<MemberInformationToMembershipDomainModel, MemberInformationToMembership>();
 
             AutoMapper.Mapper.CreateMap<Membership, MembershipDomainModel>();

@@ -51,6 +51,7 @@
     <Compile Include="Common\MemberInformationToMembershipDomainModel.cs" />
     <Compile Include="Common\MembershipDomainModel.cs" />
     <Compile Include="Common\PersonDomainModel.cs" />
+    <Compile Include="Common\PersonToMandatorDomainModel.cs" />
     <Compile Include="Common\PhoneDomainModel.cs" />
     <Compile Include="File\DirectoryDomainModel.cs" />
     <Compile Include="File\FileDomainModel.cs" />

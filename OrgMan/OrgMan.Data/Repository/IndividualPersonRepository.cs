@@ -18,10 +18,10 @@ namespace OrgMan.Data.Repository
 
         public IEnumerable<IndividualPerson> Get(List<Guid> mandatorUids, string fullTextSeachString)
         {
-            /*Use this Term to use FullTextSearch*/
-            var containsTermOnIndex = FullTextSearchModelUtil.Contains(fullTextSeachString);
+            /*Search comparison with LIKE*/
+            var individualPersons = Context.IndividualPersons.Where(i => (i.Person.Firstname + i.Person.Lastname).Contains(fullTextSeachString)).ToList();
 
-            return Context.IndividualPersons.Where(i => (i.Person.Firstname + i.Person.Lastname).Contains(fullTextSeachString));
+            return individualPersons.Where(i => i.MandatorUIDs != null && i.MandatorUIDs.Intersect(mandatorUids).Any());
         }
     }
 }

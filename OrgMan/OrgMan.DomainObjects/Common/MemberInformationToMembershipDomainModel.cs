@@ -6,6 +6,10 @@ namespace OrgMan.DomainObjects.Common
     {
         public Guid UID { get; set; }
 
+        public Guid MembershipUID { get; set; }
+
+        public Guid MemberInformationUID { get; set; }
+
         public MembershipDomainModel Membership { get; set; }
     }
 }

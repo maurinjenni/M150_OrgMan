@@ -51,3 +51,4 @@ C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Data\obj\Debug\OrgMan.Data.pd
 C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Data\bin\Debug\OrgMan.DataModel.dll.config
 C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Data\bin\Debug\Fissoft.EntityFramework.Fts.dll
 C:\Users\bbzw\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Data\bin\Debug\Fissoft.EntityFramework.Fts.dll
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.Data\bin\Debug\Fissoft.EntityFramework.Fts.dll

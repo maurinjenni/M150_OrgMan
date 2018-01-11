@@ -343,3 +343,6 @@ C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\OrgMan.DataModel.dll.
 C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\OrgMan.Data.dll.config
 C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\Fissoft.EntityFramework.Fts.dll
 C:\Users\bbzw\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\Fissoft.EntityFramework.Fts.dll
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\OrgMan.Mappings.dll
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\Fissoft.EntityFramework.Fts.dll
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\OrgMan.Mappings.pdb

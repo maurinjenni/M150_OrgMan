@@ -42,49 +42,52 @@ namespace OrgMan.Domain.Handler.Adress
                     DeleteEmails(_query.MandatorUIDs, individualPerson.Emails.Select(p => p.UID).ToList());
                 }
 
-                if (individualPerson.Person.PersonToMandators != null && individualPerson.Person.PersonToMandators.Any())
+                List<Guid> personToMandatorsToDeleteUids = individualPerson.Person.PersonToMandators.Select(p => p.UID).ToList();
+
+                if (individualPerson.Person.Login != null)
                 {
-                    DeletePersonToMandators(_query.MandatorUIDs, individualPerson.Person.PersonToMandators.Select(p => p.UID).ToList());
+                    if (individualPerson.Person.Login.Sessions != null && individualPerson.Person.Login.Sessions.Any())
+                    {
+                        throw new DataException("Could not Delete, because there are active Sessions existing");
+                        //DeleteSessions(individualPerson.Person.Login.Sessions.Select(s => s.UID).ToList());
+                    }
+
+                    _uow.LoginRepository.Delete(_query.MandatorUIDs, individualPerson.Person.Login.UID);
+                }
+
+                _uow.IndividualPersonRepository.Delete(_query.MandatorUIDs, _query.IndividualPersonUID);
+
+                if (individualPerson.Person != null && individualPerson.Person.IndividualPerson != null && individualPerson.Person.SystemPerson == null)
+                {
+                   _uow.PersonRepository.Delete(_query.MandatorUIDs, individualPerson.Person.UID);
+                }
+
+                if (personToMandatorsToDeleteUids != null && personToMandatorsToDeleteUids.Any())
+                {
+                    DeletePersonToMandators(personToMandatorsToDeleteUids);
                 }
                 else
                 {
                     throw new DataException("No MandatorUDIs found for Entity with the UID : " + _query.IndividualPersonUID);
                 }
 
-                if (individualPerson.Person.Login != null)
-                {
-                    if (individualPerson.Person.Login.Sessions != null && individualPerson.Person.Login.Sessions.Any())
-                    {
-                        DeleteSessions(_query.MandatorUIDs, individualPerson.Person.Login.Sessions.Select(s => s.UID).ToList());
-                    }
-
-                    _uow.LoginRepository.Delete(_query.MandatorUIDs, individualPerson.Person.Login.UID);
-                }
-
-                if (individualPerson.Person != null && individualPerson.Person.IndividualPerson != null && individualPerson.Person.SystemPerson == null)
-                {
-                    _uow.PersonRepository.Delete(_query.MandatorUIDs, individualPerson.Person.UID);
-                }
-
-                _uow.IndividualPersonRepository.Delete(_query.MandatorUIDs, _query.IndividualPersonUID);
-
                 if (individualPerson.MemberInformationUID != null)
                 {
                     if (individualPerson.MemberInformation.MemberInformationToMemberships != null && individualPerson.MemberInformation.MemberInformationToMemberships.Any())
                     {
-                        DeleteMemberInformationToMemberships(_query.MandatorUIDs, individualPerson.MemberInformation.MemberInformationToMemberships.Select(m => m.UID).ToList());
+                        DeleteMemberInformationToMemberships(individualPerson.MemberInformation.MemberInformationToMemberships.Select(m => m.UID).ToList());
                     }
 
                     DeleteMemberInformation(_query.MandatorUIDs, individualPerson.MemberInformationUID.Value);
                 }
 
-                DeleteAdress(_query.MandatorUIDs, individualPerson.AdressUID);
+                DeleteAdress(individualPerson.AdressUID);
             }
             catch (DataException e)
             {
                 throw new Exception("Internal Server Error", e);
             }
-            catch(Exception)
+            catch(Exception e)
             {
                 throw new Exception("Internal Server Error");
             }
@@ -119,37 +122,37 @@ namespace OrgMan.Domain.Handler.Adress
             }
         }
 
-        private void DeletePersonToMandators(List<Guid> mandatorUids, List<Guid> uids)
+        private void DeletePersonToMandators(List<Guid> uids)
         {
             foreach (var uid in uids)
             {
-                _uow.PersonToMandatorRepository.Delete(mandatorUids, uid);
+                _uow.PersonToMandatorRepository.Delete(uid);
             }
         }
 
-        private void DeleteSessions(List<Guid> mandatorUids, List<Guid> uids)
+        private void DeleteSessions(List<Guid> uids)
         {
             foreach (var uid in uids)
             {
-                _uow.SessionRepository.Delete(mandatorUids, uid);
+                _uow.SessionRepository.Delete(uid);
             }
         }
 
-        private void DeleteMemberInformationToMemberships(List<Guid> mandatorUids, List<Guid> uids)
+        private void DeleteMemberInformationToMemberships(List<Guid> uids)
         {
             foreach (var uid in uids)
             {
-                _uow.MemberInformationToMembershipRepository.Delete(mandatorUids, uid);
+                _uow.MemberInformationToMembershipRepository.Delete(uid);
             }
         }
 
-        private void DeleteAdress(List<Guid> mandatorUids, Guid uid)
+        private void DeleteAdress(Guid uid)
         {
-            var adress = _uow.AdressRepository.Get(mandatorUids, uid);
+            var adress = _uow.AdressRepository.Get(uid);
 
             if (adress.IndividualPersons.Count == 0)
             {
-                _uow.AdressRepository.Delete(mandatorUids, uid);
+                _uow.AdressRepository.Delete(uid);
             }
         }
 

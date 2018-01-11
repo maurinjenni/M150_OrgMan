@@ -34,10 +34,10 @@ namespace OrgMan.Domain.Handler.Meeting
 
                 DynamicValidationService<DataModel.Meeting> validationService = new DynamicValidationService<DataModel.Meeting>(new UnityContainer());
 
-                if (!validationService.Validate(meeting))
-                {
-                    throw new DataException("Entity is Invalid");
-                }
+                //if (!validationService.Validate(meeting))
+                //{
+                //    throw new DataException("Entity is Invalid");
+                //}
 
                 if (_query.MandatorUIDs.Intersect(meeting.MandatorUIDs).Any())
                 {

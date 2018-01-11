@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace OrgMan.DomainObjects.Common
 {
@@ -11,5 +12,7 @@ namespace OrgMan.DomainObjects.Common
         public string Lastname { get; set; }
 
         public Guid SalutationUID { get; set; }
+
+        public List<PersonToMandatorDomainModel> PersonToMandators { get; set; }
     }
 }

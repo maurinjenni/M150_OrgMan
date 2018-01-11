@@ -17,7 +17,7 @@ namespace OrgMan.API.Controllers
 {
     public class AuthenticationController : ApiControllerBase
     {
-        [HttpPost]
+        [HttpPut]
         [Route("authentication/login")]
         public HttpResponseMessage Login([FromBody] JObject data)
         {
@@ -56,8 +56,7 @@ namespace OrgMan.API.Controllers
                         {
                             LoginUID = personUid,
                             ExpireDate = DateTimeOffset.Now.AddDays(1)
-                        },
-                        MandatorUIDs = RequestMandatorUIDs
+                        }
                     };
 
                     CreateSessionQueryHandler createSessionQueryHandler = new CreateSessionQueryHandler(createSessionQuery,new UnityContainer());

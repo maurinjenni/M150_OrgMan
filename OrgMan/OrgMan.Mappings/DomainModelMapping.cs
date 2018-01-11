@@ -50,6 +50,9 @@ namespace OrgMan.Mappings
             AutoMapper.Mapper.CreateMap<Membership, MembershipDomainModel>();
             AutoMapper.Mapper.CreateMap<MembershipDomainModel, Membership>();
 
+            AutoMapper.Mapper.CreateMap<PersonToMandator, PersonToMandatorDomainModel>();
+            AutoMapper.Mapper.CreateMap<PersonToMandatorDomainModel, PersonToMandator>();
+
             AutoMapper.Mapper.CreateMap<Mandator, MandatorDomainModel>();
             AutoMapper.Mapper.CreateMap<MandatorDomainModel, Mandator>();
 

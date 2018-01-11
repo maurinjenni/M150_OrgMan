@@ -93,6 +93,11 @@ namespace OrgMan.Data.Repository.Repositorybase
             }
         }
 
+        public virtual void Insert(TEntity entity)
+        {
+            DbSet.Add(entity);
+        }
+
         public virtual void Delete(List<Guid> mandatorUids, Guid uid)
         {
             TEntity entityToDelete = DbSet.FirstOrDefault(e => e.UID == uid);
@@ -137,6 +142,42 @@ namespace OrgMan.Data.Repository.Repositorybase
                 {
                     throw new UnauthorizedAccessException(string.Format("{0} from another Mandator", entityToDelete.GetType().BaseType.Name));
                 }
+            }
+            else
+            {
+                throw new DataException("No Entity found to delete");
+            }
+        }
+
+        public virtual void Delete(Guid uid)
+        {
+            TEntity entityToDelete = DbSet.FirstOrDefault(e => e.UID == uid);
+
+            if (entityToDelete != null)
+            {
+                if (Context.Entry(entityToDelete).State == EntityState.Detached)
+                {
+                    DbSet.Attach(entityToDelete);
+                }
+
+                DbSet.Remove(entityToDelete);
+            }
+            else
+            {
+                throw new DataException(string.Format("No Entity found to UID : {1}", uid));
+            }
+        }
+
+        public virtual void Delete(TEntity entityToDelete)
+        {
+            if (entityToDelete != null)
+            {
+                if (Context.Entry(entityToDelete).State == EntityState.Detached)
+                {
+                    DbSet.Attach(entityToDelete);
+                }
+
+                DbSet.Remove(entityToDelete);
             }
             else
             {

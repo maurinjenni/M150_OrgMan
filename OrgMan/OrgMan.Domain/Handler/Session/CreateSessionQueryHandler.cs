@@ -26,7 +26,7 @@ namespace OrgMan.Domain.Handler.Session
             session.SysInsertAccountUID = Guid.NewGuid();            
 
             OrgManUnitOfWork uow = new OrgManUnitOfWork();
-            uow.SessionRepository.Insert(_query.MandatorUIDs, session);
+            uow.SessionRepository.Insert(session);
             uow.Commit();
             return session.UID;
         }

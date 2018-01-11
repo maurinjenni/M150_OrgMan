@@ -43,6 +43,15 @@ namespace OrgMan.Domain.Handler.Adress
                 if (individualPerson.MemberInformation != null)
                 {
                     individualPerson.MemberInformation.UID = memberinformationUid;
+
+                    if(individualPerson.MemberInformation.MemberInformationToMemberships != null)
+                    {
+                        foreach(var memberInformationToMembership in individualPerson.MemberInformation.MemberInformationToMemberships)
+                        {
+                            memberInformationToMembership.MemberInformationUID = memberinformationUid;
+                            memberInformationToMembership.UID = Guid.NewGuid();
+                        }
+                    }
                 }
 
                 if (individualPerson.Adress != null)
@@ -60,6 +69,12 @@ namespace OrgMan.Domain.Handler.Adress
                 {
                     email.IndividualPersonUID = individualPersonUid;
                     email.UID = Guid.NewGuid();
+                }
+
+                foreach(var personToMandator in individualPerson.Person.PersonToMandators)
+                {
+                    personToMandator.PersonUID = individualPersonUid;
+                    personToMandator.UID = Guid.NewGuid();
                 }
 
                 _uow.IndividualPersonRepository.Insert(_query.MandatorUIDs, individualPerson);

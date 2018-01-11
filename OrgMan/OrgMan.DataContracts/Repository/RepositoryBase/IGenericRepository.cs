@@ -19,9 +19,15 @@ namespace OrgMan.DataContracts.Repository.RepositoryBase
 
         void Insert(List<Guid> mandatorUid, TEntity entity);
 
+        void Insert(TEntity entity);
+
         void Delete(List<Guid> mandatorUid, Guid uid);
 
         void Delete(List<Guid> mandatorUid, TEntity entityToDelete);
+
+        void Delete(Guid uid);
+
+        void Delete(TEntity entityToDelete);
 
         void Update(List<Guid> mandatorUid, TEntity entityToUpdate);
     }

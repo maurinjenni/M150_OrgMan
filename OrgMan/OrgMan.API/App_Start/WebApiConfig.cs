@@ -1,4 +1,8 @@
-﻿using System.Web.Http;
+﻿using System.Collections.Generic;
+using System.Net.Http;
+using System.Web.Http;
+using System.Web.Http.Cors;
+using System.Web.Http.Routing;
 
 namespace OrgMan.API
 {
@@ -9,6 +13,12 @@ namespace OrgMan.API
            // Web API routes
             config.MapHttpAttributeRoutes();
 
+            //var cors = new EnableCorsAttribute(
+            //    origins: "*",
+            //    headers: "*",
+            //    methods: "*");
+
+            //config.EnableCors();
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\OrgMan"
+    "\\OrgMan",
+    "\\OrgMan\\OrgMan.API",
+    "\\OrgMan\\OrgMan.API\\Controllers"
   ],
   "SelectedNode": "\\OrgMan\\OrgMan.sln",
   "PreviewInSolutionExplorer": false

@@ -346,3 +346,11 @@ C:\Users\bbzw\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\Fissoft.EntityFrame
 C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\OrgMan.Mappings.dll
 C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\Fissoft.EntityFramework.Fts.dll
 C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\OrgMan.Mappings.pdb
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\System.Web.Cors.dll
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\System.Web.Http.Cors.dll
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\System.Web.Http.Cors.xml
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\Microsoft.Owin.Cors.dll
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\Microsoft.Owin.dll
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\Owin.dll
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\Microsoft.Owin.xml
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\Microsoft.Owin.Cors.xml

@@ -12,6 +12,7 @@ using OrgMan.DomainContracts.Authentication;
 using OrgMan.DomainContracts.Session;
 using OrgMan.DomainObjects.Session;
 using System.Configuration;
+using System.Web.Http.Cors;
 
 namespace OrgMan.API.Controllers
 {
@@ -61,15 +62,19 @@ namespace OrgMan.API.Controllers
 
                     CreateSessionQueryHandler createSessionQueryHandler = new CreateSessionQueryHandler(createSessionQuery,new UnityContainer());
 
+                    var guid = createSessionQueryHandler.Handle().ToString();
+
                     HttpCookie cookie = new HttpCookie(ConfigurationManager.AppSettings["SessionCookieName"])
                     {
-                        Value = createSessionQueryHandler.Handle().ToString(),
+                        Value = guid,
                         Domain = HttpContext.Current.Request.Url.Host,
                         Expires = DateTime.Now.AddDays(1),
                         HttpOnly = false,
                     };
 
                     HttpContext.Current.Response.AppendCookie(cookie);
+
+                    return Request.CreateResponse(HttpStatusCode.OK, guid);
                 }
 
                 return Request.CreateResponse(HttpStatusCode.OK);

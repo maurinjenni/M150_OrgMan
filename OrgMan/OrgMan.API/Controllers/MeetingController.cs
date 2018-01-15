@@ -16,7 +16,7 @@ namespace OrgMan.API.Controllers
     public class MeetingController : ApiControllerBase
     {
         [HttpGet]
-        [Route("meeting")]
+        [Route("api/meeting")]
         public HttpResponseMessage Get([FromUri] List<SearchCriteriaDomainModel> searchCriterias = null, [FromUri]int? numberOfRows = null)
         {
             try
@@ -46,7 +46,7 @@ namespace OrgMan.API.Controllers
         }
 
         [HttpGet]
-        [Route("meeting/{uid}")]
+        [Route("api/meeting/{uid}")]
         public HttpResponseMessage Get(Guid uid)
         {
             try
@@ -75,7 +75,7 @@ namespace OrgMan.API.Controllers
         }
 
         [HttpPost]
-        [Route("meeting")]
+        [Route("api/meeting")]
         public HttpResponseMessage Post([FromBody] JObject jsonObject)
         {
             try
@@ -112,7 +112,7 @@ namespace OrgMan.API.Controllers
         }
 
         [HttpPut]
-        [Route("meeting")]
+        [Route("api/meeting")]
         public HttpResponseMessage Put([FromBody] JObject jsonObject)
         {
             try
@@ -150,7 +150,7 @@ namespace OrgMan.API.Controllers
         }
 
         [HttpDelete]
-        [Route("meeting/{uid}")]
+        [Route("api/meeting/{uid}")]
         public HttpResponseMessage Delete(Guid uid)
         {
             try

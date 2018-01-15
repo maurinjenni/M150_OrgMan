@@ -19,7 +19,7 @@ namespace OrgMan.API.Controllers
     public class PictureController : ApiControllerBase
     {
         [HttpGet]
-        [Route("picture/{uid}")]
+        [Route("api/picture/{uid}")]
         public HttpResponseMessage Get(Guid uid)
         {
             try
@@ -54,7 +54,7 @@ namespace OrgMan.API.Controllers
         }
 
         [HttpPost]
-        [Route("picture")]
+        [Route("api/picture")]
         public HttpResponseMessage Post([FromBody] JObject jsonObject)
         {
             try
@@ -97,7 +97,7 @@ namespace OrgMan.API.Controllers
         }
 
         [HttpPut]
-        [Route("picture")]
+        [Route("api/picture")]
         public HttpResponseMessage Put([FromBody] JObject jsonObject)
         {
             try
@@ -140,7 +140,7 @@ namespace OrgMan.API.Controllers
         }
 
         [HttpDelete]
-        [Route("picture/{uid}")]
+        [Route("api/picture/{uid}")]
         public HttpResponseMessage Delete(Guid uid)
         {
             try

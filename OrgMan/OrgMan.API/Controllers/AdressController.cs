@@ -15,7 +15,7 @@ namespace OrgMan.API.Controllers
     public class AdressController : ApiControllerBase
     {
         [HttpGet]
-        [Route("adress")]
+        [Route("api/adress")]
         public HttpResponseMessage Get([FromUri] List<SearchCriteriaDomainModel> searchCriterias = null, [FromUri]int? numberOfRows = null)
         {
             numberOfRows = 100;
@@ -50,7 +50,7 @@ namespace OrgMan.API.Controllers
         }
 
         [HttpGet]
-        [Route("adress")]
+        [Route("api/adress")]
         public HttpResponseMessage Get([FromUri]string searchString)
         {
             FullTextSearchAdressQuery query = new FullTextSearchAdressQuery()
@@ -72,7 +72,7 @@ namespace OrgMan.API.Controllers
         }
 
         [HttpGet]
-        [Route("adress/{uid}")]
+        [Route("api/adress/{uid}")]
         public HttpResponseMessage Get(Guid uid)
         {
             GetAdressQuery query = new GetAdressQuery()
@@ -94,7 +94,7 @@ namespace OrgMan.API.Controllers
         }
 
         [HttpPost]
-        [Route("adress")]
+        [Route("api/adress")]
         public HttpResponseMessage Post([FromBody] JObject jsonObject)
         {
             try
@@ -124,7 +124,7 @@ namespace OrgMan.API.Controllers
         }
 
         [HttpPut]
-        [Route("adress")]
+        [Route("api/adress")]
         public HttpResponseMessage Put([FromBody] JObject jsonObject)
         {
             try
@@ -154,7 +154,7 @@ namespace OrgMan.API.Controllers
         }
 
         [HttpDelete]
-        [Route("adress/{uid}")]
+        [Route("api/adress/{uid}")]
         public HttpResponseMessage Delete(Guid uid)
         {
             DeleteAdressQuery query = new DeleteAdressQuery()

@@ -19,7 +19,7 @@ namespace OrgMan.API.Controllers
     public class AuthenticationController : ApiControllerBase
     {
         [HttpPut]
-        [Route("authentication/login")]
+        [Route("api/authentication/login")]
         public HttpResponseMessage Login([FromBody] JObject data)
         {
             JToken parameterUsername = data["Username"];
@@ -86,7 +86,7 @@ namespace OrgMan.API.Controllers
         }
 
         [HttpDelete]
-        [Route("authentication/logout")]
+        [Route("api/authentication/logout")]
         public HttpResponseMessage Logout()
         {
             try

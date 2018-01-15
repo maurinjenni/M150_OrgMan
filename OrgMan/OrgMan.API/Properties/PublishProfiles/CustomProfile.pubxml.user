@@ -112,7 +112,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/10/2017 10:09:49</publishTime>
     </File>
     <File Include="bin/OrgMan.API.dll">
-      <publishTime>01/15/2018 09:45:45</publishTime>
+      <publishTime>01/15/2018 17:43:20</publishTime>
     </File>
     <File Include="bin/OrgMan.Common.dll">
       <publishTime>01/15/2018 09:30:46</publishTime>

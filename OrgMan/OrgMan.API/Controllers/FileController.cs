@@ -19,7 +19,7 @@ namespace OrgMan.API.Controllers
     public class FileController : ApiControllerBase
     {
         [HttpGet]
-        [Route("file")]
+        [Route("api/file")]
         public HttpResponseMessage Get()
         {
             try
@@ -53,7 +53,7 @@ namespace OrgMan.API.Controllers
         }
 
         [HttpGet]
-        [Route("file")]
+        [Route("api/file")]
         public HttpResponseMessage Get([FromUri]string path)
         {
             try
@@ -99,7 +99,7 @@ namespace OrgMan.API.Controllers
         }
 
         [HttpPut]
-        [Route("file")]
+        [Route("api/file")]
         public HttpResponseMessage Upload([FromUri]List<Guid> fileMandatorUids)
         {
             try
@@ -146,7 +146,7 @@ namespace OrgMan.API.Controllers
 
 
         [HttpDelete]
-        [Route("file/{uid}")]
+        [Route("api/file/{uid}")]
         public HttpResponseMessage Delete([FromUri]List<Guid> fileMandatorUids, [FromUri]string filePath)
         {
             try

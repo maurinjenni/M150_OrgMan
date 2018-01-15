@@ -19,7 +19,7 @@ namespace OrgMan.API.Controllers
     public class MembershipController : ApiControllerBase
     {
         [HttpGet]
-        [Route("membership")]
+        [Route("api/membership")]
         public HttpResponseMessage Get()
         {
             try
@@ -48,7 +48,7 @@ namespace OrgMan.API.Controllers
         }
 
         [HttpGet]
-        [Route("membership/{uid}")]
+        [Route("api/membership/{uid}")]
         public HttpResponseMessage Get(Guid uid)
         {
             try
@@ -78,7 +78,7 @@ namespace OrgMan.API.Controllers
         }
 
         [HttpPost]
-        [Route("membership")]
+        [Route("api/membership")]
         public HttpResponseMessage Post([FromBody] JObject jsonObject)
         {
             try
@@ -115,7 +115,7 @@ namespace OrgMan.API.Controllers
         }
 
         [HttpPut]
-        [Route("membership")]
+        [Route("api/membership")]
         public HttpResponseMessage Put([FromBody] JObject jsonObject)
         {
             try
@@ -152,7 +152,7 @@ namespace OrgMan.API.Controllers
         }
 
         [HttpDelete]
-        [Route("membership/{uid}")]
+        [Route("api/membership/{uid}")]
         public HttpResponseMessage Delete(Guid uid)
         {
             try

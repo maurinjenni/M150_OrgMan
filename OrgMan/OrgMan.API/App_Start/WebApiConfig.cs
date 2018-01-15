@@ -13,16 +13,9 @@ namespace OrgMan.API
            // Web API routes
             config.MapHttpAttributeRoutes();
 
-            //var cors = new EnableCorsAttribute(
-            //    origins: "*",
-            //    headers: "*",
-            //    methods: "*");
-
-            //config.EnableCors();
-
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "{controller}/{action}/{id}",
+                routeTemplate: "api/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional });
         }
     }

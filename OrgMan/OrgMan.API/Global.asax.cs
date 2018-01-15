@@ -7,6 +7,8 @@ using OrgMan.API.Controllers.ControllerBase;
 using OrgMan.Mappings;
 using System.Web.Cors;
 using System.Web;
+using System.Net;
+using System.Configuration;
 
 namespace OrgMan.API
 {
@@ -34,13 +36,17 @@ namespace OrgMan.API
 
         protected void Application_BeginRequest(object sender, EventArgs e)
         {
-            //HttpContext.Current.Response.AddHeader("Access-Control-Allow-Origin", "*");
+            HttpContext.Current.Response.AddHeader("Access-Control-Allow-Methods", "POST,GET,PUT,PATCH,DELETE,OPTIONS");
+            HttpContext.Current.Response.AddHeader("Access-Control-Allow-Headers", "Content-Type, X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Date, X-Api-Version, X-File-Name," + ConfigurationManager.AppSettings["SessionCookieName"]);
+            HttpContext.Current.Response.AddHeader("Access-Control-Allow-Credentials", "true");
+            HttpContext.Current.Response.AddHeader("Access-Control-Allow-Origin", "*");
+            HttpContext.Current.Response.AddHeader("Access-Control-Max-Age", "1728000");
+
             if (HttpContext.Current.Request.HttpMethod == "OPTIONS")
             {
-                //HttpContext.Current.Response.AddHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-                HttpContext.Current.Response.AddHeader("Access-Control-Allow-Headers", "Content-Type, Accept");
-                HttpContext.Current.Response.AddHeader("Access-Control-Max-Age", "1728000");
-                HttpContext.Current.Response.End();
+                HttpContext.Current.Response.StatusCode = 200;
+                var httpapp = sender as HttpApplication;
+                httpapp.CompleteRequest();
             }
         }
 

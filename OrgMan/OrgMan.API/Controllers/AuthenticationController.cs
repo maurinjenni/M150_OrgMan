@@ -72,6 +72,8 @@ namespace OrgMan.API.Controllers
                         HttpOnly = false,
                     };
 
+                    var ersponse = HttpContext.Current.Response;
+
                     HttpContext.Current.Response.AppendCookie(cookie);
 
                     return Request.CreateResponse(HttpStatusCode.OK, guid);

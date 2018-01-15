@@ -9,3 +9,14 @@ C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DataContracts\bin\Release\de\
 C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DataContracts\obj\Release\OrgMan.DataContracts.csprojResolveAssemblyReference.cache
 C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DataContracts\obj\Release\OrgMan.DataContracts.dll
 C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DataContracts\obj\Release\OrgMan.DataContracts.pdb
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DataContracts\bin\Release\OrgMan.DataContracts.dll
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DataContracts\bin\Release\OrgMan.DataContracts.pdb
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DataContracts\bin\Release\OrgMan.DataModel.dll
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DataContracts\bin\Release\EntityFramework.dll
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DataContracts\bin\Release\OrgMan.DataModel.pdb
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DataContracts\bin\Release\OrgMan.DataModel.dll.config
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DataContracts\bin\Release\EntityFramework.xml
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DataContracts\bin\Release\de\EntityFramework.resources.dll
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DataContracts\obj\Release\OrgMan.DataContracts.csprojResolveAssemblyReference.cache
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DataContracts\obj\Release\OrgMan.DataContracts.dll
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DataContracts\obj\Release\OrgMan.DataContracts.pdb

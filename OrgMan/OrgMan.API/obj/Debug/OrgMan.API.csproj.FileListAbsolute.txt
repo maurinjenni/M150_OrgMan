@@ -207,7 +207,6 @@ C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\Microsoft.Pr
 C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\Microsoft.Practices.Unity.Configuration.xml
 C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\EntityFramework.xml
 C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\AutoMapper.xml
-C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\de\EntityFramework.resources.dll
 C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\OrgMan.Common.dll
 C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\FluentValidation.dll
 C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\OrgMan.Common.pdb
@@ -363,3 +362,5 @@ C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\EntityFramework.SqlSe
 C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\Microsoft.Owin.xml
 C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\Microsoft.Owin.Cors.xml
 C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\System.Web.Http.Cors.xml
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\EntityFramework.SqlServer.dll
+C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\EntityFramework.SqlServer.xml

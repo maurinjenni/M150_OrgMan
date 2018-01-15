@@ -335,7 +335,6 @@ C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\de\System.Web.Razor.r
 C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\de\System.Web.WebPages.resources.dll
 C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\de\System.Web.WebPages.Deployment.resources.dll
 C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\de\System.Web.WebPages.Razor.resources.dll
-C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\de\EntityFramework.resources.dll
 C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\obj\Debug\OrgMan.API.csprojResolveAssemblyReference.cache
 C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\obj\Debug\OrgMan.API.dll
 C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\obj\Debug\OrgMan.API.pdb
@@ -354,3 +353,13 @@ C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\Microsoft.Ow
 C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\Owin.dll
 C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\Microsoft.Owin.xml
 C:\Users\jonas.hodel\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\Microsoft.Owin.Cors.xml
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\EntityFramework.SqlServer.dll
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\Microsoft.Owin.Cors.dll
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\Microsoft.Owin.dll
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\Owin.dll
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\System.Web.Cors.dll
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\System.Web.Http.Cors.dll
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\EntityFramework.SqlServer.xml
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\Microsoft.Owin.xml
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\Microsoft.Owin.Cors.xml
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.API\bin\System.Web.Http.Cors.xml

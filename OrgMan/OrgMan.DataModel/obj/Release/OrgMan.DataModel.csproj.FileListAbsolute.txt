@@ -1,0 +1,12 @@
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DataModel\bin\Release\OrgMan.DataModel.dll.config
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DataModel\bin\Release\OrgMan.DataModel.dll
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DataModel\bin\Release\OrgMan.DataModel.pdb
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DataModel\bin\Release\EntityFramework.dll
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DataModel\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DataModel\bin\Release\EntityFramework.xml
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DataModel\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DataModel\bin\Release\de\EntityFramework.resources.dll
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DataModel\bin\Release\de\EntityFramework.SqlServer.resources.dll
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DataModel\obj\Release\OrgMan.DataModel.csprojResolveAssemblyReference.cache
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DataModel\obj\Release\OrgMan.DataModel.dll
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DataModel\obj\Release\OrgMan.DataModel.pdb

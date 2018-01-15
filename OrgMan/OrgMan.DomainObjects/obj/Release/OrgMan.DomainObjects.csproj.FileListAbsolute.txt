@@ -1,0 +1,5 @@
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainObjects\bin\Release\OrgMan.DomainObjects.dll
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainObjects\bin\Release\OrgMan.DomainObjects.pdb
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainObjects\obj\Release\OrgMan.DomainObjects.csprojResolveAssemblyReference.cache
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainObjects\obj\Release\OrgMan.DomainObjects.dll
+C:\Users\JH\Source\Repos\M150_OrgMan\OrgMan\OrgMan.DomainObjects\obj\Release\OrgMan.DomainObjects.pdb

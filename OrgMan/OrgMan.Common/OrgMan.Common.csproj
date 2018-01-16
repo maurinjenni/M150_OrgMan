@@ -60,6 +60,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DynamicOrderService\DynamicOrderModel\Enums\OrderCriteriaDirectionEnum.cs" />
+    <Compile Include="DynamicOrderService\DynamicOrderModel\SortOrderDomainModel.cs" />
+    <Compile Include="DynamicOrderService\DynamicOrderService.cs" />
+    <Compile Include="DynamicOrderService\IDynamicOrderService.cs" />
     <Compile Include="DynamicSearchService\DynamicSearchModel\Enums\SearchCriteriaDataTypeDomainModelEnum.cs" />
     <Compile Include="DynamicSearchService\DynamicSearchModel\Enums\SearchCriteriaOperationTypeDomainModelEnum.cs" />
     <Compile Include="DynamicSearchService\DynamicSearchModel\SearchCriteriaDomainModel.cs" />

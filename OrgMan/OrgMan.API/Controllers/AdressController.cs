@@ -51,7 +51,7 @@ namespace OrgMan.API.Controllers
 
         [HttpGet]
         [Route("api/adress")]
-        public HttpResponseMessage Get([FromUri]string searchString)
+        public HttpResponseMessage Get([FromUri]string searchString, [FromUri]int? numberOfRows = null)
         {
             FullTextSearchAdressQuery query = new FullTextSearchAdressQuery()
             {

@@ -7,6 +7,9 @@ using System.Linq.Expressions;
 using OrgMan.Common.DynamicSearchService;
 using OrgMan.Data.UnitOfWork;
 using OrgMan.DomainObjects.Meeting;
+using System.Linq;
+using OrgMan.Common.DynamicOrderService;
+using OrgMan.Common.DynamicOrderService.DynamicOrderModel;
 
 namespace OrgMan.Domain.Handler.Meeting
 {
@@ -39,9 +42,20 @@ namespace OrgMan.Domain.Handler.Meeting
                 }
             }
 
-            var meetings = uow.MeetingRepository.Get(_query.MandatorUIDs, whereExpression,null,null,_query.NumberOfRows);
+            DynamicOrderService orderService = new DynamicOrderService();
+
+            SortOrderDomainModel orderDomainModel = new SortOrderDomainModel()
+            {
+                Direction = Common.DynamicOrderService.DynamicOrderModel.Enums.OrderCriteriaDirectionEnum.OrderByDescending,
+                Field = "StartDate"
+            };
+
+            var orderQuery = orderService.GetOrderBy<DataModel.Meeting>(orderDomainModel);
+
+            var meetings = uow.MeetingRepository.Get(_query.MandatorUIDs, whereExpression, orderQuery, null,_query.NumberOfRows);
 
             return AutoMapper.Mapper.Map<List<MeetingSearchDomainModel>>(meetings);
         }
     }
 }
+ 

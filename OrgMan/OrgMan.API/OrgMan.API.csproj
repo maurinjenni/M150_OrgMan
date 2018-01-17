@@ -180,6 +180,7 @@
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\ControllerBase\ApiControllerBase.cs" />
     <Compile Include="Controllers\FileController.cs" />
+    <Compile Include="Controllers\MandatorController.cs" />
     <Compile Include="Controllers\MeetingController.cs" />
     <Compile Include="Controllers\MembershipController.cs" />
     <Compile Include="Controllers\PictureController.cs" />

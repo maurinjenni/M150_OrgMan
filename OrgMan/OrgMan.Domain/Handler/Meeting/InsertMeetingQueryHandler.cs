@@ -32,7 +32,7 @@ namespace OrgMan.Domain.Handler.Meeting
                     throw new DataException("Could not Map MeetingDetailDomainModel to Meeting");
                 }
 
-                DynamicValidationService<DataModel.Meeting> validationService = new DynamicValidationService<DataModel.Meeting>(new UnityContainer());
+                //DynamicValidationService<DataModel.Meeting> validationService = new DynamicValidationService<DataModel.Meeting>(new UnityContainer());
 
                 //if (!validationService.Validate(meeting))
                 //{
@@ -64,9 +64,9 @@ namespace OrgMan.Domain.Handler.Meeting
             {
                 throw new DataException("Internal Server Error", e);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                throw new Exception("Internal Server Error");
+                throw new Exception("Internal Server Error", e);
             }
         }
     }

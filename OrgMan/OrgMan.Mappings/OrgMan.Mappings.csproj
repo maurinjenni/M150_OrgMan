@@ -35,6 +35,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,9 +48,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\OrgMan.DataModel\OrgMan.DataModel.csproj">
       <Project>{2D742792-2D0E-4847-9E79-ED4E4AF423F2}</Project>
       <Name>OrgMan.DataModel</Name>
@@ -58,6 +56,9 @@
       <Project>{41E7CB85-5DC3-45B7-92D0-499EB7304D71}</Project>
       <Name>OrgMan.DomainObjects</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

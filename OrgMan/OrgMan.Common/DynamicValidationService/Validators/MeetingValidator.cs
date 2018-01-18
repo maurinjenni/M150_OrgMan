@@ -5,9 +5,9 @@ namespace OrgMan.Common.DynamicValidationService.Validators
 {
     public class MeetingValidator : ValidatorBase<Meeting>
     {
-        public MeetingValidator(ILinqExpressionService<Meeting> linqExpressionService) : base(linqExpressionService)
+        public MeetingValidator(ILinqExpressionService<Meeting> linqExpressionService): base(linqExpressionService)
         {
-            CreateValidations("");
+            CreateValidations(@"Z:\OrgManAPI\ValidationDefinitions\meeting.json");
             AddFluentValidations();
         }
 

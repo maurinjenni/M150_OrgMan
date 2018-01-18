@@ -185,33 +185,36 @@ namespace OrgMan.Data.Repository.Repositorybase
             }
         }
 
-        public virtual void Update(List<Guid> mandatorUids, TEntity entityToUpdate)
+        public virtual bool Update(List<Guid> mandatorUids, TEntity entityToUpdate)
         {
-            //var oldEntity = DbSet.FirstOrDefault(e => e.UID == entityToUpdate.UID);
+            var entity = DbSet.Find(entityToUpdate.UID);
 
-            //if(oldEntity != null)
-            //{
-            //    if (oldEntity.MandatorUIDs.Intersect(mandatorUids).Any())
-            //    {
-                    DbSet.Attach(entityToUpdate);
+            if (entity == null)
+            {
+                return false;
+            }
+            else
+            {
+                Context.Entry(entity).CurrentValues.SetValues(entityToUpdate);
+            }
 
-                    var entry = Context.Entry(entityToUpdate);
+            return true;
+        }
 
-                    entry.Property(x => x.SysInsertAccountUID).IsModified = false;
-                    entry.Property(x => x.SysInsertTime).IsModified = false;
+        public virtual bool Update(TEntity entityToUpdate)
+        {
+            var entity = DbSet.Find(entityToUpdate.UID);
 
-
-                    entry.State = EntityState.Modified;
-                //}
-        //        else
-        //        {
-        //            throw new UnauthorizedAccessException(string.Format("{0} from another Mandator", entityToUpdate.GetType().BaseType.Name));
-        //        }
-        //    }
-        //    else
-        //    {
-        //        throw new DataException(string.Format("No Entity found to UID : {1}", entityToUpdate.UID));
-        //    }
+            if (entity == null)
+            {
+                return false;
+                //Insert(entityToUpdate);
+            }
+            else
+            {
+                Context.Entry(entity).CurrentValues.SetValues(entityToUpdate);
+                return true;
+            }
         }
     }
 }

@@ -29,6 +29,8 @@ namespace OrgMan.DataContracts.Repository.RepositoryBase
 
         void Delete(TEntity entityToDelete);
 
-        void Update(List<Guid> mandatorUid, TEntity entityToUpdate);
+        bool Update(List<Guid> mandatorUid, TEntity entityToUpdate);
+
+        bool Update(TEntity entityToUpdate);
     }
 }
